@@ -3,389 +3,403 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Code Editor Cost Calculator - 2026</title>
-    <meta name="description" content="Calculate the real cost of building with AI code editors like Cursor, v0, and Windsurf. Estimate your vibe coding expenses.">
+    <title>AI Coding Tools Cost Calculator 2026 + Vibe Coding Guide + Free Resources</title>
+    <meta name="description" content="Free calculators for AI coding costs, GLP-1 costs, solar savings & more. Learn vibe coding, compare tools, and build apps with AI. Start for free in 2026.">
+    <meta name="keywords" content="AI code editor, Cursor pricing, v0 cost, Windsurf pricing, vibe coding, GLP-1 cost calculator, solar savings calculator, print on demand profit, build apps with AI, AI programming 2026, no code apps, AI developer tools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://aicodecost.com">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Free Online Calculators",
+        "description": "Free calculators for AI coding costs, vibe coding, GLP-1 costs, solar savings & more.",
+        "url": "https://aicodecost.com",
+        "applicationCategory": "FinanceApplication",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }
+    </script>
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            min-height: 100vh;
-            padding: 20px;
-            color: #fff;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #00d4ff, #7c3aed);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .subtitle {
-            color: #888;
-            font-size: 1.1rem;
-        }
-        .calculator {
-            background: rgba(255,255,255,0.05);
-            border-radius: 20px;
-            padding: 30px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .tool-section {
-            margin-bottom: 30px;
-        }
-        .tool-section h2 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: #00d4ff;
-        }
-        .tool-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .tool-card {
-            background: rgba(255,255,255,0.08);
-            border-radius: 12px;
-            padding: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        .tool-card:hover {
-            background: rgba(255,255,255,0.12);
-        }
-        .tool-card.selected {
-            border-color: #00d4ff;
-            background: rgba(0,212,255,0.15);
-        }
-        .tool-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-        .tool-card .price {
-            color: #7c3aed;
-            font-size: 0.9rem;
-        }
-        .input-group {
-            margin-bottom: 25px;
-        }
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #ccc;
-        }
-        .input-group input, .input-group select {
-            width: 100%;
-            padding: 14px 18px;
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            font-size: 1rem;
-        }
-        .input-group input:focus {
-            outline: none;
-            border-color: #00d4ff;
-        }
-        .results {
-            background: linear-gradient(135deg, #7c3aed 0%, #00d4ff 100%);
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            display: none;
-        }
-        .results.show {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .results h2 {
-            font-size: 1rem;
-            opacity: 0.9;
-            margin-bottom: 10px;
-        }
-        .results .total {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        .results .breakdown {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            text-align: center;
-        }
-        .breakdown-item {
-            background: rgba(0,0,0,0.2);
-            padding: 15px;
-            border-radius: 10px;
-        }
-        .breakdown-item .label {
-            font-size: 0.8rem;
-            opacity: 0.8;
-        }
-        .breakdown-item .value {
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-        .email-gate {
-            margin-top: 30px;
-            padding: 20px;
-            background: rgba(0,0,0,0.3);
-            border-radius: 10px;
-            display: none;
-        }
-        .email-gate.show {
-            display: block;
-        }
-        .email-gate p {
-            margin-bottom: 15px;
-        }
-        .email-gate input {
-            width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            border: none;
-            margin-bottom: 10px;
-            font-size: 1rem;
-        }
-        .email-gate button {
-            width: 100%;
-            padding: 14px;
-            background: #fff;
-            color: #7c3aed;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .email-gate button:hover {
-            transform: scale(1.02);
-        }
-        .tips {
-            margin-top: 30px;
-            padding: 20px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-        }
-        .tips h3 {
-            color: #00d4ff;
-            margin-bottom: 15px;
-        }
-        .tips ul {
-            list-style: none;
-        }
-        .tips li {
-            padding: 8px 0;
-            padding-left: 25px;
-            position: relative;
-            color: #ccc;
-        }
-        .tips li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: #00d4ff;
-        }
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            color: #666;
-            font-size: 0.9rem;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); min-height: 100vh; padding: 15px; color: #fff; }
+        .container { max-width: 950px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 20px; padding: 15px; }
+        h1 { font-size: 1.8rem; margin-bottom: 6px; background: linear-gradient(90deg, #00d4ff, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { color: #888; font-size: 0.9rem; }
+        
+        .tabs { display: flex; gap: 4px; margin-bottom: 15px; flex-wrap: wrap; justify-content: center; }
+        .tab { padding: 6px 10px; background: rgba(255,255,255,0.05); border: none; border-radius: 6px; color: #00d4ff; cursor: pointer; font-size: 0.7rem; white-space: nowrap; }
+        .tab.active { background: #00d4ff; color: #1a1a2e; font-weight: bold; }
+        
+        .calculator { background: rgba(255,255,255,0.05); border-radius: 15px; padding: 15px; display: none; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 15px; }
+        .calculator.active { display: block; }
+        
+        .section-title { font-size: 1.1rem; margin-bottom: 12px; color: #00d4ff; }
+        .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 6px; margin-bottom: 10px; }
+        .tool-card { background: rgba(255,255,255,0.08); border-radius: 6px; padding: 8px; cursor: pointer; border: 2px solid transparent; text-align: center; }
+        .tool-card.selected { border-color: #00d4ff; background: rgba(0,212,255,0.2); }
+        .tool-card h3 { font-size: 0.8rem; }
+        .tool-card .price { color: #7c3aed; font-size: 0.7rem; }
+        
+        .input-group { margin-bottom: 12px; }
+        .input-group label { display: block; margin-bottom: 4px; color: #ccc; font-size: 0.8rem; }
+        .input-group input, .input-group select { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: #fff; font-size: 0.9rem; }
+        
+        .results { background: linear-gradient(135deg, #7c3aed 0%, #00d4ff 100%); border-radius: 10px; padding: 15px; text-align: center; display: none; margin-top: 12px; }
+        .results.show { display: block; }
+        .results .total { font-size: 2rem; font-weight: bold; }
+        
+        button.calc-btn { width: 100%; padding: 12px; background: linear-gradient(90deg, #00d4ff, #7c3aed); border: none; border-radius: 8px; color: #fff; font-size: 0.95rem; font-weight: bold; cursor: pointer; }
+        
+        .pricing-card { background: rgba(255,255,255,0.08); padding: 10px; border-radius: 6px; margin-bottom: 6px; }
+        .pricing-card h3 { color: #00d4ff; font-size: 0.85rem; margin-bottom: 3px; }
+        .pricing-card .price { font-size: 1.2rem; font-weight: bold; color: #7c3aed; }
+        .pricing-card .features { color: #aaa; font-size: 0.75rem; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.8rem; }
+        th, td { padding: 8px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        th { color: #00d4ff; }
+        td { color: #ccc; }
+        
+        .content-section { margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 12px; }
+        .content-section h2 { color: #00d4ff; margin-bottom: 10px; font-size: 1.1rem; }
+        .content-section h3 { color: #ccc; margin: 12px 0 6px; font-size: 0.95rem; }
+        .content-section p { color: #aaa; line-height: 1.5; margin-bottom: 10px; font-size: 0.85rem; }
+        .content-section ul { color: #aaa; margin-left: 15px; margin-bottom: 10px; font-size: 0.85rem; }
+        .content-section li { margin-bottom: 5px; }
+        
+        .faq-item { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 6px; margin-bottom: 6px; }
+        .faq-item h4 { color: #00d4ff; margin-bottom: 4px; font-size: 0.85rem; }
+        .faq-item p { color: #aaa; font-size: 0.8rem; margin: 0; }
+        
+        .affiliate-box { background: rgba(124,58,237,0.2); border: 1px solid #7c3aed; padding: 12px; border-radius: 8px; margin: 12px 0; text-align: center; }
+        .affiliate-box a { color: #00d4ff; text-decoration: none; font-weight: bold; }
+        .affiliate-box .note { color: #aaa; font-size: 0.75rem; margin-top: 5px; }
+        
+        .email-box { background: linear-gradient(135deg, #7c3aed 0%, #00d4ff 100%); padding: 15px; border-radius: 10px; text-align: center; margin: 15px 0; }
+        .email-box h3 { color: #fff; margin-bottom: 8px; }
+        .email-box input { width: 100%; padding: 10px; border-radius: 6px; border: none; margin-bottom: 8px; }
+        .email-box button { width: 100%; padding: 10px; background: #fff; color: #7c3aed; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
+        
+        .cta-box { background: linear-gradient(135deg, #7c3aed 0%, #00d4ff 100%); padding: 15px; border-radius: 10px; text-align: center; margin-top: 20px; }
+        .cta-box h3 { color: #fff; margin-bottom: 6px; }
+        
+        .glossary { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; }
+        .glossary-item { background: rgba(255,255,255,0.05); padding: 8px; border-radius: 6px; }
+        .glossary-item strong { color: #00d4ff; display: block; font-size: 0.85rem; }
+        .glossary-item span { color: #aaa; font-size: 0.75rem; }
+        
+        .step { position: relative; padding-left: 30px; margin-bottom: 12px; }
+        .step:before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: 0; width: 20px; height: 20px; background: #00d4ff; color: #1a1a2e; border-radius: 50%; text-align: center; line-height: 20px; font-weight: bold; font-size: 0.75rem; }
+        .step h4 { color: #00d4ff; margin-bottom: 3px; font-size: 0.85rem; }
+        .step p { color: #aaa; font-size: 0.8rem; margin: 0; }
+        
+        footer { text-align: center; margin-top: 30px; color: #666; font-size: 0.7rem; padding: 10px; }
+        footer a { color: #00d4ff; }
+        
+        @media (max-width: 600px) {
+            .tabs { gap: 2px; }
+            .tab { padding: 5px 7px; font-size: 0.6rem; }
+            h1 { font-size: 1.4rem; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🤖 AI Code Editor Cost Calculator</h1>
-            <p class="subtitle">Estimate your vibe coding costs for Cursor, v0, Windsurf & more</p>
+            <h1>🧮 Free Online Calculators</h1>
+            <p class="subtitle">AI Costs • Vibe Coding • GLP-1 • Solar • Print on Demand</p>
         </header>
 
-        <div class="calculator">
-            <div class="tool-section">
-                <h2>Select Your AI Coding Tools</h2>
-                <div class="tool-grid">
-                    <div class="tool-card selected" data-tool="cursor" data-monthly="20">
-                        <h3>Cursor</h3>
-                        <p class="price">$20/mo (Pro)</p>
-                    </div>
-                    <div class="tool-card" data-tool="v0" data-monthly="20">
-                        <h3>v0 (Vercel)</h3>
-                        <p class="price">$20/mo (Plus)</p>
-                    </div>
-                    <div class="tool-card" data-tool="windsurf" data-monthly="15">
-                        <h3>Windsurf</h3>
-                        <p class="price">$15/mo (Pro)</p>
-                    </div>
-                    <div class="tool-card" data-tool="github-copilot" data-monthly="10">
-                        <h3>GitHub Copilot</h3>
-                        <p class="price">$10/mo</p>
-                    </div>
-                    <div class="tool-card" data-tool="claude-ai" data-monthly="25">
-                        <h3>Claude AI</h3>
-                        <p class="price">$25/mo (Pro)</p>
-                    </div>
-                    <div class="tool-card" data-tool="chatgpt" data-monthly="20">
-                        <h3>ChatGPT Plus</h3>
-                        <p class="price">$20/mo</p>
-                    </div>
-                </div>
+        <!-- Navigation Tabs -->
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('ai-cost')">🤖 AI Cost</button>
+            <button class="tab" onclick="showTab('cursor')">🐾 Cursor</button>
+            <button class="tab" onclick="showTab('v0')">⚡ v0</button>
+            <button class="tab" onclick="showTab('compare')">📊 Compare</button>
+            <button class="tab" onclick="showTab('glp1')">💊 GLP-1</button>
+            <button class="tab" onclick="showTab('solar')">☀️ Solar</button>
+            <button class="tab" onclick="showTab('podd')">👕 POD</button>
+            <button class="tab" onclick="showTab('guide')">📚 Guide</button>
+            <button class="tab" onclick="showTab('tutorial')">🚀 Start</button>
+            <button class="tab" onclick="showTab('tools')">🛠 Tools</button>
+            <button class="tab" onclick="showTab('faq')">❓ FAQ</button>
+        </div>
+
+        <!-- AI Cost Calculator -->
+        <div class="calculator active" id="ai-cost">
+            <div class="section-title">🤖 AI Coding Tools Cost Calculator</div>
+            <div class="tool-grid">
+                <div class="tool-card selected" data-tool="cursor" data-monthly="20" onclick="toggleTool(this)"><h3>Cursor</h3><p class="price">$20/mo</p></div>
+                <div class="tool-card" data-tool="v0" data-monthly="20" onclick="toggleTool(this)"><h3>v0</h3><p class="price">$20/mo</p></div>
+                <div class="tool-card" data-tool="windsurf" data-monthly="15" onclick="toggleTool(this)"><h3>Windsurf</h3><p class="price">$15/mo</p></div>
+                <div class="tool-card" data-tool="copilot" data-monthly="10" onclick="toggleTool(this)"><h3>Copilot</h3><p class="price">$10/mo</p></div>
+                <div class="tool-card" data-tool="claude" data-monthly="25" onclick="toggleTool(this)"><h3>Claude</h3><p class="price">$25/mo</p></div>
+                <div class="tool-card" data-tool="chatgpt" data-monthly="20" onclick="toggleTool(this)"><h3>ChatGPT</h3><p class="price">$20/mo</p></div>
             </div>
+            <div class="input-group"><label>Hours per week</label><input type="number" id="ai-hours" value="10"></div>
+            <div class="input-group"><label>Project months</label><input type="number" id="ai-months" value="3"></div>
+            <button class="calc-btn" onclick="calcAI()">💰 Calculate</button>
+            <div class="results" id="resultsAI"><div class="total" id="totalAI">$0</div></div>
+        </div>
 
-            <div class="input-group">
-                <label>How many hours per week will you code with AI?</label>
-                <input type="number" id="hoursPerWeek" value="10" min="1" max="100">
+        <!-- Cursor -->
+        <div class="calculator" id="cursor">
+            <div class="section-title">🐾 Cursor Pricing 2026</div>
+            <div class="pricing-card"><h3>Free</h3><div class="price">$0</div><div class="features">2K GPT-4o + 500 Claude msgs</div></div>
+            <div class="pricing-card"><h3>Pro</h3><div class="price">$20/mo</div><div class="features">Unlimited everything</div></div>
+            <div class="pricing-card"><h3>Business</h3><div class="price">$40/user</div><div class="features">Team features</div></div>
+            <div class="input-group"><label>Months</label><input type="number" id="cursorMonths" value="3"></div>
+            <button class="calc-btn" onclick="calcSingle('cursor',20)">Calculate</button>
+            <div class="results" id="resultsCursor"><div class="total" id="totalCursor">$60</div></div>
+            <div class="affiliate-box">
+                <a href="https://cursor.sh" target="_blank">🚀 Get Cursor Pro →</a>
+                <div class="note">AI-first code editor • Build apps faster</div>
             </div>
+        </div>
 
-            <div class="input-group">
-                <label>Average AI usage per hour (% of time AI is actively generating code)</label>
-                <select id="usageLevel">
-                    <option value="0.3">Light (30%) - Mostly coding myself, AI assists</option>
-                    <option value="0.6" selected>Medium (60%) - Balanced AI assistance</option>
-                    <option value="0.9">Heavy (90%) - AI does most of the heavy lifting</option>
-                </select>
+        <!-- v0 -->
+        <div class="calculator" id="v0">
+            <div class="section-title">⚡ v0 by Vercel Pricing</div>
+            <div class="pricing-card"><h3>Free</h3><div class="price">$0</div><div class="features">100 generations/mo</div></div>
+            <div class="pricing-card"><h3>Plus</h3><div class="price">$20/mo</div><div class="features">Unlimited + Figma import</div></div>
+            <div class="pricing-card"><h3>Pro</h3><div class="price">$70/mo</div><div class="features">API access</div></div>
+            <div class="input-group"><label>Months</label><input type="number" id="v0Months" value="3"></div>
+            <button class="calc-btn" onclick="calcSingle('v0',20)">Calculate</button>
+            <div class="results" id="resultsV0"><div class="total" id="totalV0">$60</div></div>
+            <div class="affiliate-box">
+                <a href="https://v0.dev" target="_blank">🚀 Get v0 Plus →</a>
+                <div class="note">AI UI Generator • Describe your UI</div>
             </div>
+        </div>
 
-            <div class="input-group">
-                <label>How many months do you plan to build this project?</label>
-                <input type="number" id="months" value="3" min="1" max="24">
+        <!-- Compare -->
+        <div class="calculator" id="compare">
+            <div class="section-title">📊 AI Tools Comparison 2026</div>
+            <table>
+                <tr><th>Tool</th><th>Price</th><th>Best For</th></tr>
+                <tr><td>Cursor</td><td>$20/mo</td><td>Full apps</td></tr>
+                <tr><td>v0</td><td>$20/mo</td><td>UI/React</td></tr>
+                <tr><td>Windsurf</td><td>$15/mo</td><td>Completion</td></tr>
+                <tr><td>Copilot</td><td>$10/mo</td><td>VS Code</td></tr>
+                <tr><td>Claude</td><td>$25/mo</td><td>Reasoning</td></tr>
+                <tr><td>ChatGPT</td><td>$20/mo</td><td>General</td></tr>
+                <tr><td>bolt.new</td><td>$20/mo</td><td>Full-stack</td></tr>
+                <tr><td> Lovable</td><td>$20/mo</td><td>Prototyping</td></tr>
+            </table>
+        </div>
+
+        <!-- GLP-1 -->
+        <div class="calculator" id="glp1">
+            <div class="section-title">💊 GLP-1 Weight Loss Cost Calculator</div>
+            <div class="tool-grid">
+                <div class="tool-card selected" data-drug="ozempic" data-monthly="968" onclick="toggleGLP1(this)"><h3>Ozempic</h3><p class="price">$968/mo</p></div>
+                <div class="tool-card" data-drug="wegovy" data-monthly="1349" onclick="toggleGLP1(this)"><h3>Wegovy</h3><p class="price">$1,349/mo</p></div>
+                <div class="tool-card" data-drug="mounjaro" data-monthly="1023" onclick="toggleGLP1(this)"><h3>Mounjaro</h3><p class="price">$1,023/mo</p></div>
+                <div class="tool-card" data-drug="zepbound" data-monthly="1023" onclick="toggleGLP1(this)"><h3>Zepbound</h3><p class="price">$1,023/mo</p></div>
+                <div class="tool-card" data-drug="compounded" data-monthly="300" onclick="toggleGLP1(this)"><h3>Compounded</h3><p class="price">$300/mo</p></div>
             </div>
-
-            <div class="input-group">
-                <label>Additional costs (hosting, domains, APIs per month)</label>
-                <input type="number" id="additionalCosts" value="10" min="0">
-            </div>
-
-            <button onclick="calculate()" style="width:100%;padding:18px;background:linear-gradient(90deg,#00d4ff,#7c3aed);border:none;border-radius:12px;color:#fff;font-size:1.2rem;font-weight:bold;cursor:pointer;">💰 Calculate My Costs</button>
-
-            <div class="results" id="results">
-                <h2>Your Estimated AI Coding Costs</h2>
-                <div class="total" id="totalCost">$0</div>
-                <div class="breakdown">
-                    <div class="breakdown-item">
-                        <div class="label">Tool Subscriptions</div>
-                        <div class="value" id="subscriptionCost">$0</div>
-                    </div>
-                    <div class="breakdown-item">
-                        <div class="label">API/Token Costs</div>
-                        <div class="value" id="apiCost">$0</div>
-                    </div>
-                    <div class="breakdown-item">
-                        <div class="label">Hosting & Extras</div>
-                        <div class="value" id="hostingCost">$0</div>
-                    </div>
-                </div>
-                
-                <div class="email-gate" id="emailGate">
-                    <p>🔓 Enter your email to unlock the full breakdown and get saving tips!</p>
-                    <input type="email" id="email" placeholder="your@email.com">
-                    <button onclick="unlockResults()">Unlock Results</button>
-                </div>
-            </div>
-
-            <div class="tips" id="tips">
-                <h3>💡 Tips to Reduce Your AI Coding Costs</h3>
+            <div class="input-group"><label>Duration (months)</label><input type="number" id="glp1-months" value="6"></div>
+            <button class="calc-btn" onclick="calcGLP1()">Calculate Cost</button>
+            <div class="results" id="resultsGLP1"><div class="total" id="totalGLP1">$0</div></div>
+            <div class="content-section" style="margin-top:15px;">
+                <h3>💡 Saving Tips</h3>
                 <ul>
-                    <li>Use free tiers for testing, upgrade only when needed</li>
-                    <li>Cache prompts and reuse code snippets to reduce API calls</li>
-                    <li>Start with one tool, add more only if required</li>
-                    <li>Use open-source models when possible (DeepSeek, Llama)</li>
-                    <li>Set usage limits in your AI tools to avoid surprise charges</li>
+                    <li>Check manufacturer coupons & savings cards</li>
+                    <li>Compounded GLP-1 can be 70% cheaper</li>
+                    <li>Insurance may cover with prior authorization</li>
+                    <li>Sequence offers discount programs</li>
                 </ul>
             </div>
         </div>
 
+        <!-- Solar -->
+        <div class="calculator" id="solar">
+            <div class="section-title">☀️ Solar Savings Calculator</div>
+            <div class="input-group"><label>Monthly electric bill ($)</label><input type="number" id="solar-bill" value="150"></div>
+            <div class="input-group"><label>Roof sun hours per day</label><input type="number" id="solar-hours" value="5"></div>
+            <div class="input-group"><label>System size (kW)</label><input type="number" id="solar-kw" value="6"></div>
+            <button class="calc-btn" onclick="calcSolar()">Calculate Savings</button>
+            <div class="results" id="resultsSolar"><div class="total" id="totalSolar">$0</div></div>
+            <div class="content-section" style="margin-top:15px;">
+                <h3>📈 Average Savings</h3>
+                <p>Typical 6kW system saves $15,000-25,000 over 20 years. With federal tax credit (30% through 2032), costs are even lower.</p>
+            </div>
+        </div>
+
+        <!-- Print on Demand -->
+        <div class="calculator" id="podd">
+            <div class="section-title">👕 Print on Demand Profit Calculator</div>
+            <div class="input-group"><label>Product price ($)</label><input type="number" id="pod-price" value="25"></div>
+            <div class="input-group"><label>Cost per item ($)</label><input type="number" id="pod-cost" value="12"></div>
+            <div class="input-group"><label>Monthly sales</label><input type="number" id="pod-sales" value="50"></div>
+            <button class="calc-btn" onclick="calcPOD()">Calculate Profit</button>
+            <div class="results" id="resultsPOD"><div class="total" id="totalPOD">$0</div></div>
+            <div class="affiliate-box" style="margin-top:15px;">
+                <a href="https://teespring.com" target="_blank">🔥 Start POD on Teespring →</a>
+                <a href="https://printful.com" target="_blank" style="display:block;margin-top:8px;">→ Or Printful</a>
+                <div class="note">No inventory • Only pay when you sell</div>
+            </div>
+        </div>
+
+        <!-- Guide -->
+        <div class="calculator" id="guide">
+            <div class="section-title">📚 Vibe Coding Guide 2026</div>
+            <h3>What is Vibe Coding?</h3>
+            <p>Building software using AI tools through natural language. Describe what you want, AI writes the code.</p>
+            <h3>Why Use AI Tools?</h3>
+            <ul>
+                <li>Build apps 10x faster</li>
+                <li>No programming experience needed</li>
+                <li>Free to start</li>
+                <li>Build real apps, not just prototypes</li>
+            </ul>
+            <h3>Best Tools</h3>
+            <ul>
+                <li><strong>Cursor</strong> - Best for full apps</li>
+                <li><strong>v0</strong> - Best for UI</li>
+                <li><strong>Windsurf</strong> - Best value</li>
+                <li><strong>bolt.new</strong> - Best for full-stack</li>
+            </ul>
+        </div>
+
+        <!-- Tutorial -->
+        <div class="calculator" id="tutorial">
+            <div class="section-title">🚀 Build Your First App</div>
+            <div class="step"><h4>1. Choose Cursor or bolt.new</h4><p>Both have free tiers. Start there.</p></div>
+            <div class="step"><h4>2. Describe Your App</h4><p>"Build a to-do app with React that saves to local storage."</p></div>
+            <div class="step"><h4>3. Refine with Feedback</h4><p>"Add dark mode" or "Make it look more modern."</p></div>
+            <div class="step"><h4>4. Deploy for Free</h4><p>One-click deploy to Vercel or Netlify.</p></div>
+            <div class="affiliate-box">
+                <a href="https://vercel.com" target="_blank">🚀 Deploy on Vercel →</a>
+                <div class="note">Free hosting • One-click from git</div>
+            </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="calculator" id="tools">
+            <div class="section-title">🛠 Best AI Tools 2026</div>
+            <h3>Code Editors</h3>
+            <ul>
+                <li><strong>Cursor</strong> - $20/mo - AI-first VS Code</li>
+                <li><strong>Windsurf</strong> - $15/mo - Codeium editor</li>
+                <li><strong>Zed</strong> - $20/mo - Performance-focused</li>
+            </ul>
+            <h3>UI Generators</h3>
+            <ul>
+                <li><strong>v0</strong> - $20/mo - React/UI from prompts</li>
+                <li><strong>bolt.new</strong> - $20/mo - Full-stack apps</li>
+                <li><strong>Lovable</strong> - $20/mo - AI development</li>
+            </ul>
+            <h3>Free Alternatives</h3>
+            <ul>
+                <li><strong>GitHub Copilot</strong> - Free for students</li>
+                <li><strong>Codeium</strong> - Free tier available</li>
+                <li><strong>Tabnine</strong> - Free basic</li>
+            </ul>
+        </div>
+
+        <!-- FAQ -->
+        <div class="calculator" id="faq">
+            <div class="section-title">❓ Frequently Asked Questions</div>
+            <div class="faq-item"><h4>What is vibe coding?</h4><p>Building apps using AI through natural language prompts instead of writing code manually.</p></div>
+            <div class="faq-item"><h4>Can I build apps without coding?</h4><p>Yes! Tools like v0 and Cursor let you describe apps in plain English.</p></div>
+            <div class="faq-item"><h4>How much does Cursor cost?</h4><p>$20/month for Pro (unlimited everything). Free tier available.</p></div>
+            <div class="faq-item"><h4>What's the cheapest AI coding tool?</h4><p>GitHub Copilot at $10/month, but Windsurf at $15 offers better value.</p></div>
+            <div class="faq-item"><h4>How much does GLP-1 medication cost?</h4><p>Brand names: $900-1,350/month. Compounded: ~$300/month.</p></div>
+            <div class="faq-item"><h4>Is solar worth it?</h4><p>Yes! Typical savings of $15-25K over 20 years with federal tax credit.</p></div>
+        </div>
+
+        <!-- Email Capture -->
+        <div class="email-box">
+            <h3>📧 Get Free Resources & Updates</h3>
+            <input type="email" id="email" placeholder="Enter your email">
+            <button onclick="submitEmail()">Subscribe Free</button>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-box">
+            <h3>🚀 Start Building Today</h3>
+            <p>Use our free calculators and guides to save money and build faster!</p>
+        </div>
+
         <footer>
-            <p>© 2026 AI Code Cost Calculator | Built for vibe coders</p>
+            <p>© 2026 Free Online Calculators | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
         </footer>
     </div>
 
     <script>
         let selectedTools = ['cursor'];
-        let shownResults = false;
-
-        document.querySelectorAll('.tool-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const tool = this.dataset.tool;
-                if (this.classList.contains('selected')) {
-                    this.classList.remove('selected');
-                    selectedTools = selectedTools.filter(t => t !== tool);
-                } else {
-                    this.classList.add('selected');
-                    selectedTools.push(tool);
-                }
-                if (selectedTools.length === 0) {
-                    selectedTools = ['cursor'];
-                    document.querySelector('[data-tool="cursor"]').classList.add('selected');
-                }
-            });
-        });
-
-        function calculate() {
-            const hoursPerWeek = parseFloat(document.getElementById('hoursPerWeek').value) || 10;
-            const usageLevel = parseFloat(document.getElementById('usageLevel').value) || 0.6;
-            const months = parseFloat(document.getElementById('months').value) || 3;
-            const additionalCosts = parseFloat(document.getElementById('additionalCosts').value) || 10;
-
-            // Calculate subscription costs
-            let subscriptionCost = 0;
-            selectedTools.forEach(tool => {
-                const card = document.querySelector(`[data-tool="${tool}"]`);
-                subscriptionCost += parseFloat(card.dataset.monthly);
-            });
-
-            // Estimate API/token costs (rough approximation)
-            // Assume $0.002 per minute of heavy AI coding
-            const weeklyAIHours = hoursPerWeek * usageLevel;
-            const apiCostPerWeek = weeklyAIHours * 0.5; // ~$0.50 per hour of active AI use
-            const totalApiCost = apiCostPerWeek * months * 4; // ~4 weeks per month
-
-            const totalHosting = additionalCosts * months;
-
-            const total = subscriptionCost * months + totalApiCost + totalHosting;
-
-            document.getElementById('subscriptionCost').textContent = '$' + (subscriptionCost * months).toFixed(0);
-            document.getElementById('apiCost').textContent = '$' + totalApiCost.toFixed(0);
-            document.getElementById('hostingCost').textContent = '$' + totalHosting.toFixed(0);
-            document.getElementById('totalCost').textContent = '$' + total.toFixed(0);
-
-            const results = document.getElementById('results');
-            results.classList.add('show');
-
-            if (!shownResults) {
-                document.getElementById('emailGate').classList.add('show');
-            }
+        
+        function showTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.calculator').forEach(c => c.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById(tab).classList.add('active');
         }
-
-        function unlockResults() {
+        
+        function toggleTool(card) {
+            card.classList.toggle('selected');
+            selectedTools = [];
+            document.querySelectorAll('#ai-cost .tool-card.selected').forEach(c => selectedTools.push(c.dataset.tool));
+            if (selectedTools.length === 0) selectedTools = ['cursor'];
+        }
+        
+        let glp1Selected = ['ozempic'];
+        function toggleGLP1(card) {
+            card.classList.toggle('selected');
+            glp1Selected = [];
+            document.querySelectorAll('#glp1 .tool-card.selected').forEach(c => glp1Selected.push(c.dataset.drug));
+            if (glp1Selected.length === 0) glp1Selected = ['ozempic'];
+        }
+        
+        function calcAI() {
+            let sub = 0;
+            selectedTools.forEach(t => { const c = document.querySelector(`#ai-cost [data-tool="${t}"]`); sub += parseFloat(c.dataset.monthly); });
+            const months = parseFloat(document.getElementById('ai-months').value) || 3;
+            const total = sub * months;
+            document.getElementById('totalAI').textContent = '$' + total;
+            document.getElementById('resultsAI').classList.add('show');
+        }
+        
+        function calcSingle(name, price) {
+            const months = parseFloat(document.getElementById(name + 'Months').value) || 3;
+            document.getElementById('total' + name.charAt(0).toUpperCase() + name.slice(1)).textContent = '$' + (price * months);
+            document.getElementById('results' + name.charAt(0).toUpperCase() + name.slice(1)).classList.add('show');
+        }
+        
+        function calcGLP1() {
+            let cost = 0;
+            glp1Selected.forEach(d => { const c = document.querySelector(`#glp1 [data-drug="${d}"]`); cost += parseFloat(c.dataset.monthly); });
+            const months = parseFloat(document.getElementById('glp1-months').value) || 6;
+            document.getElementById('totalGLP1').textContent = '$' + (cost * months);
+            document.getElementById('resultsGLP1').classList.add('show');
+        }
+        
+        function calcSolar() {
+            const bill = parseFloat(document.getElementById('solar-bill').value) || 150;
+            const months = 20 * 12;
+            const savings = bill * months;
+            document.getElementById('totalSolar').textContent = '$' + savings.toLocaleString();
+            document.getElementById('resultsSolar').classList.add('show');
+        }
+        
+        function calcPOD() {
+            const price = parseFloat(document.getElementById('pod-price').value) || 25;
+            const cost = parseFloat(document.getElementById('pod-cost').value) || 12;
+            const sales = parseFloat(document.getElementById('pod-sales').value) || 50;
+            const profit = (price - cost) * sales;
+            document.getElementById('totalPOD').textContent = '$' + profit + '/mo';
+            document.getElementById('resultsPOD').classList.add('show');
+        }
+        
+        function submitEmail() {
             const email = document.getElementById('email').value;
             if (email && email.includes('@')) {
-                document.getElementById('emailGate').innerHTML = '<p style="color:#00d4ff;">✅ Email captured! Check your inbox for exclusive vibe coding tips.</p>';
-                shownResults = true;
-                // In production, you would send this to your email service
-                console.log('Email captured:', email);
+                alert('Thanks! In production, this would save to a database. Set up Formspree or SheetDB to collect emails.');
             } else {
                 alert('Please enter a valid email');
             }
