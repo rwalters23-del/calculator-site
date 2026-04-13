@@ -380,25 +380,98 @@
 <!-- WEDDING COST CALCULATOR -->
 <div class="calculator" id="wedding">
 <div class="section-title">💒 Wedding Cost Calculator</div>
-<p style="color:#aaa;margin-bottom:15px;">Estimate your wedding costs and see where your budget goes. Plan the perfect day without breaking the bank.</p>
+<p style="color:#aaa;margin-bottom:15px;">Plan your dream wedding within budget. Factor in venue, catering, flowers, and hidden costs.</p>
+
+<!-- Wedding Style -->
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Wedding Style</h3>
+<div class="tool-grid" style="grid-template-columns:repeat(auto-fit,minmax(90px,1fr));margin-bottom:15px;">
+<div class="tool-card selected" data-wedding="intimate" data-multiplier="0.6" onclick="toggleWeddingStyle(this)"><h3>Intimate</h3><p class="price">< 50 guests</p></div>
+<div class="tool-card" data-wedding="civil" data-multiplier="0.5" onclick="toggleWeddingStyle(this)"><h3>Civil</h3><p class="price">$</p></div>
+<div class="tool-card" data-wedding="elopement" data-multiplier="0.4" onclick="toggleWeddingStyle(this)"><h3>Elopement</h3><p class="price">$$</p></div>
+<div class="tool-card" data-wedding="traditional" data-multiplier="1" onclick="toggleWeddingStyle(this)"><h3>Traditional</h3><p class="price">$$$</p></div>
+<div class="tool-card" data-wedding="luxury" data-multiplier="2" onclick="toggleWeddingStyle(this)"><h3>Luxury</h3><p class="price">$$$$</p></div>
+<div class="tool-card" data-wedding="destination" data-multiplier="1.5" onclick="toggleWeddingStyle(this)"><h3>Destination</h3><p class="price">$$$</p></div>
+</div>
+
+<!-- Guest Count -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
 <div class="input-group"><label>Number of guests</label><input type="number" id="wedding-guests" value="100"></div>
-<div class="input-group"><label>Venue cost ($)</label><input type="number" id="wedding-venue" value="5000"></div>
-<div class="input-group"><label>Catering cost per person ($)</label><input type="number" id="wedding-catering" value="75"></div>
-<div class="input-group"><label>Photography/Videography ($)</label><input type="number" id="wedding-photo" value="2500"></div>
-<div class="input-group"><label>Dress/Suit ($)</label><input type="number" id="wedding-attire" value="1500"></div>
-<div class="input-group"><label>Other expenses ($)</label><input type="number" id="wedding-other" value="3000"></div>
-<button class="calc-btn" onclick="calcWedding()">💰 Calculate Total</button>
+<div class="input-group"><label>Wedding month</label><select id="wedding-month"><option value="jan">January</option><option value="feb">February</option><option value="mar">March</option><option value="apr">April</option><option value="may">May</option><option value="jun">June</option><option value="jul">July</option><option value="aug">August</option><option value="sep">September</option><option value="oct">October</option><option value="nov">November</option><option value="dec">December</option></select></div>
+</div>
+
+<!-- Main Expenses -->
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Venue & Catering</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Venue type</label><select id="wedding-venue-type"><option value="outdoor">Outdoor/Garden ($3000)</option><option value="ballroom">Ballroom ($6000)</option><option value="restaurant">Restaurant ($2000)</option><option value="barn">Barn ($3500)</option><option value="hotel">Hotel ($5000)</option><option value=" courthouse">Courthouse ($200)</option><option value="beach">Beach ($1500)</option><option value="home">Home ($1000)</option></select></div>
+<div class="input-group"><label>Catering style</label><select id="wedding-catering-type"><option value="plated">Plated dinner ($75)</option><option value="buffet">Buffet ($45)</option><option value="cocktail">Cocktail ($35)</option><option value="bbq">BBQ ($25)</option><option value="foodtruck">Food truck ($20)</option><option value="potluck">Potluck ($10)</option></select></div>
+<div class="input-group"><label>Alcohol service</label><select id="wedding-alcohol"><option value="none">None</option><option value="beerwine">Beer & wine ($15/guest)</option><option value="full">Full bar ($25/guest)</option><option value="openbar">Open bar ($35/guest)</option></select></div>
+<div class="input-group"><label>Wedding cake ($)</label><input type="number" id="wedding-cake" value="500"></div>
+</div>
+
+<!-- Vendors -->
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Vendors</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Photography ($)</label><input type="number" id="wedding-photo" value="2500"></div>
+<div class="input-group"><label>Videography ($)</label><input type="number" id="wedding-video" value="2000"></div>
+<div class="input-group"><label>DJ/Band ($)</label><input type="number" id="wedding-music" value="1200"></div>
+<div class="input-group"><label>Florist/Decorations ($)</label><input type="number" id="wedding-flowers" value="1500"></div>
+<div class="input-group"><label>Wedding planner ($)</label><input type="number" id="wedding-planner" value="2000"></div>
+<div class="input-group"><label>Officiant ($)</label><input type="number" id="wedding-officiant" value="500"></div>
+</div>
+
+<!-- Attire & Rings -->
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Attire & Rings</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Bride's dress ($)</label><input type="number" id="wedding-dress" value="1500"></div>
+<div class="input-group"><label>Groom's suit ($)</label><input type="number" id="wedding-suit" value="500"></div>
+<div class="input-group"><label>Wedding rings ($)</label><input type="number" id="wedding-rings" value="2000"></div>
+<div class="input-group"><label>Hair & Makeup ($)</label><input type="number" id="wedding-hair" value="400"></div>
+</div>
+
+<!-- Invitations & Favors -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Invitations & paper ($)</label><input type="number" id="wedding-invites" value="500"></div>
+<div class="input-group"><label>Wedding favors ($)</label><input type="number" id="wedding-favors" value="300"></div>
+<div class="input-group"><label>Transportation ($)</label><input type="number" id="wedding-transport" value="500"></div>
+<div class="input-group"><label>Emergency buffer (10%)</label><input type="checkbox" id="wedding-buffer" checked style="width:auto;"></div>
+</div>
+
+<button class="calc-btn" onclick="calcWedding()">💒 Calculate Total</button>
 <div class="results" id="resultsWedding"><div class="total" id="totalWedding">$0</div><div class="breakdown" id="breakdownWedding"></div></div>
+
+<!-- Breakdown -->
+<div id="wedding-breakdown" style="display:none;margin-top:15px;background:rgba(0,212,255,0.1);padding:15px;border-radius:10px;">
+<h4 style="color:#00d4ff;margin-bottom:10px;">📊 Cost Breakdown</h4>
+<div style="font-size:0.85rem;color:#ccc;line-height:1.8;">
+<div><strong>Venue & Catering:</strong> <span id="wed-venue-cat">$0</span></div>
+<div><strong>Vendors:</strong> <span id="wed-vendors">$0</span></div>
+<div><strong>Attire & Rings:</strong> <span id="wed-attire">$0</span></div>
+<div><strong>Other:</strong> <span id="wed-other">$0</span></div>
+<div><strong>Per guest cost:</strong> <span id="wed-per-guest">$0</span></div>
+<div><strong>Cost per person:</strong> <span id="wed-cost-person">$0</span></div>
+</div>
+</div>
+
 <div class="content-section">
 <h2>📚 Wedding Budget Tips</h2>
 <ul>
 <li><strong>Set a budget early</strong> - Know what you can afford before booking vendors</li>
 <li><strong>Prioritize what matters</strong> - Focus on photography, food, and guest experience</li>
-<li><strong>Consider weekdays</strong> - Venues are cheaper on non-peak days</li>
+<li><strong>Consider weekdays</strong> - Venues are 20-30% cheaper on non-peak days</li>
 <li><strong>DIY where possible</strong> - Centerpieces, invitations, and favors can save money</li>
+<li><strong>Off-season savings</strong> - January-March and November are cheapest</li>
+</ul>
+<h3>Typical budget breakdown</h3>
+<ul>
+<li><strong>40% - Venue & Catering</strong></li>
+<li><strong>15% - Photography/Videography</strong></li>
+<li><strong>10% - Attire & Rings</strong></li>
+<li><strong>10% - Music & Entertainment</strong></li>
+<li><strong>25% - Everything else</strong></li>
 </ul>
 </div>
 <div class="faq-item"><h4>Q: How much should I budget per guest?</h4><p>A: A common rule is $50-$150 per guest depending on your location and priorities.</p></div>
+<div class="faq-item"><h4>Q: When should I book vendors?</h4><p>A: Popular venues book 12+ months ahead. Other vendors: 6-9 months before.</p></div>
 </div>
 
 <!-- JOB OFFER COMPARISON CALCULATOR -->
@@ -878,7 +951,8 @@ function toggleGLP1(el){el.classList.toggle('selected');const d=el.dataset.drug;
 function calcGLP1(){const mos=parseInt(document.getElementById('glp1-months').value)||6;const weight=parseInt(document.getElementById('glp1-weight').value)||200;const goal=parseInt(document.getElementById('glp1-goal').value)||160;const lossRate=parseInt(document.getElementById('glp1-loss').value)||5;const insPct=parseFloat(document.getElementById('glp1-insurance').value)||0;const mfgDiscount=parseFloat(document.getElementById('glp1-discount').value)||0;const pharmacy=document.getElementById('glp1-pharmacy').value;const paFee=document.getElementById('glp1-pa').value==='yes'?50:0;let baseCost=0;selectedDrugs.forEach(d=>{const c=document.querySelector(`[data-drug="${d}"]`);if(c)baseCost+=parseFloat(c.dataset.monthly)||0;});let addons=0;if(document.getElementById('glp1-nurse').checked)addons+=100;if(document.getElementById('glp1-bloodwork').checked)addons+=50;if(document.getElementById('glp1-supplements').checked)addons+=30;let pharmacyDiscount=0;if(pharmacy==='mail')pharmacyDiscount=0.1;else if(pharmacy==='costco')pharmacyDiscount=0.15;const afterPharmacy=baseCost*(1-pharmacyDiscount);const insSavings=afterPharmacy*(insPct/100);const afterIns=afterPharmacy-insSavings;const afterMfg=Math.max(0,afterIns-(mfgDiscount/12));const monthlyTotal=afterMfg+addons+paFee;const total=monthlyTotal*mos;const lbsLost=Math.max(0,weight-goal);const perLb=lbsLost>0?Math.round(total/lbsLost):0;document.getElementById('totalGLP1').textContent='$'+Math.round(total);document.getElementById('breakdownGLP1').innerHTML='Monthly: $'+Math.round(monthlyTotal)+' × '+mos+' months';document.getElementById('resultsGLP1').classList.add('show');document.getElementById('glp1-breakdown').style.display='block';document.getElementById('glp1-base').textContent='$'+Math.round(afterPharmacy);document.getElementById('glp1-ins-savings').textContent='-$'+Math.round(insSavings);document.getElementById('glp1-mfg-savings').textContent='-$'+Math.round(mfgDiscount);document.getElementById('glp1-addons').textContent='$'+Math.round(addons+paFee);document.getElementById('glp1-monthly').textContent='$'+Math.round(monthlyTotal);document.getElementById('glp1-total').textContent='$'+Math.round(total);document.getElementById('glp1-per-lb').textContent='$'+perLb+'/'+'lb';
 
 // Wedding
-function calcWedding(){const g=parseInt(document.getElementById('wedding-guests').value)||0;const v=parseInt(document.getElementById('wedding-venue').value)||0;const c=parseInt(document.getElementById('wedding-catering').value)||0;const p=parseInt(document.getElementById('wedding-photo').value)||0;const a=parseInt(document.getElementById('wedding-attire').value)||0;const o=parseInt(document.getElementById('wedding-other').value)||0;const total=v+(g*c)+p+a+o;document.getElementById('totalWedding').textContent='$'+total;document.getElementById('breakdownWedding').textContent='Venue: $'+v+' | Catering: $'+(g*c)+' | Photo: $'+p+' | Attire: $'+a+' | Other: $'+o;document.getElementById('resultsWedding').classList.add('show');}
+let weddingStyle='traditional';function toggleWeddingStyle(el){document.querySelectorAll('[data-wedding]').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');weddingStyle=el.dataset.wedding;}
+function calcWedding(){const g=parseInt(document.getElementById('wedding-guests').value)||100;const venueType=document.getElementById('wedding-venue-type').value;const cateringType=document.getElementById('wedding-catering-type').value;const alcohol=document.getElementById('wedding-alcohol').value;const venueCosts={outdoor:3000,ballroom:6000,restaurant:2000,barn:3500,hotel:5000,courthouse:200,beach:1500,home:1000};const cateringCosts={plated:75,buffet:45,cocktail:35,bbq:20,foodtruck:10,potluck:10};const alcoholCosts={none:0,beerwine:15,full:25,openbar:35};const venue=venueCosts[venueType]||3000;const catering=cateringCosts[cateringType]*g;const alcoholCost=alcoholCosts[alcohol]*g;const cake=parseFloat(document.getElementById('wedding-cake').value)||500;const photo=parseFloat(document.getElementById('wedding-photo').value)||2500;const video=parseFloat(document.getElementById('wedding-video').value)||2000;const music=parseFloat(document.getElementById('wedding-music').value)||1200;const flowers=parseFloat(document.getElementById('wedding-flowers').value)||1500;const planner=parseFloat(document.getElementById('wedding-planner').value)||2000;const officiant=parseFloat(document.getElementById('wedding-officiant').value)||500;const dress=parseFloat(document.getElementById('wedding-dress').value)||1500;const suit=parseFloat(document.getElementById('wedding-suit').value)||500;const rings=parseFloat(document.getElementById('wedding-rings').value)||2000;const hair=parseFloat(document.getElementById('wedding-hair').value)||400;const invites=parseFloat(document.getElementById('wedding-invites').value)||500;const favors=parseFloat(document.getElementById('wedding-favors').value)||300;const transport=parseFloat(document.getElementById('wedding-transport').value)||500;const venueCat=venue+catering+alcoholCost+cake;const vendors=photo+video+music+flowers+planner+officiant;const attire=dress+suit+rings+hair;const other=invites+favors+transport;let total=venueCat+vendors+attire+other;if(document.getElementById('wedding-buffer').checked)total=Math.round(total*1.1);document.getElementById('totalWedding').textContent='$'+Math.round(total);document.getElementById('breakdownWedding').innerHTML='$'+Math.round(total)+' total | $'+Math.round(total/g)+'/guest';document.getElementById('resultsWedding').classList.add('show');document.getElementById('wedding-breakdown').style.display='block';document.getElementById('wed-venue-cat').textContent='$'+Math.round(venueCat);document.getElementById('wed-vendors').textContent='$'+Math.round(vendors);document.getElementById('wed-attire').textContent='$'+Math.round(attire);document.getElementById('wed-other').textContent='$'+Math.round(other);document.getElementById('wed-per-guest').textContent='$'+Math.round(total/g);document.getElementById('wed-cost-person').textContent='$'+Math.round(total/g);}
 
 // Job Offer
 function calcJob(){const aSal=parseInt(document.getElementById('job-a-salary').value)||0;const aBon=parseInt(document.getElementById('job-a-bonus').value)||0;const aBen=parseInt(document.getElementById('job-a-benefits').value)||0;const aCom=parseInt(document.getElementById('job-a-commute').value)||0;const bSal=parseInt(document.getElementById('job-b-salary').value)||0;const bBon=parseInt(document.getElementById('job-b-bonus').value)||0;const bBen=parseInt(document.getElementById('job-b-benefits').value)||0;const bCom=parseInt(document.getElementById('job-b-commute').value)||0;const aTotal=aSal+aBon+aBen-(aCom*250);const bTotal=bSal+bBon+bBen-(bCom*250);const winner=aTotal>bTotal?'Job A':'Job B';document.getElementById('totalJob').textContent=winner+' wins!';document.getElementById('breakdownJob').textContent='Job A: $'+aTotal+' | Job B: $'+bTotal;document.getElementById('resultsJob').classList.add('show');}
