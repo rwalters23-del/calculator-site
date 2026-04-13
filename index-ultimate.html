@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Coding Tools Cost Calculator 2026 - Cursor, v0, Windsurf, Copilot Pricing & Comparison</title>
+    <meta name="description" content="Free calculator for vibe coding costs. Compare Cursor, v0, Windsurf, GitHub Copilot pricing. Learn how to build apps with AI in 2026. Save money on AI developer tools.">
+    <meta name="keywords" content="AI code editor, Cursor pricing, v0 cost, Windsurf pricing, GitHub Copilot cost, vibe coding, AI programming, Claude API cost, ChatGPT coding, no code apps, build apps with AI, AI developer tools 2026, code faster with AI, AI coding assistant">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="AI Code Cost Calculator">
+    <meta name="revised" content="April 13, 2026">
+    <meta name="googlebot" content="index, follow">
+    <link rel="canonical" href="https://aicodecost.com">
+    <meta property="og:title" content="AI Coding Tools Cost Calculator 2026 - Free Calculator">
+    <meta property="og:description" content="Calculate and compare costs for all major AI coding tools. Find the best vibe coding tools for your budget.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Coding Tools Cost Calculator">
+    <meta name="twitter:description" content="Free vibe coding cost calculator. Compare Cursor, v0, Windsurf & more.">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "AI Coding Tools Cost Calculator",
+        "description": "Free calculator to estimate costs for AI coding tools including Cursor, v0, Windsurf, and more.",
+        "url": "https://aicodecost.com",
+        "applicationCategory": "DeveloperTools",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); min-height: 100vh; padding: 20px; color: #fff; }
+        .container { max-width: 950px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 25px; padding: 20px; }
+        h1 { font-size: 2rem; margin-bottom: 8px; background: linear-gradient(90deg, #00d4ff, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { color: #888; font-size: 1rem; }
+        
+        .tabs { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+        .tab { padding: 8px 14px; background: rgba(255,255,255,0.05); border: none; border-radius: 8px; color: #00d4ff; cursor: pointer; font-size: 0.8rem; transition: all 0.3s; white-space: nowrap; }
+        .tab:hover { background: rgba(0,212,255,0.2); }
+        .tab.active { background: #00d4ff; color: #1a1a2e; font-weight: bold; }
+        
+        .calculator { background: rgba(255,255,255,0.05); border-radius: 20px; padding: 20px; display: none; border: 1px solid rgba(255,255,255,0.1); }
+        .calculator.active { display: block; }
+        
+        .tool-section { margin-bottom: 20px; }
+        .tool-section h2 { font-size: 1.1rem; margin-bottom: 12px; color: #00d4ff; }
+        .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; margin-bottom: 12px; }
+        .tool-card { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 10px; cursor: pointer; border: 2px solid transparent; text-align: center; transition: all 0.3s; }
+        .tool-card:hover { background: rgba(255,255,255,0.12); }
+        .tool-card.selected { border-color: #00d4ff; background: rgba(0,212,255,0.2); }
+        .tool-card h3 { font-size: 0.9rem; }
+        .tool-card .price { color: #7c3aed; font-size: 0.75rem; margin-top: 3px; }
+        
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; margin-bottom: 5px; color: #ccc; font-size: 0.85rem; }
+        .input-group input, .input-group select { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: #fff; }
+        
+        .results { background: linear-gradient(135deg, #7c3aed 0%, #00d4ff 100%); border-radius: 12px; padding: 18px; text-align: center; display: none; margin-top: 18px; }
+        .results.show { display: block; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .results .total { font-size: 2.2rem; font-weight: bold; }
+        .results .breakdown { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
+        .breakdown-item { background: rgba(0,0,0,0.2); padding: 8px; border-radius: 8px; }
+        .breakdown-item .label { font-size: 0.7rem; opacity: 0.8; }
+        .breakdown-item .value { font-size: 1rem; font-weight: bold; }
+        
+        .pricing-card { background: rgba(255,255,255,0.08); padding: 12px; border-radius: 8px; margin-bottom: 8px; }
+        .pricing-card h3 { color: #00d4ff; font-size: 0.95rem; margin-bottom: 4px; }
+        .pricing-card .price { font-size: 1.3rem; font-weight: bold; color: #7c3aed; }
+        .pricing-card .features { color: #aaa; font-size: 0.8rem; margin-top: 4px; }
+        
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.85rem; }
+        .comparison-table th, .comparison-table td { padding: 10px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .comparison-table th { color: #00d4ff; font-size: 0.8rem; }
+        .comparison-table td { color: #ccc; }
+        
+        button.calc-btn { width: 100%; padding: 14px; background: linear-gradient(90deg, #00d4ff, #7c3aed); border: none; border-radius: 10px; color: #fff; font-size: 1rem; font-weight: bold; cursor: pointer; margin-top: 8px; }
+        
+        /* Content */
+        .content-section { margin-top: 25px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 12px; }
+        .content-section h2 { color: #00d4ff; margin-bottom: 12px; font-size: 1.2rem; }
+        .content-section h3 { color: #ccc; margin: 15px 0 8px; font-size: 1rem; }
+        .content-section p { color: #aaa; line-height: 1.6; margin-bottom: 12px; font-size: 0.9rem; }
+        .content-section ul { color: #aaa; margin-left: 18px; margin-bottom: 12px; font-size: 0.9rem; }
+        .content-section li { margin-bottom: 6px; line-height: 1.5; }
+        
+        .faq-item { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; margin-bottom: 8px; }
+        .faq-item h4 { color: #00d4ff; margin-bottom: 6px; font-size: 0.95rem; }
+        .faq-item p { color: #aaa; font-size: 0.85rem; margin: 0; }
+        
+        .glossary { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; margin-top: 15px; }
+        .glossary-item { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; }
+        .glossary-item strong { color: #00d4ff; display: block; margin-bottom: 4px; font-size: 0.9rem; }
+        .glossary-item span { color: #aaa; font-size: 0.8rem; }
+        
+        .steps { counter-reset: step; }
+        .step { position: relative; padding-left: 35px; margin-bottom: 15px; }
+        .step:before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: 0; width: 25px; height: 25px; background: #00d4ff; color: #1a1a2e; border-radius: 50%; text-align: center; line-height: 25px; font-weight: bold; font-size: 0.85rem; }
+        .step h4 { color: #00d4ff; margin-bottom: 4px; font-size: 0.95rem; }
+        .step p { color: #aaa; font-size: 0.85rem; margin: 0; }
+        
+        .tools-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 15px 0; }
+        .tool-item { background: rgba(255,255,255,0.08); padding: 12px; border-radius: 8px; }
+        .tool-item h4 { color: #00d4ff; font-size: 0.95rem; margin-bottom: 4px; }
+        .tool-item .tag { display: inline-block; background: rgba(124,58,237,0.3); color: #7c3aed; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; margin-right: 5px; }
+        .tool-item p { color: #aaa; font-size: 0.8rem; margin: 6px 0 0; }
+        
+        .cta-box { background: linear-gradient(135deg, #7c3aed 0%, #00d4ff 100%); padding: 18px; border-radius: 12px; text-align: center; margin-top: 25px; }
+        .cta-box h3 { color: #fff; margin-bottom: 8px; }
+        .cta-box p { color: rgba(255,255,255,0.9); font-size: 0.9rem; }
+        
+        .alert-box { background: rgba(0,212,255,0.1); border-left: 4px solid #00d4ff; padding: 12px; border-radius: 0 8px 8px 0; margin: 15px 0; }
+        .alert-box strong { color: #00d4ff; }
+        .alert-box p { color: #aaa; font-size: 0.85rem; margin: 0; }
+        
+        footer { text-align: center; margin-top: 35px; color: #666; font-size: 0.75rem; padding: 15px; }
+        footer a { color: #00d4ff; }
+        
+        @media (max-width: 600px) {
+            .tabs { gap: 4px; }
+            .tab { padding: 6px 10px; font-size: 0.7rem; }
+            h1 { font-size: 1.6rem; }
+            .tool-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 AI Coding Tools Cost Calculator</h1>
+            <p class="subtitle">Calculate & compare vibe coding costs for 2026</p>
+        </header>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('all')">💰 Calculator</button>
+            <button class="tab" onclick="showTab('cursor')">🐾 Cursor</button>
+            <button class="tab" onclick="showTab('v0')">⚡ v0</button>
+            <button class="tab" onclick="showTab('windsurf')">🌊 Windsurf</button>
+            <button class="tab" onclick="showTab('compare')">📊 Compare</button>
+            <button class="tab" onclick="showTab('guide')">📚 Guide</button>
+            <button class="tab" onclick="showTab('tutorial')">🚀 Start</button>
+            <button class="tab" onclick="showTab('glossary')">📖 Terms</button>
+            <button class="tab" onclick="showTab('tools')">🛠 Tools</button>
+            <button class="tab" onclick="showTab('faq')">❓ FAQ</button>
+        </div>
+
+        <!-- Main Calculator -->
+        <div class="calculator active" id="all">
+            <div class="tool-section">
+                <h2>Select Your AI Coding Tools</h2>
+                <div class="tool-grid">
+                    <div class="tool-card selected" data-tool="cursor" data-monthly="20" onclick="toggleTool(this)"><h3>Cursor</h3><p class="price">$20/mo</p></div>
+                    <div class="tool-card" data-tool="v0" data-monthly="20" onclick="toggleTool(this)"><h3>v0</h3><p class="price">$20/mo</p></div>
+                    <div class="tool-card" data-tool="windsurf" data-monthly="15" onclick="toggleTool(this)"><h3>Windsurf</h3><p class="price">$15/mo</p></div>
+                    <div class="tool-card" data-tool="copilot" data-monthly="10" onclick="toggleTool(this)"><h3>Copilot</h3><p class="price">$10/mo</p></div>
+                    <div class="tool-card" data-tool="claude" data-monthly="25" onclick="toggleTool(this)"><h3>Claude</h3><p class="price">$25/mo</p></div>
+                    <div class="tool-card" data-tool="chatgpt" data-monthly="20" onclick="toggleTool(this)"><h3>ChatGPT</h3><p class="price">$20/mo</p></div>
+                </div>
+            </div>
+            <div class="input-group">
+                <label>Hours per week using AI to code</label>
+                <input type="number" id="hoursPerWeek" value="10">
+            </div>
+            <div class="input-group">
+                <label>Project duration (months)</label>
+                <input type="number" id="months" value="3">
+            </div>
+            <button class="calc-btn" onclick="calculateAll()">💰 Calculate My Costs</button>
+            <div class="results" id="resultsAll">
+                <div class="total" id="totalAll">$0</div>
+                <div class="breakdown">
+                    <div class="breakdown-item"><div>Subscriptions</div><div id="subAll">$0</div></div>
+                    <div class="breakdown-item"><div>API Costs</div><div id="apiAll">$0</div></div>
+                    <div class="breakdown-item"><div>Extras</div><div id="extraAll">$0</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cursor -->
+        <div class="calculator" id="cursor">
+            <h2 style="color:#00d4ff;margin-bottom:15px;">🐾 Cursor Pricing 2026</h2>
+            <div class="pricing-card"><h3>Free</h3><div class="price">$0</div><div class="features">2K GPT-4o + 500 Claude msgs/mo</div></div>
+            <div class="pricing-card"><h3>Pro</h3><div class="price">$20/mo</div><div class="features">Unlimited everything</div></div>
+            <div class="pricing-card"><h3>Business</h3><div class="price">$40/user</div><div class="features">Team features</div></div>
+            <div class="input-group"><label>Months</label><input type="number" id="cursorMonths" value="3"></div>
+            <button class="calc-btn" onclick="calcSingle('cursor',20)">Calculate</button>
+            <div class="results" id="resultsCursor"><div class="total" id="totalCursor">$60</div></div>
+        </div>
+
+        <!-- v0 -->
+        <div class="calculator" id="v0">
+            <h2 style="color:#00d4ff;margin-bottom:15px;">⚡ v0 by Vercel Pricing</h2>
+            <div class="pricing-card"><h3>Free</h3><div class="price">$0</div><div class="features">100 generations/mo</div></div>
+            <div class="pricing-card"><h3>Plus</h3><div class="price">$20/mo</div><div class="features">Unlimited generations</div></div>
+            <div class="pricing-card"><h3>Pro</h3><div class="price">$70/mo</div><div class="features">API access</div></div>
+            <div class="input-group"><label>Months</label><input type="number" id="v0Months" value="3"></div>
+            <button class="calc-btn" onclick="calcSingle('v0',20)">Calculate</button>
+            <div class="results" id="resultsV0"><div class="total" id="totalV0">$60</div></div>
+        </div>
+
+        <!-- Windsurf -->
+        <div class="calculator" id="windsurf">
+            <h2 style="color:#00d4ff;margin-bottom:15px;">🌊 Windsurf by Codeium Pricing</h2>
+            <div class="pricing-card"><h3>Free</h3><div class="price">$0</div><div class="features">Basic completions</div></div>
+            <div class="pricing-card"><h3>Pro</h3><div class="price">$15/mo</div><div class="features">Unlimited Flow</div></div>
+            <div class="pricing-card"><h3>Business</h3><div class="price">$30/user</div><div class="features">Team admin</div></div>
+            <div class="input-group"><label>Months</label><input type="number" id="windsurfMonths" value="3"></div>
+            <button class="calc-btn" onclick="calcSingle('windsurf',15)">Calculate</button>
+            <div class="results" id="resultsWindsurf"><div class="total" id="totalWindsurf">$45</div></div>
+        </div>
+
+        <!-- Compare -->
+        <div class="calculator" id="compare">
+            <h2 style="color:#00d4ff;margin-bottom:15px;">📊 AI Coding Tools Comparison 2026</h2>
+            <table class="comparison-table">
+                <tr><th>Tool</th><th>Price</th><th>Best For</th><th>Key Feature</th></tr>
+                <tr><td>Cursor</td><td>$20/mo</td><td>Full apps</td><td>GPT-4 + Claude</td></tr>
+                <tr><td>v0</td><td>$20/mo</td><td>UI/React</td><td>Figma to code</td></tr>
+                <tr><td>Windsurf</td><td>$15/mo</td><td>Completion</td><td>Flow actions</td></tr>
+                <tr><td>Copilot</td><td>$10/mo</td><td>VS Code</td><td>IDE native</td></tr>
+                <tr><td>Claude</td><td>$25/mo</td><td>Reasoning</td><td>Long context</td></tr>
+                <tr><td>ChatGPT</td><td>$20/mo</td><td>General</td><td>GPT-4</td></tr>
+                <tr><td>Tabnine</td><td>$10/mo</td><td>Auto-complete</td><td>Offline mode</td></tr>
+                <tr><td>Replit AI</td><td>$10/mo</td><td>Browser coding</td><td>Instant setup</td></tr>
+            </table>
+        </div>
+
+        <!-- Guide -->
+        <div class="calculator" id="guide">
+            <h2 style="color:#00d4ff;margin-bottom:15px;">📚 Vibe Coding Guide 2026</h2>
+            
+            <h3>What is Vibe Coding?</h3>
+            <p>Vibe coding means building software using AI tools through natural language. Describe what you want, and AI writes the code. Popularized by Andrej Karpathy in 2025.</p>
+            
+            <h3>Why Use AI Coding Tools?</h3>
+            <ul>
+                <li>Build apps 10x faster without learning syntax</li>
+                <li>Reduce repetitive boilerplate code</li>
+                <li>Get instant code reviews and suggestions</li>
+                <li>Access expert-level help for free</li>
+                <li>Build complete apps without a CS degree</li>
+            </ul>
+            
+            <h3>Best AI Coding Tools for Beginners</h3>
+            <ul>
+                <li><strong>v0</strong> - Describe UI, get React code instantly</li>
+                <li><strong>Cursor</strong> - Full IDE with AI built in</li>
+                <li><strong>Replit AI</strong> - Code in your browser</li>
+            </ul>
+            
+            <h3>How to Save Money</h3>
+            <ul>
+                <li>Start with free tiers</li>
+                <li>Use one tool at a time</li>
+                <li>Use open-source models</li>
+                <li>Set usage limits</li>
+            </ul>
+        </div>
+
+        <!-- Tutorial -->
+        <div class="calculator" id="tutorial">
+            <h2 style="color:#00d4ff;margin-bottom:15px;">🚀 How to Build an App with AI</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <h4>Choose Your Tool</h4>
+                    <p>Start with Cursor (best overall) or v0 (best for UI). Both have free tiers.</p>
+                </div>
+                <div class="step">
+                    <h4>Describe Your App</h4>
+                    <p>Tell the AI: "Build a to-do app with React that saves to local storage."</p>
+                </div>
+                <div class="step">
+                    <h4>Refine with Feedback</h4>
+                    <p>AI not quite right? Say: "Add a dark mode" or "Make it look more modern."</p>
+                </div>
+                <div class="step">
+                    <h4>Test & Deploy</h4>
+                    <p>Run the app, fix bugs, then deploy to Vercel or Netlify for free.</p>
+                </div>
+            </div>
+            
+            <div class="alert-box">
+                <strong>💡 Pro Tip:</strong>
+                <p>Start small! Build a simple to-do list or weather app first. You can always add features later.</p>
+            </div>
+        </div>
+
+        <!-- Glossary -->
+        <div class="calculator" id="glossary">
+            <h2 style="color:#00d4ff;margin-bottom:15px;">📖 AI Coding Glossary</h2>
+            
+            <div class="glossary">
+                <div class="glossary-item">
+                    <strong>Vibe Coding</strong>
+                    <span>Building software using AI through natural language prompts instead of writing code manually.</span>
+                </div>
+                <div class="glossary-item">
+                    <strong>Token</strong>
+                    <span>Small pieces of text that AI processes. Both your prompts and AI responses use tokens.</span>
+                </div>
+                <div class="glossary-item">
+                    <strong>LLM (Large Language Model)</strong>
+                    <span>AI trained on massive text data. Examples: GPT-4, Claude, Gemini.</span>
+                </div>
+                <div class="glossary-item">
+                    <strong>Prompt Engineering</strong>
+                    <span>Writing effective prompts to get better results from AI coding tools.</span>
+                </div>
+                <div class="glossary-item">
+                    <strong>Code Completion</strong>
+                    <span>AI suggests code as you type, like autocomplete but much smarter.</span>
+                </div>
+                <div class="glossary-item">
+                    <strong>Flow Actions</strong>
+                    <span>Windsurf's feature for multi-step AI tasks across files.</span>
+                </div>
+                <div class="glossary-item">
+                    <strong>Ctrl+K / Cmd+K</strong>
+                    <span>Keyboard shortcut to invoke AI assistant in code editors.</span>
+                </div>
+                <div class="glossary-item">
+                    <strong>Context Window</strong>
+                    <span>How much text AI can remember. Claude has the largest (200K tokens).</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="calculator" id="tools">
+            <h2 style="color:#00d4ff;margin-bottom:15px;">🛠 More AI Tools for Developers</h2>
+            
+            <h3>Code Editors</h3>
+            <div class="tools-list">
+                <div class="tool-item">
+                    <h4>Cursor</h4>
+                    <span class="tag">$20/mo</span><span class="tag">Best Overall</span>
+                    <p>AI-powered VS Code fork</p>
+                </div>
+                <div class="tool-item">
+                    <h4>Windsurf</h4>
+                    <span class="tag">$15/mo</span><span class="tag">Best Value</span>
+                    <p>Codeium's AI editor</p>
+                </div>
+                <div class="tool-item">
+                    <h4> Zed</h4>
+                    <span class="tag">$20/mo</span><span class="tag">Performance</span>
+                    <p>Lightning-fast AI editor</p>
+                </div>
+            </div>
+            
+            <h3>UI Generators</h3>
+            <div class="tools-list">
+                <div class="tool-item">
+                    <h4>v0</h4>
+                    <span class="tag">$20/mo</span>
+                    <p>Generate React from prompts</p>
+                </div>
+                <div class="tool-item">
+                    <h4>bolt.new</h4>
+                    <span class="tag">$20/mo</span>
+                    <p>Full-stack app generator</p>
+                </div>
+                <div class="tool-item">
+                    <h4> Lovable</h4>
+                    <span class="tag">$20/mo</span>
+                    <p>AI-powered development</p>
+                </div>
+            </div>
+            
+            <h3>API & Backend</h3>
+            <div class="tools-list">
+                <div class="tool-item">
+                    <h4>Supabase</h4>
+                    <span class="tag">Free</span>
+                    <p>Open source Firebase alternative</p>
+                </div>
+                <div class="tool-item">
+                    <h4>Convex</h4>
+                    <span class="tag">Free tier</span>
+                    <p>Backend-as-a-service</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="calculator" id="faq">
+            <h2 style="color:#00d4ff;margin-bottom:15px;">❓ Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <h4>What is the cheapest AI coding tool?</h4>
+                <p>GitHub Copilot at $10/month. But Windsurf at $15 offers better value with Flow actions.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Is Cursor worth $20/month?</h4>
+                <p>Yes if you code 5+ hours/week. You get unlimited GPT-4 and Claude - worth it for the productivity gains.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Can I build apps without coding?</h4>
+                <p>Absolutely! Vibe coding with v0, Cursor, or bolt.new lets you describe apps in plain English.</p>
+            </div>
+            <div class="faq-item">
+                <h4>What's the difference between vibe coding and normal coding?</h4>
+                <p>Normal coding = write syntax. Vibe coding = describe what you want and AI writes the code.</p>
+            </div>
+            <div class="faq-item">
+                <h4>How much does a full AI coding setup cost?</h4>
+                <p>$10-30/month for subscriptions. Much cheaper than hiring a developer ($100+/hour).</p>
+            </div>
+            <div class="faq-item">
+                <h4>Which tool is best for beginners?</h4>
+                <p>v0 for UI. Cursor for full apps. Both have great free tiers to start.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Can I use these tools for free?</h4>
+                <p>Yes! All have free tiers with limited usage. Great for learning before upgrading.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Do I need to know programming to use AI coding tools?</h4>
+                <p>No! You can build real apps knowing zero code. The AI handles the technical details.</p>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-box">
+            <h3>🚀 Start Building Today</h3>
+            <p>Use our free calculator to estimate costs and start your vibe coding journey!</p>
+        </div>
+
+        <footer>
+            <p>© 2026 AI Code Cost Calculator | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
+            <p style="margin-top:8px;">Helping developers save money on AI tools since 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        let selectedTools = ['cursor'];
+        
+        function showTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.calculator').forEach(c => c.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById(tab).classList.add('active');
+        }
+        
+        function toggleTool(card) {
+            card.classList.toggle('selected');
+            updateSelectedTools();
+        }
+        
+        function updateSelectedTools() {
+            selectedTools = [];
+            document.querySelectorAll('.tool-card.selected').forEach(card => { selectedTools.push(card.dataset.tool); });
+            if (selectedTools.length === 0) selectedTools = ['cursor'];
+        }
+        
+        function calculateAll() {
+            updateSelectedTools();
+            const months = parseFloat(document.getElementById('months').value) || 3;
+            let sub = 0;
+            selectedTools.forEach(t => { const card = document.querySelector(`[data-tool="${t}"]`); sub += parseFloat(card.dataset.monthly); });
+            const api = (parseFloat(document.getElementById('hoursPerWeek').value) || 10) * 0.6 * months * 2;
+            const total = sub * months + api;
+            document.getElementById('subAll').textContent = '$' + (sub * months);
+            document.getElementById('apiAll').textContent = '$' + api.toFixed(0);
+            document.getElementById('extraAll').textContent = '$0';
+            document.getElementById('totalAll').textContent = '$' + total.toFixed(0);
+            document.getElementById('resultsAll').classList.add('show');
+        }
+        
+        function calcSingle(name, price) {
+            const months = parseFloat(document.getElementById(name + 'Months').value) || 3;
+            const total = price * months;
+            const id = 'total' + name.charAt(0).toUpperCase() + name.slice(1);
+            document.getElementById(id).textContent = '$' + total;
+            document.getElementById('results' + name.charAt(0).toUpperCase() + name.slice(1)).classList.add('show');
+        }
+    </script>
+</body>
+</html>

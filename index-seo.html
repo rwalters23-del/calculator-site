@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Coding Tools Cost Calculator 2026 - Cursor, v0, Windsurf Pricing & Comparison</title>
+    <meta name="description" content="Free calculator to estimate AI coding costs for Cursor, v0, Windsurf, GitHub Copilot & more. Compare prices, features, and find the best vibe coding tools for 2026.">
+    <meta name="keywords" content="AI code editor cost, Cursor pricing 2026, v0 cost, Windsurf pricing, vibe coding, GitHub Copilot cost, Claude AI pricing, ChatGPT coding, AI programming tools, no code coding tools, AI developer tools comparison">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="AI Code Cost Calculator">
+    <link rel="canonical" href="https://aicodecost.com">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="AI Coding Tools Cost Calculator 2026">
+    <meta property="og:description" content="Calculate and compare costs for Cursor, v0, Windsurf & more vibe coding tools">
+    <meta property="og:type" content="website">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); min-height: 100vh; padding: 20px; color: #fff; }
+        .container { max-width: 900px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 30px; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; background: linear-gradient(90deg, #00d4ff, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { color: #888; font-size: 1.1rem; }
+        
+        /* Tabs */
+        .tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+        .tab { padding: 10px 16px; background: rgba(255,255,255,0.05); border: none; border-radius: 8px; color: #00d4ff; cursor: pointer; font-size: 0.85rem; transition: all 0.3s; }
+        .tab:hover { background: rgba(0,212,255,0.2); }
+        .tab.active { background: #00d4ff; color: #1a1a2e; font-weight: bold; }
+        
+        .calculator { background: rgba(255,255,255,0.05); border-radius: 20px; padding: 25px; display: none; border: 1px solid rgba(255,255,255,0.1); }
+        .calculator.active { display: block; }
+        
+        .tool-section { margin-bottom: 25px; }
+        .tool-section h2 { font-size: 1.2rem; margin-bottom: 15px; color: #00d4ff; }
+        .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 15px; }
+        .tool-card { background: rgba(255,255,255,0.08); border-radius: 10px; padding: 12px; cursor: pointer; border: 2px solid transparent; text-align: center; transition: all 0.3s; }
+        .tool-card:hover { background: rgba(255,255,255,0.12); }
+        .tool-card.selected { border-color: #00d4ff; background: rgba(0,212,255,0.2); }
+        .tool-card h3 { font-size: 0.95rem; }
+        .tool-card .price { color: #7c3aed; font-size: 0.8rem; margin-top: 5px; }
+        
+        .input-group { margin-bottom: 18px; }
+        .input-group label { display: block; margin-bottom: 6px; color: #ccc; font-size: 0.9rem; }
+        .input-group input, .input-group select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: #fff; font-size: 1rem; }
+        
+        .results { background: linear-gradient(135deg, #7c3aed 0%, #00d4ff 100%); border-radius: 12px; padding: 20px; text-align: center; display: none; margin-top: 20px; }
+        .results.show { display: block; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .results .total { font-size: 2.5rem; font-weight: bold; }
+        .results .breakdown { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; }
+        .breakdown-item { background: rgba(0,0,0,0.2); padding: 10px; border-radius: 8px; }
+        .breakdown-item .label { font-size: 0.75rem; opacity: 0.8; }
+        .breakdown-item .value { font-size: 1.1rem; font-weight: bold; }
+        
+        .pricing-card { background: rgba(255,255,255,0.08); padding: 15px; border-radius: 10px; margin-bottom: 10px; }
+        .pricing-card h3 { color: #00d4ff; font-size: 1rem; margin-bottom: 5px; }
+        .pricing-card .price { font-size: 1.5rem; font-weight: bold; color: #7c3aed; }
+        .pricing-card .features { color: #aaa; font-size: 0.85rem; margin-top: 5px; }
+        
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .comparison-table th, .comparison-table td { padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .comparison-table th { color: #00d4ff; font-size: 0.9rem; }
+        .comparison-table td { color: #ccc; font-size: 0.85rem; }
+        
+        button.calc-btn { width: 100%; padding: 15px; background: linear-gradient(90deg, #00d4ff, #7c3aed); border: none; border-radius: 10px; color: #fff; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        button.calc-btn:hover { transform: scale(1.02); }
+        
+        /* Content Sections */
+        .content-section { margin-top: 30px; padding: 25px; background: rgba(255,255,255,0.05); border-radius: 15px; }
+        .content-section h2 { color: #00d4ff; margin-bottom: 15px; font-size: 1.3rem; }
+        .content-section h3 { color: #ccc; margin: 20px 0 10px; font-size: 1.1rem; }
+        .content-section p { color: #aaa; line-height: 1.7; margin-bottom: 15px; font-size: 0.95rem; }
+        .content-section ul { color: #aaa; margin-left: 20px; margin-bottom: 15px; }
+        .content-section li { margin-bottom: 8px; line-height: 1.6; }
+        
+        .faq-item { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin-bottom: 10px; }
+        .faq-item h4 { color: #00d4ff; margin-bottom: 8px; font-size: 1rem; }
+        .faq-item p { color: #aaa; font-size: 0.9rem; margin: 0; }
+        
+        .cta-box { background: linear-gradient(135deg, #7c3aed 0%, #00d4ff 100%); padding: 20px; border-radius: 12px; text-align: center; margin-top: 30px; }
+        .cta-box h3 { color: #fff; margin-bottom: 10px; }
+        .cta-box p { color: rgba(255,255,255,0.9); font-size: 0.95rem; }
+        
+        footer { text-align: center; margin-top: 40px; color: #666; font-size: 0.8rem; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 AI Coding Tools Cost Calculator</h1>
+            <p class="subtitle">Calculate & compare vibe coding costs for Cursor, v0, Windsurf & more</p>
+        </header>
+
+        <!-- Calculator Tabs -->
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('all')">💰 All Tools</button>
+            <button class="tab" onclick="showTab('cursor')">🐾 Cursor</button>
+            <button class="tab" onclick="showTab('v0')">⚡ v0</button>
+            <button class="tab" onclick="showTab('windsurf')">🌊 Windsurf</button>
+            <button class="tab" onclick="showTab('compare')">📊 Compare</button>
+            <button class="tab" onclick="showTab('guide')">📚 Guide</button>
+        </div>
+
+        <!-- Main Calculator -->
+        <div class="calculator active" id="all">
+            <div class="tool-section">
+                <h2>Select Your AI Coding Tools</h2>
+                <div class="tool-grid">
+                    <div class="tool-card selected" data-tool="cursor" data-monthly="20" onclick="toggleTool(this)"><h3>Cursor</h3><p class="price">$20/mo</p></div>
+                    <div class="tool-card" data-tool="v0" data-monthly="20" onclick="toggleTool(this)"><h3>v0</h3><p class="price">$20/mo</p></div>
+                    <div class="tool-card" data-tool="windsurf" data-monthly="15" onclick="toggleTool(this)"><h3>Windsurf</h3><p class="price">$15/mo</p></div>
+                    <div class="tool-card" data-tool="copilot" data-monthly="10" onclick="toggleTool(this)"><h3>Copilot</h3><p class="price">$10/mo</p></div>
+                    <div class="tool-card" data-tool="claude" data-monthly="25" onclick="toggleTool(this)"><h3>Claude</h3><p class="price">$25/mo</p></div>
+                    <div class="tool-card" data-tool="chatgpt" data-monthly="20" onclick="toggleTool(this)"><h3>ChatGPT</h3><p class="price">$20/mo</p></div>
+                </div>
+            </div>
+            <div class="input-group">
+                <label>Hours per week using AI to code</label>
+                <input type="number" id="hoursPerWeek" value="10">
+            </div>
+            <div class="input-group">
+                <label>Project duration (months)</label>
+                <input type="number" id="months" value="3">
+            </div>
+            <button class="calc-btn" onclick="calculateAll()">💰 Calculate My Costs</button>
+            <div class="results" id="resultsAll">
+                <div class="total" id="totalAll">$0</div>
+                <div class="breakdown">
+                    <div class="breakdown-item"><div>Subscriptions</div><div id="subAll">$0</div></div>
+                    <div class="breakdown-item"><div>API Costs</div><div id="apiAll">$0</div></div>
+                    <div class="breakdown-item"><div>Extras</div><div id="extraAll">$0</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cursor -->
+        <div class="calculator" id="cursor">
+            <h2 style="color:#00d4ff;margin-bottom:15px;">🐾 Cursor Pricing 2026</h2>
+            <div class="pricing-card"><h3>Free Tier</h3><div class="price">$0</div><div class="features">2,000 GPT-4o + 500 Claude messages/month</div></div>
+            <div class="pricing-card"><h3>Pro Plan</h3><div class="price">$20/mo</div><div class="features">Unlimited GPT-4o & Claude • Unlimited Ctrl+K • Early features</div></div>
+            <div class="pricing-card"><h3>Business</h3><div class="price">$40/user/mo</div><div class="features">Team seats • Admin controls • Organization privacy</div></div>
+            <div class="input-group"><label>How many months?</label><input type="number" id="cursorMonths" value="3"></div>
+            <button class="calc-btn" onclick="calcSingle('cursor',20)">Calculate</button>
+            <div class="results" id="resultsCursor"><div class="total" id="totalCursor">$60</div></div>
+        </div>
+
+        <!-- v0 -->
+        <div class="calculator" id="v0">
+            <h2 style="color:#00d4ff;margin-bottom:15px;">⚡ v0 by Vercel Pricing 2026</h2>
+            <div class="pricing-card"><h3>Free Tier</h3><div class="price">$0</div><div class="features">100 generations/month • Basic components</div></div>
+            <div class="pricing-card"><h3>Plus Plan</h3><div class="price">$20/mo</div><div class="features">Unlimited generations • Advanced components • Figma import</div></div>
+            <div class="pricing-card"><h3>Pro Plan</h3><div class="price">$70/mo</div><div class="features">Higher quality outputs • Faster generation • API access</div></div>
+            <div class="input-group"><label>How many months?</label><input type="number" id="v0Months" value="3"></div>
+            <button class="calc-btn" onclick="calcSingle('v0',20)">Calculate</button>
+            <div class="results" id="resultsV0"><div class="total" id="totalV0">$60</div></div>
+        </div>
+
+        <!-- Windsurf -->
+        <div class="calculator" id="windsurf">
+            <h2 style="color:#00d4ff;margin-bottom:15px;">🌊 Windsurf by Codeium Pricing 2026</h2>
+            <div class="pricing-card"><h3>Free Tier</h3><div class="price">$0</div><div class="features">Basic AI completions • Limited Flow actions</div></div>
+            <div class="pricing-card"><h3>Pro Plan</h3><div class="price">$15/mo</div><div class="features">Unlimited AI completions • Unlimited Flow • Priority support</div></div>
+            <div class="pricing-card"><h3>Business</h3><div class="price">$30/user/mo</div><div class="features">Team seats • Admin controls • SSO integration</div></div>
+            <div class="input-group"><label>How many months?</label><input type="number" id="windsurfMonths" value="3"></div>
+            <button class="calc-btn" onclick="calcSingle('windsurf',15)">Calculate</button>
+            <div class="results" id="resultsWindsurf"><div class="total" id="totalWindsurf">$45</div></div>
+        </div>
+
+        <!-- Compare -->
+        <div class="calculator" id="compare">
+            <h2 style="color:#00d4ff;margin-bottom:15px;">📊 AI Coding Tools Comparison 2026</h2>
+            <table class="comparison-table">
+                <tr><th>Tool</th><th>Price</th><th>Best For</th><th>Key Feature</th></tr>
+                <tr><td>Cursor</td><td>$20/mo</td><td>Full app development</td><td>GPT-4 + Claude</td></tr>
+                <tr><td>v0</td><td>$20/mo</td><td>UI/React components</td><td>Figma to code</td></tr>
+                <tr><td>Windsurf</td><td>$15/mo</td><td>Code completion</td><td>Flow actions</td></tr>
+                <tr><td>Copilot</td><td>$10/mo</td><td>IDE integration</td><td>VS Code native</td></tr>
+                <tr><td>Claude</td><td>$25/mo</td><td>Complex reasoning</td><td>Long context</td></tr>
+                <tr><td>ChatGPT</td><td>$20/mo</td><td>General coding</td><td>GPT-4 access</td></tr>
+            </table>
+        </div>
+
+        <!-- Guide -->
+        <div class="calculator" id="guide">
+            <h2 style="color:#00d4ff;margin-bottom:15px;">📚 Complete Vibe Coding Guide 2026</h2>
+            
+            <h3>What is Vibe Coding?</h3>
+            <p>Vibe coding is a new approach to software development where developers use AI tools to write code through natural language prompts rather than typing every line manually. The term was coined by Andrej Karpathy in 2025. Vibe coders "describe what they want" and the AI generates the code.</p>
+            
+            <h3>Why Use AI Coding Tools?</h3>
+            <ul>
+                <li>Build apps 10x faster without learning to code</li>
+                <li>Reduce boilerplate and repetitive tasks</li>
+                <li>Get instant code reviews and suggestions</li>
+                <li>Access expert-level coding help for free</li>
+            </ul>
+            
+            <h3>How to Get Started with Vibe Coding</h3>
+            <p>Starting is simple: choose one AI code editor (like Cursor or Windsurf), install it, and start building. You don't need programming experience - just describe what you want in plain English and the AI will generate the code.</p>
+            
+            <h3>Best Practices for Saving Money</h3>
+            <ul>
+                <li>Start with free tiers to test each tool</li>
+                <li>Use one tool at a time until you find your favorite</li>
+                <li>Use open-source models when possible</li>
+                <li>Set usage limits to avoid surprise charges</li>
+            </ul>
+        </div>
+
+        <!-- SEO Content Section -->
+        <div class="content-section">
+            <h2>🔥 Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <h4>What is the cheapest AI coding tool?</h4>
+                <p>GitHub Copilot at $10/month is the cheapest, but Windsurf at $15/month offers better value with Flow actions included.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Is Cursor worth the $20/month?</h4>
+                <p>Yes! For $20/month you get unlimited access to GPT-4 and Claude, making it worth it if you code more than 5 hours/week.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Can I code without knowing programming?</h4>
+                <p>Absolutely. Vibe coding lets you build apps using natural language. Tools like v0 are especially beginner-friendly.</p>
+            </div>
+            <div class="faq-item">
+                <h4>What's the difference between vibe coding and normal coding?</h4>
+                <p>Normal coding requires you to write syntax line-by-line. Vibe coding lets you describe what you want and the AI writes the code for you.</p>
+            </div>
+            <div class="faq-item">
+                <h4>How much does it cost to build an app with AI?</h4>
+                <p>Using AI code editors typically costs $10-25/month in subscriptions, plus hosting costs. Much cheaper than hiring a developer!</p>
+            </div>
+            <div class="faq-item">
+                <h4>Which AI coding tool is best for beginners?</h4>
+                <p>v0 by Vercel is best for beginners - just describe your UI and it generates the code. Cursor is best for building complete apps.</p>
+            </div>
+        </div>
+
+        <div class="cta-box">
+            <h3>🚀 Start Building Today</h3>
+            <p>Use our free calculator to estimate your vibe coding costs and start building your dream app!</p>
+        </div>
+
+        <footer>
+            <p>© 2026 AI Code Cost Calculator | <a href="#" style="color:#00d4ff;">Privacy</a> | <a href="#" style="color:#00d4ff;">Terms</a></p>
+            <p style="margin-top:10px;">Helping developers save money on AI coding tools since 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        let selectedTools = ['cursor'];
+        
+        function showTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.calculator').forEach(c => c.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById(tab).classList.add('active');
+        }
+        
+        function toggleTool(card) {
+            card.classList.toggle('selected');
+            updateSelectedTools();
+        }
+        
+        function updateSelectedTools() {
+            selectedTools = [];
+            document.querySelectorAll('.tool-card.selected').forEach(card => {
+                selectedTools.push(card.dataset.tool);
+            });
+            if (selectedTools.length === 0) selectedTools = ['cursor'];
+        }
+        
+        function calculateAll() {
+            updateSelectedTools();
+            const months = parseFloat(document.getElementById('months').value) || 3;
+            let sub = 0;
+            selectedTools.forEach(t => {
+                const card = document.querySelector(`[data-tool="${t}"]`);
+                sub += parseFloat(card.dataset.monthly);
+            });
+            const api = (parseFloat(document.getElementById('hoursPerWeek').value) || 10) * 0.6 * months * 2;
+            const total = sub * months + api;
+            document.getElementById('subAll').textContent = '$' + (sub * months);
+            document.getElementById('apiAll').textContent = '$' + api.toFixed(0);
+            document.getElementById('extraAll').textContent = '$0';
+            document.getElementById('totalAll').textContent = '$' + total.toFixed(0);
+            document.getElementById('resultsAll').classList.add('show');
+        }
+        
+        function calcSingle(name, price) {
+            const months = parseFloat(document.getElementById(name + 'Months').value) || 3;
+            const total = price * months;
+            const id = 'total' + name.charAt(0).toUpperCase() + name.slice(1);
+            document.getElementById(id).textContent = '$' + total;
+            document.getElementById('results' + name.charAt(0).toUpperCase() + name.slice(1)).classList.add('show');
+        }
+    </script>
+</body>
+</html>

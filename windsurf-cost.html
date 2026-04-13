@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windsurf AI Cost Calculator - Codeium Pricing 2026</title>
+    <meta name="description" content="Calculate Windsurf AI costs by Codeium. Check Pro plan pricing, features, and estimate your AI pair programming expenses.">
+    <meta name="keywords" content="Windsurf AI, Windsurf cost, Windsurf pricing, Codeium Windsurf, Windsurf Pro, AI pair programming">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); min-height: 100vh; padding: 20px; color: #fff; }
+        .container { max-width: 800px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 40px; }
+        h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .subtitle { color: #888; font-size: 1.1rem; }
+        .calculator { background: rgba(255,255,255,0.05); border-radius: 20px; padding: 30px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+        .input-group { margin-bottom: 25px; }
+        .input-group label { display: block; margin-bottom: 8px; color: #ccc; }
+        .input-group input { width: 100%; padding: 14px 18px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: #fff; font-size: 1rem; }
+        .results { background: linear-gradient(135deg, #7c3aed 0%, #00d4ff 100%); border-radius: 15px; padding: 30px; text-align: center; display: none; margin-top: 20px; }
+        .results.show { display: block; }
+        .results .total { font-size: 3rem; font-weight: bold; }
+        .nav { display: flex; gap: 20px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap; }
+        .nav a { color: #00d4ff; text-decoration: none; padding: 10px 20px; background: rgba(255,255,255,0.05); border-radius: 8px; }
+        .pricing-table { margin: 30px 0; }
+        .pricing-card { background: rgba(255,255,255,0.08); padding: 20px; border-radius: 12px; margin-bottom: 15px; }
+        .pricing-card h3 { color: #00d4ff; margin-bottom: 10px; }
+        .pricing-card .price { font-size: 2rem; font-weight: bold; color: #7c3aed; }
+        .pricing-card .features { color: #aaa; margin-top: 10px; }
+        footer { text-align: center; margin-top: 40px; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Windsurf AI Cost Calculator</h3>
+            <p class="subtitle">Calculate your Windsurf by Codeium costs for 2026</p>
+        </header>
+        
+        <nav class="nav">
+            <a href="index.html">💰 Main Calculator</a>
+            <a href="cursor-cost.html">Cursor Pricing</a>
+            <a href="v0-cost.html">v0 Pricing</a>
+            <a href="windsurf-cost.html">Windsurf Pricing</a>
+        </nav>
+
+        <div class="calculator">
+            <div class="pricing-table">
+                <h2 style="margin-bottom:20px;color:#00d4ff;">Windsurf Plans</h2>
+                <div class="pricing-card">
+                    <h3>Free Tier</h3>
+                    <div class="price">$0</div>
+                    <div class="features">Basic AI completions<br>Limited Flow actions<br>Community support</div>
+                </div>
+                <div class="pricing-card">
+                    <h3>Pro Plan</h3>
+                    <div class="price">$15/mo</div>
+                    <div class="features">Unlimited AI completions<br>Unlimited Flow actions<br>Advanced context awareness<br>Priority support</div>
+                </div>
+                <div class="pricing-card">
+                    <h3>Business Plan</h3>
+                    <div class="price">$30/user/mo</div>
+                    <div class="features">Everything in Pro<br>Team seats & admin controls<br>Organization privacy<br>SSO integration</div>
+                </div>
+            </div>
+
+            <h2 style="margin-bottom:20px;color:#00d4ff;">Calculate Your Costs</h2>
+            <div class="input-group">
+                <label>How many months will you use Windsurf?</label>
+                <input type="number" id="months" value="3" min="1" max="24">
+            </div>
+            <button onclick="calculate()" style="width:100%;padding:18px;background:linear-gradient(90deg,#00d4ff,#7c3aed);border:none;border-radius:12px;color:#fff;font-size:1.2rem;font-weight:bold;cursor:pointer;">Calculate</button>
+            
+            <div class="results" id="results">
+                <div class="total" id="totalCost">$45</div>
+                <p>Total cost for Windsurf Pro</p>
+            </div>
+        </div>
+        
+        <div style="margin-top:30px;padding:20px;background:rgba(255,255,255,0.05);border-radius:12px;">
+            <h3 style="color:#00d4ff;margin-bottom:15px;">About Windsurf</h3>
+            <p style="color:#aaa;line-height:1.7;">Windsurf is Codeium's AI code editor that acts as an "AI pair programmer." It's known for excellent code completion and its "Flow" feature that handles complex multi-file edits. At $15/month, it's the most affordable AI code editor with powerful features.</p>
+        </div>
+        
+        <footer><p>© 2026 AI Code Cost Calculator</p></footer>
+    </div>
+    <script>
+        function calculate() {
+            const months = parseFloat(document.getElementById('months').value) || 3;
+            const total = 15 * months;
+            document.getElementById('totalCost').textContent = '$' + total;
+            document.getElementById('results').classList.add('show');
+        }
+    </script>
+</body>
+</html>

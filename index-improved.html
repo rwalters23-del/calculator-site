@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Code Editor Cost Calculator 2026 - Cursor, v0, Windsurf Pricing</title>
+    <meta name="description" content="Free calculator to estimate AI coding costs for Cursor, v0, Windsurf, GitHub Copilot & more. Calculate your vibe coding expenses for 2026.">
+    <meta name="keywords" content="AI code editor cost, Cursor pricing, v0 cost, Windsurf pricing, vibe coding cost, AI coding tools cost, GitHub Copilot cost, Claude API cost, ChatGPT cost calculator">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://playful-pithivier-a2b934.netlify.app/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="AI Code Editor Cost Calculator 2026">
+    <meta property="og:description" content="Calculate your vibe coding costs for Cursor, v0, Windsurf & more">
+    <meta property="og:type" content="website">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); min-height: 100vh; padding: 20px; color: #fff; }
+        .container { max-width: 800px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 40px; }
+        h1 { font-size: 2.5rem; margin-bottom: 10px; background: linear-gradient(90deg, #00d4ff, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { color: #888; font-size: 1.1rem; }
+        .calculator { background: rgba(255,255,255,0.05); border-radius: 20px; padding: 30px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+        .tool-section { margin-bottom: 30px; }
+        .tool-section h2 { font-size: 1.3rem; margin-bottom: 15px; color: #00d4ff; }
+        .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .tool-card { background: rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; cursor: pointer; transition: all 0.3s ease; border: 2px solid transparent; }
+        .tool-card:hover { background: rgba(255,255,255,0.12); }
+        .tool-card.selected { border-color: #00d4ff; background: rgba(0,212,255,0.15); }
+        .tool-card h3 { font-size: 1.1rem; margin-bottom: 5px; }
+        .tool-card .price { color: #7c3aed; font-size: 0.9rem; }
+        .input-group { margin-bottom: 25px; }
+        .input-group label { display: block; margin-bottom: 8px; color: #ccc; }
+        .input-group input, .input-group select { width: 100%; padding: 14px 18px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: #fff; font-size: 1rem; }
+        .input-group input:focus { outline: none; border-color: #00d4ff; }
+        .results { background: linear-gradient(135deg, #7c3aed 0%, #00d4ff 100%); border-radius: 15px; padding: 30px; text-align: center; display: none; }
+        .results.show { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .results h2 { font-size: 1rem; opacity: 0.9; margin-bottom: 10px; }
+        .results .total { font-size: 3rem; font-weight: bold; margin-bottom: 20px; }
+        .results .breakdown { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; text-align: center; }
+        .breakdown-item { background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px; }
+        .breakdown-item .label { font-size: 0.8rem; opacity: 0.8; }
+        .breakdown-item .value { font-size: 1.2rem; font-weight: bold; }
+        .email-gate { margin-top: 30px; padding: 20px; background: rgba(0,0,0,0.3); border-radius: 10px; display: none; }
+        .email-gate.show { display: block; }
+        .email-gate p { margin-bottom: 15px; }
+        .email-gate input { width: 100%; padding: 12px; border-radius: 8px; border: none; margin-bottom: 10px; font-size: 1rem; }
+        .email-gate button { width: 100%; padding: 14px; background: #fff; color: #7c3aed; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; }
+        .tips { margin-top: 30px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 12px; }
+        .tips h3 { color: #00d4ff; margin-bottom: 15px; }
+        .tips ul { list-style: none; }
+        .tips li { padding: 8px 0; padding-left: 25px; position: relative; color: #ccc; }
+        .tips li:before { content: "→"; position: absolute; left: 0; color: #00d4ff; }
+        
+        /* SEO Content Section */
+        .seo-content { margin-top: 40px; padding: 30px; background: rgba(255,255,255,0.05); border-radius: 15px; }
+        .seo-content h2 { color: #00d4ff; margin-bottom: 20px; }
+        .seo-content h3 { color: #ccc; margin: 20px 0 10px; font-size: 1.1rem; }
+        .seo-content p { color: #aaa; line-height: 1.7; margin-bottom: 15px; }
+        .seo-content ul { color: #aaa; margin-left: 20px; }
+        .seo-content li { margin-bottom: 8px; }
+        
+        /* Navigation */
+        .nav { display: flex; gap: 20px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap; }
+        .nav a { color: #00d4ff; text-decoration: none; padding: 10px 20px; background: rgba(255,255,255,0.05); border-radius: 8px; transition: all 0.3s; }
+        .nav a:hover { background: rgba(0,212,255,0.2); }
+        
+        footer { text-align: center; margin-top: 40px; color: #666; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 AI Code Editor Cost Calculator</h1>
+            <p class="subtitle">Estimate your vibe coding costs for Cursor, v0, Windsurf & more</p>
+        </header>
+        
+        <nav class="nav">
+            <a href="index.html">💰 Cost Calculator</a>
+            <a href="cursor-cost.html">Cursor Pricing</a>
+            <a href="v0-cost.html">v0 Pricing</a>
+            <a href="windsurf-cost.html">Windsurf Pricing</a>
+        </nav>
+
+        <div class="calculator">
+            <div class="tool-section">
+                <h2>Select Your AI Coding Tools</h2>
+                <div class="tool-grid">
+                    <div class="tool-card selected" data-tool="cursor" data-monthly="20"><h3>Cursor</h3><p class="price">$20/mo (Pro)</p></div>
+                    <div class="tool-card" data-tool="v0" data-monthly="20"><h3>v0 (Vercel)</h3><p class="price">$20/mo (Plus)</p></div>
+                    <div class="tool-card" data-tool="windsurf" data-monthly="15"><h3>Windsurf</h3><p class="price">$15/mo (Pro)</p></div>
+                    <div class="tool-card" data-tool="github-copilot" data-monthly="10"><h3>GitHub Copilot</h3><p class="price">$10/mo</p></div>
+                    <div class="tool-card" data-tool="claude-ai" data-monthly="25"><h3>Claude AI</h3><p class="price">$25/mo (Pro)</p></div>
+                    <div class="tool-card" data-tool="chatgpt" data-monthly="20"><h3>ChatGPT Plus</h3><p class="price">$20/mo</p></div>
+                </div>
+            </div>
+            <div class="input-group">
+                <label>How many hours per week will you code with AI?</label>
+                <input type="number" id="hoursPerWeek" value="10" min="1" max="100">
+            </div>
+            <div class="input-group">
+                <label>Average AI usage per hour</label>
+                <select id="usageLevel">
+                    <option value="0.3">Light (30%)</option>
+                    <option value="0.6" selected>Medium (60%)</option>
+                    <option value="0.9">Heavy (90%)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>How many months do you plan to build this project?</label>
+                <input type="number" id="months" value="3" min="1" max="24">
+            </div>
+            <div class="input-group">
+                <label>Additional costs (hosting, domains, APIs per month)</label>
+                <input type="number" id="additionalCosts" value="10" min="0">
+            </div>
+            <button onclick="calculate()" style="width:100%;padding:18px;background:linear-gradient(90deg,#00d4ff,#7c3aed);border:none;border-radius:12px;color:#fff;font-size:1.2rem;font-weight:bold;cursor:pointer;">💰 Calculate My Costs</button>
+            <div class="results" id="results">
+                <h2>Your Estimated AI Coding Costs</h2>
+                <div class="total" id="totalCost">$0</div>
+                <div class="breakdown">
+                    <div class="breakdown-item"><div class="label">Tool Subscriptions</div><div class="value" id="subscriptionCost">$0</div></div>
+                    <div class="breakdown-item"><div class="label">API/Token Costs</div><div class="value" id="apiCost">$0</div></div>
+                    <div class="breakdown-item"><div class="label">Hosting & Extras</div><div class="value" id="hostingCost">$0</div></div>
+                </div>
+                <div class="email-gate" id="emailGate">
+                    <p>🔓 Enter your email to unlock the full breakdown!</p>
+                    <input type="email" id="email" placeholder="your@email.com">
+                    <button onclick="unlockResults()">Unlock Results</button>
+                </div>
+            </div>
+            <div class="tips">
+                <h3>💡 Tips to Reduce Your AI Coding Costs</h3>
+                <ul>
+                    <li>Use free tiers for testing, upgrade only when needed</li>
+                    <li>Cache prompts and reuse code snippets to reduce API calls</li>
+                    <li>Start with one tool, add more only if required</li>
+                    <li>Use open-source models when possible (DeepSeek, Llama)</li>
+                    <li>Set usage limits in your AI tools to avoid surprise charges</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SEO Content -->
+        <div class="seo-content">
+            <h2>📚 Learn More About AI Coding Costs</h2>
+            
+            <h3>What is a Vibe Coder?</h3>
+            <p>A vibe coder is someone who builds software using AI tools like Cursor, v0, and Windsurf. Instead of writing every line of code manually, vibe coders use AI assistants to generate code, debug issues, and create entire applications. This approach has revolutionized software development, making it accessible to non-developers.</p>
+            
+            <h3>How Much Does Cursor Cost?</h3>
+            <p>Cursor costs $20/month for the Pro plan, which includes unlimited GPT-4 queries and advanced AI features. There's also a free tier with limited usage. Most serious vibe coders opt for the Pro plan to get unlimited access to Claude and GPT models.</p>
+            
+            <h3>Is v0 Free?</h3>
+            <p>v0 by Vercel offers a free tier with limited generations, and the Plus plan costs $20/month for more usage. v0 is particularly popular for generating React components and UI elements quickly.</p>
+            
+            <h3>Windsurf Pricing</h3>
+            <p>Windsurf (from Codeium) offers a free tier and a Pro plan at $15/month. It's known for its excellent code completion and AI pair programming features.</p>
+            
+            <h3>How to Calculate AI API Costs</h3>
+            <p>AI API costs depend on token usage - both input tokens (your prompts) and output tokens (AI responses). Most providers charge:</p>
+            <ul>
+                <li>Input: ~$0.001-0.01 per 1K tokens</li>
+                <li>Output: ~$0.003-0.03 per 1K tokens</li>
+            </ul>
+            
+            <h3>Best AI Coding Tools in 2026</h3>
+            <p>The top AI code editors in 2026 include:</p>
+            <ul>
+                <li><strong>Cursor</strong> - $20/mo - Best overall for app development</li>
+                <li><strong>v0</strong> - $20/mo - Best for React/UI generation</li>
+                <li><strong>Windsurf</strong> - $15/mo - Best for code completion</li>
+                <li><strong>GitHub Copilot</strong> - $10/mo - Best for IDE integration</li>
+                <li><strong>Claude AI</strong> - $25/mo - Best for complex reasoning</li>
+            </ul>
+        </div>
+        
+        <footer><p>© 2026 AI Code Cost Calculator | Built for vibe coders</p></footer>
+    </div>
+    <script>
+        let selectedTools = ['cursor'];
+        let shownResults = false;
+        document.querySelectorAll('.tool-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const tool = this.dataset.tool;
+                if (this.classList.contains('selected')) {
+                    this.classList.remove('selected');
+                    selectedTools = selectedTools.filter(t => t !== tool);
+                } else {
+                    this.classList.add('selected');
+                    selectedTools.push(tool);
+                }
+                if (selectedTools.length === 0) { selectedTools = ['cursor']; document.querySelector('[data-tool="cursor"]').classList.add('selected'); }
+            });
+        });
+        function calculate() {
+            const hoursPerWeek = parseFloat(document.getElementById('hoursPerWeek').value) || 10;
+            const usageLevel = parseFloat(document.getElementById('usageLevel').value) || 0.6;
+            const months = parseFloat(document.getElementById('months').value) || 3;
+            const additionalCosts = parseFloat(document.getElementById('additionalCosts').value) || 10;
+            let subscriptionCost = 0;
+            selectedTools.forEach(tool => { const card = document.querySelector(`[data-tool="${tool}"]`); subscriptionCost += parseFloat(card.dataset.monthly); });
+            const weeklyAIHours = hoursPerWeek * usageLevel;
+            const apiCostPerWeek = weeklyAIHours * 0.5;
+            const totalApiCost = apiCostPerWeek * months * 4;
+            const totalHosting = additionalCosts * months;
+            const total = subscriptionCost * months + totalApiCost + totalHosting;
+            document.getElementById('subscriptionCost').textContent = '$' + (subscriptionCost * months).toFixed(0);
+            document.getElementById('apiCost').textContent = '$' + totalApiCost.toFixed(0);
+            document.getElementById('hostingCost').textContent = '$' + totalHosting.toFixed(0);
+            document.getElementById('totalCost').textContent = '$' + total.toFixed(0);
+            document.getElementById('results').classList.add('show');
+            if (!shownResults) { document.getElementById('emailGate').classList.add('show'); }
+        }
+        function unlockResults() {
+            const email = document.getElementById('email').value;
+            if (email && email.includes('@')) {
+                document.getElementById('emailGate').innerHTML = '<p style="color:#00d4ff;">✅ Email captured!</p>';
+                shownResults = true;
+            } else { alert('Please enter a valid email'); }
+        }
+    </script>
+</body>
+</html>
