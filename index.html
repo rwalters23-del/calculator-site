@@ -571,19 +571,68 @@
 <!-- BREAKEVEN CALCULATOR -->
 <div class="calculator" id="breakeven">
 <div class="section-title">📈 Breakeven Point Calculator</div>
-<p style="color:#aaa;margin-bottom:15px;">Calculate how many units you need to sell to cover your costs. Essential for any business or side hustle.</p>
-<div class="input-group"><label>Fixed costs ($)</label><input type="number" id="be-fixed" value="5000"></div>
+<p style="color:#aaa;margin-bottom:15px;">Calculate how many units to sell to cover costs. Plan for profit targets and different scenarios.</p>
+
+<!-- Business Type -->
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Business Type</h3>
+<div class="tool-grid" style="grid-template-columns:repeat(auto-fit,minmax(90px,1fr));margin-bottom:15px;">
+<div class="tool-card selected" data-biz="product" onclick="toggleBizType(this)"><h3>Product</h3><p class="price">Physical</p></div>
+<div class="tool-card" data-biz="saas" onclick="toggleBizType(this)"><h3>SaaS</h3><p class="price">Subscription</p></div>
+<div class="tool-card" data-biz="service" onclick="toggleBizType(this)"><h3>Service</h3><p class="price">Consulting</p></div>
+<div class="tool-card" data-biz="ecommerce" onclick="toggleBizType(this)"><h3>E-commerce</h3><p class="price">Online store</p></div>
+</div>
+
+<!-- Costs -->
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Your Costs</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Monthly fixed costs ($)</label><input type="number" id="be-fixed" value="5000"></div>
+<div class="input-group"><label>One-time startup costs ($)</label><input type="number" id="be-startup" value="0"></div>
 <div class="input-group"><label>Price per unit ($)</label><input type="number" id="be-price" value="50"></div>
 <div class="input-group"><label>Cost per unit ($)</label><input type="number" id="be-cost" value="25"></div>
-<button class="calc-btn" onclick="calcBreakeven()">Calculate Breakeven</button>
+<div class="input-group"><label>Platform fees (%)</label><input type="number" id="be-fees" value="10"></div>
+<div class="input-group"><label>Shipping/fulfillment ($)</label><input type="number" id="be-shipping" value="5"></div>
+</div>
+
+<!-- Targets -->
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Profit Targets</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Target monthly profit ($)</label><input type="number" id="be-profit-target" value="3000"></div>
+<div class="input-group"><label>Timeframe (months)</label><input type="number" id="be-months" value="12"></div>
+<div class="input-group"><label>Expected growth/mo (%)</label><input type="number" id="be-growth" value="10"></div>
+</div>
+
+<button class="calc-btn" onclick="calcBreakeven()">📈 Calculate Breakeven</button>
 <div class="results" id="resultsBreakeven"><div class="total" id="totalBreakeven">0 units</div><div class="breakdown" id="breakdownBreakeven"></div></div>
+
+<!-- Breakdown -->
+<div id="be-breakdown" style="display:none;margin-top:15px;background:rgba(0,212,255,0.1);padding:15px;border-radius:10px;">
+<h4 style="color:#00d4ff;margin-bottom:10px;">📊 Analysis</h4>
+<div style="font-size:0.85rem;color:#ccc;line-height:1.8;">
+<div><strong>Contribution margin:</strong> <span id="be-margin">$0</span>/unit</div>
+<div><strong>Margin percentage:</strong> <span id="be-margin-pct">0%</span></div>
+<div><strong>Monthly breakeven:</strong> <span id="be-monthly-units">0</span> units</div>
+<div><strong>Units for target profit:</strong> <span id="be-profit-units">0</span></div>
+<div><strong>Revenue at breakeven:</strong> <span id="be-revenue">$0</span></div>
+<div><strong>Time to breakeven:</strong> <span id="be-time">0 months</span></div>
+</div>
+</div>
+
 <div class="content-section">
 <h2>📚 Understanding Breakeven</h2>
 <p>Your breakeven point is when total revenue equals total costs. Beyond that point, you start making profit.</p>
 <ul>
-<li><strong>Fixed costs</strong> - Rent, salaries, subscriptions</li>
-<li><strong>Variable costs</strong> - Materials, shipping per unit</li>
-<li><strong>Contribution margin</strong> - Price minus variable cost</li>
+<li><strong>Fixed costs</strong> - Rent, salaries, subscriptions, software</li>
+<li><strong>Variable costs</strong> - Materials, shipping, payment fees per unit</li>
+<li><strong>Contribution margin</strong> - Price minus variable cost per unit</li>
+</ul>
+<h3>Breakeven formula</h3>
+<p style="font-size:0.9rem;">Breakeven Units = Fixed Costs ÷ (Price - Variable Costs)</p>
+<h3>How to lower breakeven</h3>
+<ul>
+<li>Reduce fixed costs</li>
+<li>Increase prices (if possible)</li>
+<li>Lower variable costs</li>
+<li>Improve unit economics</li>
 </ul>
 </div>
 </div>
@@ -1027,7 +1076,8 @@ function calcWedding(){const g=parseInt(document.getElementById('wedding-guests'
 function calcJob(){const aSal=parseFloat(document.getElementById('job-a-salary').value)||0;const aBon=parseFloat(document.getElementById('job-a-bonus').value)||0;const aAnnBon=aSal*((parseFloat(document.getElementById('job-a-annual-bonus').value)||0)/100);const aEquity=parseFloat(document.getElementById('job-a-equity').value)||0;const aBen=parseFloat(document.getElementById('job-a-benefits').value)||0;const a401k=aSal*((parseFloat(document.getElementById('job-a-401k').value)||0)/100);const aPto=parseInt(document.getElementById('job-a-pto').value)||0;const aCommute=parseInt(document.getElementById('job-a-commute').value)||0;const aHours=parseInt(document.getElementById('job-a-hours').value)||40;aRemote=document.getElementById('job-a-remote').value;const bSal=parseFloat(document.getElementById('job-b-salary').value)||0;const bBon=parseFloat(document.getElementById('job-b-bonus').value)||0;const bAnnBon=bSal*((parseFloat(document.getElementById('job-b-annual-bonus').value)||0)/100);const bEquity=parseFloat(document.getElementById('job-b-equity').value)||0;const bBen=parseFloat(document.getElementById('job-b-benefits').value)||0;const b401k=bSal*((parseFloat(document.getElementById('job-b-401k').value)||0)/100);const bPto=parseInt(document.getElementById('job-b-pto').value)||0;const bCommute=parseInt(document.getElementById('job-b-commute').value)||0;const bHours=parseInt(document.getElementById('job-b-hours').value)||40;const bRemote=document.getElementById('job-b-remote').value;const hourly=parseFloat(document.getElementById('job-hourly').value)||50;const remoteVal=parseInt(document.getElementById('job-remote-val').value)||5;const ptoVal=parseInt(document.getElementById('job-pto-val').value)||5;const aCommuteCost=aCommute*2*5*hourly/60;aRemoteVal=aRemote==='full'?remoteVal*52*8:aRemote==='hybrid'?remoteVal*52*3:0;const bCommuteCost=bCommute*2*5*hourly/60;bRemoteVal=bRemote==='full'?remoteVal*52*8:bRemote==='hybrid'?remoteVal*52*3:0;aPtoVal=aPto*hourly*ptoVal/10;bPtoVal=bPto*hourly*ptoVal/10;const aTotal=aSal+aBon+aAnnBon+aEquity+aBen+a401k+aCommuteCost+aRemoteVal+aPtoVal;const bTotal=bSal+bBon+bAnnBon+bEquity+bBen+b401k+bCommuteCost+bRemoteVal+bPtoVal;const aHourly=aHours>0?Math.round(aTotal/(aHours*52)):0;const bHourly=bHours>0?Math.round(bTotal/(bHours*52)):0;const aTitle=document.getElementById('job-a-title').value||'Job A';const bTitle=document.getElementById('job-b-title').value||'Job B';const winner=aTotal>bTotal?aTitle:bTitle;document.getElementById('totalJob').textContent=winner+' wins!';document.getElementById('breakdownJob').innerHTML='A: $'+Math.round(aTotal)+' ('+aHourly+'/hr) vs B: $'+Math.round(bTotal)+' ('+bHourly+'/hr)';document.getElementById('resultsJob').classList.add('show');document.getElementById('job-breakdown').style.display='block';document.getElementById('job-a-sal').textContent='$'+Math.round(aSal);document.getElementById('job-b-sal').textContent='$'+Math.round(bSal);document.getElementById('job-a-total').textContent='$'+Math.round(aTotal);document.getElementById('job-b-total').textContent='$'+Math.round(bTotal);document.getElementById('job-a-hourly').textContent='$'+aHourly;document.getElementById('job-b-hourly').textContent='$'+bHourly;document.getElementById('job-a-remotedisp').textContent=aRemote;document.getElementById('job-b-remotedisp').textContent=bRemote;document.getElementById('job-a-ptodisp').textContent=aPto+' days';document.getElementById('job-b-ptodisp').textContent=bPto+' days';}
 
 // Breakeven
-function calcBreakeven(){const fixed=parseInt(document.getElementById('be-fixed').value)||0;const price=parseInt(document.getElementById('be-price').value)||1;const cost=parseInt(document.getElementById('be-cost').value)||0;const contrib=price-cost;const units=Math.ceil(fixed/contrib);document.getElementById('totalBreakeven').textContent=units+' units';document.getElementById('breakdownBreakeven').textContent='$'+fixed+' ÷ ($'+price+' - $'+cost+') = '+units;document.getElementById('resultsBreakeven').classList.add('show');}
+let bizType='product';function toggleBizType(el){document.querySelectorAll('[data-biz]').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');bizType=el.dataset.biz;}
+function calcBreakeven(){const fixed=parseFloat(document.getElementById('be-fixed').value)||5000;const startup=parseFloat(document.getElementById('be-startup').value)||0;const price=parseFloat(document.getElementById('be-price').value)||50;const cost=parseFloat(document.getElementById('be-cost').value)||25;const feesPct=parseFloat(document.getElementById('be-fees').value)||10;const shipping=parseFloat(document.getElementById('be-shipping').value)||5;const profitTarget=parseFloat(document.getElementById('be-profit-target').value)||3000;const months=parseInt(document.getElementById('be-months').value)||12;const growth=parseFloat(document.getElementById('be-growth').value)||10;const totalFixed=fixed+startup;const varCost=cost+(cost*feesPct/100)+shipping;const margin=price-varCost;const marginPct=price>0?Math.round((margin/price)*100):0;const breakevenUnits=Math.ceil(totalFixed/margin);const profitUnits=Math.ceil((totalFixed+profitTarget)/margin);const breakevenRevenue=breakevenUnits*price;let monthsToBreakeven=1;let cumulativeUnits=0;for(let i=1;i<=months;i++){cumulativeUnits+=breakevenUnits*Math.pow(1+growth/100,i-1);if(cumulativeUnits>=breakevenUnits){monthsToBreakeven=i;break;}}document.getElementById('totalBreakeven').textContent=breakevenUnits+' units';document.getElementById('breakdownBreakeven').innerHTML='Monthly: '+breakevenUnits+' | For $'+profitTarget+' profit: '+profitUnits+' | '+monthsToBreakeven+' mo to breakeven';document.getElementById('resultsBreakeven').classList.add('show');document.getElementById('be-breakdown').style.display='block';document.getElementById('be-margin').textContent='$'+margin.toFixed(2);document.getElementById('be-margin-pct').textContent=marginPct+'%';document.getElementById('be-monthly-units').textContent=breakevenUnits;document.getElementById('be-profit-units').textContent=profitUnits;document.getElementById('be-revenue').textContent='$'+Math.round(breakevenRevenue);document.getElementById('be-time').textContent=monthsToBreakeven+' months';}
 
 // Carbon
 function calcCarbon(){const ele=parseInt(document.getElementById('carbon-electric').value)||0;const miles=parseInt(document.getElementById('carbon-miles').value)||0;const flights=parseInt(document.getElementById('carbon-flights').value)||0;const diet=parseFloat(document.getElementById('carbon-diet').value)||1;const total=(ele*12*0.0004)+(miles*0.0004)+(flights*1.6)*diet;document.getElementById('totalCarbon').textContent=total.toFixed(1)+' tons CO2';document.getElementById('breakdownCarbon').textContent='Electricity: '+(ele*12*0.0004).toFixed(1)+'t | Driving: '+(miles*0.0004).toFixed(1)+'t | Diet/Flights: '+(flights*1.6*diet).toFixed(1)+'t';document.getElementById('resultsCarbon').classList.add('show');}
