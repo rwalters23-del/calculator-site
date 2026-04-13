@@ -121,21 +121,90 @@
 </div><!-- VIBE CODING ROI CALCULATOR -->
 <div class="calculator" id="vibe">
 <div class="section-title">💡 Vibe Coding ROI Calculator</div>
-<p style="color:#aaa;margin-bottom:15px;">Calculate your return on investment when using vibe coding to build apps. See how much time and money you save vs traditional development.</p>
-<div class="input-group"><label>Hours to build without AI</label><input type="number" id="vibe-hours-traditional" value="100"></div>
-<div class="input-group"><label>Hours to build with vibe coding</label><input type="number" id="vibe-hours-ai" value="20"></div>
+<p style="color:#aaa;margin-bottom:15px;">Calculate your return on investment when using vibe coding. Compare AI-powered development vs traditional hiring.</p>
+
+<!-- Project Details -->
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Project Details</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Project type</label><select id="vibe-project">
+<option value="webapp">Web Application</option>
+<option value="mobile">Mobile App (iOS/Android)</option>
+<option value="api">REST API / Backend</option>
+<option value="landing">Landing Page</option>
+<option value="saas">SaaS Product</option>
+<option value="ecommerce">E-commerce Store</option>
+<option value="dashboard">Dashboard/Admin Panel</option>
+<option value="prototype">MVP/Prototype</option>
+</select></div>
+<div class="input-group"><label>Complexity</label><select id="vibe-complexity">
+<option value="simple">Simple (1-5 pages)</option>
+<option value="medium">Medium (5-15 pages)</option>
+<option value="complex">Complex (15+ pages)</option>
+<option value="enterprise">Enterprise (full platform)</option>
+</select></div>
+</div>
+
+<!-- Traditional Dev Options -->
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Traditional Development</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Hire a developer?</label><select id="vibe-hire"><option value="no">I'll build it myself</option><option value="freelance">Freelancer ($50-150/hr)</option><option value="agency">Agency ($100-300/hr)</option><option value="employee">Full-time employee ($50-100/hr)</option></select></div>
 <div class="input-group"><label>Your hourly rate ($)</label><input type="number" id="vibe-rate" value="50"></div>
+<div class="input-group"><label>Traditional timeline (hours)</label><input type="number" id="vibe-hours-traditional" value="100"></div>
+<div class="input-group"><label>Learning curve (hours)</label><input type="number" id="vibe-learn" value="10" placeholder="Time to learn AI tools"></div>
+</div>
+
+<!-- AI Tool Selection -->
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">AI Tools You'll Use</h3>
+<div class="tool-grid" style="grid-template-columns:repeat(auto-fit,minmax(90px,1fr));margin-bottom:15px;">
+<div class="tool-card selected" data-vibe-tool="cursor" data-vibe-cost="20" onclick="toggleVibeTool(this)"><h3>Cursor</h3><p class="price">$20/mo</p></div>
+<div class="tool-card" data-vibe-tool="v0" data-vibe-cost="20" onclick="toggleVibeTool(this)"><h3>v0</h3><p class="price">$20/mo</p></div>
+<div class="tool-card" data-vibe-tool="windsurf" data-vibe-cost="15" onclick="toggleVibeTool(this)"><h3>Windsurf</h3><p class="price">$15/mo</p></div>
+<div class="tool-card" data-vibe-tool="copilot" data-vibe-cost="10" onclick="toggleVibeTool(this)"><h3>Copilot</h3><p class="price">$10/mo</p></div>
+<div class="tool-card" data-vibe-tool="chatgpt" data-vibe-cost="20" onclick="toggleVibeTool(this)"><h3>ChatGPT</h3><p class="price">$20/mo</p></div>
+<div class="tool-card" data-vibe-tool="bolt" data-vibe-cost="20" onclick="toggleVibeTool(this)"><h3>bolt.new</h3><p class="price">$20/mo</p></div>
+</div>
+
+<!-- Ongoing Costs -->
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Ongoing Costs (Monthly)</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Hosting/month ($)</label><input type="number" id="vibe-hosting" value="0"></div>
+<div class="input-group"><label>Domain/SSL ($)</label><input type="number" id="vibe-domain" value="5"></div>
+<div class="input-group"><label>Maintenance hours/month</label><input type="number" id="vibe-maint-hours" value="2"></div>
+<div class="input-group"><label>Project duration (months)</label><input type="number" id="vibe-duration" value="6"></div>
+</div>
+
 <button class="calc-btn" onclick="calcVibe()">💰 Calculate ROI</button>
 <div class="results" id="resultsVibe"><div class="total" id="totalVibe">$0 saved</div><div class="breakdown" id="breakdownVibe"></div></div>
-<div class="affiliate-box"><a href="https://cursor.sh" target="_blank">🚀 Try Cursor →</a> | <a href="https://v0.dev" target="_blank">⚡ Try v0 →</a><div class="note">*These links may earn a commission</div></div>
+
+<!-- Results Breakdown -->
+<div id="vibe-savings" style="display:none;margin-top:15px;background:rgba(0,212,255,0.1);padding:15px;border-radius:10px;">
+<h4 style="color:#00d4ff;margin-bottom:10px;">📊 Detailed Breakdown</h4>
+<div style="font-size:0.85rem;color:#ccc;line-height:1.8;">
+<div><strong>Time saved:</strong> <span id="vibe-time-saved">0</span> hours</div>
+<div><strong>Money saved:</strong> <span id="vibe-money-saved">$0</span></div>
+<div><strong>AI tool cost:</strong> <span id="vibe-ai-cost">$0</span></div>
+<div><strong>Learning curve investment:</strong> <span id="vibe-learn-cost">$0</span></div>
+<div><strong>Net ROI:</strong> <span id="vibe-net-roi">$0</span></div>
+<div><strong>ROI percentage:</strong> <span id="vibe-roi-pct">0%</span></div>
+</div>
+</div>
+
 <div class="content-section">
 <h2>📚 What is Vibe Coding?</h2>
-<p>Vibe coding is a new approach to building software where you use AI assistants to write code while you focus on the "vibe" — the overall direction, design, and user experience. You describe what you want, and AI generates the code.</p>
+<p>Vibe coding = using AI to build software while you focus on the "vibe" — design, direction, and user experience. You describe what you want, AI writes the code.</p>
 <h3>Why it saves money</h3>
 <ul>
 <li>Reduce development time by 50-80%</li>
-<li>Fewer developers needed</li>
+<li>No need to hire expensive developers</li>
 <li>Faster iteration cycles</li>
+<li>Free to start, pay only for tools</li>
+</ul>
+<h3>Typical time savings by project type</h3>
+<ul>
+<li><strong>Landing page:</strong> 80% faster (8hrs → 1.5hrs)</li>
+<li><strong>Web app:</strong> 70% faster (100hrs → 30hrs)</li>
+<li><strong>Mobile app:</strong> 60% faster (200hrs → 80hrs)</li>
+<li><strong>SaaS product:</strong> 50% faster (500hrs → 250hrs)</li>
 </ul>
 </div>
 <div class="faq-item"><h4>Q: Do I need coding experience?</h4><p>A: Basic knowledge helps, but vibe coding is designed for non-experts too. You describe what you want in plain English.</p></div>
@@ -681,7 +750,8 @@ function toggleTool(el) { el.classList.toggle('selected'); const t=el.dataset.to
 function calcAI() { const seats=parseInt(document.getElementById('ai-seats').value)||1; const months=parseInt(document.getElementById('ai-months').value)||3; const apiCost=parseFloat(document.getElementById('ai-api').value)||0; const billing=document.getElementById('ai-billing').value; const isAnnual=billing==='annual'; let addonCost=0; if(document.getElementById('ai-addon-voice').checked)addonCost+=5; if(document.getElementById('ai-addon-mobile').checked)addonCost+=5; if(document.getElementById('ai-addon-team').checked)addonCost+=10; let toolCost=0; selectedTools.forEach(t=>{const c=document.querySelector(`#ai-cost [data-tool="${t}"]`); if(c)toolCost+=parseFloat(c.dataset.monthly)||0; }); if(isAnnual)toolCost=toolCost*0.8; const monthlySub=(toolCost*seats)+addonCost; const totalCost=(monthlySub*months)+(apiCost*months); let breakdown=selectedTools.length+' tool(s) × '+seats+' seat(s) × '+months+' month(s)'; if(isAnnual)breakdown+=' (20% off)'; if(addonCost>0)breakdown+=' | Add-ons: +$'+addonCost+'/mo'; if(apiCost>0)breakdown+=' | API: $'+(apiCost*months); breakdown+=' | <strong>Total: $'+Math.round(totalCost)+'</strong>'; document.getElementById('totalAI').textContent='$'+Math.round(totalCost); document.getElementById('breakdownAI').innerHTML=breakdown; document.getElementById('resultsAI').classList.add('show'); }
 
 // Vibe ROI
-function calcVibe() { const trad=parseInt(document.getElementById('vibe-hours-traditional').value)||0; const ai=parseInt(document.getElementById('vibe-hours-ai').value)||0; const rate=parseInt(document.getElementById('vibe-rate').value)||0; const saved=(trad-ai)*rate; document.getElementById('totalVibe').textContent='$'+saved+' saved'; document.getElementById('breakdownVibe').textContent=(trad-ai)+' hours × $'+rate+'/hr'; document.getElementById('resultsVibe').classList.add('show'); }
+let selectedVibeTools=[];function toggleVibeTool(el){el.classList.toggle('selected');const t=el.dataset.vibeTool;if(selectedVibeTools.includes(t))selectedVibeTools=selectedVibeTools.filter(x=>x!==t);else selectedVibeTools.push(t);}
+function calcVibe(){const project=document.getElementById('vibe-project').value;const complexity=document.getElementById('vibe-complexity').value;const hire=document.getElementById('vibe-hire').value;const rate=parseInt(document.getElementById('vibe-rate').value)||50;const tradHours=parseInt(document.getElementById('vibe-hours-traditional').value)||100;const learnHours=parseInt(document.getElementById('vibe-learn').value)||10;const hosting=parseFloat(document.getElementById('vibe-hosting').value)||0;const domain=parseFloat(document.getElementById('vibe-domain').value)||5;const maintHours=parseInt(document.getElementById('vibe-maint-hours').value)||2;const duration=parseInt(document.getElementById('vibe-duration').value)||6;let aiToolCost=0;selectedVibeTools.forEach(t=>{const c=document.querySelector(`[data-vibe-tool="${t}"]`);if(c)aiToolCost+=parseFloat(c.dataset.vibeCost)||0;});const vibeHours=Math.round(tradHours*getVibeMultiplier(project,complexity));const tradCost=calcTradCost(hire,rate,tradHours,duration,maintHours);const vibeCost=(aiToolCost*duration)+(hosting*duration)+(domain*duration)+(vibeHours*rate)+(learnHours*rate);const saved=tradCost-vibeCost;const roi=tradCost>0?Math.round((saved/tradCost)*100):0;document.getElementById('totalVibe').textContent='$'+Math.round(saved)+' saved';let breakdown='Traditional: $'+Math.round(tradCost)+' | Vibe: $'+Math.round(vibeCost);document.getElementById('breakdownVibe').innerHTML=breakdown;document.getElementById('resultsVibe').classList.add('show');document.getElementById('vibe-savings').style.display='block';document.getElementById('vibe-time-saved').textContent=tradHours-vibeHours;document.getElementById('vibe-money-saved').textContent='$'+Math.round(saved);document.getElementById('vibe-ai-cost').textContent='$'+Math.round(aiToolCost*duration);document.getElementById('vibe-learn-cost').textContent='$'+Math.round(learnHours*rate);document.getElementById('vibe-net-roi').textContent='$'+Math.round(saved);document.getElementById('vibe-roi-pct').textContent=roi+'%';}function getVibeMultiplier(p,c){const m={webapp:{simple:0.2,medium:0.3,complex:0.4,enterprise:0.5},mobile:{simple:0.25,medium:0.35,complex:0.45,enterprise:0.55},api:{simple:0.15,medium:0.25,complex:0.35,enterprise:0.45},landing:{simple:0.1,medium:0.2,complex:0.3,enterprise:0.4},saas:{simple:0.3,medium:0.4,complex:0.5,enterprise:0.6},ecommerce:{simple:0.25,medium:0.35,complex:0.45,enterprise:0.55},dashboard:{simple:0.2,medium:0.3,complex:0.4,enterprise:0.5},prototype:{simple:0.1,medium:0.15,complex:0.2,enterprise:0.25}};return m[p]?m[p][c]:0.3;}function calcTradCost(hire,rate,hrs,mths,maintHrs){if(hire==='no')return hrs*rate+(maintHrs*mths*rate);if(hire==='freelance')return hrs*100+(maintHrs*mths*100);if(hire==='agency')return hrs*200+(maintHrs*mths*200);return hrs*75+(maintHrs*mths*75);}
 
 // Side Hustle
 function calcSideHustle() { const rev=parseInt(document.getElementById('sh-revenue').value)||0; const exp=parseInt(document.getElementById('sh-expenses').value)||0; const hrs=parseInt(document.getElementById('sh-hours').value)||1; const profit=rev-exp; const hourly=profit>0?Math.round(profit/hrs):0; document.getElementById('totalSideHustle').textContent='$'+profit+'/mo ('+hourly+'/hr)'; document.getElementById('breakdownSideHustle').textContent='Revenue: $'+rev+' - Expenses: $'+exp; document.getElementById('resultsSideHustle').classList.add('show'); }
