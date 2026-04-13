@@ -295,31 +295,86 @@
 <!-- GLP-1 CALCULATOR -->
 <div class="calculator" id="glp1">
 <div class="section-title">💊 GLP-1 Weight Loss Cost Calculator</div>
-<p style="color:#aaa;margin-bottom:15px;">Calculate the total cost of GLP-1 medications for weight loss. Compare Ozempic, Wegovy, Mounjaro, Zepbound, and compounded options.</p>
-<div class="tool-grid">
-<div class="tool-card selected" data-drug="ozempic" data-monthly="968" onclick="toggleGLP1(this)"><h3>Ozempic</h3><p class="price">$968/mo</p></div>
-<div class="tool-card" data-drug="wegovy" data-monthly="1349" onclick="toggleGLP1(this)"><h3>Wegovy</h3><p class="price">$1,349/mo</p></div>
-<div class="tool-card" data-drug="mounjaro" data-monthly="1023" onclick="toggleGLP1(this)"><h3>Mounjaro</h3><p class="price">$1,023/mo</p></div>
-<div class="tool-card" data-drug="zepbound" data-monthly="1023" onclick="toggleGLP1(this)"><h3>Zepbound</h3><p class="price">$1,023/mo</p></div>
-<div class="tool-card" data-drug="compounded" data-monthly="300" onclick="toggleGLP1(this)"><h3>Compounded</h3><p class="price">$300/mo</p></div>
+<p style="color:#aaa;margin-bottom:15px;">Calculate total cost of GLP-1 medications. Compare brands, insurance, discounts, and find the best price.</p>
+
+<!-- Medication Selection -->
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Select Medication</h3>
+<div class="tool-grid" style="grid-template-columns:repeat(auto-fit,minmax(90px,1fr));margin-bottom:15px;">
+<div class="tool-card selected" data-drug="ozempic" data-monthly="968" onclick="toggleGLP1(this)"><h3>Ozempic</h3><p class="price">$968/mo</p><p style="font-size:0.6rem;color:#888;">Semaglutide</p></div>
+<div class="tool-card" data-drug="wegovy" data-monthly="1349" onclick="toggleGLP1(this)"><h3>Wegovy</h3><p class="price">$1,349/mo</p><p style="font-size:0.6rem;color:#888;">Semaglutide</p></div>
+<div class="tool-card" data-drug="mounjaro" data-monthly="1023" onclick="toggleGLP1(this)"><h3>Mounjaro</h3><p class="price">$1,023/mo</p><p style="font-size:0.6rem;color:#888;">Tirzepatide</p></div>
+<div class="tool-card" data-drug="zepbound" data-monthly="1023" onclick="toggleGLP1(this)"><h3>Zepbound</h3><p class="price">$1,023/mo</p><p style="font-size:0.6rem;color:#888;">Tirzepatide</p></div>
+<div class="tool-card" data-drug="rybelsus" data-monthly="936" onclick="toggleGLP1(this)"><h3>Rybelsus</h3><p class="price">$936/mo</p><p style="font-size:0.6rem;color:#888;">Oral semaglutide</p></div>
+<div class="tool-card" data-drug="trulicity" data-monthly="886" onclick="toggleGLP1(this)"><h3>Trulicity</h3><p class="price">$886/mo</p><p style="font-size:0.6rem;color:#888;">Dulaglutide</p></div>
+<div class="tool-card" data-drug="victoza" data-monthly="850" onclick="toggleGLP1(this)"><h3>Victoza</h3><p class="price">$850/mo</p><p style="font-size:0.6rem;color:#888;">Liraglutide</p></div>
+<div class="tool-card" data-drug="compounded" data-monthly="300" onclick="toggleGLP1(this)"><h3>Compounded</h3><p class="price">$300/mo</p><p style="font-size:0.6rem;color:#888;">Custom pharmacy</p></div>
 </div>
-<div class="input-group"><label>Duration (months)</label><input type="number" id="glp1-months" value="6"></div>
-<button class="calc-btn" onclick="calcGLP1()">Calculate Total Cost</button>
+
+<!-- Treatment Details -->
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Treatment Details</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Treatment duration (months)</label><input type="number" id="glp1-months" value="6"></div>
+<div class="input-group"><label>Current weight (lbs)</label><input type="number" id="glp1-weight" value="200"></div>
+<div class="input-group"><label>Goal weight (lbs)</label><input type="number" id="glp1-goal" value="160"></div>
+<div class="input-group"><label>Expected loss/month (lbs)</label><input type="number" id="glp1-loss" value="5"></div>
+</div>
+
+<!-- Insurance & Discounts -->
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Insurance & Discounts</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Insurance coverage (%)</label><select id="glp1-insurance"><option value="0">No insurance</option><option value="50">50% covered</option><option value="70">70% covered</option><option value="80">80% covered</option><option value="90">90% covered</option><option value="100">100% covered</option></select></div>
+<div class="input-group"><label>Manufacturer discount</label><select id="glp1-discount"><option value="0">No discount</option><option value="50">Ozempic savings card (50%)</option><option value="75">Wegovy savings card (75%)</option><option value="500">$500 off manufacturer</option></select></div>
+<div class="input-group"><label>Pharmacy</label><select id="glp1-pharmacy"><option value="retail">Retail pharmacy</option><option value="mail">Mail-order (10% off)</option><option value="costco">Costco (generic prices)</option><option value="walmart">Walmart</option></select></div>
+<div class="input-group"><label>Prior authorization?</label><select id="glp1-pa"><option value="no">No</option><option value="yes">Yes (add $50 fee)</option></select></div>
+</div>
+
+<!-- Add-ons -->
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Additional Costs</h3>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px;">
+<label style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.05);padding:6px 10px;border-radius:6px;cursor:pointer;font-size:0.8rem;"><input type="checkbox" id="glp1-nurse" style="width:auto;"> Nurse visit (+$100/mo)</label>
+<label style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.05);padding:6px 10px;border-radius:6px;cursor:pointer;font-size:0.8rem;"><input type="checkbox" id="glp1-bloodwork" style="width:auto;"> Bloodwork (+$50/mo)</label>
+<label style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.05);padding:6px 10px;border-radius:6px;cursor:pointer;font-size:0.8rem;"><input type="checkbox" id="glp1-supplements" style="width:auto;"> Vitamins (+$30/mo)</label>
+</div>
+
+<button class="calc-btn" onclick="calcGLP1()">💊 Calculate Total Cost</button>
 <div class="results" id="resultsGLP1"><div class="total" id="totalGLP1">$0</div><div class="breakdown" id="breakdownGLP1"></div></div>
+
+<!-- Detailed Breakdown -->
+<div id="glp1-breakdown" style="display:none;margin-top:15px;background:rgba(0,212,255,0.1);padding:15px;border-radius:10px;">
+<h4 style="color:#00d4ff;margin-bottom:10px;">📊 Cost Breakdown</h4>
+<div style="font-size:0.85rem;color:#ccc;line-height:1.8;">
+<div><strong>Base medication cost:</strong> <span id="glp1-base">$0</span></div>
+<div><strong>Insurance savings:</strong> <span id="glp1-ins-savings">$0</span></div>
+<div><strong>Manufacturer discount:</strong> <span id="glp1-mfg-savings">$0</span></div>
+<div><strong>Add-on costs:</strong> <span id="glp1-addons">$0</span></div>
+<div><strong>Your monthly cost:</strong> <span id="glp1-monthly">$0</span></div>
+<div><strong>Total treatment cost:</strong> <span id="glp1-total">$0</span></div>
+<div><strong>Cost per pound lost:</strong> <span id="glp1-per-lb">$0</span></div>
+</div>
+</div>
+
 <div class="affiliate-box"><a href="https://www.sequoiameth.com/weight-loss" target="_blank">🏥 Compare GLP-1 Prices →</a><div class="note">*Prices vary by pharmacy</div></div>
 <div class="content-section">
 <h2>📚 Guide to GLP-1 Medications</h2>
 <p>GLP-1 medications are FDA-approved drugs that help with weight loss by suppressing appetite and improving blood sugar control.</p>
+<h3>Weight loss expectations</h3>
+<ul>
+<li><strong>Semaglutide (Ozempic/Wegovy):</strong> 15-20% body weight in 12 months</li>
+<li><strong>Tirzepatide (Mounjaro/Zepbound):</strong> 20-25% body weight in 12 months</li>
+<li><strong>Average monthly loss:</strong> 3-5 lbs/month after titration</li>
+</ul>
 <h3>Tips for saving</h3>
 <ul>
 <li>Check if insurance covers your medication</li>
-<li>Consider compounded versions (lower cost)</li>
-<li>Look for manufacturer discounts</li>
+<li>Consider compounded versions (70% cheaper)</li>
+<li>Look for manufacturer discount cards</li>
 <li>Use prescription savings cards</li>
+<li>Try mail-order for discounts</li>
 </ul>
 </div>
 <div class="faq-item"><h4>Q: Are GLP-1 medications safe?</h4><p>A: Yes, when prescribed by a doctor. Common side effects include nausea, diarrhea, and constipation.</p></div>
 <div class="faq-item"><h4>Q: How long do I need to take them?</h4><p>A: Most people take GLP-1 medications for 6-12 months to achieve their weight loss goals.</p></div>
+<div class="faq-item"><h4>Q: What's the difference between Ozempic and Wegovy?</h4><p>A: Same active ingredient (semaglutide). Wegovy is specifically approved for weight loss, Ozempic is for diabetes but commonly prescribed off-label.</p></div>
 </div>
 
 <!-- WEDDING COST CALCULATOR -->
@@ -820,7 +875,7 @@ function calcSideHustle(){const rev=parseFloat(document.getElementById('sh-reven
 // GLP-1
 let selectedDrugs=[];
 function toggleGLP1(el){el.classList.toggle('selected');const d=el.dataset.drug;if(selectedDrugs.includes(d))selectedDrugs=selectedDrugs.filter(x=>x!==d);else selectedDrugs.push(d);}
-function calcGLP1(){const mos=parseInt(document.getElementById('glp1-months').value)||0;let total=0;selectedDrugs.forEach(d=>{const c=document.querySelector(`[data-drug="${d}"]`);total+=parseInt(c.dataset.monthly);});const cost=total*mos;document.getElementById('totalGLP1').textContent='$'+cost;document.getElementById('breakdownGLP1').textContent=selectedDrugs.length+' medication(s) × '+mos+' months';document.getElementById('resultsGLP1').classList.add('show');}
+function calcGLP1(){const mos=parseInt(document.getElementById('glp1-months').value)||6;const weight=parseInt(document.getElementById('glp1-weight').value)||200;const goal=parseInt(document.getElementById('glp1-goal').value)||160;const lossRate=parseInt(document.getElementById('glp1-loss').value)||5;const insPct=parseFloat(document.getElementById('glp1-insurance').value)||0;const mfgDiscount=parseFloat(document.getElementById('glp1-discount').value)||0;const pharmacy=document.getElementById('glp1-pharmacy').value;const paFee=document.getElementById('glp1-pa').value==='yes'?50:0;let baseCost=0;selectedDrugs.forEach(d=>{const c=document.querySelector(`[data-drug="${d}"]`);if(c)baseCost+=parseFloat(c.dataset.monthly)||0;});let addons=0;if(document.getElementById('glp1-nurse').checked)addons+=100;if(document.getElementById('glp1-bloodwork').checked)addons+=50;if(document.getElementById('glp1-supplements').checked)addons+=30;let pharmacyDiscount=0;if(pharmacy==='mail')pharmacyDiscount=0.1;else if(pharmacy==='costco')pharmacyDiscount=0.15;const afterPharmacy=baseCost*(1-pharmacyDiscount);const insSavings=afterPharmacy*(insPct/100);const afterIns=afterPharmacy-insSavings;const afterMfg=Math.max(0,afterIns-(mfgDiscount/12));const monthlyTotal=afterMfg+addons+paFee;const total=monthlyTotal*mos;const lbsLost=Math.max(0,weight-goal);const perLb=lbsLost>0?Math.round(total/lbsLost):0;document.getElementById('totalGLP1').textContent='$'+Math.round(total);document.getElementById('breakdownGLP1').innerHTML='Monthly: $'+Math.round(monthlyTotal)+' × '+mos+' months';document.getElementById('resultsGLP1').classList.add('show');document.getElementById('glp1-breakdown').style.display='block';document.getElementById('glp1-base').textContent='$'+Math.round(afterPharmacy);document.getElementById('glp1-ins-savings').textContent='-$'+Math.round(insSavings);document.getElementById('glp1-mfg-savings').textContent='-$'+Math.round(mfgDiscount);document.getElementById('glp1-addons').textContent='$'+Math.round(addons+paFee);document.getElementById('glp1-monthly').textContent='$'+Math.round(monthlyTotal);document.getElementById('glp1-total').textContent='$'+Math.round(total);document.getElementById('glp1-per-lb').textContent='$'+perLb+'/'+'lb';
 
 // Wedding
 function calcWedding(){const g=parseInt(document.getElementById('wedding-guests').value)||0;const v=parseInt(document.getElementById('wedding-venue').value)||0;const c=parseInt(document.getElementById('wedding-catering').value)||0;const p=parseInt(document.getElementById('wedding-photo').value)||0;const a=parseInt(document.getElementById('wedding-attire').value)||0;const o=parseInt(document.getElementById('wedding-other').value)||0;const total=v+(g*c)+p+a+o;document.getElementById('totalWedding').textContent='$'+total;document.getElementById('breakdownWedding').textContent='Venue: $'+v+' | Catering: $'+(g*c)+' | Photo: $'+p+' | Attire: $'+a+' | Other: $'+o;document.getElementById('resultsWedding').classList.add('show');}
