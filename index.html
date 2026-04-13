@@ -1216,9 +1216,13 @@
 <!-- UNIT CONVERTER -->
 <div class="calculator" id="unit">
 <div class="section-title">📐 Unit Converter</div>
-<p style="color:#aaa;margin-bottom:15px;">Convert between common units. Length, weight, temperature, and more.</p>
+<p style="color:#aaa;margin-bottom:15px;">Convert between common units. Length, weight, temperature, volume, and more.</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
 <div class="input-group"><label>Value</label><input type="number" id="unit-val" value="1"></div>
-<div class="input-group"><label>From</label><select id="unit-from"><option value="mi_km">Miles → Kilometers</option><option value="ft_m">Feet → Meters</option><option value="lb_kg">Pounds → Kilograms</option><option value="oz_g">Ounces → Grams</option><option value="f_c">Fahrenheit → Celsius</option><option value="gal_l">Gallons → Liters</option></select></div>
+<div class="input-group"><label>Conversion type</label><select id="unit-from"><option value="mi_km">Miles → Kilometers</option><option value="ft_m">Feet → Meters</option><option value="lb_kg">Pounds → Kilograms</option><option value="oz_g">Ounces → Grams</option><option value="f_c">°F → °C</option><option value="c_f">°C → °F</option><option value="gal_l">Gallons → Liters</option><option value="in_cm">Inches → CM</option><option value="mph_kph">MPH → KPH</option></select></div>
+</div>
+
 <button class="calc-btn" onclick="calcUnit()">📐 Convert</button>
 <div class="results" id="resultsUnit"><div class="total" id="totalUnit">0</div></div>
 </div>
@@ -1378,8 +1382,8 @@ const rates={USD:1,EUR:0.92,GBP:0.79,JPY:149,CAD:1.36,AUD:1.53,INR:83,CNY:7.2,MX
 function calcCurrency(){const amt=parseFloat(document.getElementById('cur-amount').value)||0;const from=document.getElementById('cur-from').value;const to=document.getElementById('cur-to').value;const result=amt/rates[from]*rates[to];document.getElementById('totalCurrency').textContent=to+' '+result.toFixed(2);document.getElementById('resultsCurrency').classList.add('show');}
 
 // Unit converter
-function calcUnit(){const val=parseFloat(document.getElementById('unit-val').value)||0;const type=document.getElementById('unit-from').value;let result=val;switch(type){case'mi_km':result=val*1.60934;break;case'ft_m':result=val*0.3048;break;case'lb_kg':result=val*0.453592;break;case'oz_g':result=val*28.3495;break;case'f_c':result=(val-32)*5/9;break;case'gal_l':result=val*3.78541;break;}
-document.getElementById('totalUnit').textContent=result.toFixed(2);document.getElementById('resultsUnit').classList.add('show');}
+function calcUnit(){const val=parseFloat(document.getElementById('unit-val').value)||0;const type=document.getElementById('unit-from').value;let result=val;let label='';switch(type){case'mi_km':result=val*1.60934;label='km';break;case'ft_m':result=val*0.3048;label='m';break;case'lb_kg':result=val*0.453592;label='kg';break;case'oz_g':result=val*28.3495;label='g';break;case'f_c':result=(val-32)*5/9;label='°C';break;case'c_f':result=(val*9/5)+32;label='°F';break;case'gal_l':result=val*3.78541;label='L';break;case'in_cm':result=val*2.54;label='cm';break;case'mph_kph':result=val*1.60934;label='kph';break;}
+document.getElementById('totalUnit').textContent=result.toFixed(2)+' '+label;document.getElementById('resultsUnit').classList.add('show');}
 
 // Email form
 const form=document.getElementById('emailForm');
