@@ -214,22 +214,82 @@
 <!-- SIDE HUSTLE PROFIT CALCULATOR -->
 <div class="calculator" id="sidehustle">
 <div class="section-title">💰 Side Hustle Profit Calculator</div>
-<p style="color:#aaa;margin-bottom:15px;">Calculate your potential profit from side hustles like freelancing, e-commerce, print on demand, and more.</p>
-<div class="input-group"><label>Monthly revenue ($)</label><input type="number" id="sh-revenue" value="1000"></div>
-<div class="input-group"><label>Monthly expenses ($)</label><input type="number" id="sh-expenses" value="300"></div>
+<p style="color:#aaa;margin-bottom:15px;">Calculate potential profit from your side hustle. Factor in multiple income streams, expenses, and taxes.</p>
+
+<!-- Hustle Type -->
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">What type of side hustle?</h3>
+<div class="tool-grid" style="grid-template-columns:repeat(auto-fit,minmax(90px,1fr));margin-bottom:15px;">
+<div class="tool-card selected" data-hustle="freelance" onclick="toggleHustleType(this)"><h3>Freelance</h3><p class="price">$</p></div>
+<div class="tool-card" data-hustle="pod" onclick="toggleHustleType(this)"><h3>Print on Demand</h3><p class="price">$</p></div>
+<div class="tool-card" data-hustle="affiliate" onclick="toggleHustleType(this)"><h3>Affiliate</h3><p class="price">$</p></div>
+<div class="tool-card" data-hustle="dropship" onclick="toggleHustleType(this)"><h3>Dropshipping</h3><p class="price">$</p></div>
+<div class="tool-card" data-hustle="coaching" onclick="toggleHustleType(this)"><h3>Coaching</h3><p class="price">$</p></div>
+<div class="tool-card" data-hustle="courses" onclick="toggleHustleType(this)"><h3>Online Courses</h3><p class="price">$</p></div>
+<div class="tool-card" data-hustle="content" onclick="toggleHustleType(this)"><h3>Content</h3><p class="price">$</p></div>
+<div class="tool-card" data-hustle="resell" onclick="toggleHustleType(this)"><h3>Reselling</h3><p class="price">$</p></div>
+</div>
+
+<!-- Income Streams -->
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Income (Monthly)</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Primary income ($)</label><input type="number" id="sh-revenue" value="1000"></div>
+<div class="input-group"><label>Secondary income ($)</label><input type="number" id="sh-revenue2" value="0" placeholder="0"></div>
+<div class="input-group"><label>Affiliate commissions ($)</label><input type="number" id="sh-affiliate" value="0" placeholder="0"></div>
+<div class="input-group"><label>Passive income ($)</label><input type="number" id="sh-passive" value="0" placeholder="0"></div>
+</div>
+
+<!-- Expenses -->
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Expenses (Monthly)</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Tools/Subscriptions ($)</label><input type="number" id="sh-expenses" value="50"></div>
+<div class="input-group"><label>Marketing/Ads ($)</label><input type="number" id="sh-marketing" value="0"></div>
+<div class="input-group"><label>Materials/Products ($)</label><input type="number" id="sh-materials" value="0"></div>
+<div class="input-group"><label>Platform fees (%)</label><input type="number" id="sh-fee-pct" value="10"></div>
+</div>
+
+<!-- Time & Tax -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
 <div class="input-group"><label>Hours per month</label><input type="number" id="sh-hours" value="40"></div>
+<div class="input-group"><label>Tax rate (%)</label><input type="number" id="sh-tax" value="25"></div>
+</div>
+
 <button class="calc-btn" onclick="calcSideHustle()">💰 Calculate Profit</button>
 <div class="results" id="resultsSideHustle"><div class="total" id="totalSideHustle">$0/mo</div><div class="breakdown" id="breakdownSideHustle"></div></div>
+
+<!-- Detailed Breakdown -->
+<div id="sh-breakdown" style="display:none;margin-top:15px;background:rgba(0,212,255,0.1);padding:15px;border-radius:10px;">
+<h4 style="color:#00d4ff;margin-bottom:10px;">📊 Your Side Hustle Report</h4>
+<div style="font-size:0.85rem;color:#ccc;line-height:1.8;">
+<div><strong>Gross Revenue:</strong> <span id="sh-gross">$0</span></div>
+<div><strong>Total Expenses:</strong> <span id="sh-total-exp">$0</span></div>
+<div><strong>Platform Fees:</strong> <span id="sh-fees">$0</span></div>
+<div><strong>Tax (estimated):</strong> <span id="sh-tax-amt">$0</span></div>
+<div><strong>Net Profit:</strong> <span id="sh-net">$0</span></div>
+<div><strong>Hourly Rate:</strong> <span id="sh-hourly">$0/hr</span></div>
+<div><strong>Annual Potential:</strong> <span id="sh-annual">$0/year</span></div>
+</div>
+</div>
+
 <div class="content-section">
 <h2>📚 Popular Side Hustles</h2>
 <ul>
-<li><strong>Freelancing</strong> - Skills like writing, design, programming</li>
-<li><strong>Print on Demand</strong> - Sell custom t-shirts, mugs</li>
-<li><strong> Affiliate Marketing</strong> - Promote products for commissions</li>
-<li><strong>Online Courses</strong> - Teach what you know</li>
+<li><strong>Freelancing</strong> - Skills like writing, design, programming ($25-150/hr)</li>
+<li><strong>Print on Demand</strong> - Sell custom t-shirts, mugs (20-40% margin)</li>
+<li><strong>Affiliate Marketing</strong> - Promote products for commissions (5-50%)</li>
+<li><strong>Online Courses</strong> - Teach what you know ($500-5000/course)</li>
+<li><strong>Content Creation</strong> - YouTube, TikTok, blogs (CPM + sponsors)</li>
+<li><strong>Coaching</strong> - Expert consultation ($50-300/hr)</li>
+</ul>
+<h3>Quick Profit Tips</h3>
+<ul>
+<li>Start with lowest-cost tools</li>
+<li>Reinvest profits into marketing</li>
+<li>Automate where possible</li>
+<li>Build recurring revenue</li>
 </ul>
 </div>
 <div class="faq-item"><h4>Q: How much can I earn?</h4><p>A: Anywhere from $100 to $10,000+/month depending on your hustle and effort.</p></div>
+<div class="faq-item"><h4>Q: What's the best side hustle for beginners?</h4><p>A: Freelancing or print on demand - low start costs and scalable.</p></div>
 </div>
 
 <!-- GLP-1 CALCULATOR -->
@@ -754,7 +814,8 @@ let selectedVibeTools=[];function toggleVibeTool(el){el.classList.toggle('select
 function calcVibe(){const project=document.getElementById('vibe-project').value;const complexity=document.getElementById('vibe-complexity').value;const hire=document.getElementById('vibe-hire').value;const rate=parseInt(document.getElementById('vibe-rate').value)||50;const tradHours=parseInt(document.getElementById('vibe-hours-traditional').value)||100;const learnHours=parseInt(document.getElementById('vibe-learn').value)||10;const hosting=parseFloat(document.getElementById('vibe-hosting').value)||0;const domain=parseFloat(document.getElementById('vibe-domain').value)||5;const maintHours=parseInt(document.getElementById('vibe-maint-hours').value)||2;const duration=parseInt(document.getElementById('vibe-duration').value)||6;let aiToolCost=0;selectedVibeTools.forEach(t=>{const c=document.querySelector(`[data-vibe-tool="${t}"]`);if(c)aiToolCost+=parseFloat(c.dataset.vibeCost)||0;});const vibeHours=Math.round(tradHours*getVibeMultiplier(project,complexity));const tradCost=calcTradCost(hire,rate,tradHours,duration,maintHours);const vibeCost=(aiToolCost*duration)+(hosting*duration)+(domain*duration)+(vibeHours*rate)+(learnHours*rate);const saved=tradCost-vibeCost;const roi=tradCost>0?Math.round((saved/tradCost)*100):0;document.getElementById('totalVibe').textContent='$'+Math.round(saved)+' saved';let breakdown='Traditional: $'+Math.round(tradCost)+' | Vibe: $'+Math.round(vibeCost);document.getElementById('breakdownVibe').innerHTML=breakdown;document.getElementById('resultsVibe').classList.add('show');document.getElementById('vibe-savings').style.display='block';document.getElementById('vibe-time-saved').textContent=tradHours-vibeHours;document.getElementById('vibe-money-saved').textContent='$'+Math.round(saved);document.getElementById('vibe-ai-cost').textContent='$'+Math.round(aiToolCost*duration);document.getElementById('vibe-learn-cost').textContent='$'+Math.round(learnHours*rate);document.getElementById('vibe-net-roi').textContent='$'+Math.round(saved);document.getElementById('vibe-roi-pct').textContent=roi+'%';}function getVibeMultiplier(p,c){const m={webapp:{simple:0.2,medium:0.3,complex:0.4,enterprise:0.5},mobile:{simple:0.25,medium:0.35,complex:0.45,enterprise:0.55},api:{simple:0.15,medium:0.25,complex:0.35,enterprise:0.45},landing:{simple:0.1,medium:0.2,complex:0.3,enterprise:0.4},saas:{simple:0.3,medium:0.4,complex:0.5,enterprise:0.6},ecommerce:{simple:0.25,medium:0.35,complex:0.45,enterprise:0.55},dashboard:{simple:0.2,medium:0.3,complex:0.4,enterprise:0.5},prototype:{simple:0.1,medium:0.15,complex:0.2,enterprise:0.25}};return m[p]?m[p][c]:0.3;}function calcTradCost(hire,rate,hrs,mths,maintHrs){if(hire==='no')return hrs*rate+(maintHrs*mths*rate);if(hire==='freelance')return hrs*100+(maintHrs*mths*100);if(hire==='agency')return hrs*200+(maintHrs*mths*200);return hrs*75+(maintHrs*mths*75);}
 
 // Side Hustle
-function calcSideHustle() { const rev=parseInt(document.getElementById('sh-revenue').value)||0; const exp=parseInt(document.getElementById('sh-expenses').value)||0; const hrs=parseInt(document.getElementById('sh-hours').value)||1; const profit=rev-exp; const hourly=profit>0?Math.round(profit/hrs):0; document.getElementById('totalSideHustle').textContent='$'+profit+'/mo ('+hourly+'/hr)'; document.getElementById('breakdownSideHustle').textContent='Revenue: $'+rev+' - Expenses: $'+exp; document.getElementById('resultsSideHustle').classList.add('show'); }
+let selectedHustle='freelance';function toggleHustleType(el){document.querySelectorAll('[data-hustle]').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');selectedHustle=el.dataset.hustle;}
+function calcSideHustle(){const rev=parseFloat(document.getElementById('sh-revenue').value)||0;const rev2=parseFloat(document.getElementById('sh-revenue2').value)||0;const aff=parseFloat(document.getElementById('sh-affiliate').value)||0;const pass=parseFloat(document.getElementById('sh-passive').value)||0;const exp=parseFloat(document.getElementById('sh-expenses').value)||0;const mkt=parseFloat(document.getElementById('sh-marketing').value)||0;const mat=parseFloat(document.getElementById('sh-materials').value)||0;const feePct=parseFloat(document.getElementById('sh-fee-pct').value)||0;const hrs=parseInt(document.getElementById('sh-hours').value)||1;const taxRate=parseFloat(document.getElementById('sh-tax').value)||0;const gross=rev+rev2+aff+pass;const totalExp=exp+mkt+mat;const fees=gross*(feePct/100);const profitBeforeTax=gross-totalExp-fees;const taxAmt=profitBeforeTax>0?profitBeforeTax*(taxRate/100):0;const net=profitBeforeTax-taxAmt;const hourly=net>0 && hrs>0?Math.round(net/hrs):0;const annual=net*12;document.getElementById('totalSideHustle').textContent='$'+Math.round(net)+'/mo';document.getElementById('breakdownSideHustle').innerHTML='Net: $'+Math.round(net)+' | '+hourly+'/hr | $'+annual+'/yr';document.getElementById('resultsSideHustle').classList.add('show');document.getElementById('sh-breakdown').style.display='block';document.getElementById('sh-gross').textContent='$'+Math.round(gross);document.getElementById('sh-total-exp').textContent='$'+Math.round(totalExp);document.getElementById('sh-fees').textContent='$'+Math.round(fees);document.getElementById('sh-tax-amt').textContent='$'+Math.round(taxAmt);document.getElementById('sh-net').textContent='$'+Math.round(net);document.getElementById('sh-hourly').textContent='$'+hourly+'/hr';document.getElementById('sh-annual').textContent='$'+Math.round(annual);}
 
 // GLP-1
 let selectedDrugs=[];
