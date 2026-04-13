@@ -132,18 +132,84 @@
         <!-- AI Cost Calculator -->
         <div class="calculator active" id="ai-cost">
             <div class="section-title">🤖 AI Coding Tools Cost Calculator</div>
-            <div class="tool-grid">
-                <div class="tool-card selected" data-tool="cursor" data-monthly="20" onclick="toggleTool(this)"><h3>Cursor</h3><p class="price">$20/mo</p></div>
-                <div class="tool-card" data-tool="v0" data-monthly="20" onclick="toggleTool(this)"><h3>v0</h3><p class="price">$20/mo</p></div>
-                <div class="tool-card" data-tool="windsurf" data-monthly="15" onclick="toggleTool(this)"><h3>Windsurf</h3><p class="price">$15/mo</p></div>
-                <div class="tool-card" data-tool="copilot" data-monthly="10" onclick="toggleTool(this)"><h3>Copilot</h3><p class="price">$10/mo</p></div>
-                <div class="tool-card" data-tool="claude" data-monthly="25" onclick="toggleTool(this)"><h3>Claude</h3><p class="price">$25/mo</p></div>
-                <div class="tool-card" data-tool="chatgpt" data-monthly="20" onclick="toggleTool(this)"><h3>ChatGPT</h3><p class="price">$20/mo</p></div>
+            <p style="color:#aaa;margin-bottom:15px;font-size:0.9rem;">Select the AI tools you plan to use. Add team seats and API usage for accurate costs.</p>
+            
+            <!-- Tool Selection -->
+            <h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Select Tools (click to toggle)</h3>
+            <div class="tool-grid" style="grid-template-columns:repeat(auto-fit,minmax(120px,1fr));">
+                <div class="tool-card selected" data-tool="cursor" data-monthly="20" data-api="0" onclick="toggleTool(this)"><h3>Cursor</h3><p class="price">$20/mo</p><p style="font-size:0.65rem;color:#888;">AI-first IDE</p></div>
+                <div class="tool-card" data-tool="v0" data-monthly="20" data-api="0" onclick="toggleTool(this)"><h3>v0</h3><p class="price">$20/mo</p><p style="font-size:0.65rem;color:#888;">UI Generator</p></div>
+                <div class="tool-card" data-tool="windsurf" data-monthly="15" data-api="0" onclick="toggleTool(this)"><h3>Windsurf</h3><p class="price">$15/mo</p><p style="font-size:0.65rem;color:#888;">Codeium IDE</p></div>
+                <div class="tool-card" data-tool="copilot" data-monthly="10" data-api="0" onclick="toggleTool(this)"><h3>Copilot</h3><p class="price">$10/mo</p><p style="font-size:0.65rem;color:#888;">GitHub</p></div>
+                <div class="tool-card" data-tool="claude" data-monthly="25" data-api="0" onclick="toggleTool(this)"><h3>Claude</h3><p class="price">$25/mo</p><p style="font-size:0.65rem;color:#888;">Anthropic AI</p></div>
+                <div class="tool-card" data-tool="chatgpt" data-monthly="20" data-api="0" onclick="toggleTool(this)"><h3>ChatGPT</h3><p class="price">$20/mo</p><p style="font-size:0.65rem;color:#888;">OpenAI</p></div>
+                <div class="tool-card" data-tool="bolt" data-monthly="20" data-api="0" onclick="toggleTool(this)"><h3>bolt.new</h3><p class="price">$20/mo</p><p style="font-size:0.65rem;color:#888;">Full-stack</p></div>
+                <div class="tool-card" data-tool="lovable" data-monthly="20" data-api="0" onclick="toggleTool(this)"><h3>Lovable</h3><p class="price">$20/mo</p><p style="font-size:0.65rem;color:#888;">Prototyping</p></div>
+                <div class="tool-card" data-tool="claude-code" data-monthly="25" data-api="0" onclick="toggleTool(this)"><h3>Claude Code</h3><p class="price">$25/mo</p><p style="font-size:0.65rem;color:#888;">CLI Tool</p></div>
+                <div class="tool-card" data-tool="copilot-biz" data-monthly="19" data-api="0" onclick="toggleTool(this)"><h3>Copilot Biz</h3><p class="price">$19/user</p><p style="font-size:0.65rem;color:#888;">Enterprise</p></div>
+                <div class="tool-card" data-tool="codewhisperer" data-monthly="0" data-api="0" onclick="toggleTool(this)"><h3>CodeWhisperer</h3><p class="price">Free</p><p style="font-size:0.65rem;color:#888;">Amazon</p></div>
+                <div class="tool-card" data-tool="tabnine" data-monthly="12" data-api="0" onclick="toggleTool(this)"><h3>Tabnine</h3><p class="price">$12/mo</p><p style="font-size:0.65rem;color:#888;">Completion</p></div>
+                <div class="tool-card" data-tool="zed" data-monthly="20" data-api="0" onclick="toggleTool(this)"><h3>Zed</h3><p class="price">$20/mo</p><p style="font-size:0.65rem;color:#888;">Performance</p></div>
+                <div class="tool-card" data-tool="codeium" data-monthly="0" data-api="0" onclick="toggleTool(this)"><h3>Codeium</h3><p class="price">Free</p><p style="font-size:0.65rem;color:#888;">Enterprise</p></div>
+                <div class="tool-card" data-tool="replit" data-monthly="10" data-api="0" onclick="toggleTool(this)"><h3>Replit</h3><p class="price">$10/mo</p><p style="font-size:0.65rem;color:#888;">Cloud IDE</p></div>
+                <div class="tool-card" data-tool="windsurf-teams" data-monthly="35" data-api="0" onclick="toggleTool(this)"><h3>Windsurf Teams</h3><p class="price">$35/user</p><p style="font-size:0.65rem;color:#888;">Team</p></div>
             </div>
-            <div class="input-group"><label>Hours per week</label><input type="number" id="ai-hours" value="10"></div>
-            <div class="input-group"><label>Project months</label><input type="number" id="ai-months" value="3"></div>
-            <button class="calc-btn" onclick="calcAI()">💰 Calculate</button>
-            <div class="results" id="resultsAI"><div class="total" id="totalAI">$0</div></div>
+            
+            <!-- Additional Options -->
+            <h3 style="color:#00d4ff;margin:20px 0 10px;font-size:0.95rem;">Additional Options</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <div class="input-group"><label>Team seats (# of users)</label><input type="number" id="ai-seats" value="1" min="1"></div>
+                <div class="input-group"><label>Project months</label><input type="number" id="ai-months" value="3"></div>
+                <div class="input-group"><label>Monthly API usage ($)</label><input type="number" id="ai-api" value="0" placeholder="0"></div>
+                <div class="input-group"><label>Billing cycle</label><select id="ai-billing"><option value="monthly">Monthly</option><option value="annual">Annual (save 20%)</option></select></div>
+            </div>
+            
+            <!-- Add-ons -->
+            <h3 style="color:#00d4ff;margin:20px 0 10px;font-size:0.95rem;">Add-ons (optional)</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px;">
+                <label style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.05);padding:8px 12px;border-radius:6px;cursor:pointer;">
+                    <input type="checkbox" id="ai-addon-voice" style="width:auto;"> <span style="font-size:0.85rem;">Voice control (+$5/mo)</span>
+                </label>
+                <label style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.05);padding:8px 12px;border-radius:6px;cursor:pointer;">
+                    <input type="checkbox" id="ai-addon-mobile" style="width:auto;"> <span style="font-size:0.85rem;">Mobile app (+$5/mo)</span>
+                </label>
+                <label style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.05);padding:8px 12px;border-radius:6px;cursor:pointer;">
+                    <input type="checkbox" id="ai-addon-team" style="width:auto;"> <span style="font-size:0.85rem;">Team features (+$10/mo)</span>
+                </label>
+            </div>
+            
+            <button class="calc-btn" onclick="calcAI()">💰 Calculate Total Cost</button>
+            <div class="results" id="resultsAI">
+                <div class="total" id="totalAI">$0</div>
+                <div class="breakdown" id="breakdownAI" style="margin-top:10px;font-size:0.85rem;"></div>
+            </div>
+            
+            <!-- Educational Content -->
+            <div class="content-section">
+                <h2>📚 How to Choose AI Coding Tools</h2>
+                <h3>What are AI coding tools?</h3>
+                <p>AI coding tools are assistants that help you write code faster using machine learning. They autocomplete, generate code, explain concepts, and debug issues.</p>
+                <h3>How to use this calculator</h3>
+                <ul>
+                    <li>Select the AI tools you plan to use (click to toggle)</li>
+                    <li>Enter number of team members (seats)</li>
+                    <li>Add project duration in months</li>
+                    <li>Include estimated API costs if applicable</li>
+                    <li>Choose monthly or annual billing for discount</li>
+                    <li>Add any optional features</li>
+                </ul>
+                <h3>Tips for saving money</h3>
+                <ul>
+                    <li>Start with free tiers to test each tool</li>
+                    <li>Use Cursor Free for small projects</li>
+                    <li>v0 Free has 100 generations/month - enough for prototypes</li>
+                    <li>Consider annual plans for 20% discount</li>
+                    <li>CodeWhisperer and Codeium are free for individuals</li>
+                </ul>
+            </div>
+            <div class="faq-item"><h4>Q: Which AI coding tool is best for beginners?</h4><p>A: Cursor or Windsurf are great for beginners. Both offer generous free tiers and are designed for full-stack development.</p></div>
+            <div class="faq-item"><h4>Q: Can I use multiple AI tools at once?</h4><p>A: Yes! Many developers use Cursor for coding and ChatGPT for debugging. Just add up the costs in the calculator.</p></div>
+            <div class="faq-item"><h4>Q: Is there a free option?</h4><p>A: Yes - Cursor Free (2K GPT-4o + 500 Claude messages/month), Copilot Free, CodeWhisperer Free, and v0 Free (100 generations).</p></div>
         </div>
 
         <!-- Cursor -->
@@ -357,11 +423,47 @@
         }
         
         function calcAI() {
-            let sub = 0;
-            selectedTools.forEach(t => { const c = document.querySelector(`#ai-cost [data-tool="${t}"]`); sub += parseFloat(c.dataset.monthly); });
+            const seats = parseInt(document.getElementById('ai-seats').value) || 1;
             const months = parseFloat(document.getElementById('ai-months').value) || 3;
-            const total = sub * months;
-            document.getElementById('totalAI').textContent = '$' + total;
+            const apiCost = parseFloat(document.getElementById('ai-api').value) || 0;
+            const billing = document.getElementById('ai-billing').value;
+            const isAnnual = billing === 'annual';
+            
+            // Add-ons
+            let addonCost = 0;
+            if (document.getElementById('ai-addon-voice').checked) addonCost += 5;
+            if (document.getElementById('ai-addon-mobile').checked) addonCost += 5;
+            if (document.getElementById('ai-addon-team').checked) addonCost += 10;
+            
+            // Calculate tool costs
+            let toolCost = 0;
+            let toolCount = 0;
+            selectedTools.forEach(t => {
+                const c = document.querySelector(`#ai-cost [data-tool="${t}"]`);
+                if (c) {
+                    toolCost += parseFloat(c.dataset.monthly) || 0;
+                    toolCount++;
+                }
+            });
+            
+            // Apply annual discount (20%) if selected
+            if (isAnnual) {
+                toolCost = toolCost * 0.8;
+            }
+            
+            // Calculate totals
+            const monthlySub = (toolCost * seats) + addonCost;
+            const totalCost = (monthlySub * months) + (apiCost * months);
+            
+            // Build breakdown
+            let breakdown = `📊 ${toolCount} tool(s) × ${seats} seat(s) × ${months} month(s)`;
+            if (isAnnual) breakdown += ' (20% annual discount)';
+            if (addonCost > 0) breakdown += `<br>Add-ons: +$${addonCost}/mo`;
+            if (apiCost > 0) breakdown += `<br>API usage: $${apiCost * months} over ${months} months`;
+            breakdown += `<br><strong>Monthly subscription: $${Math.round(monthlySub)}/mo</strong>`;
+            
+            document.getElementById('totalAI').textContent = '$' + Math.round(totalCost);
+            document.getElementById('breakdownAI').innerHTML = breakdown;
             document.getElementById('resultsAI').classList.add('show');
         }
         
