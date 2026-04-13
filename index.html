@@ -640,13 +640,45 @@
 <!-- CARBON FOOTPRINT CALCULATOR -->
 <div class="calculator" id="carbon">
 <div class="section-title">🌱 Carbon Footprint Calculator</div>
-<p style="color:#aaa;margin-bottom:15px;">Estimate your annual carbon footprint and see how you can reduce it. Every small action helps the planet!</p>
-<div class="input-group"><label>Monthly electricity bill ($)</label><input type="number" id="carbon-electric" value="150"></div>
-<div class="input-group"><label>Miles driven per year</label><input type="number" id="carbon-miles" value="12000"></div>
-<div class="input-group"><label>Flights taken per year</label><input type="number" id="carbon-flights" value="2"></div>
-<div class="input-group"><label>Diet type</label><select id="carbon-diet"><option value="1">Average</option><option value="0.5">Vegetarian</option><option value="0.3">Vegan</option></select></div>
+<p style="color:#aaa;margin-bottom:15px;">Calculate your annual carbon footprint. See the biggest sources and get reduction tips.</p>
+
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Home Energy</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Monthly electric bill ($)</label><input type="number" id="carbon-electric" value="150"></div>
+<div class="input-group"><label>Monthly gas bill ($)</label><input type="number" id="carbon-gas" value="100"></div>
+<div class="input-group"><label>Home size (sq ft)</label><input type="number" id="carbon-sqft" value="2000"></div>
+<div class="input-group"><label>Energy source</label><select id="carbon-energy"><option value="grid">Grid (average)</option><option value="renewable">100% renewable</option><option value="solar">Solar + grid</option></select></div>
+</div>
+
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Transportation</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Car miles/year</label><input type="number" id="carbon-miles" value="12000"></div>
+<div class="input-group"><label>Car type</label><select id="carbon-car"><option value="gas">Gas (avg)</option><option value="hybrid">Hybrid</option><option value="ev">Electric</option></select></div>
+<div class="input-group"><label>Flights/year</label><input type="number" id="carbon-flights" value="2"></div>
+<div class="input-group"><label>Public transit trips/mo</label><input type="number" id="carbon-transit" value="10"></div>
+</div>
+
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Lifestyle</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Diet type</label><select id="carbon-diet"><option value="1">Average</option><option value="0.8">Flexitarian</option><option value="0.5">Vegetarian</option><option value="0.3">Vegan</option></select></div>
+<div class="input-group"><label>Meals with meat/week</label><input type="number" id="carbon-meats" value="7"></div>
+<div class="input-group"><label>Shopping habits</label><select id="carbon-shop"><option value="avg">Average</option><option value="frugal">Minimalist</option><option value="shopper">Frequent shopper</option></select></div>
+</div>
+
 <button class="calc-btn" onclick="calcCarbon()">🌍 Calculate Footprint</button>
 <div class="results" id="resultsCarbon"><div class="total" id="totalCarbon">0 tons CO2</div><div class="breakdown" id="breakdownCarbon"></div></div>
+
+<div id="carbon-breakdown" style="display:none;margin-top:15px;background:rgba(0,212,255,0.1);padding:15px;border-radius:10px;">
+<h4 style="color:#00d4ff;margin-bottom:10px;">📊 Your Footprint</h4>
+<div style="font-size:0.85rem;color:#ccc;line-height:1.8;">
+<div><strong>Home energy:</strong> <span id="carb-home">0 tons</span></div>
+<div><strong>Transportation:</strong> <span id="carb-trans">0 tons</span></div>
+<div><strong>Diet/lifestyle:</strong> <span id="carb-diet">0 tons</span></div>
+<div><strong>Total:</strong> <span id="carb-total">0 tons</span></div>
+<div><strong>US average:</strong> 15 tons | <strong>World average:</strong> 4 tons</div>
+</div>
+</div>
+
 <div class="content-section">
 <h2>📚 How to Reduce Your Footprint</h2>
 <ul>
@@ -659,13 +691,46 @@
 </div><!-- SOLAR SAVINGS CALCULATOR -->
 <div class="calculator" id="solar">
 <div class="section-title">☀️ Solar Savings Calculator</div>
-<p style="color:#aaa;margin-bottom:15px;">Calculate how much you can save over time by switching to solar power. See your 20-year savings and ROI.</p>
+<p style="color:#aaa;margin-bottom:15px;">Calculate 25-year savings with solar. Factor in federal tax credits, state incentives, and panel degradation.</p>
+
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Your Current Electricity</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
 <div class="input-group"><label>Monthly electric bill ($)</label><input type="number" id="solar-bill" value="150"></div>
-<div class="input-group"><label>Solar system cost ($)</label><input type="number" id="solar-cost" value="20000"></div>
-<div class="input-group"><label>Years to calculate</label><input type="number" id="solar-years" value="20"></div>
-<div class="input-group"><label>Annual electricity price increase (%)</label><input type="number" id="solar-increase" value="3"></div>
+<div class="input-group"><label>Electricity rate ($/kWh)</label><input type="number" id="solar-rate" value="0.14"></div>
+<div class="input-group"><label>Annual price increase (%)</label><input type="number" id="solar-increase" value="3"></div>
+<div class="input-group"><label>Your state</label><select id="solar-state"><option value="ca">California</option><option value="tx">Texas</option><option value="fl">Florida</option><option value="az">Arizona</option><option value="nv">Nevada</option><option value="other">Other</option></select></div>
+</div>
+
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Solar System</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>System size (kW)</label><input type="number" id="solar-kw" value="6"></div>
+<div class="input-group"><label>System cost ($)</label><input type="number" id="solar-cost" value="20000"></div>
+<div class="input-group"><label>Roof sun hours/day</label><input type="number" id="solar-hours" value="5"></div>
+<div class="input-group"><label>Panel degradation (%/yr)</label><input type="number" id="solar-degrade" value="0.5"></div>
+</div>
+
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Incentives & Financing</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Federal tax credit (%)</label><input type="number" id="solar-federal" value="30"></div>
+<div class="input-group"><label>State incentive ($)</label><input type="number" id="solar-state-incentive" value="1000"></div>
+<div class="input-group"><label>Financing</label><select id="solar-finance"><option value="cash">Paid cash</option><option value="loan">Solar loan (5%)</option><option value="lease">Lease ($0 down)</option></select></div>
+<div class="input-group"><label>Years to calculate</label><input type="number" id="solar-years" value="25"></div>
+</div>
+
 <button class="calc-btn" onclick="calcSolar()">☀️ Calculate Savings</button>
 <div class="results" id="resultsSolar"><div class="total" id="totalSolar">$0</div><div class="breakdown" id="breakdownSolar"></div></div>
+
+<div id="solar-breakdown" style="display:none;margin-top:15px;background:rgba(0,212,255,0.1);padding:15px;border-radius:10px;">
+<h4 style="color:#00d4ff;margin-bottom:10px;">📊 Solar Analysis</h4>
+<div style="font-size:0.85rem;color:#ccc;line-height:1.8;">
+<div><strong>Net system cost:</strong> <span id="sol-net-cost">$0</span></div>
+<div><strong>25-year savings:</strong> <span id="sol-savings">$0</span></div>
+<div><strong>Net profit:</strong> <span id="sol-profit">$0</span></div>
+<div><strong>Payback:</strong> <span id="sol-payback">0 years</span></div>
+<div><strong>ROI:</strong> <span id="sol-roi">0%</span></div>
+</div>
+</div>
+
 <div class="affiliate-box"><a href="https://www.solarreviews.com" target="_blank">🔍 Get Solar Quotes →</a><div class="note">*Compare local solar providers</div></div>
 <div class="content-section">
 <h2>📚 Is Solar Worth It?</h2>
@@ -683,13 +748,47 @@
 <!-- PRINT ON DEMAND CALCULATOR -->
 <div class="calculator" id="pod">
 <div class="section-title">👕 Print on Demand Profit Calculator</div>
-<p style="color:#aaa;margin-bottom:15px;">Calculate your profit from selling print on demand products. See how much you can make after costs.</p>
-<div class="input-group"><label>Product price ($)</label><input type="number" id="pod-price" value="25"></div>
-<div class="input-group"><label>Cost per item ($)</label><input type="number" id="pod-cost" value="12"></div>
-<div class="input-group"><label>Monthly sales</label><input type="number" id="pod-sales" value="50"></div>
+<p style="color:#aaa;margin-bottom:15px;">Calculate POD profits. Factor in product types, platforms, ad spend, and seasonal trends.</p>
+
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Product & Pricing</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Product type</label><select id="pod-product"><option value="tshirt">T-Shirt</option><option value="hoodie">Hoodie</option><option value="mug">Mug</option><option value="poster">Poster</option><option value="sticker">Sticker</option><option value="tote">Tote bag</option></select></div>
+<div class="input-group"><label>Your price ($)</label><input type="number" id="pod-price" value="25"></div>
+<div class="input-group"><label>Base cost ($)</label><input type="number" id="pod-cost" value="12"></div>
+<div class="input-group"><label>Monthly sales (units)</label><input type="number" id="pod-sales" value="50"></div>
+</div>
+
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Platform & Fees</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Platform</label><select id="pod-platform"><option value="printful">Printful (premium)</option><option value="redbubble">Redbubble (marketplace)</option><option value="teespring">Teespring</option><option value="merch">Amazon Merch</option><option value="etsy">Etsy</option></select></div>
 <div class="input-group"><label>Platform fee (%)</label><input type="number" id="pod-fee" value="10"></div>
+<div class="input-group"><label>Payment processor (%)</label><input type="number" id="pod-processor" value="3"></div>
+<div class="input-group"><label>Ad spend/month ($)</label><input type="number" id="pod-ads" value="100"></div>
+</div>
+
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Expenses & Growth</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Design tools ($/mo)</label><input type="number" id="pod-tools" value="15"></div>
+<div class="input-group"><label>Listing fees ($/mo)</label><input type="number" id="pod-listing" value="0"></div>
+<div class="input-group"><label>Expected growth (%/mo)</label><input type="number" id="pod-growth" value="10"></div>
+</div>
+
 <button class="calc-btn" onclick="calcPOD()">💰 Calculate Profit</button>
 <div class="results" id="resultsPOD"><div class="total" id="totalPOD">$0/mo</div><div class="breakdown" id="breakdownPOD"></div></div>
+
+<div id="pod-breakdown" style="display:none;margin-top:15px;background:rgba(0,212,255,0.1);padding:15px;border-radius:10px;">
+<h4 style="color:#00d4ff;margin-bottom:10px;">📊 Profit Analysis</h4>
+<div style="font-size:0.85rem;color:#ccc;line-height:1.8;">
+<div><strong>Gross revenue:</strong> <span id="pod-revenue">$0</span></div>
+<div><strong>Product costs:</strong> <span id="pod-costs">$0</span></div>
+<div><strong>Fees:</strong> <span id="pod-fees">$0</span></div>
+<div><strong>Ad spend:</strong> <span id="pod-adcost">$0</span></div>
+<div><strong>Net profit:</strong> <span id="pod-profit">$0</span></div>
+<div><strong>Profit margin:</strong> <span id="pod-margin">0%</span></div>
+<div><strong>Annual profit:</strong> <span id="pod-annual">$0</span></div>
+</div>
+</div>
+
 <div class="affiliate-box"><a href="https://www.printful.com" target="_blank">🖨️ Try Printful →</a> | <a href="https://www.redbubble.com" target="_blank">🎨 Try Redbubble →</a><div class="note">*These links may earn a commission</div></div>
 <div class="content-section">
 <h2>📚 Print on Demand Platforms</h2>
@@ -698,6 +797,13 @@
 <li><strong>Redbubble</strong> - Marketplace with built-in traffic</li>
 <li><strong>Teespring</strong> - YouTube creator friendly</li>
 <li><strong>Amazon Merch</strong> - Large audience, tiered acceptance</li>
+</ul>
+<h3>Profit tips</h3>
+<ul>
+<li>Focus on niche designs</li>
+<li>Use seasonal trends</li>
+<li>Test different product types</li>
+<li>Reinvest profits in ads</li>
 </ul>
 </div>
 </div>
@@ -1080,13 +1186,13 @@ let bizType='product';function toggleBizType(el){document.querySelectorAll('[dat
 function calcBreakeven(){const fixed=parseFloat(document.getElementById('be-fixed').value)||5000;const startup=parseFloat(document.getElementById('be-startup').value)||0;const price=parseFloat(document.getElementById('be-price').value)||50;const cost=parseFloat(document.getElementById('be-cost').value)||25;const feesPct=parseFloat(document.getElementById('be-fees').value)||10;const shipping=parseFloat(document.getElementById('be-shipping').value)||5;const profitTarget=parseFloat(document.getElementById('be-profit-target').value)||3000;const months=parseInt(document.getElementById('be-months').value)||12;const growth=parseFloat(document.getElementById('be-growth').value)||10;const totalFixed=fixed+startup;const varCost=cost+(cost*feesPct/100)+shipping;const margin=price-varCost;const marginPct=price>0?Math.round((margin/price)*100):0;const breakevenUnits=Math.ceil(totalFixed/margin);const profitUnits=Math.ceil((totalFixed+profitTarget)/margin);const breakevenRevenue=breakevenUnits*price;let monthsToBreakeven=1;let cumulativeUnits=0;for(let i=1;i<=months;i++){cumulativeUnits+=breakevenUnits*Math.pow(1+growth/100,i-1);if(cumulativeUnits>=breakevenUnits){monthsToBreakeven=i;break;}}document.getElementById('totalBreakeven').textContent=breakevenUnits+' units';document.getElementById('breakdownBreakeven').innerHTML='Monthly: '+breakevenUnits+' | For $'+profitTarget+' profit: '+profitUnits+' | '+monthsToBreakeven+' mo to breakeven';document.getElementById('resultsBreakeven').classList.add('show');document.getElementById('be-breakdown').style.display='block';document.getElementById('be-margin').textContent='$'+margin.toFixed(2);document.getElementById('be-margin-pct').textContent=marginPct+'%';document.getElementById('be-monthly-units').textContent=breakevenUnits;document.getElementById('be-profit-units').textContent=profitUnits;document.getElementById('be-revenue').textContent='$'+Math.round(breakevenRevenue);document.getElementById('be-time').textContent=monthsToBreakeven+' months';}
 
 // Carbon
-function calcCarbon(){const ele=parseInt(document.getElementById('carbon-electric').value)||0;const miles=parseInt(document.getElementById('carbon-miles').value)||0;const flights=parseInt(document.getElementById('carbon-flights').value)||0;const diet=parseFloat(document.getElementById('carbon-diet').value)||1;const total=(ele*12*0.0004)+(miles*0.0004)+(flights*1.6)*diet;document.getElementById('totalCarbon').textContent=total.toFixed(1)+' tons CO2';document.getElementById('breakdownCarbon').textContent='Electricity: '+(ele*12*0.0004).toFixed(1)+'t | Driving: '+(miles*0.0004).toFixed(1)+'t | Diet/Flights: '+(flights*1.6*diet).toFixed(1)+'t';document.getElementById('resultsCarbon').classList.add('show');}
+function calcCarbon(){const ele=parseFloat(document.getElementById('carbon-electric').value)||0;const gas=parseFloat(document.getElementById('carbon-gas').value)||0;const sqft=parseInt(document.getElementById('carbon-sqft').value)||2000;const miles=parseInt(document.getElementById('carbon-miles').value)||0;const flights=parseInt(document.getElementById('carbon-flights').value)||0;const transit=parseInt(document.getElementById('carbon-transit').value)||0;const diet=parseFloat(document.getElementById('carbon-diet').value)||1;const homeCarbon=(ele*12*0.0004)+(gas*12*0.0005)+(sqft*0.05);const transCarbon=(miles*0.0004)+(flights*1.6*1000)+(transit*12*0.05);const dietCarbon=diet*0.5+(1-diet)*0.3;const total=homeCarbon+transCarbon+dietCarbon;document.getElementById('totalCarbon').textContent=total.toFixed(1)+' tons CO2';document.getElementById('breakdownCarbon').textContent='Home: '+homeCarbon.toFixed(1)+'t | Transport: '+transCarbon.toFixed(1)+'t | Diet: '+dietCarbon.toFixed(1)+'t';document.getElementById('resultsCarbon').classList.add('show');document.getElementById('carbon-breakdown').style.display='block';document.getElementById('carb-home').textContent=homeCarbon.toFixed(1)+' tons';document.getElementById('carb-trans').textContent=transCarbon.toFixed(1)+' tons';document.getElementById('carb-diet').textContent=dietCarbon.toFixed(1)+' tons';document.getElementById('carb-total').textContent=total.toFixed(1)+' tons';}
 
 // Solar
-function calcSolar(){const bill=parseInt(document.getElementById('solar-bill').value)||0;const cost=parseInt(document.getElementById('solar-cost').value)||0;const yrs=parseInt(document.getElementById('solar-years').value)||0;const inc=parseFloat(document.getElementById('solar-increase').value)||0;let saved=0;for(let i=0;i<yrs;i++){saved+=bill*Math.pow(1+inc/100,i)*12;}const net=saved-cost;document.getElementById('totalSolar').textContent='$'+(net>0?Math.round(net):Math.round(saved));document.getElementById('breakdownSolar').textContent='$'+cost+' cost | $'+Math.round(saved)+' saved over '+yrs+' years';document.getElementById('resultsSolar').classList.add('show');}
+function calcSolar(){const bill=parseFloat(document.getElementById('solar-bill').value)||150;const rate=parseFloat(document.getElementById('solar-rate').value)||0.14;const inc=parseFloat(document.getElementById('solar-increase').value)||3;const kw=parseFloat(document.getElementById('solar-kw').value)||6;const cost=parseFloat(document.getElementById('solar-cost').value)||20000;const hours=parseFloat(document.getElementById('solar-hours').value)||5;const degrade=parseFloat(document.getElementById('solar-degrade').value)||0.5;const fedCredit=parseFloat(document.getElementById('solar-federal').value)||30;const stateIncent=parseFloat(document.getElementById('solar-state-incentive').value)||0;const yrs=parseInt(document.getElementById('solar-years').value)||25;const netCost=cost*(1-fedCredit/100)-stateIncent;let savings=0;let prod=1;for(let i=1;i<=yrs;i++){savings+=bill*12*Math.pow(1+inc/100,i)*prod;prod*=1-degrade/100;}const profit=savings-netCost;let payback=yrs;for(let i=1;i<=yrs;i++){let y=0;for(let j=1;j<=i;j++){y+=bill*12*Math.pow(1+inc/100,j)*Math.pow(1-degrade/100,j);}if(y>=netCost){payback=i;break;}}const roi=cost>0?Math.round((profit/cost)*100):0;document.getElementById('totalSolar').textContent='$'+Math.round(profit);document.getElementById('breakdownSolar').innerHTML='Net cost: $'+Math.round(netCost)+' | Savings: $'+Math.round(savings)+' | Payback: '+payback+' yrs';document.getElementById('resultsSolar').classList.add('show');document.getElementById('solar-breakdown').style.display='block';document.getElementById('sol-net-cost').textContent='$'+Math.round(netCost);document.getElementById('sol-savings').textContent='$'+Math.round(savings);document.getElementById('sol-profit').textContent='$'+Math.round(profit);document.getElementById('sol-payback').textContent=payback+' years';document.getElementById('sol-roi').textContent=roi+'%';}
 
 // Print on Demand
-function calcPOD(){const price=parseInt(document.getElementById('pod-price').value)||0;const c=parseInt(document.getElementById('pod-cost').value)||0;const sales=parseInt(document.getElementById('pod-sales').value)||0;const fee=parseFloat(document.getElementById('pod-fee').value)||0;const profit=(price-c)*(sales/100*(100-fee));document.getElementById('totalPOD').textContent='$'+Math.round(profit)+'/mo';document.getElementById('breakdownPOD').textContent=(price-c)+' profit × '+sales+' sales - '+fee+'% fee';document.getElementById('resultsPOD').classList.add('show');}
+function calcPOD(){const price=parseFloat(document.getElementById('pod-price').value)||25;const baseCost=parseFloat(document.getElementById('pod-cost').value)||12;const sales=parseInt(document.getElementById('pod-sales').value)||50;const fee=parseFloat(document.getElementById('pod-fee').value)||10;const proc=parseFloat(document.getElementById('pod-processor').value)||3;const ads=parseFloat(document.getElementById('pod-ads').value)||100;const tools=parseFloat(document.getElementById('pod-tools').value)||15;const listing=parseFloat(document.getElementById('pod-listing').value)||0;const revenue=price*sales;const productCost=baseCost*sales;const totalFee=(revenue*fee/100)+(revenue*proc/100);const totalCost=productCost+totalFee+ads+tools+listing;const profit=revenue-totalCost;const margin=revenue>0?Math.round((profit/revenue)*100):0;document.getElementById('totalPOD').textContent='$'+Math.round(profit)+'/mo';document.getElementById('breakdownPOD').innerHTML='Revenue: $'+revenue+' | Costs: $'+totalCost+' | Margin: '+margin+'%';document.getElementById('resultsPOD').classList.add('show');document.getElementById('pod-breakdown').style.display='block';document.getElementById('pod-revenue').textContent='$'+Math.round(revenue);document.getElementById('pod-costs').textContent='$'+Math.round(productCost);document.getElementById('pod-fees').textContent='$'+Math.round(totalFee);document.getElementById('pod-adcost').textContent='$'+Math.round(ads);document.getElementById('pod-profit').textContent='$'+Math.round(profit);document.getElementById('pod-margin').textContent=margin+'%';document.getElementById('pod-annual').textContent='$'+Math.round(profit*12);}
 
 // Freelance
 function calcFreelance(){const income=parseInt(document.getElementById('fr-income').value)||0;const hrs=parseInt(document.getElementById('fr-hours').value)||1;const weeks=parseInt(document.getElementById('fr-weeks').value)||1;const tax=parseFloat(document.getElementById('fr-tax').value)||0;const exp=parseInt(document.getElementById('fr-expenses').value)||0;const total=(income+exp)/(hrs*weeks);const rate=total/(1-tax/100);document.getElementById('totalFreelance').textContent='$'+Math.round(rate)+'/hr';document.getElementById('breakdownFreelance').textContent='Need $'+income+' + $'+exp+' expenses';document.getElementById('resultsFreelance').classList.add('show');}
