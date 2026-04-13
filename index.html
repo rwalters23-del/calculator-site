@@ -811,14 +811,41 @@
 <!-- FREELANCE RATE CALCULATOR -->
 <div class="calculator" id="freelance">
 <div class="section-title">✍️ Freelance Rate Calculator</div>
-<p style="color:#aaa;margin-bottom:15px;">Calculate what you need to charge as a freelancer to hit your income goals. Factor in taxes, insurance, and downtime.</p>
+<p style="color:#aaa;margin-bottom:15px;">Calculate your freelance rate. Factor in skills, experience, expenses, and retirement planning.</p>
+
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Your Goals</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
 <div class="input-group"><label>Annual income goal ($)</label><input type="number" id="fr-income" value="60000"></div>
-<div class="input-group"><label>Billable hours per week</label><input type="number" id="fr-hours" value="25"></div>
-<div class="input-group"><label>Weeks worked per year</label><input type="number" id="fr-weeks" value="48"></div>
+<div class="input-group"><label>Your specialty</label><select id="fr-specialty"><option value="writing">Writing/Editing</option><option value="design">Graphic Design</option><option value="dev">Web Development</option><option value="video">Video Production</option><option value="consulting">Consulting</option><option value="marketing">Marketing</option></select></div>
+<div class="input-group"><label>Experience level</label><select id="fr-level"><option value="junior">Junior (0-2 yrs)</option><option value="mid">Mid-level (2-5 yrs)</option><option value="senior">Senior (5-10 yrs)</option><option value="expert">Expert (10+ yrs)</option></select></div>
+</div>
+
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Time & Billing</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Billable hours/week</label><input type="number" id="fr-hours" value="25"></div>
+<div class="input-group"><label>Weeks worked/year</label><input type="number" id="fr-weeks" value="48"></div>
+<div class="input-group"><label>Non-billable % (admin/sales)</label><input type="number" id="fr-nonbill" value="30"></div>
+</div>
+
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Expenses & Taxes</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
 <div class="input-group"><label>Tax rate (%)</label><input type="number" id="fr-tax" value="25"></div>
-<div class="input-group"><label>Business expenses ($/year)</label><input type="number" id="fr-expenses" value="5000"></div>
+<div class="input-group"><label>Business expenses ($/yr)</label><input type="number" id="fr-expenses" value="5000"></div>
+<div class="input-group"><label>Health insurance ($/mo)</label><input type="number" id="fr-health" value="400"></div>
+<div class="input-group"><label>Retirement contribution (%)\</label><input type="number" id="fr-retire" value="10"></div>
+</div>
+
 <button class="calc-btn" onclick="calcFreelance()">💰 Calculate Rate</button>
 <div class="results" id="resultsFreelance"><div class="total" id="totalFreelance">$0/hr</div><div class="breakdown" id="breakdownFreelance"></div></div>
+
+<div id="fr-breakdown" style="display:none;margin-top:15px;background:rgba(0,212,255,0.1);padding:15px;border-radius:10px;">
+<div style="font-size:0.85rem;color:#ccc;line-height:1.8;">
+<div><strong>Min hourly:</strong> <span id="fr-min">$0</span></div>
+<div><strong>Target hourly:</strong> <span id="fr-target">$0</span></div>
+<div><strong>Annual total needed:</strong> <span id="fr-total-needed">$0</span></div>
+</div>
+</div>
+
 <div class="content-section">
 <h2>📚 Freelancing Tips</h2>
 <ul>
@@ -833,13 +860,36 @@
 <!-- SaaS MRR CALCULATOR -->
 <div class="calculator" id="saas">
 <div class="section-title">📊 SaaS MRR Calculator</div>
-<p style="color:#aaa;margin-bottom:15px;">Calculate your Software as a Service monthly recurring revenue. Track growth, churn, and expansion.</p>
+<p style="color:#aaa;margin-bottom:15px;">Calculate SaaS revenue with pricing tiers, churn, expansion revenue, and LTV.</p>
+
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Current Metrics</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
 <div class="input-group"><label>Total customers</label><input type="number" id="saas-customers" value="100"></div>
-<div class="input-group"><label>Average revenue per user ($)</label><input type="number" id="saas-arpu" value="29"></div>
-<div class="input-group"><label>Monthly churn rate (%)</label><input type="number" id="saas-churn" value="5"></div>
-<div class="input-group"><label>New customers per month</label><input type="number" id="saas-new" value="20"></div>
+<div class="input-group"><label>Base plan ($/mo)</label><input type="number" id="saas-base" value="19"></div>
+<div class="input-group"><label>Pro plan ($/mo)</label><input type="number" id="saas-pro" value="49"></div>
+<div class="input-group"><label>Enterprise ($/mo)</label><input type="number" id="saas-enterprise" value="199"></div>
+</div>
+
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Growth & Churn</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Monthly churn (%)</label><input type="number" id="saas-churn" value="5"></div>
+<div class="input-group"><label>New customers/mo</label><input type="number" id="saas-new" value="20"></div>
+<div class="input-group"><label>Expansion revenue (%)\</label><input type="number" id="saas-expansion" value="10"></div>
+<div class="input-group"><label>CAC ($/customer)</label><input type="number" id="saas-cac" value="100"></div>
+</div>
+
 <button class="calc-btn" onclick="calcSaaS()">📊 Calculate MRR</button>
 <div class="results" id="resultsSaaS"><div class="total" id="totalSaaS">$0</div><div class="breakdown" id="breakdownSaaS"></div></div>
+
+<div id="saas-breakdown" style="display:none;margin-top:15px;background:rgba(0,212,255,0.1);padding:15px;border-radius:10px;">
+<div style="font-size:0.85rem;color:#ccc;line-height:1.8;">
+<div><strong>MRR:</strong> <span id="saas-mrr">$0</span></div>
+<div><strong>ARR:</strong> <span id="saas-arr">$0</span></div>
+<div><strong>LTV:</strong> <span id="saas-ltv">$0</span></div>
+<div><strong>Payback:</strong> <span id="saas-payback">0 months</span></div>
+</div>
+</div>
+
 <div class="content-section">
 <h2>📚 SaaS Metrics</h2>
 <ul>
@@ -854,14 +904,46 @@
 <!-- CONTENT CREATOR CALCULATOR -->
 <div class="calculator" id="creator">
 <div class="section-title">🎬 Content Creator Profit Calculator</div>
-<p style="color:#aaa;margin-bottom:15px;">Estimate your potential earnings as a content creator. Factor in sponsorships, ads, and affiliate income.</p>
+<p style="color:#aaa;margin-bottom:15px;">Calculate creator income from ads, sponsors, affiliates, memberships, and merchandise.</p>
+
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Platform & Audience</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Primary platform</label><select id="cr-platform"><option value="youtube">YouTube</option><option value="tiktok">TikTok</option><option value="instagram">Instagram</option><option value="twitch">Twitch</option><option value="blog">Blog/Podcast</option></select></div>
+<div class="input-group"><label>Subscribers/Followers</label><input type="number" id="cr-followers" value="10000"></div>
 <div class="input-group"><label>Monthly views</label><input type="number" id="cr-views" value="50000"></div>
-<div class="input-group"><label>CPM ($ per 1000 views)</label><input type="number" id="cr-cpm" value="4"></div>
-<div class="input-group"><label>Sponsorships per month</label><input type="number" id="cr-sponsors" value="2"></div>
-<div class="input-group"><label>Average sponsorship ($)</label><input type="number" id="cr-sponsor-rate" value="500"></div>
-<div class="input-group"><label>Affiliate earnings per month ($)</label><input type="number" id="cr-affiliate" value="100"></div>
+<div class="input-group"><label>Engagement rate (%)</label><input type="number" id="cr-engagement" value="3"></div>
+</div>
+
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Income Streams</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>CPM ($/1000 views)</label><input type="number" id="cr-cpm" value="4"></div>
+<div class="input-group"><label>Sponsorships/mo</label><input type="number" id="cr-sponsors" value="2"></div>
+<div class="input-group"><label>Avg sponsorship ($)</label><input type="number" id="cr-sponsor-rate" value="500"></div>
+<div class="input-group"><label>Affiliate earnings ($/mo)</label><input type="number" id="cr-affiliate" value="100"></div>
+<div class="input-group"><label>Members/subscribers</label><input type="number" id="cr-members" value="50"></div>
+<div class="input-group"><label>Member price ($/mo)</label><input type="number" id="cr-member-price" value="5"></div>
+</div>
+
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Expenses</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Equipment/software ($/mo)</label><input type="number" id="cr-equip" value="50"></div>
+<div class="input-group"><label>Marketing ($/mo)</label><input type="number" id="cr-marketing" value="100"></div>
+</div>
+
 <button class="calc-btn" onclick="calcCreator()">💰 Calculate Earnings</button>
 <div class="results" id="resultsCreator"><div class="total" id="totalCreator">$0/mo</div><div class="breakdown" id="breakdownCreator"></div></div>
+
+<div id="cr-breakdown" style="display:none;margin-top:15px;background:rgba(0,212,255,0.1);padding:15px;border-radius:10px;">
+<div style="font-size:0.85rem;color:#ccc;line-height:1.8;">
+<div><strong>Ad revenue:</strong> <span id="cr-ads">$0</span></div>
+<div><strong>Sponsors:</strong> <span id="cr-spon">$0</span></div>
+<div><strong>Members:</strong> <span id="cr-mem">$0</span></div>
+<div><strong>Expenses:</strong> <span id="cr-exp">$0</span></div>
+<div><strong>Net profit:</strong> <span id="cr-net">$0</span></div>
+<div><strong>Annual:</strong> <span id="cr-ann">$0</span></div>
+</div>
+</div>
+
 <div class="content-section">
 <h2>📚 Content Creator Income Streams</h2>
 <ul>
@@ -1195,13 +1277,13 @@ function calcSolar(){const bill=parseFloat(document.getElementById('solar-bill')
 function calcPOD(){const price=parseFloat(document.getElementById('pod-price').value)||25;const baseCost=parseFloat(document.getElementById('pod-cost').value)||12;const sales=parseInt(document.getElementById('pod-sales').value)||50;const fee=parseFloat(document.getElementById('pod-fee').value)||10;const proc=parseFloat(document.getElementById('pod-processor').value)||3;const ads=parseFloat(document.getElementById('pod-ads').value)||100;const tools=parseFloat(document.getElementById('pod-tools').value)||15;const listing=parseFloat(document.getElementById('pod-listing').value)||0;const revenue=price*sales;const productCost=baseCost*sales;const totalFee=(revenue*fee/100)+(revenue*proc/100);const totalCost=productCost+totalFee+ads+tools+listing;const profit=revenue-totalCost;const margin=revenue>0?Math.round((profit/revenue)*100):0;document.getElementById('totalPOD').textContent='$'+Math.round(profit)+'/mo';document.getElementById('breakdownPOD').innerHTML='Revenue: $'+revenue+' | Costs: $'+totalCost+' | Margin: '+margin+'%';document.getElementById('resultsPOD').classList.add('show');document.getElementById('pod-breakdown').style.display='block';document.getElementById('pod-revenue').textContent='$'+Math.round(revenue);document.getElementById('pod-costs').textContent='$'+Math.round(productCost);document.getElementById('pod-fees').textContent='$'+Math.round(totalFee);document.getElementById('pod-adcost').textContent='$'+Math.round(ads);document.getElementById('pod-profit').textContent='$'+Math.round(profit);document.getElementById('pod-margin').textContent=margin+'%';document.getElementById('pod-annual').textContent='$'+Math.round(profit*12);}
 
 // Freelance
-function calcFreelance(){const income=parseInt(document.getElementById('fr-income').value)||0;const hrs=parseInt(document.getElementById('fr-hours').value)||1;const weeks=parseInt(document.getElementById('fr-weeks').value)||1;const tax=parseFloat(document.getElementById('fr-tax').value)||0;const exp=parseInt(document.getElementById('fr-expenses').value)||0;const total=(income+exp)/(hrs*weeks);const rate=total/(1-tax/100);document.getElementById('totalFreelance').textContent='$'+Math.round(rate)+'/hr';document.getElementById('breakdownFreelance').textContent='Need $'+income+' + $'+exp+' expenses';document.getElementById('resultsFreelance').classList.add('show');}
+function calcFreelance(){const income=parseFloat(document.getElementById('fr-income').value)||60000;const hrs=parseInt(document.getElementById('fr-hours').value)||25;const weeks=parseInt(document.getElementById('fr-weeks').value)||48;const nonbill=parseFloat(document.getElementById('fr-nonbill').value)||30;const tax=parseFloat(document.getElementById('fr-tax').value)||25;const exp=parseFloat(document.getElementById('fr-expenses').value)||5000;const health=parseFloat(document.getElementById('fr-health').value)||400;const retire=parseFloat(document.getElementById('fr-retire').value)||10;const billable=hrs*(1-nonbill/100);const totalNeeded=income+exp+(health*12)+(income*retire/100);const rate=totalNeeded/(billable*weeks);const afterTax=rate*(1-tax/100);document.getElementById('totalFreelance').textContent='$'+Math.round(rate)+'/hr';document.getElementById('breakdownFreelance').innerHTML='Target: $'+Math.round(rate)+'/hr (take-home: $'+Math.round(afterTax)+')';document.getElementById('resultsFreelance').classList.add('show');document.getElementById('fr-breakdown').style.display='block';document.getElementById('fr-min').textContent='$'+Math.round(rate*0.8);document.getElementById('fr-target').textContent='$'+Math.round(rate);document.getElementById('fr-total-needed').textContent='$'+Math.round(totalNeeded);}
 
 // SaaS
-function calcSaaS(){const customers=parseInt(document.getElementById('saas-customers').value)||0;const arpu=parseInt(document.getElementById('saas-arpu').value)||0;const churn=parseFloat(document.getElementById('saas-churn').value)||0;const newC=parseInt(document.getElementById('saas-new').value)||0;const mrr=customers*arpu;const churned=Math.round(customers*(churn/100));document.getElementById('totalSaaS').textContent='$'+mrr+' MRR';document.getElementById('breakdownSaaS').textContent=customers+' customers × $'+arpu+' | Churn: '+churned+'/mo | New: '+newC+'/mo';document.getElementById('resultsSaaS').classList.add('show');}
+function calcSaaS(){const customers=parseInt(document.getElementById('saas-customers').value)||100;const base=parseFloat(document.getElementById('saas-base').value)||19;const pro=parseFloat(document.getElementById('saas-pro').value)||49;const ent=parseFloat(document.getElementById('saas-enterprise').value)||199;const churn=parseFloat(document.getElementById('saas-churn').value)||5;const expansion=parseFloat(document.getElementById('saas-expansion').value)||10;const cac=parseFloat(document.getElementById('saas-cac').value)||100;const totalARPU=(base*0.6)+(pro*0.3)+(ent*0.1);const mrr=customers*totalARPU;const arr=mrr*12;const ltv=totalARPU*12/(churn/100);const payback=cac/(totalARPU-(totalARPU*churn/100));document.getElementById('totalSaaS').textContent='$'+Math.round(mrr)+' MRR';document.getElementById('breakdownSaaS').innerHTML='MRR: $'+Math.round(mrr)+' | ARR: $'+Math.round(arr);document.getElementById('resultsSaaS').classList.add('show');document.getElementById('saas-breakdown').style.display='block';document.getElementById('saas-mrr').textContent='$'+Math.round(mrr);document.getElementById('saas-arr').textContent='$'+Math.round(arr);document.getElementById('saas-ltv').textContent='$'+Math.round(ltv);document.getElementById('saas-payback').textContent=Math.round(payback)+' months';}
 
 // Creator
-function calcCreator(){const views=parseInt(document.getElementById('cr-views').value)||0;const cpm=parseFloat(document.getElementById('cr-cpm').value)||0;const sponsors=parseInt(document.getElementById('cr-sponsors').value)||0;const sponsorRate=parseInt(document.getElementById('cr-sponsor-rate').value)||0;const affiliate=parseInt(document.getElementById('cr-affiliate').value)||0;const ads=(views*cpm)/1000;const total=ads+(sponsors*sponsorRate)+affiliate;document.getElementById('totalCreator').textContent='$'+Math.round(total)+'/mo';document.getElementById('breakdownCreator').textContent='Ads: $'+Math.round(ads)+' | Sponsors: $'+(sponsors*sponsorRate)+' | Affiliate: $'+affiliate;document.getElementById('resultsCreator').classList.add('show');}
+function calcCreator(){const followers=parseInt(document.getElementById('cr-followers').value)||10000;const views=parseInt(document.getElementById('cr-views').value)||50000;const cpm=parseFloat(document.getElementById('cr-cpm').value)||4;const sponsors=parseInt(document.getElementById('cr-sponsors').value)||2;const sponsorRate=parseInt(document.getElementById('cr-sponsor-rate').value)||500;const affiliate=parseFloat(document.getElementById('cr-affiliate').value)||100;const members=parseInt(document.getElementById('cr-members').value)||50;const memberPrice=parseFloat(document.getElementById('cr-member-price').value)||5;const equip=parseFloat(document.getElementById('cr-equip').value)||50;const marketing=parseFloat(document.getElementById('cr-marketing').value)||100;const adsRevenue=(views*cpm)/1000;const sponRevenue=sponsors*sponsorRate;const memberRevenue=members*memberPrice;const revenue=adsRevenue+sponRevenue+affiliate+memberRevenue;const expenses=equip+marketing;const profit=revenue-expenses;document.getElementById('totalCreator').textContent='$'+Math.round(profit)+'/mo';document.getElementById('breakdownCreator').innerHTML='Revenue: $'+Math.round(revenue)+' | Net: $'+Math.round(profit);document.getElementById('resultsCreator').classList.add('show');document.getElementById('cr-breakdown').style.display='block';document.getElementById('cr-ads').textContent='$'+Math.round(adsRevenue);document.getElementById('cr-spon').textContent='$'+sponRevenue;document.getElementById('cr-mem').textContent='$'+memberRevenue;document.getElementById('cr-exp').textContent='$'+Math.round(expenses);document.getElementById('cr-net').textContent='$'+Math.round(profit);document.getElementById('cr-ann').textContent='$'+Math.round(profit*12);}
 
 // Move
 function calcMove(){const rooms=parseInt(document.getElementById('move-rooms').value)||0;const miles=parseInt(document.getElementById('move-miles').value)||0;const movers=parseInt(document.getElementById('move-movers').value)||0;const supplies=parseInt(document.getElementById('move-supplies').value)||0;const base=rooms*100;const mileCost=miles*0.5;const moverCost=movers?rooms*150:0;const total=base+mileCost+moverCost+supplies;document.getElementById('totalMove').textContent='$'+total;document.getElementById('breakdownMove').textContent='Boxes: $'+base+' | Mileage: $'+mileCost+' | Movers: $'+moverCost+' | Supplies: $'+supplies;document.getElementById('resultsMove').classList.add('show');}
