@@ -477,24 +477,93 @@
 <!-- JOB OFFER COMPARISON CALCULATOR -->
 <div class="calculator" id="job">
 <div class="section-title">💼 Job Offer Comparison Calculator</div>
-<p style="color:#aaa;margin-bottom:15px;">Compare multiple job offers side by side. Factor in salary, benefits, commute, and more.</p>
-<div class="input-group"><label>Job A - Base Salary ($)</label><input type="number" id="job-a-salary" value="80000"></div>
-<div class="input-group"><label>Job A - Signing Bonus ($)</label><input type="number" id="job-a-bonus" value="5000"></div>
-<div class="input-group"><label>Job A - Annual Benefits Value ($)</label><input type="number" id="job-a-benefits" value="15000"></div>
-<div class="input-group"><label>Job A - Commute (minutes each way)</label><input type="number" id="job-a-commute" value="30"></div>
-<div class="input-group"><hr style="border-color:rgba(255,255,255,0.2);margin:15px 0"><label>Job B - Base Salary ($)</label><input type="number" id="job-b-salary" value="85000"></div>
-<div class="input-group"><label>Job B - Signing Bonus ($)</label><input type="number" id="job-b-bonus" value="10000"></div>
-<div class="input-group"><label>Job B - Annual Benefits Value ($)</label><input type="number" id="job-b-benefits" value="12000"></div>
-<div class="input-group"><label>Job B - Commute (minutes each way)</label><input type="number" id="job-b-commute" value="45"></div>
-<button class="calc-btn" onclick="calcJob()">💰 Compare Offers</button>
+<p style="color:#aaa;margin-bottom:15px;">Compare job offers with total compensation. Factor in salary, equity, benefits, remote work, and more.</p>
+
+<!-- Job A -->
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">📋 Job Offer A</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Job title</label><input type="text" id="job-a-title" placeholder="e.g. Software Engineer"></div>
+<div class="input-group"><label>Company</label><input type="text" id="job-a-company" placeholder="Company name"></div>
+<div class="input-group"><label>Base salary ($)</label><input type="number" id="job-a-salary" value="80000"></div>
+<div class="input-group"><label>Signing bonus ($)</label><input type="number" id="job-a-bonus" value="5000"></div>
+<div class="input-group"><label>Annual bonus potential (%)</label><input type="number" id="job-a-annual-bonus" value="15"></div>
+<div class="input-group"><label>Stock/Equity ($/year)</label><input type="number" id="job-a-equity" value="0"></div>
+</div>
+
+<!-- Job A Benefits -->
+<h4 style="color:#ccc;margin-bottom:8px;font-size:0.9rem;">Benefits & Perks</h4>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Annual benefits value ($)</label><input type="number" id="job-a-benefits" value="15000"></div>
+<div class="input-group"><label>401k match (%)</label><input type="number" id="job-a-401k" value="4"></div>
+<div class="input-group"><label>PTO days/year</label><input type="number" id="job-a-pto" value="20"></div>
+<div class="input-group"><label>Remote work</label><select id="job-a-remote"><option value="full">Fully remote</option><option value="hybrid">Hybrid (3 days)</option><option value="office">In-office</option></select></div>
+<div class="input-group"><label>Commute (mins each way)</label><input type="number" id="job-a-commute" value="30"></div>
+<div class="input-group"><label>Hours per week</label><input type="number" id="job-a-hours" value="40"></div>
+</div>
+
+<hr style="border-color:rgba(255,255,255,0.2);margin:20px 0">
+
+<!-- Job B -->
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">📋 Job Offer B</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Job title</label><input type="text" id="job-b-title" placeholder="e.g. Senior Engineer"></div>
+<div class="input-group"><label>Company</label><input type="text" id="job-b-company" placeholder="Company name"></div>
+<div class="input-group"><label>Base salary ($)</label><input type="number" id="job-b-salary" value="85000"></div>
+<div class="input-group"><label>Signing bonus ($)</label><input type="number" id="job-b-bonus" value="10000"></div>
+<div class="input-group"><label>Annual bonus potential (%)</label><input type="number" id="job-b-annual-bonus" value="20"></div>
+<div class="input-group"><label>Stock/Equity ($/year)</label><input type="number" id="job-b-equity" value="25000"></div>
+</div>
+
+<!-- Job B Benefits -->
+<h4 style="color:#ccc;margin-bottom:8px;font-size:0.9rem;">Benefits & Perks</h4>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Annual benefits value ($)</label><input type="number" id="job-b-benefits" value="12000"></div>
+<div class="input-group"><label>401k match (%)</label><input type="number" id="job-b-401k" value="6"></div>
+<div class="input-group"><label>PTO days/year</label><input type="number" id="job-b-pto" value="15"></div>
+<div class="input-group"><label>Remote work</label><select id="job-b-remote"><option value="full">Fully remote</option><option value="hybrid">Hybrid (3 days)</option><option value="office">In-office</option></select></div>
+<div class="input-group"><label>Commute (mins each way)</label><input type="number" id="job-b-commute" value="45"></div>
+<div class="input-group"><label>Hours per week</label><input type="number" id="job-b-hours" value="50"></div>
+</div>
+
+<!-- Your Profile -->
+<h3 style="color:#00d4ff;margin-bottom:10px;font-size:0.95rem;">Your Priorities (affects scoring)</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Your hourly rate ($)</label><input type="number" id="job-hourly" value="50"></div>
+<div class="input-group"><label>Value remote (1-10)</label><input type="number" id="job-remote-val" value="8"></div>
+<div class="input-group"><label>Value PTO (1-10)</label><input type="number" id="job-pto-val" value="7"></div>
+</div>
+
+<button class="calc-btn" onclick="calcJob()">💼 Compare Offers</button>
 <div class="results" id="resultsJob"><div class="total" id="totalJob">Job A wins!</div><div class="breakdown" id="breakdownJob"></div></div>
+
+<!-- Detailed Breakdown -->
+<div id="job-breakdown" style="display:none;margin-top:15px;background:rgba(0,212,255,0.1);padding:15px;border-radius:10px;">
+<h4 style="color:#00d4ff;margin-bottom:10px;">📊 Comparison</h4>
+<div style="font-size:0.85rem;color:#ccc;line-height:1.8;">
+<div style="display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:5px;margin-bottom:5px;"><span></span><span style="color:#00d4ff;">Job A</span><span style="color:#7c3aed;">Job B</span></div>
+<div style="display:flex;justify-content:space-between;"><span>Base Salary</span><span id="job-a-sal">$80,000</span><span id="job-b-sal">$85,000</span></div>
+<div style="display:flex;justify-content:space-between;"><span>Total Comp</span><span id="job-a-total">$0</span><span id="job-b-total">$0</span></div>
+<div style="display:flex;justify-content:space-between;"><span>$/Hour</span><span id="job-a-hourly">$0</span><span id="job-b-hourly">$0</span></div>
+<div style="display:flex;justify-content:space-between;"><span>Remote</span><span id="job-a-remotedisp">-</span><span id="job-b-remotedisp">-</span></div>
+<div style="display:flex;justify-content:space-between;"><span>PTO</span><span id="job-a-ptodisp">-</span><span id="job-b-ptodisp">-</span></div>
+</div>
+</div>
+
 <div class="content-section">
 <h2>📚 What to Consider in Job Offers</h2>
 <ul>
 <li><strong>Total compensation</strong> - Salary + bonus + benefits + equity</li>
-<li><strong>Work-life balance</strong> - Commute time, flexible hours</li>
-<li><strong>Growth opportunities</strong> - Career path, learning chances</li>
+<li><strong>Work-life balance</strong> - Commute time, flexible hours, remote work</li>
+<li><strong>Growth opportunities</strong> - Career path, learning chances, title</li>
 <li><strong>Company culture</strong> - Values, remote work policy</li>
+<li><strong>Hourly value</strong> - Factor in overtime/hours worked</li>
+</ul>
+<h3>Typical benefits value breakdown</h3>
+<ul>
+<li><strong>Health insurance:</strong> $500-1000/mo family</li>
+<li><strong>401k match:</strong> 3-6% of salary</li>
+<li><strong>Stock/equity:</strong> 10-30% of salary for tech</li>
+<li><strong> PTO:</strong> 15-25 days typical</li>
 </ul>
 </div>
 </div>
@@ -955,7 +1024,7 @@ let weddingStyle='traditional';function toggleWeddingStyle(el){document.querySel
 function calcWedding(){const g=parseInt(document.getElementById('wedding-guests').value)||100;const venueType=document.getElementById('wedding-venue-type').value;const cateringType=document.getElementById('wedding-catering-type').value;const alcohol=document.getElementById('wedding-alcohol').value;const venueCosts={outdoor:3000,ballroom:6000,restaurant:2000,barn:3500,hotel:5000,courthouse:200,beach:1500,home:1000};const cateringCosts={plated:75,buffet:45,cocktail:35,bbq:20,foodtruck:10,potluck:10};const alcoholCosts={none:0,beerwine:15,full:25,openbar:35};const venue=venueCosts[venueType]||3000;const catering=cateringCosts[cateringType]*g;const alcoholCost=alcoholCosts[alcohol]*g;const cake=parseFloat(document.getElementById('wedding-cake').value)||500;const photo=parseFloat(document.getElementById('wedding-photo').value)||2500;const video=parseFloat(document.getElementById('wedding-video').value)||2000;const music=parseFloat(document.getElementById('wedding-music').value)||1200;const flowers=parseFloat(document.getElementById('wedding-flowers').value)||1500;const planner=parseFloat(document.getElementById('wedding-planner').value)||2000;const officiant=parseFloat(document.getElementById('wedding-officiant').value)||500;const dress=parseFloat(document.getElementById('wedding-dress').value)||1500;const suit=parseFloat(document.getElementById('wedding-suit').value)||500;const rings=parseFloat(document.getElementById('wedding-rings').value)||2000;const hair=parseFloat(document.getElementById('wedding-hair').value)||400;const invites=parseFloat(document.getElementById('wedding-invites').value)||500;const favors=parseFloat(document.getElementById('wedding-favors').value)||300;const transport=parseFloat(document.getElementById('wedding-transport').value)||500;const venueCat=venue+catering+alcoholCost+cake;const vendors=photo+video+music+flowers+planner+officiant;const attire=dress+suit+rings+hair;const other=invites+favors+transport;let total=venueCat+vendors+attire+other;if(document.getElementById('wedding-buffer').checked)total=Math.round(total*1.1);document.getElementById('totalWedding').textContent='$'+Math.round(total);document.getElementById('breakdownWedding').innerHTML='$'+Math.round(total)+' total | $'+Math.round(total/g)+'/guest';document.getElementById('resultsWedding').classList.add('show');document.getElementById('wedding-breakdown').style.display='block';document.getElementById('wed-venue-cat').textContent='$'+Math.round(venueCat);document.getElementById('wed-vendors').textContent='$'+Math.round(vendors);document.getElementById('wed-attire').textContent='$'+Math.round(attire);document.getElementById('wed-other').textContent='$'+Math.round(other);document.getElementById('wed-per-guest').textContent='$'+Math.round(total/g);document.getElementById('wed-cost-person').textContent='$'+Math.round(total/g);}
 
 // Job Offer
-function calcJob(){const aSal=parseInt(document.getElementById('job-a-salary').value)||0;const aBon=parseInt(document.getElementById('job-a-bonus').value)||0;const aBen=parseInt(document.getElementById('job-a-benefits').value)||0;const aCom=parseInt(document.getElementById('job-a-commute').value)||0;const bSal=parseInt(document.getElementById('job-b-salary').value)||0;const bBon=parseInt(document.getElementById('job-b-bonus').value)||0;const bBen=parseInt(document.getElementById('job-b-benefits').value)||0;const bCom=parseInt(document.getElementById('job-b-commute').value)||0;const aTotal=aSal+aBon+aBen-(aCom*250);const bTotal=bSal+bBon+bBen-(bCom*250);const winner=aTotal>bTotal?'Job A':'Job B';document.getElementById('totalJob').textContent=winner+' wins!';document.getElementById('breakdownJob').textContent='Job A: $'+aTotal+' | Job B: $'+bTotal;document.getElementById('resultsJob').classList.add('show');}
+function calcJob(){const aSal=parseFloat(document.getElementById('job-a-salary').value)||0;const aBon=parseFloat(document.getElementById('job-a-bonus').value)||0;const aAnnBon=aSal*((parseFloat(document.getElementById('job-a-annual-bonus').value)||0)/100);const aEquity=parseFloat(document.getElementById('job-a-equity').value)||0;const aBen=parseFloat(document.getElementById('job-a-benefits').value)||0;const a401k=aSal*((parseFloat(document.getElementById('job-a-401k').value)||0)/100);const aPto=parseInt(document.getElementById('job-a-pto').value)||0;const aCommute=parseInt(document.getElementById('job-a-commute').value)||0;const aHours=parseInt(document.getElementById('job-a-hours').value)||40;aRemote=document.getElementById('job-a-remote').value;const bSal=parseFloat(document.getElementById('job-b-salary').value)||0;const bBon=parseFloat(document.getElementById('job-b-bonus').value)||0;const bAnnBon=bSal*((parseFloat(document.getElementById('job-b-annual-bonus').value)||0)/100);const bEquity=parseFloat(document.getElementById('job-b-equity').value)||0;const bBen=parseFloat(document.getElementById('job-b-benefits').value)||0;const b401k=bSal*((parseFloat(document.getElementById('job-b-401k').value)||0)/100);const bPto=parseInt(document.getElementById('job-b-pto').value)||0;const bCommute=parseInt(document.getElementById('job-b-commute').value)||0;const bHours=parseInt(document.getElementById('job-b-hours').value)||40;const bRemote=document.getElementById('job-b-remote').value;const hourly=parseFloat(document.getElementById('job-hourly').value)||50;const remoteVal=parseInt(document.getElementById('job-remote-val').value)||5;const ptoVal=parseInt(document.getElementById('job-pto-val').value)||5;const aCommuteCost=aCommute*2*5*hourly/60;aRemoteVal=aRemote==='full'?remoteVal*52*8:aRemote==='hybrid'?remoteVal*52*3:0;const bCommuteCost=bCommute*2*5*hourly/60;bRemoteVal=bRemote==='full'?remoteVal*52*8:bRemote==='hybrid'?remoteVal*52*3:0;aPtoVal=aPto*hourly*ptoVal/10;bPtoVal=bPto*hourly*ptoVal/10;const aTotal=aSal+aBon+aAnnBon+aEquity+aBen+a401k+aCommuteCost+aRemoteVal+aPtoVal;const bTotal=bSal+bBon+bAnnBon+bEquity+bBen+b401k+bCommuteCost+bRemoteVal+bPtoVal;const aHourly=aHours>0?Math.round(aTotal/(aHours*52)):0;const bHourly=bHours>0?Math.round(bTotal/(bHours*52)):0;const aTitle=document.getElementById('job-a-title').value||'Job A';const bTitle=document.getElementById('job-b-title').value||'Job B';const winner=aTotal>bTotal?aTitle:bTitle;document.getElementById('totalJob').textContent=winner+' wins!';document.getElementById('breakdownJob').innerHTML='A: $'+Math.round(aTotal)+' ('+aHourly+'/hr) vs B: $'+Math.round(bTotal)+' ('+bHourly+'/hr)';document.getElementById('resultsJob').classList.add('show');document.getElementById('job-breakdown').style.display='block';document.getElementById('job-a-sal').textContent='$'+Math.round(aSal);document.getElementById('job-b-sal').textContent='$'+Math.round(bSal);document.getElementById('job-a-total').textContent='$'+Math.round(aTotal);document.getElementById('job-b-total').textContent='$'+Math.round(bTotal);document.getElementById('job-a-hourly').textContent='$'+aHourly;document.getElementById('job-b-hourly').textContent='$'+bHourly;document.getElementById('job-a-remotedisp').textContent=aRemote;document.getElementById('job-b-remotedisp').textContent=bRemote;document.getElementById('job-a-ptodisp').textContent=aPto+' days';document.getElementById('job-b-ptodisp').textContent=bPto+' days';}
 
 // Breakeven
 function calcBreakeven(){const fixed=parseInt(document.getElementById('be-fixed').value)||0;const price=parseInt(document.getElementById('be-price').value)||1;const cost=parseInt(document.getElementById('be-cost').value)||0;const contrib=price-cost;const units=Math.ceil(fixed/contrib);document.getElementById('totalBreakeven').textContent=units+' units';document.getElementById('breakdownBreakeven').textContent='$'+fixed+' ÷ ($'+price+' - $'+cost+') = '+units;document.getElementById('resultsBreakeven').classList.add('show');}
