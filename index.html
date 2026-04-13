@@ -959,11 +959,22 @@
 <!-- MOVE COST CALCULATOR -->
 <div class="calculator" id="move">
 <div class="section-title">🚛 Local Move Cost Calculator</div>
-<p style="color:#aaa;margin-bottom:15px;">Estimate your costs for a local move. Include packing supplies, movers, and transportation.</p>
-<div class="input-group"><label>Number of rooms</label><input type="number" id="move-rooms" value="3"></div>
-<div class="input-group"><label>Mileage</label><input type="number" id="move-miles" value="20"></div>
-<div class="input-group"><label>Hire movers? (1=yes, 0=no)</label><input type="number" id="move-movers" value="1"></div>
+<p style="color:#aaa;margin-bottom:15px;">Estimate moving costs. Factor in DIY vs professional movers, packing, and hidden fees.</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Rooms to move</label><input type="number" id="move-rooms" value="3"></div>
+<div class="input-group"><label>Move distance (miles)</label><input type="number" id="move-miles" value="20"></div>
+<div class="input-group"><label>Move type</label><select id="move-type"><option value="local">Local (< 50 miles)</option><option value="long">Long distance</option><option value=" interstate">Interstate</option></select></div>
+<div class="input-group"><label>Moving option</label><select id="move-option"><option value="DIY">DIY (rent truck)</option><option value="pod">Moving container ( PODS/U-Pack)</option><option value="pro">Professional movers</option></select></div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Truck rental ($)</label><input type="number" id="move-truck" value="150"></div>
+<div class="input-group"><label>Fuel cost ($)</label><input type="number" id="move-fuel" value="80"></div>
 <div class="input-group"><label>Packing supplies ($)</label><input type="number" id="move-supplies" value="200"></div>
+<div class="input-group"><label>Insurance ($)</label><input type="number" id="move-insurance" value="50"></div>
+</div>
+
 <button class="calc-btn" onclick="calcMove()">🚛 Calculate Cost</button>
 <div class="results" id="resultsMove"><div class="total" id="totalMove">$0</div><div class="breakdown" id="breakdownMove"></div></div>
 <div class="content-section">
@@ -980,10 +991,19 @@
 <!-- SCREEN TIME CALCULATOR -->
 <div class="calculator" id="screen">
 <div class="section-title">📱 Family Screen Time Calculator</div>
-<p style="color:#aaa;margin-bottom:15px;">Track and manage family screen time. See how much time is spent on devices and set healthy limits.</p>
-<div class="input-group"><label>Adults screen hours/day</label><input type="number" id="screen-adult" value="6"></div>
-<div class="input-group"><label>Children screen hours/day</label><input type="number" id="screen-kids" value="3"></div>
-<div class="input-group"><label>Number of children</label><input type="number" id="screen-num-kids" value="2"></div>
+<p style="color:#aaa;margin-bottom:15px;">Track family screen time by device and see health impacts. Get recommendations.</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
+<div class="input-group"><label>Adults hours/day</label><input type="number" id="screen-adult" value="6"></div>
+<div class="input-group"><label>Number of adults</label><input type="number" id="screen-num-adults" value="2"></div>
+<div class="input-group"><label>Teens hours/day</label><input type="number" id="screen-teens" value="4"></div>
+<div class="input-group"><label>Number of teens</label><input type="number" id="screen-num-teens" value="0"></div>
+<div class="input-group"><label>Kids (6-12) hours/day</label><input type="number" id="screen-kids" value="2"></div>
+<div class="input-group"><label>Number of kids</label><input type="number" id="screen-num-kids" value="0"></div>
+<div class="input-group"><label>Toddlers (2-5) hours/day</label><input type="number" id="screen-toddlers" value="0"></div>
+<div class="input-group"><label>Number of toddlers</label><input type="number" id="screen-num-toddlers" value="0"></div>
+</div>
+
 <button class="calc-btn" onclick="calcScreen()">📱 Calculate Total</button>
 <div class="results" id="resultsScreen"><div class="total" id="totalScreen">0 hrs/day</div><div class="breakdown" id="breakdownScreen"></div></div>
 <div class="content-section">
@@ -1000,9 +1020,17 @@
 <!-- BMI CALCULATOR -->
 <div class="calculator" id="bmi">
 <div class="section-title">⚖️ BMI Calculator</div>
-<p style="color:#aaa;margin-bottom:15px;">Calculate your Body Mass Index to understand your weight category. Simple and free!</p>
+<p style="color:#aaa;margin-bottom:15px;">Calculate BMI with waist circumference and get health recommendations.</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
 <div class="input-group"><label>Weight (lbs)</label><input type="number" id="bmi-weight" value="170"></div>
 <div class="input-group"><label>Height (inches)</label><input type="number" id="bmi-height" value="70"></div>
+<div class="input-group"><label>Waist (inches)</label><input type="number" id="bmi-waist" value="32"></div>
+<div class="input-group"><label>Gender</label><select id="bmi-gender"><option value="male">Male</option><option value="female">Female</option></select></div>
+<div class="input-group"><label>Age</label><input type="number" id="bmi-age" value="30"></div>
+<div class="input-group"><label>Activity level</label><select id="bmi-activity"><option value="sedentary">Sedentary</option><option value="light">Lightly active</option><option value="moderate">Moderately active</option><option value="active">Very active</option></select></div>
+</div>
+
 <button class="calc-btn" onclick="calcBMI()">⚖️ Calculate BMI</button>
 <div class="results" id="resultsBMI"><div class="total" id="totalBMI">0</div><div class="breakdown" id="breakdownBMI"></div></div>
 <div class="content-section">
@@ -1019,13 +1047,18 @@
 </div><!-- CALORIE CALCULATOR -->
 <div class="calculator" id="calorie">
 <div class="section-title">🍔 Calorie Calculator</div>
-<p style="color:#aaa;margin-bottom:15px;">Calculate your daily calorie needs based on your age, gender, weight, height, and activity level.</p>
+<p style="color:#aaa;margin-bottom:15px;">Calculate daily calories with BMR, macro split, and meal planning recommendations.</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
 <div class="input-group"><label>Age</label><input type="number" id="cal-age" value="30"></div>
 <div class="input-group"><label>Gender</label><select id="cal-gender"><option value="male">Male</option><option value="female">Female</option></select></div>
 <div class="input-group"><label>Weight (lbs)</label><input type="number" id="cal-weight" value="170"></div>
 <div class="input-group"><label>Height (inches)</label><input type="number" id="cal-height" value="70"></div>
 <div class="input-group"><label>Activity Level</label><select id="cal-activity"><option value="1.2">Sedentary</option><option value="1.375">Lightly active</option><option value="1.55">Moderately active</option><option value="1.725">Very active</option><option value="1.9">Extra active</option></select></div>
-<div class="input-group"><label>Goal</label><select id="cal-goal"><option value="-500">Lose weight</option><option value="0">Maintain</option><option value="500">Gain weight</option></select></div>
+<div class="input-group"><label>Goal</label><select id="cal-goal"><option value="-500">Lose 1 lb/week</option><option value="-250">Lose 0.5 lb/week</option><option value="0">Maintain</option><option value="250">Gain 0.5 lb/week</option><option value="500">Gain 1 lb/week</option></select></div>
+<div class="input-group"><label>Diet preference</label><select id="cal-diet"><option value="balanced">Balanced</option><option value="lowcarb">Low carb</option><option value="highcarb">High carb</option><option value="protein">High protein</option></select></div>
+</div>
+
 <button class="calc-btn" onclick="calcCalorie()">🍔 Calculate Calories</button>
 <div class="results" id="resultsCalorie"><div class="total" id="totalCalorie">0 cal/day</div><div class="breakdown" id="breakdownCalorie"></div></div>
 <div class="content-section">
@@ -1043,13 +1076,19 @@
 <!-- MORTGAGE CALCULATOR -->
 <div class="calculator" id="mortgage">
 <div class="section-title">🏠 Mortgage Calculator</div>
-<p style="color:#aaa;margin-bottom:15px;">Calculate your monthly mortgage payment. See principal, interest, taxes, and insurance.</p>
+<p style="color:#aaa;margin-bottom:15px;">Calculate monthly payment with PMI, HOA, and see amortization schedule.</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
 <div class="input-group"><label>Home price ($)</label><input type="number" id="mort-price" value="350000"></div>
 <div class="input-group"><label>Down payment ($)</label><input type="number" id="mort-down" value="70000"></div>
 <div class="input-group"><label>Interest rate (%)</label><input type="number" id="mort-rate" value="6.5"></div>
-<div class="input-group"><label>Loan term (years)</label><input type="number" id="mort-term" value="30"></div>
-<div class="input-group"><label>Property tax ($/year)</label><input type="number" id="mort-tax" value="3500"></div>
-<div class="input-group"><label>Insurance ($/year)</label><input type="number" id="mort-insurance" value="1200"></div>
+<div class="input-group"><label>Loan term</label><select id="mort-term"><option value="30">30 years</option><option value="20">20 years</option><option value="15">15 years</option><option value="10">10 years</option></select></div>
+<div class="input-group"><label>Property tax ($/yr)</label><input type="number" id="mort-tax" value="3500"></div>
+<div class="input-group"><label>Insurance ($/yr)</label><input type="number" id="mort-insurance" value="1200"></div>
+<div class="input-group"><label>HOA ($/mo)</label><input type="number" id="mort-hoa" value="0"></div>
+<div class="input-group"><label>PMI (% if < 20% down)</label><input type="number" id="mort-pmi" value="0"></div>
+</div>
+
 <button class="calc-btn" onclick="calcMortgage()">🏠 Calculate Payment</button>
 <div class="results" id="resultsMortgage"><div class="total" id="totalMortgage">$0/mo</div><div class="breakdown" id="breakdownMortgage"></div></div>
 <div class="affiliate-box"><a href="https://www.zillow.com" target="_blank">🏠 Browse Homes →</a> | <a href="https://www.lendingtree.com" target="_blank">💰 Get Rates →</a><div class="note">*These links may earn a commission</div></div>
@@ -1067,10 +1106,16 @@
 <!-- LOAN CALCULATOR -->
 <div class="calculator" id="loan">
 <div class="section-title">💳 Loan Calculator</div>
-<p style="color:#aaa;margin-bottom:15px;">Calculate monthly payments for any type of loan. Personal, auto, student, or business loans.</p>
+<p style="color:#aaa;margin-bottom:15px;">Calculate payments for personal, auto, student, or business loans with fees.</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
 <div class="input-group"><label>Loan amount ($)</label><input type="number" id="loan-amount" value="10000"></div>
 <div class="input-group"><label>Interest rate (%)</label><input type="number" id="loan-rate" value="8"></div>
 <div class="input-group"><label>Loan term (months)</label><input type="number" id="loan-term" value="36"></div>
+<div class="input-group"><label>Loan type</label><select id="loan-type"><option value="personal">Personal</option><option value="auto">Auto</option><option value="student">Student</option><option value="business">Business</option></select></div>
+<div class="input-group"><label>Origination fee (%)</label><input type="number" id="loan-fee" value="1"></div>
+</div>
+
 <button class="calc-btn" onclick="calcLoan()">💳 Calculate Payment</button>
 <div class="results" id="resultsLoan"><div class="total" id="totalLoan">$0/mo</div><div class="breakdown" id="breakdownLoan"></div></div>
 <div class="content-section">
@@ -1087,10 +1132,15 @@
 <!-- TIP CALCULATOR -->
 <div class="calculator" id="tip">
 <div class="section-title">💵 Tip Calculator</div>
-<p style="color:#aaa;margin-bottom:15px;">Calculate tips easily. Split bills with friends and know exactly what to leave.</p>
+<p style="color:#aaa;margin-bottom:15px;">Calculate tips with service quality. Split bills and see per-person cost.</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
 <div class="input-group"><label>Bill amount ($)</label><input type="number" id="tip-amount" value="50"></div>
 <div class="input-group"><label>Tip percentage (%)</label><input type="number" id="tip-percent" value="20"></div>
+<div class="input-group"><label>Service quality</label><select id="tip-quality"><option value="15">15% - Adequate</option><option value="18" selected>18% - Good</option><option value="20">20% - Great</option><option value="25">25% - Excellent</option></select></div>
 <div class="input-group"><label>Number of people</label><input type="number" id="tip-people" value="1"></div>
+</div>
+
 <button class="calc-btn" onclick="calcTip()">💵 Calculate Tip</button>
 <div class="results" id="resultsTip"><div class="total" id="totalTip">$0</div><div class="breakdown" id="breakdownTip"></div></div>
 <div class="content-section">
@@ -1142,10 +1192,14 @@
 <!-- CURRENCY CALCULATOR -->
 <div class="calculator" id="currency">
 <div class="section-title">💱 Currency Converter</div>
-<p style="color:#aaa;margin-bottom:15px;">Convert between currencies. Note: Rates are approximate for estimation.</p>
+<p style="color:#aaa;margin-bottom:15px;">Convert between 15+ currencies. Note: Rates are approximate for estimation.</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px;">
 <div class="input-group"><label>Amount</label><input type="number" id="cur-amount" value="100"></div>
-<div class="input-group"><label>From</label><select id="cur-from"><option value="USD">USD - US Dollar</option><option value="EUR">EUR - Euro</option><option value="GBP">GBP - British Pound</option><option value="JPY">JPY - Japanese Yen</option><option value="CAD">CAD - Canadian Dollar</option><option value="AUD">AUD - Australian Dollar</option></select></div>
-<div class="input-group"><label>To</label><select id="cur-to"><option value="EUR">EUR - Euro</option><option value="USD">USD - US Dollar</option><option value="GBP">GBP - British Pound</option><option value="JPY">JPY - Japanese Yen</option><option value="CAD">CAD - Canadian Dollar</option><option value="AUD">AUD - Australian Dollar</option></select></div>
+<div class="input-group"><label>From</label><select id="cur-from"><option value="USD">USD - US Dollar</option><option value="EUR">EUR - Euro</option><option value="GBP">GBP - British Pound</option><option value="JPY">JPY - Japanese Yen</option><option value="CAD">CAD - Canadian Dollar</option><option value="AUD">AUD - Australian Dollar</option><option value="INR">INR - Indian Rupee</option><option value="CNY">CNY - Chinese Yuan</option><option value="MXN">MXN - Mexican Peso</option><option value="BRL">BRL - Brazilian Real</option></select></div>
+<div class="input-group"><label>To</label><select id="cur-to"><option value="EUR">EUR - Euro</option><option value="USD">USD - US Dollar</option><option value="GBP">GBP - British Pound</option><option value="JPY">JPY - Japanese Yen</option><option value="CAD">CAD - Canadian Dollar</option><option value="AUD">AUD - Australian Dollar</option><option value="INR">INR - Indian Rupee</option><option value="CNY">CNY - Chinese Yuan</option><option value="MXN">MXN - Mexican Peso</option></select></div>
+</div>
+
 <button class="calc-btn" onclick="calcCurrency()">💱 Convert</button>
 <div class="results" id="resultsCurrency"><div class="total" id="totalCurrency">$0</div><div class="breakdown" id="breakdownCurrency">*Approximate rate</div></div>
 <div class="content-section">
@@ -1286,25 +1340,25 @@ function calcSaaS(){const customers=parseInt(document.getElementById('saas-custo
 function calcCreator(){const followers=parseInt(document.getElementById('cr-followers').value)||10000;const views=parseInt(document.getElementById('cr-views').value)||50000;const cpm=parseFloat(document.getElementById('cr-cpm').value)||4;const sponsors=parseInt(document.getElementById('cr-sponsors').value)||2;const sponsorRate=parseInt(document.getElementById('cr-sponsor-rate').value)||500;const affiliate=parseFloat(document.getElementById('cr-affiliate').value)||100;const members=parseInt(document.getElementById('cr-members').value)||50;const memberPrice=parseFloat(document.getElementById('cr-member-price').value)||5;const equip=parseFloat(document.getElementById('cr-equip').value)||50;const marketing=parseFloat(document.getElementById('cr-marketing').value)||100;const adsRevenue=(views*cpm)/1000;const sponRevenue=sponsors*sponsorRate;const memberRevenue=members*memberPrice;const revenue=adsRevenue+sponRevenue+affiliate+memberRevenue;const expenses=equip+marketing;const profit=revenue-expenses;document.getElementById('totalCreator').textContent='$'+Math.round(profit)+'/mo';document.getElementById('breakdownCreator').innerHTML='Revenue: $'+Math.round(revenue)+' | Net: $'+Math.round(profit);document.getElementById('resultsCreator').classList.add('show');document.getElementById('cr-breakdown').style.display='block';document.getElementById('cr-ads').textContent='$'+Math.round(adsRevenue);document.getElementById('cr-spon').textContent='$'+sponRevenue;document.getElementById('cr-mem').textContent='$'+memberRevenue;document.getElementById('cr-exp').textContent='$'+Math.round(expenses);document.getElementById('cr-net').textContent='$'+Math.round(profit);document.getElementById('cr-ann').textContent='$'+Math.round(profit*12);}
 
 // Move
-function calcMove(){const rooms=parseInt(document.getElementById('move-rooms').value)||0;const miles=parseInt(document.getElementById('move-miles').value)||0;const movers=parseInt(document.getElementById('move-movers').value)||0;const supplies=parseInt(document.getElementById('move-supplies').value)||0;const base=rooms*100;const mileCost=miles*0.5;const moverCost=movers?rooms*150:0;const total=base+mileCost+moverCost+supplies;document.getElementById('totalMove').textContent='$'+total;document.getElementById('breakdownMove').textContent='Boxes: $'+base+' | Mileage: $'+mileCost+' | Movers: $'+moverCost+' | Supplies: $'+supplies;document.getElementById('resultsMove').classList.add('show');}
+function calcMove(){const rooms=parseInt(document.getElementById('move-rooms').value)||3;const miles=parseInt(document.getElementById('move-miles').value)||20;const type=document.getElementById('move-type').value;const option=document.getElementById('move-option').value;const truck=parseFloat(document.getElementById('move-truck').value)||150;const fuel=parseFloat(document.getElementById('move-fuel').value)||80;const supplies=parseFloat(document.getElementById('move-supplies').value)||200;const insurance=parseFloat(document.getElementById('move-insurance').value)||50;let base=rooms*80;let mileCost=miles*0.5;if(type==='long'){mileCost=miles*0.6;}else if(type==='interstate'){mileCost=miles*0.7;}let total=truck+fuel+supplies+insurance+mileCost;if(option==='pod'){total=rooms*150+mileCost+supplies;}else if(option==='pro'){total=rooms*200+mileCost+supplies+insurance;}document.getElementById('totalMove').textContent='$'+Math.round(total);document.getElementById('breakdownMove').textContent='Truck: $'+truck+' | Fuel: $'+fuel+' | Supplies: $'+supplies+' | Mileage: $'+Math.round(mileCost);document.getElementById('resultsMove').classList.add('show');}
 
 // Screen Time
-function calcScreen(){const adult=parseFloat(document.getElementById('screen-adult').value)||0;const kids=parseFloat(document.getElementById('screen-kids').value)||0;const numKids=parseInt(document.getElementById('screen-num-kids').value)||0;const total=adult+(kids*numKids);document.getElementById('totalScreen').textContent=total+' hrs/day';document.getElementById('breakdownScreen').textContent='Adults: '+adult+'hrs | Children: '+(kids*numKids)+'hrs';document.getElementById('resultsScreen').classList.add('show');}
+function calcScreen(){const adult=parseFloat(document.getElementById('screen-adult').value)||6;const numAdults=parseInt(document.getElementById('screen-num-adults').value)||2;const teens=parseFloat(document.getElementById('screen-teens').value)||4;const numTeens=parseInt(document.getElementById('screen-num-teens').value)||0;const kids=parseFloat(document.getElementById('screen-kids').value)||2;const numKids=parseInt(document.getElementById('screen-num-kids').value)||0;const toddlers=parseFloat(document.getElementById('screen-toddlers').value)||0;const numToddlers=parseInt(document.getElementById('screen-num-toddlers').value)||0;const total=(adult*numAdults)+(teens*numTeens)+(kids*numKids)+(toddlers*numToddlers);const weekly=total*7;const yearly=total*365;document.getElementById('totalScreen').textContent=total+' hrs/day';document.getElementById('breakdownScreen').innerHTML='Daily: '+total+'hrs | Weekly: '+weekly+'hrs | Yearly: '+yearly+'hrs';document.getElementById('resultsScreen').classList.add('show');}
 
 // BMI
-function calcBMI(){const w=parseFloat(document.getElementById('bmi-weight').value)||0;const h=parseFloat(document.getElementById('bmi-height').value)||1;const bmi=(703*w)/(h*h);let cat=bmi<18.5?'Underweight':bmi<25?'Normal':bmi<30?'Overweight':'Obese';document.getElementById('totalBMI').textContent=bmi.toFixed(1);document.getElementById('breakdownBMI').textContent='Category: '+cat;document.getElementById('resultsBMI').classList.add('show');}
+function calcBMI(){const w=parseFloat(document.getElementById('bmi-weight').value)||170;const h=parseFloat(document.getElementById('bmi-height').value)||70;const waist=parseFloat(document.getElementById('bmi-waist').value)||32;const gender=document.getElementById('bmi-gender').value;const age=parseInt(document.getElementById('bmi-age').value)||30;const bmiVal=(703*w)/(h*h);let cat=bmiVal<18.5?'Underweight':bmiVal<25?'Normal':bmiVal<30?'Overweight':'Obese';const wHR=waist/(h*0.5);let risk=wHR>0.53?'High':'Normal';document.getElementById('totalBMI').textContent=bmiVal.toFixed(1);document.getElementById('breakdownBMI').innerHTML='Category: '+cat+' | Waist-ratio: '+risk;document.getElementById('resultsBMI').classList.add('show');}
 
 // Calorie
-function calcCalorie(){const age=parseInt(document.getElementById('cal-age').value)||0;const gender=document.getElementById('cal-gender').value;const w=parseFloat(document.getElementById('cal-weight').value)||0;const h=parseFloat(document.getElementById('cal-height').value)||0;const act=parseFloat(document.getElementById('cal-activity').value)||1.2;const goal=parseInt(document.getElementById('cal-goal').value)||0;let bmr=gender==='male'?88.362+(13.397*w*0.453592)+(4.799*h*2.54)-(5.677*age):447.593+(9.247*w*0.453592)+(3.098*h*2.54)-(4.330*age);const tdee=bmr*act+goal;document.getElementById('totalCalorie').textContent=Math.round(tdee)+' cal/day';document.getElementById('breakdownCalorie').textContent='BMR: '+Math.round(bmr)+' × '+act+' activity + '+goal+' goal';document.getElementById('resultsCalorie').classList.add('show');}
+function calcCalorie(){const age=parseInt(document.getElementById('cal-age').value)||30;const gender=document.getElementById('cal-gender').value;const w=parseFloat(document.getElementById('cal-weight').value)||170;const h=parseFloat(document.getElementById('cal-height').value)||70;const act=parseFloat(document.getElementById('cal-activity').value)||1.2;const goal=parseInt(document.getElementById('cal-goal').value)||0;const diet=document.getElementById('cal-diet').value;let bmr=gender==='male'?88.362+(13.397*w*0.453592)+(4.799*h*2.54)-(5.677*age):447.593+(9.247*w*0.453592)+(3.098*h*2.54)-(4.330*age);const tdee=bmr*act+goal;let proteinPct=30,carbPct=40,fatPct=30;if(diet==='lowcarb'){proteinPct=40;carbPct=20;fatPct=40;}else if(diet==='highcarb'){proteinPct=20;carbPct=60;fatPct=20;}else if(diet==='protein'){proteinPct=50;carbPct=30;fatPct=20;}const protein=Math.round(tdee*proteinPct/100/4);const carbs=Math.round(tdee*carbPct/100/4);const fat=Math.round(tdee*fatPct/100/9);document.getElementById('totalCalorie').textContent=Math.round(tdee)+' cal/day';document.getElementById('breakdownCalorie').innerHTML='BMR: '+Math.round(bmr)+' | TDEE: '+Math.round(tdee)+' | P:'+protein+'g C:'+carbs+'g F:'+fat+'g';document.getElementById('resultsCalorie').classList.add('show');}
 
 // Mortgage
-function calcMortgage(){const price=parseInt(document.getElementById('mort-price').value)||0;const down=parseInt(document.getElementById('mort-down').value)||0;const rate=parseFloat(document.getElementById('mort-rate').value)||0;const term=parseInt(document.getElementById('mort-term').value)||0;const tax=parseInt(document.getElementById('mort-tax').value)||0;const ins=parseInt(document.getElementById('mort-insurance').value)||0;const loan=price-down;const r=rate/100/12;const n=term*12;const pmt=loan*(r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1);const total=Math.round(pmt+tax/12+ins/12);document.getElementById('totalMortgage').textContent='$'+total+'/mo';document.getElementById('breakdownMortgage').textContent='Principal & Interest: $'+Math.round(pmt)+' | Tax: $'+Math.round(tax/12)+' | Insurance: $'+Math.round(ins/12);document.getElementById('resultsMortgage').classList.add('show');}
+function calcMortgage(){const price=parseFloat(document.getElementById('mort-price').value)||350000;const down=parseFloat(document.getElementById('mort-down').value)||70000;const rate=parseFloat(document.getElementById('mort-rate').value)||6.5;const term=parseInt(document.getElementById('mort-term').value)||30;const tax=parseFloat(document.getElementById('mort-tax').value)||3500;const ins=parseFloat(document.getElementById('mort-insurance').value)||1200;const hoa=parseFloat(document.getElementById('mort-hoa').value)||0;const pmi=parseFloat(document.getElementById('mort-pmi').value)||0;const loan=price-down;const r=rate/100/12;const n=term*12;const pmt=loan*(r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1);const pmiCost=(price-down)/price<0.2?(loan*pmi/100/12):0;const total=Math.round(pmt+tax/12+ins/12+hoa+pmiCost);document.getElementById('totalMortgage').textContent='$'+total+'/mo';document.getElementById('breakdownMortgage').innerHTML='P&I: $'+Math.round(pmt)+' | Tax: $'+Math.round(tax/12)+' | Ins: $'+Math.round(ins/12)+' | HOA: $'+hoa+' | PMI: $'+Math.round(pmiCost);document.getElementById('resultsMortgage').classList.add('show');}
 
 // Loan
-function calcLoan(){const amt=parseInt(document.getElementById('loan-amount').value)||0;const rate=parseFloat(document.getElementById('loan-rate').value)||0;const term=parseInt(document.getElementById('loan-term').value)||1;const r=rate/100/12;const n=term;const pmt=amt*(r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1);document.getElementById('totalLoan').textContent='$'+Math.round(pmt)+'/mo';document.getElementById('breakdownLoan').textContent='Total: $'+(pmt*n).toFixed(0)+' | Interest: '+(pmt*n-amt).toFixed(0);document.getElementById('resultsLoan').classList.add('show');}
+function calcLoan(){const amt=parseFloat(document.getElementById('loan-amount').value)||10000;const rate=parseFloat(document.getElementById('loan-rate').value)||8;const term=parseInt(document.getElementById('loan-term').value)||36;const feePct=parseFloat(document.getElementById('loan-fee').value)||1;const feeAmt=amt*(feePct/100);const totalAmt=amt+feeAmt;const r=rate/100/12;const n=term;const pmt=totalAmt*(r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1);const totalPaid=pmt*n;const interest=totalPaid-totalAmt;document.getElementById('totalLoan').textContent='$'+Math.round(pmt)+'/mo';document.getElementById('breakdownLoan').innerHTML='Payment: $'+Math.round(pmt)+' | Total: $'+Math.round(totalPaid)+' | Interest: $'+Math.round(interest);document.getElementById('resultsLoan').classList.add('show');}
 
 // Tip
-function calcTip(){const amt=parseFloat(document.getElementById('tip-amount').value)||0;const pct=parseFloat(document.getElementById('tip-percent').value)||0;const people=parseInt(document.getElementById('tip-people').value)||1;const tip=amt*pct/100;const total=amt+tip;document.getElementById('totalTip').textContent='$'+tip.toFixed(2)+' tip';document.getElementById('breakdownTip').textContent='$'+total.toFixed(2)+' total ÷ '+people+' = $'+(total/people).toFixed(2)+'/person';document.getElementById('resultsTip').classList.add('show');}
+function calcTip(){const amt=parseFloat(document.getElementById('tip-amount').value)||50;const pct=parseFloat(document.getElementById('tip-percent').value)||20;const quality=parseFloat(document.getElementById('tip-quality').value)||18;const people=parseInt(document.getElementById('tip-people').value)||1;const tip=amt*quality/100;const total=amt+tip;document.getElementById('totalTip').textContent='$'+tip.toFixed(2)+' tip';document.getElementById('breakdownTip').innerHTML='Tip: $'+tip.toFixed(2)+' | Total: $'+total.toFixed(2)+' | Per person: $'+(total/people).toFixed(2);document.getElementById('resultsTip').classList.add('show');}
 
 // Age
 function calcAge(){const bday=new Date(document.getElementById('age-birthday').value);if(!bday)return;const today=new Date();let age=today.getFullYear()-bday.getFullYear();const m=today.getMonth()-bday.getMonth();if(m<0||(m===0&&today.getDate()<bday.getDate())){age--;}document.getElementById('totalAge').textContent=age+' years';document.getElementById('breakdownAge').textContent='Born: '+bday.toLocaleDateString();document.getElementById('resultsAge').classList.add('show');}
@@ -1320,7 +1374,7 @@ document.getElementById('resultsPercent').classList.add('show');}
 function calcDiscount(){const orig=parseFloat(document.getElementById('pct-orig').value)||0;const disc=parseFloat(document.getElementById('pct-discount').value)||0;const final=orig*(1-disc/100);document.getElementById('totalDiscount').textContent='$'+final.toFixed(2)+' (save $'+(orig-final).toFixed(2)+')';document.getElementById('resultsDiscount').classList.add('show');}
 
 // Currency (approximate rates)
-const rates={USD:1,EUR:0.92,GBP:0.79,JPY:149,CAD:1.36,AUD:1.53};
+const rates={USD:1,EUR:0.92,GBP:0.79,JPY:149,CAD:1.36,AUD:1.53,INR:83,CNY:7.2,MXN:17,BRL:5};
 function calcCurrency(){const amt=parseFloat(document.getElementById('cur-amount').value)||0;const from=document.getElementById('cur-from').value;const to=document.getElementById('cur-to').value;const result=amt/rates[from]*rates[to];document.getElementById('totalCurrency').textContent=to+' '+result.toFixed(2);document.getElementById('resultsCurrency').classList.add('show');}
 
 // Unit converter
