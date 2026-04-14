@@ -3,198 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Mortgage Calculator (Accurate Monthly Payment)</title>
-    <meta name="description" content="Calculate your monthly mortgage payment instantly. Include taxes, insurance, PMI, and HOA fees. Get accurate results in seconds.">
-    <meta name="keywords" content="mortgage calculator, monthly mortgage payment, home loan calculator, mortgage payment calculator, P&I calculator">
-    <meta name="robots" content="index, follow">
+    <title>Free Mortgage Calculator - Calculate Monthly Payment & Affordability</title>
+    <meta name="description" content="Calculate your monthly mortgage payment instantly. Include taxes, insurance, PMI, and compare 15 vs 30 year loans. See how much house you can afford.">
+    <meta name="keywords" content="mortgage calculator, monthly mortgage payment, home loan calculator, how much house can I afford, 15 vs 30 year mortgage, mortgage affordability">
     <link rel="canonical" href="https://rwalters23-del.github.io/calculators/mortgage-calculator.html">
-    <meta name="theme-color" content="#1a1a2e">
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://rwalters23-del.github.io/calculators/mortgage-calculator.html">
-    <meta property="og:title" content="Free Mortgage Calculator - Accurate Monthly Payment">
-    <meta property="og:description" content="Calculate your monthly mortgage payment including taxes, insurance, and PMI.">
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Free Mortgage Calculator">
-    <meta name="twitter:description" content="Calculate your monthly mortgage payment including taxes, insurance, and PMI.">
-    
-    <!-- Structured Data -->
+    <meta name="theme-color" content="#0f172a">
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Free Mortgage Calculator",
-        "url": "https://rwalters23-del.github.io/calculators/mortgage-calculator.html",
-        "description": "Calculate monthly mortgage payments including principal, interest, taxes, insurance, and HOA fees.",
-        "applicationCategory": "FinanceApplication",
-        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
-    }
+    {"@context":"https://schema.org","@type":"WebApplication","name":"Free Mortgage Calculator","url":"https://rwalters23-del.github.io/calculators/mortgage-calculator.html","description":"Calculate monthly mortgage payments and affordability","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
     </script>
-    
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(135deg,#1a1a2e,#16213e);min-height:100vh;padding:20px;color:#fff}
-        .container{max-width:800px;margin:0 auto}
-        header{text-align:center;margin-bottom:30px;padding:20px}
-        h1{font-size:2.2rem;margin-bottom:10px;background:linear-gradient(90deg,#00d4ff,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .subtitle{color:#888;font-size:1.1rem}
-        .breadcrumb{color:#666;font-size:0.9rem;margin-bottom:20px}
-        .breadcrumb a{color:#00d4ff;text-decoration:none}
-        .calculator{background:rgba(255,255,255,0.05);border-radius:15px;padding:25px;border:1px solid rgba(255,255,255,0.1);margin-bottom:25px}
-        .calculator-title{font-size:1.5rem;margin-bottom:15px;color:#00d4ff}
-        .input-group{margin-bottom:15px}
-        .input-group label{display:block;margin-bottom:6px;color:#ccc;font-size:0.95rem}
-        .input-group input,.input-group select{width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.1);color:#fff;font-size:1rem}
-        .input-group input:focus,.input-group select:focus{outline:none;border-color:#00d4ff}
-        .input-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-        .calc-btn{width:100%;padding:14px;background:linear-gradient(90deg,#00d4ff,#7c3aed);border:none;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:10px}
-        .calc-btn:hover{transform:scale(1.02)}
-        .results{background:linear-gradient(135deg,#7c3aed,#00d4ff);border-radius:12px;padding:25px;text-align:center;display:none;margin-top:20px}
-        .results.show{display:block}
-        .results .total{font-size:3rem;font-weight:bold}
-        .results .breakdown{color:rgba(255,255,255,0.9);margin-top:10px}
-        .content-section{background:rgba(255,255,255,0.05);border-radius:12px;padding:25px;margin-bottom:20px}
-        .content-section h2{color:#00d4ff;margin:25px 0 15px;font-size:1.3rem}
-        .content-section h2:first-child{margin-top:0}
-        .content-section h3{color:#ccc;margin:20px 0 10px;font-size:1.1rem}
-        .content-section p{color:#aaa;line-height:1.7;margin-bottom:12px}
-        .content-section ul{color:#aaa;margin-left:20px;margin-bottom:15px}
-        .content-section li{margin-bottom:8px}
-        .related{background:rgba(255,255,255,0.08);border-radius:12px;padding:20px;margin-top:30px}
-        .related h3{color:#fff;margin-bottom:15px}
-        .related a{color:#00d4ff;text-decoration:none;margin-right:20px}
-        .related a:hover{text-decoration:underline}
-        footer{text-align:center;margin-top:40px;color:#666;padding:20px}
-        footer a{color:#00d4ff}
-        @media(max-width:600px){.input-row{grid-template-columns:1fr}h1{font-size:1.8rem}.calculator,.content-section{padding:15px}}
+        *{margin:0;padding:0;box-sizing:border-box}body{font-family:Arial,sans-serif;background:#0f172a;color:#e2e8f0;padding:20px}.container{max-width:800px;margin:0 auto;padding:20px}h1{color:#38bdf8;margin-bottom:10px}.breadcrumb{color:#94a3b8;margin-bottom:20px}.breadcrumb a{color:#38bdf8;text-decoration:none}.calculator{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:25px}.input-group{margin-bottom:15px}.input-group label{display:block;margin-bottom:6px;color:#94a3b8}.input-group input,.input-group select{width:100%;padding:12px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#fff;font-size:1rem}.input-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}.calc-btn{width:100%;padding:14px;background:linear-gradient(90deg,#38bdf8,#8b5cf6);border:none;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:10px}.results{background:linear-gradient(90deg,#8b5cf6,#38bdf8);padding:25px;border-radius:12px;text-align:center;margin-top:20px;display:none}.results.show{display:block}.results .total{font-size:2.5rem;font-weight:bold}.content-section{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:20px}.content-section h2{color:#38bdf8;margin:25px 0 15px}.content-section h2:first-child{margin-top:0}.content-section h3{color:#e2e8f0;margin:20px 0 10px}.content-section p{color:#94a3b8;line-height:1.7;margin-bottom:12px}.content-section ul{color:#94a3b8;margin-left:20px;margin-bottom:15px}.content-section li{margin-bottom:8px}.comparison-table{width:100%;border-collapse:collapse;margin:15px 0}.comparison-table th,.comparison-table td{padding:12px;text-align:left;border-bottom:1px solid #334155}.comparison-table th{color:#38bdf8}.related{background:#1e293b;padding:20px;border-radius:12px;margin-top:30px}.related h3{color:#fff;margin-bottom:15px}.related a{color:#38bdf8;text-decoration:none;margin-right:20px}footer{text-align:center;margin-top:40px;color:#64748b}@media(max-width:600px){.input-row{grid-template-columns:1fr}}
     </style>
 </head>
 <body>
 <div class="container">
-<header>
-    <p class="breadcrumb"><a href="../index.html">← All Calculators</a></p>
+    <p class="breadcrumb"><a href="../index.html">← All Calculators</a> | <a href="../index.html">Free Online Calculators</a></p>
     <h1>🏠 Free Mortgage Calculator</h1>
-    <p class="subtitle">Calculate your monthly payment accurately</p>
-</header>
+    <p style="color:#94a3b8;margin-bottom:25px;">Calculate monthly payment, compare 15 vs 30 year loans, and see how much house you can afford</p>
 
-<!-- CALCULATOR TOOL -->
-<div class="calculator" id="mortgage">
-    <div class="calculator-title">Calculate Monthly Payment</div>
-    <p style="color:#aaa;margin-bottom:15px;">Enter your home price, down payment, and interest rate to calculate your monthly mortgage payment.</p>
-    
-    <div class="input-row">
-        <div class="input-group">
-            <label>Home price ($)</label>
-            <input type="number" id="mort-price" value="350000">
+    <div class="calculator">
+        <div class="input-row">
+            <div class="input-group">
+                <label>Home Price ($)</label>
+                <input type="number" id="mort-price" value="350000">
+            </div>
+            <div class="input-group">
+                <label>Down Payment ($)</label>
+                <input type="number" id="mort-down" value="70000">
+            </div>
         </div>
-        <div class="input-group">
-            <label>Down payment ($)</label>
-            <input type="number" id="mort-down" value="70000">
+        <div class="input-row">
+            <div class="input-group">
+                <label>Interest Rate (%)</label>
+                <input type="number" id="mort-rate" value="6.5" step="0.1">
+            </div>
+            <div class="input-group">
+                <label>Loan Term</label>
+                <select id="mort-term">
+                    <option value="30">30 years</option>
+                    <option value="15">15 years</option>
+                    <option value="20">20 years</option>
+                    <option value="10">10 years</option>
+                </select>
+            </div>
+        </div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>Annual Property Tax ($)</label>
+                <input type="number" id="mort-tax" value="3500">
+            </div>
+            <div class="input-group">
+                <label>Annual Home Insurance ($)</label>
+                <input type="number" id="mort-insurance" value="1200">
+            </div>
+        </div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>Monthly HOA ($)</label>
+                <input type="number" id="mort-hoa" value="0">
+            </div>
+            <div class="input-group">
+                <label>PMI (% if down payment &lt;20%)</label>
+                <input type="number" id="mort-pmi" value="0">
+            </div>
+        </div>
+        <button class="calc-btn" onclick="calcMortgage()">🏠 Calculate Payment</button>
+        <div class="results" id="resultsMortgage">
+            <div class="total" id="totalMortgage">$0/mo</div>
+            <p id="breakdownMortgage" style="margin-top:10px;color:rgba(255,255,255,0.9)"></p>
         </div>
     </div>
-    
-    <div class="input-row">
-        <div class="input-group">
-            <label>Interest rate (%)</label>
-            <input type="number" id="mort-rate" value="6.5">
-        </div>
-        <div class="input-group">
-            <label>Loan term</label>
-            <select id="mort-term">
-                <option value="30">30 years</option>
-                <option value="20">20 years</option>
-                <option value="15">15 years</option>
-                <option value="10">10 years</option>
-            </select>
-        </div>
+
+    <div class="content-section">
+        <h2>How to Use This Calculator</h2>
+        <p>Enter your home price, down payment, and interest rate to calculate your monthly mortgage payment. Add property tax, insurance, and HOA fees for a complete picture of your monthly costs.</p>
+        <p>If your down payment is less than 20%, add PMI (Private Mortgage Insurance) to see the true cost. This calculator automatically factors in all major costs.</p>
+
+        <h2>Example Calculation</h2>
+        <p>Let's calculate a typical mortgage:</p>
+        <ul>
+            <li><strong>Home Price:</strong> $350,000</li>
+            <li><strong>Down Payment:</strong> $70,000 (20%)</li>
+            <li><strong>Loan Amount:</strong> $280,000</li>
+            <li><strong>Interest Rate:</strong> 6.5%</li>
+            <li><strong>Loan Term:</strong> 30 years</li>
+            <li><strong>Property Tax:</strong> $3,500/year</li>
+            <li><strong>Insurance:</strong> $1,200/year</li>
+            <li><strong>Monthly P&I:</strong> $1,774</li>
+            <li><strong>Monthly Tax:</strong> $292</li>
+            <li><strong>Monthly Insurance:</strong> $100</li>
+            <li><strong>Total Monthly Payment:</strong> <strong>$2,166/mo</strong></li>
+        </ul>
+
+        <h2>15-Year vs 30-Year Mortgage Comparison</h2>
+        <table class="comparison-table">
+            <tr><th>Factor</th><th>30-Year</th><th>15-Year</th></tr>
+            <tr><td>Monthly Payment</td><td>$1,774</td><td>$2,420</td></tr>
+            <tr><td>Total Interest</td><td>$358,634</td><td>$155,620</td></tr>
+            <tr><td>Total Cost</td><td>$638,634</td><td>$435,620</td></tr>
+            <tr><td>Interest Saved</td><td>-</td><td>$203,014</td></tr>
+        </table>
+        <p><strong>Key insight:</strong> A 15-year mortgage saves over $200,000 in interest but requires $646 more monthly. Choose based on what you can comfortably afford.</p>
+
+        <h2>How Much House Can I Afford?</h2>
+        <p>A common rule is the <strong>28/36 rule</strong>:</p>
+        <ul>
+            <li><strong>28%</strong> of gross income should go to housing (mortgage, taxes, insurance)</li>
+            <li><strong>36%</strong> of gross income should go to all debt (housing + car + student loans + credit cards)</li>
+        </ul>
+        <p><strong>Example:</strong> If you earn $100,000/year ($8,333/month):</p>
+        <ul>
+            <li>Max housing: $8,333 × 0.28 = <strong>$2,333/month</strong></li>
+            <li>Max total debt: $8,333 × 0.36 = <strong>$3,000/month</strong></li>
+        </ul>
+
+        <h2>Understanding Your Mortgage Payment</h2>
+        <p>Your monthly payment includes:</p>
+        <ul>
+            <li><strong>Principal</strong> - Paying down the loan balance</li>
+            <li><strong>Interest</strong> - The cost of borrowing</li>
+            <li><strong>Property Tax</strong> - Your share of local taxes (required)</li>
+            <li><strong>Homeowners Insurance</strong> - Required to protect your investment</li>
+            <li><strong>PMI</strong> - Required if down payment is less than 20%</li>
+            <li><strong>HOA</strong> - If your community has fees</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+        <h3>What is a good mortgage rate in 2026?</h3>
+        <p>As of 2026, competitive 30-year fixed rates range from 6.0% to 7.0% for well-qualified buyers. Your rate depends on credit score, down payment, lender, and loan type.</p>
+
+        <h3>How much house can I afford with $200k salary?</h3>
+        <p>Using the 28% rule, $200,000/year = $16,667/month gross. Max housing = $4,667/mo. With 6.5% rate and 20% down, you could afford roughly a $650,000-700,000 home.</p>
+
+        <h3>Should I pay points to lower my rate?</h3>
+        <p>Points (1% of loan = 1 point) can lower your rate by 0.25%. Paying points makes sense if you plan to stay in the home 5+ years. Calculate your break-even point.</p>
+
+        <h3>What is PMI and when can I remove it?</h3>
+        <p>PMI is Private Mortgage Insurance, required when down payment is under 20%. Once you reach 20% equity (request an appraisal), you can request its removal.</p>
+
+        <h3>Can I negotiate mortgage rates?</h3>
+        <p>Yes! Rates vary between lenders by 0.25-0.5%. Get quotes from at least 3 lenders. Also negotiate - some lenders will match competitor rates.</p>
     </div>
-    
-    <div class="input-row">
-        <div class="input-group">
-            <label>Property tax ($/yr)</label>
-            <input type="number" id="mort-tax" value="3500">
-        </div>
-        <div class="input-group">
-            <label>Insurance ($/yr)</label>
-            <input type="number" id="mort-insurance" value="1200">
-        </div>
+
+    <div class="related">
+        <h3>Related Calculators</h3>
+        <a href="loan-calculator.html">💳 Loan Calculator</a>
+        <a href="breakeven-calculator.html">📈 Breakeven Calculator</a>
+        <a href="calorie-calculator.html">🍔 Calorie Calculator</a>
+        <a href="bmi-calculator.html">⚖️ BMI Calculator</a>
+        <a href="tdee-calculator.html">📊 TDEE Calculator</a>
+        <a href="../index.html">← All Calculators</a>
     </div>
-    
-    <div class="input-row">
-        <div class="input-group">
-            <label>HOA ($/mo)</label>
-            <input type="number" id="mort-hoa" value="0">
-        </div>
-        <div class="input-group">
-            <label>PMI (% if &lt;20% down)</label>
-            <input type="number" id="mort-pmi" value="0">
-        </div>
-    </div>
-    
-    <button class="calc-btn" onclick="calcMortgage()">🏠 Calculate Payment</button>
-    
-    <div class="results" id="resultsMortgage">
-        <div class="total" id="totalMortgage">$0/mo</div>
-        <div class="breakdown" id="breakdownMortgage"></div>
-    </div>
+
+    <footer>
+        <p>© 2026 Free Online Calculators | <a href="../index.html">All Calculators</a></p>
+    </footer>
 </div>
-
-<!-- SEO CONTENT -->
-<div class="content-section">
-    <h2>How to Use This Calculator</h2>
-    <p>Enter your home price, down payment, and interest rate to calculate your monthly mortgage payment. Include property tax, insurance, and HOA fees for a complete picture of your monthly costs.</p>
-    <p>If your down payment is less than 20%, add PMI (Private Mortgage Insurance) to see the true cost. Our calculator handles all the math automatically.</p>
-
-    <h2>Example Calculation</h2>
-    <p>For a <strong>$350,000 home</strong> with <strong>$70,000 down</strong> (20%) at <strong>6.5% interest</strong> on a 30-year loan:</p>
-    <ul>
-        <li>Loan amount: $280,000</li>
-        <li>Principal & Interest: $1,774/mo</li>
-        <li>Property tax: $292/mo</li>
-        <li>Home insurance: $100/mo</li>
-        <li><strong>Total monthly payment: $2,166/mo</strong></li>
-    </ul>
-
-    <h2>Why Your Mortgage Payment Matters</h2>
-    <p>Your mortgage is likely your largest monthly expense. Understanding the full cost helps you:</p>
-    <ul>
-        <li><strong>Budget properly</strong> - Know exactly what to expect each month</li>
-        <li><strong>Compare loan options</strong> - 15-year vs 30-year, adjustable vs fixed</li>
-        <li><strong>Plan for the future</strong> - Include taxes and insurance in long-term plans</li>
-        <li><strong>Avoid surprise costs</strong> - PMI, HOA increases, tax changes</li>
-    </ul>
-
-    <h2>FAQ</h2>
-    <h3>How is mortgage interest calculated?</h3>
-    <p>Mortgage interest is calculated monthly on your remaining loan balance. In the early years, most of your payment goes to interest. By the end of the loan, most goes to principal.</p>
-
-    <h3>What is a good interest rate in 2026?</h3>
-    <p>As of 2026, a competitive 30-year fixed mortgage rate ranges from 6.0% to 7.0% for well-qualified buyers. Rates vary by credit score, down payment, and lender.</p>
-
-    <h3>Should I choose a 15-year or 30-year mortgage?</h3>
-    <p>A 15-year mortgage saves tens of thousands in interest but requires higher monthly payments. Choose 15-year if you can afford the payments and want to pay off faster. Choose 30-year for lower payments and flexibility.</p>
-
-    <h3>What is PMI and when do I need it?</h3>
-    <p>PMI is Private Mortgage Insurance required when your down payment is less than 20%. It protects the lender, not you. Once you reach 20% equity, you can request it be removed.</p>
-</div>
-
-<!-- RELATED CALCULATORS -->
-<div class="related">
-    <h3>Related Calculators</h3>
-    <a href="bmi-calculator.html">⚖️ BMI Calculator</a>
-    <a href="calorie-calculator.html">🍔 Calorie Calculator</a>
-    <a href="percentage-calculator.html">➗ Percentage Calculator</a>
-    <a href="../index.html">← All Calculators</a>
-</div>
-
-<footer>
-    <p>© 2026 Free Online Calculators | <a href="../index.html">All Calculators</a></p>
-</footer>
-</div>
-
 <script>
 function calcMortgage(){
     const price=parseFloat(document.getElementById('mort-price').value)||0;
