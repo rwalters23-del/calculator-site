@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Tip Calculator - Calculate Tips & Split Bills</title>
+    <meta name="description" content="Calculate tips quickly and easily. Split bills among friends with our free online tip calculator.">
+    <link rel="canonical" href="https://rwalters23-del.github.io/calculators/tip-calculator.html">
+    <meta name="theme-color" content="#0f172a">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:Arial,sans-serif;background:#0f172a;color:#e2e8f0;padding:20px}
+        .container{max-width:800px;margin:0 auto;padding:20px}
+        h1{color:#38bdf8;margin-bottom:10px}
+        .breadcrumb{color:#94a3b8;margin-bottom:20px}
+        .breadcrumb a{color:#38bdf8;text-decoration:none}
+        .calculator{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:25px}
+        .input-group{margin-bottom:15px}
+        .input-group label{display:block;margin-bottom:6px;color:#94a3b8}
+        .input-group input,.input-group select{width:100%;padding:12px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#fff;font-size:1rem}
+        .input-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+        .calc-btn{width:100%;padding:14px;background:linear-gradient(90deg,#38bdf8,#8b5cf6);border:none;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:10px}
+        .results{background:linear-gradient(90deg,#8b5cf6,#38bdf8);padding:25px;border-radius:12px;text-align:center;margin-top:20px;display:none}
+        .results.show{display:block}
+        .results .total{font-size:2.5rem;font-weight:bold}
+        .content-section{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:20px}
+        .content-section h2{color:#38bdf8;margin:20px 0 15px}
+        .content-section h2:first-child{margin-top:0}
+        .content-section p{color:#94a3b8;line-height:1.7}
+        .content-section ul{color:#94a3b8;margin-left:20px}
+        .content-section li{margin-bottom:8px}
+        .related{background:#1e293b;padding:20px;border-radius:12px;margin-top:30px}
+        .related h3{color:#fff;margin-bottom:15px}
+        .related a{color:#38bdf8;text-decoration:none;margin-right:20px}
+        footer{text-align:center;margin-top:40px;color:#64748b;padding:20px}
+        @media(max-width:600px){.input-row{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+<div class="container">
+    <p class="breadcrumb"><a href="../index.html">← All Calculators</a></p>
+    <h1>💵 Free Tip Calculator</h1>
+    <p style="color:#94a3b8;margin-bottom:25px;">Calculate tips and split bills easily</p>
+
+    <div class="calculator">
+        <div class="input-row">
+            <div class="input-group">
+                <label>Bill Amount ($)</label>
+                <input type="number" id="tip-amount" value="50">
+            </div>
+            <div class="input-group">
+                <label>Tip Percentage (%)</label>
+                <select id="tip-percent">
+                    <option value="10">10%</option>
+                    <option value="15" selected>15%</option>
+                    <option value="18">18%</option>
+                    <option value="20">20%</option>
+                    <option value="25">25%</option>
+                </select>
+            </div>
+        </div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>Number of People</label>
+                <input type="number" id="tip-people" value="1" min="1">
+            </div>
+            <div class="input-group">
+                <label>Round Up?</label>
+                <select id="tip-round">
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+            </div>
+        </div>
+        <button class="calc-btn" onclick="calcTip()">💵 Calculate Tip</button>
+        <div class="results" id="resultsTip">
+            <div class="total" id="totalTip">$0</div>
+            <p id="breakdownTip" style="margin-top:10px;color:rgba(255,255,255,0.9)"></p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>How to Use This Calculator</h2>
+        <p>Enter your bill amount, select the tip percentage, and choose how many people to split with. The calculator will show the tip amount and total per person.</p>
+        <h2>Tipping Guide</h2>
+        <ul>
+            <li><strong>15%</strong> - Standard for adequate service</li>
+            <li><strong>18%</strong> - Good service</li>
+            <li><strong>20%</strong> - Excellent service</li>
+            <li><strong>25%</strong> - Outstanding service</li>
+        </ul>
+    </div>
+
+    <div class="related">
+        <h3>Related Calculators</h3>
+        <a href="percentage-calculator.html">➗ Percentage Calculator</a>
+        <a href="mortgage-calculator.html">🏠 Mortgage Calculator</a>
+        <a href="../index.html">← All Calculators</a>
+    </div>
+
+    <footer><p>© 2026 Free Online Calculators</p></footer>
+</div>
+
+<script>
+function calcTip(){
+    const amount=parseFloat(document.getElementById('tip-amount').value)||0;
+    const percent=parseFloat(document.getElementById('tip-percent').value)||15;
+    const people=parseInt(document.getElementById('tip-people').value)||1;
+    const tip=amount*percent/100;
+    let total=amount+tip;
+    if(document.getElementById('tip-round').value==='yes'){
+        total=Math.ceil(total);
+    }
+    const perPerson=total/people;
+    document.getElementById('totalTip').textContent='$'+perPerson.toFixed(2)+'/person';
+    document.getElementById('breakdownTip').textContent='Tip: $'+tip.toFixed(2)+' | Total: $'+total.toFixed(2);
+    document.getElementById('resultsTip').classList.add('show');
+}
+</script>
+</body>
+</html>

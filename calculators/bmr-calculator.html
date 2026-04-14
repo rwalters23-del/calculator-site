@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free BMR Calculator - Basal Metabolic Rate</title>
+    <meta name="description" content="Calculate your basal metabolic rate (BMR). Find how many calories your body burns at rest.">
+    <link rel="canonical" href="https://rwalters23-del.github.io/calculators/bmr-calculator.html">
+    <meta name="theme-color" content="#0f172a">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:Arial,sans-serif;background:#0f172a;color:#e2e8f0;padding:20px}
+        .container{max-width:800px;margin:0 auto;padding:20px}
+        h1{color:#38bdf8;margin-bottom:10px}
+        .breadcrumb{color:#94a3b8;margin-bottom:20px}
+        .breadcrumb a{color:#38bdf8;text-decoration:none}
+        .calculator{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:25px}
+        .input-group{margin-bottom:15px}
+        .input-group label{display:block;margin-bottom:6px;color:#94a3b8}
+        .input-group input,.input-group select{width:100%;padding:12px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#fff;font-size:1rem}
+        .input-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+        .calc-btn{width:100%;padding:14px;background:linear-gradient(90deg,#38bdf8,#8b5cf6);border:none;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:10px}
+        .results{background:linear-gradient(90deg,#8b5cf6,#38bdf8);padding:25px;border-radius:12px;text-align:center;margin-top:20px;display:none}
+        .results.show{display:block}
+        .results .total{font-size:2.5rem;font-weight:bold}
+        .content-section{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:20px}
+        .content-section h2{color:#38bdf8;margin:20px 0 15px}
+        .content-section p{color:#94a3b8;line-height:1.7}
+        .content-section ul{color:#94a3b8;margin-left:20px}
+        .content-section li{margin-bottom:8px}
+        .related{background:#1e293b;padding:20px;border-radius:12px;margin-top:30px}
+        .related a{color:#38bdf8;text-decoration:none;margin-right:20px}
+        footer{text-align:center;margin-top:40px;color:#64748b}
+        @media(max-width:600px){.input-row{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+<div class="container">
+    <p class="breadcrumb"><a href="../index.html">← All Calculators</a></p>
+    <h1>🔥 Free BMR Calculator</h1>
+    <p style="color:#94a3b8;margin-bottom:25px;">Calculate your basal metabolic rate - calories burned at rest</p>
+
+    <div class="calculator">
+        <div class="input-row">
+            <div class="input-group">
+                <label>Age</label>
+                <input type="number" id="bmr-age" value="30">
+            </div>
+            <div class="input-group">
+                <label>Gender</label>
+                <select id="bmr-gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+        </div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>Weight (lbs)</label>
+                <input type="number" id="bmr-weight" value="170">
+            </div>
+            <div class="input-group">
+                <label>Height (inches)</label>
+                <input type="number" id="bmr-height" value="70">
+            </div>
+        </div>
+        <button class="calc-btn" onclick="calcBMR()">🔥 Calculate BMR</button>
+        <div class="results" id="resultsBMR">
+            <div class="total" id="totalBMR">0 cal/day</div>
+            <p id="breakdownBMR" style="margin-top:10px;color:rgba(255,255,255,0.9)"></p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>What is BMR?</h2>
+        <p>Your Basal Metabolic Rate (BMR) is the number of calories your body burns at complete rest just to maintain basic functions like breathing, circulation, and cell production.</p>
+        <h2>How to Use This Calculator</h2>
+        <p>Enter your age, gender, weight, and height to calculate your BMR using the Mifflin-St Jeor equation, widely considered the most accurate formula.</p>
+        <h2>BMR vs TDEE</h2>
+        <ul>
+            <li><strong>BMR</strong> - Calories burned at rest</li>
+            <li><strong>TDEE</strong> - Total Daily Energy Expenditure (BMR + activity)</li>
+        </ul>
+    </div>
+
+    <div class="related">
+        <h3 style="color:#fff;margin-bottom:15px">Related Calculators</h3>
+        <a href="calorie-calculator.html">🍔 Calorie Calculator</a>
+        <a href="bmi-calculator.html">⚖️ BMI Calculator</a>
+        <a href="tdee-calculator.html">📊 TDEE Calculator</a>
+        <a href="../index.html">← All Calculators</a>
+    </div>
+    <footer><p>© 2026 Free Online Calculators</p></footer>
+</div>
+<script>
+function calcBMR(){
+    const age=parseInt(document.getElementById('bmr-age').value)||30;
+    const gender=document.getElementById('bmr-gender').value;
+    const w=parseFloat(document.getElementById('bmr-weight').value)||170;
+    const h=parseFloat(document.getElementById('bmr-height').value)||70;
+    let bmr=gender==='male'?88.362+(13.397*w*0.453592)+(4.799*h*2.54)-(5.677*age):447.593+(9.247*w*0.453592)+(3.098*h*2.54)-(4.330*age);
+    document.getElementById('totalBMR').textContent=Math.round(bmr)+' cal/day';
+    document.getElementById('breakdownBMR').textContent='Calories your body burns at complete rest';
+    document.getElementById('resultsBMR').classList.add('show');
+}
+</script>
+</body>
+</html>

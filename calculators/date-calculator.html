@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Date Calculator - Days Between Dates</title>
+    <meta name="description" content="Calculate the number of days between two dates. Free online date calculator.">
+    <link rel="canonical" href="https://rwalters23-del.github.io/calculators/date-calculator.html">
+    <meta name="theme-color" content="#0f172a">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:Arial,sans-serif;background:#0f172a;color:#e2e8f0;padding:20px}
+        .container{max-width:800px;margin:0 auto;padding:20px}
+        h1{color:#38bdf8;margin-bottom:10px}
+        .breadcrumb{color:#94a3b8;margin-bottom:20px}
+        .breadcrumb a{color:#38bdf8;text-decoration:none}
+        .calculator{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:25px}
+        .input-group{margin-bottom:15px}
+        .input-group label{display:block;margin-bottom:6px;color:#94a3b8}
+        .input-group input{width:100%;padding:12px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#fff;font-size:1rem}
+        .calc-btn{width:100%;padding:14px;background:linear-gradient(90deg,#38bdf8,#8b5cf6);border:none;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:10px}
+        .results{background:linear-gradient(90deg,#8b5cf6,#38bdf8);padding:25px;border-radius:12px;text-align:center;margin-top:20px;display:none}
+        .results.show{display:block}
+        .results .total{font-size:2.5rem;font-weight:bold}
+        .content-section{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:20px}
+        .content-section h2{color:#38bdf8;margin:20px 0 15px}
+        .content-section p{color:#94a3b8;line-height:1.7}
+        .related{background:#1e293b;padding:20px;border-radius:12px;margin-top:30px}
+        .related a{color:#38bdf8;text-decoration:none;margin-right:20px}
+        footer{text-align:center;margin-top:40px;color:#64748b}
+    </style>
+</head>
+<body>
+<div class="container">
+    <p class="breadcrumb"><a href="../index.html">← All Calculators</a></p>
+    <h1>📅 Free Date Calculator</h1>
+    <p style="color:#94a3b8;margin-bottom:25px;">Calculate days between two dates</p>
+
+    <div class="calculator">
+        <div class="input-group">
+            <label>Start Date</label>
+            <input type="date" id="date-start">
+        </div>
+        <div class="input-group">
+            <label>End Date</label>
+            <input type="date" id="date-end">
+        </div>
+        <button class="calc-btn" onclick="calcDate()">📅 Calculate Days</button>
+        <div class="results" id="resultsDate">
+            <div class="total" id="totalDate">0 days</div>
+            <p id="breakdownDate" style="margin-top:10px;color:rgba(255,255,255,0.9)"></p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>How It Works</h2>
+        <p>Enter a start and end date to calculate the number of days between them. Great for planning events, calculating project timelines, or finding out how many days until a deadline.</p>
+    </div>
+
+    <div class="related">
+        <h3 style="color:#fff;margin-bottom:15px">Related Calculators</h3>
+        <a href="age-calculator.html">🎂 Age Calculator</a>
+        <a href="bmi-calculator.html">⚖️ BMI Calculator</a>
+        <a href="../index.html">← All Calculators</a>
+    </div>
+    <footer><p>© 2026 Free Online Calculators</p></footer>
+</div>
+<script>
+function calcDate(){
+    const start=new Date(document.getElementById('date-start').value);
+    const end=new Date(document.getElementById('date-end').value);
+    const diff=Math.abs(end-start);
+    const days=Math.ceil(diff/(1000*60*60*24));
+    document.getElementById('totalDate').textContent=days+' days';
+    document.getElementById('breakdownDate').textContent=(end>start?'From':'Until')+' start date';
+    document.getElementById('resultsDate').classList.add('show');
+}
+</script>
+</body>
+</html>
