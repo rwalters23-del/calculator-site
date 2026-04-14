@@ -3,192 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free BMI Calculator (Accurate & Instant Results) | Calculate Your Body Mass Index</title>
+    <title>Free BMI Calculator (Accurate & Instant Results)</title>
     <meta name="description" content="Calculate your BMI instantly with our free online calculator. Learn your body mass index, healthy weight ranges, and what your result means for your health.">
     <meta name="keywords" content="BMI calculator, body mass index, calculate BMI, healthy BMI, BMI ranges, BMI formula, weight calculator">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://rwalters23-del.github.io/calculators/bmi-calculator.html">
-    <meta name="theme-color" content="#1a1a2e">
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://rwalters23-del.github.io/calculators/bmi-calculator.html">
-    <meta property="og:title" content="Free BMI Calculator - Accurate & Instant Results">
-    <meta property="og:description" content="Calculate your body mass index instantly. Free, accurate, and easy to use.">
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Free BMI Calculator">
-    <meta name="twitter:description" content="Calculate your body mass index instantly. Free, accurate, and easy to use.">
-    
-    <!-- Structured Data -->
+    <link rel="canonical" href="https://freecalculatormax.com/bmi-calculator.html">
+    <meta name="theme-color" content="#0f172a">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "Free BMI Calculator",
-        "url": "https://rwalters23-del.github.io/calculators/bmi-calculator.html",
-        "description": "Calculate your Body Mass Index (BMI) free online. Includes body composition analysis, waist-to-height ratio, and health risk assessment.",
+        "url": "https://freecalculatormax.com/bmi-calculator.html",
+        "description": "Calculate your Body Mass Index (BMI) free online. Includes waist-to-height ratio and health risk assessment.",
         "applicationCategory": "HealthApplication",
         "operatingSystem": "All",
         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
     }
     </script>
-    
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(135deg,#1a1a2e,#16213e);min-height:100vh;padding:20px;color:#fff}
-        .container{max-width:800px;margin:0 auto}
-        header{text-align:center;margin-bottom:30px;padding:20px}
-        h1{font-size:2.2rem;margin-bottom:10px;background:linear-gradient(90deg,#00d4ff,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .subtitle{color:#888;font-size:1.1rem}
-        .breadcrumb{color:#666;font-size:0.9rem;margin-bottom:20px}
-        .breadcrumb a{color:#00d4ff;text-decoration:none}
-        .calculator{background:rgba(255,255,255,0.05);border-radius:15px;padding:25px;border:1px solid rgba(255,255,255,0.1);margin-bottom:25px}
-        .calculator-title{font-size:1.5rem;margin-bottom:15px;color:#00d4ff}
-        .input-group{margin-bottom:15px}
-        .input-group label{display:block;margin-bottom:6px;color:#ccc;font-size:0.95rem}
-        .input-group input,.input-group select{width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.1);color:#fff;font-size:1rem}
-        .input-group input:focus,.input-group select:focus{outline:none;border-color:#00d4ff}
-        .input-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-        .calc-btn{width:100%;padding:14px;background:linear-gradient(90deg,#00d4ff,#7c3aed);border:none;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:10px}
-        .calc-btn:hover{transform:scale(1.02)}
-        .results{background:linear-gradient(135deg,#7c3aed,#00d4ff);border-radius:12px;padding:25px;text-align:center;display:none;margin-top:20px}
-        .results.show{display:block}
-        .results .total{font-size:3rem;font-weight:bold}
-        .results .breakdown{color:rgba(255,255,255,0.9);margin-top:10px}
-        .content-section{background:rgba(255,255,255,0.05);border-radius:12px;padding:25px;margin-bottom:20px}
-        .content-section h2{color:#00d4ff;margin:25px 0 15px;font-size:1.3rem}
-        .content-section h2:first-child{margin-top:0}
-        .content-section h3{color:#ccc;margin:20px 0 10px;font-size:1.1rem}
-        .content-section p{color:#aaa;line-height:1.7;margin-bottom:12px}
-        .content-section ul{color:#aaa;margin-left:20px;margin-bottom:15px}
-        .content-section li{margin-bottom:8px}
-        table{width:100%;border-collapse:collapse;margin:15px 0}
-        th,td{padding:12px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.1)}
-        th{color:#00d4ff}
-        td{color:#ccc}
-        .related{background:rgba(255,255,255,0.08);border-radius:12px;padding:20px;margin-top:30px}
-        .related h3{color:#fff;margin-bottom:15px}
-        .related a{color:#00d4ff;text-decoration:none;margin-right:20px}
-        .related a:hover{text-decoration:underline}
-        footer{text-align:center;margin-top:40px;color:#666;padding:20px}
-        footer a{color:#00d4ff}
-        @media(max-width:600px){.input-row{grid-template-columns:1fr}h1{font-size:1.8rem}.calculator,.content-section{padding:15px}}
+        *{margin:0;padding:0;box-sizing:border-box}body{font-family:Arial,sans-serif;background:#0f172a;color:#e2e8f0;padding:20px}.container{max-width:800px;margin:0 auto;padding:20px}h1{color:#38bdf8;margin-bottom:10px}.breadcrumb{color:#94a3b8;margin-bottom:20px}.breadcrumb a{color:#38bdf8;text-decoration:none}.calculator{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:25px}.input-group{margin-bottom:15px}.input-group label{display:block;margin-bottom:6px;color:#94a3b8}.input-group input,.input-group select{width:100%;padding:12px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#fff;font-size:1rem}.input-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}.calc-btn{width:100%;padding:14px;background:linear-gradient(90deg,#38bdf8,#8b5cf6);border:none;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:10px}.results{background:linear-gradient(90deg,#8b5cf6,#38bdf8);padding:25px;border-radius:12px;text-align:center;margin-top:20px;display:none}.results.show{display:block}.results .total{font-size:2.5rem;font-weight:bold}.content-section{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:20px}.content-section h2{color:#38bdf8;margin:25px 0 15px}.content-section h2:first-child{margin-top:0}.content-section h3{color:#e2e8f0;margin:20px 0 10px}.content-section p{color:#94a3b8;line-height:1.7;margin-bottom:12px}.content-section ul{color:#94a3b8;margin-left:20px;margin-bottom:15px}.content-section li{margin-bottom:8px}.comparison-table{width:100%;border-collapse:collapse;margin:15px 0}.comparison-table th,.comparison-table td{padding:12px;text-align:left;border-bottom:1px solid #334155}.comparison-table th{color:#38bdf8}.related{background:#1e293b;padding:20px;border-radius:12px;margin-top:30px}.related h3{color:#fff;margin-bottom:15px}.related a{color:#38bdf8;text-decoration:none;margin-right:20px}footer{text-align:center;margin-top:40px;color:#64748b}@media(max-width:600px){.input-row{grid-template-columns:1fr}}
     </style>
 </head>
 <body>
 <div class="container">
-<header>
-    <p class="breadcrumb"><a href="../index.html">← All Calculators</a></p>
+    <p class="breadcrumb"><a href="index.html">← All Calculators</a> | <a href="index.html">Free Online Calculators</a></p>
     <h1>⚖️ Free BMI Calculator</h1>
-    <p class="subtitle">Calculate your Body Mass Index instantly</p>
-</header>
+    <p style="color:#94a3b8;margin-bottom:25px;">Calculate your Body Mass Index instantly with waist-to-height ratio for more accurate health assessment</p>
 
-<!-- CALCULATOR TOOL -->
-<div class="calculator" id="bmi">
-    <div class="calculator-title">Calculate Your BMI</div>
-    <p style="color:#aaa;margin-bottom:15px;">Enter your weight and height to calculate your BMI. Add waist measurement for more accurate health assessment.</p>
-    
-    <div class="input-row">
-        <div class="input-group">
-            <label>Weight (lbs)</label>
-            <input type="number" id="bmi-weight" value="170">
+    <div class="calculator">
+        <div class="input-row">
+            <div class="input-group">
+                <label>Weight (lbs)</label>
+                <input type="number" id="bmi-weight" value="170">
+            </div>
+            <div class="input-group">
+                <label>Height (inches)</label>
+                <input type="number" id="bmi-height" value="70">
+            </div>
+        </div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>Waist (inches)</label>
+                <input type="number" id="bmi-waist" value="32">
+            </div>
+            <div class="input-group">
+                <label>Gender</label>
+                <select id="bmi-gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
         </div>
         <div class="input-group">
-            <label>Height (inches)</label>
-            <input type="number" id="bmi-height" value="70">
+            <label>Age</label>
+            <input type="number" id="bmi-age" value="30">
+        </div>
+        <button class="calc-btn" onclick="calcBMI()">⚖️ Calculate BMI</button>
+        <div class="results" id="resultsBMI">
+            <div class="total" id="totalBMI">0</div>
+            <p id="breakdownBMI" style="margin-top:10px;color:rgba(255,255,255,0.9)"></p>
         </div>
     </div>
-    
-    <div class="input-row">
-        <div class="input-group">
-            <label>Waist (inches)</label>
-            <input type="number" id="bmi-waist" value="32">
-        </div>
-        <div class="input-group">
-            <label>Gender</label>
-            <select id="bmi-gender">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
-        </div>
-    </div>
-    
-    <div class="input-group">
-        <label>Age</label>
-        <input type="number" id="bmi-age" value="30">
-    </div>
-    
-    <button class="calc-btn" onclick="calcBMI()">⚖️ Calculate BMI</button>
-    
-    <div class="results" id="resultsBMI">
-        <div class="total" id="totalBMI">0</div>
-        <div class="breakdown" id="breakdownBMI"></div>
-    </div>
-    
-    <div class="content-section" style="margin-top:20px">
-        <h2>BMI Categories</h2>
-        <table>
-            <tr><th>BMI</th><th>Category</th></tr>
-            <tr><td>Below 18.5</td><td>Underweight</td></tr>
-            <tr><td>18.5 - 24.9</td><td>Normal weight</td></tr>
-            <tr><td>25 - 29.9</td><td>Overweight</td></tr>
-            <tr><td>30+</td><td>Obese</td></tr>
+
+    <div class="content-section">
+        <h2>How to Use This Calculator</h2>
+        <p>Using our free BMI calculator is simple. Enter your weight in pounds and height in inches. For a more accurate health assessment, add your waist measurement—waist-to-height ratio is a better predictor of health risks than BMI alone.</p>
+        <p>Select your gender and age, then click "Calculate BMI" to get your results instantly. The calculator uses the standard BMI formula: (weight in pounds ÷ height in inches²) × 703.</p>
+        
+        <p><strong>Tip:</strong> Measure your waist at the narrowest point between your hips and ribs, usually just above your belly button. Use a flexible measuring tape for accuracy.</p>
+
+        <h2>Example Calculation</h2>
+        <p>Let's walk through a real example:</p>
+        <ul>
+            <li><strong>Weight:</strong> 170 pounds</li>
+            <li><strong>Height:</strong> 70 inches (5'10")</li>
+            <li><strong>Waist:</strong> 32 inches</li>
+            <li><strong>Calculation:</strong> (170 ÷ 70²) × 703 = <strong>24.5</strong></li>
+            <li><strong>BMI Category:</strong> <strong>Normal weight</strong> (18.5-24.9)</li>
+            <li><strong>Waist-to-Height Ratio:</strong> 32 ÷ 70 = 0.46 (Healthy range)</li>
+        </ul>
+        
+        <p>Now let's compare with a different scenario:</p>
+        <ul>
+            <li><strong>Weight:</strong> 200 pounds</li>
+            <li><strong>Height:</strong> 70 inches</li>
+            <li><strong>BMI:</strong> 28.7 (Overweight)</li>
+            <li><strong>Waist:</strong> 36 inches</li>
+            <li><strong>Waist-to-Height Ratio:</strong> 0.51 (Moderate risk)</li>
+        </ul>
+        <p><strong>Key insight:</strong> Even with a "normal" BMI, a large waist circumference can indicate higher health risks. The waist-to-height ratio adds important context.</p>
+
+        <h2>Why It Matters</h2>
+        <p>BMI is a widely-used screening tool that helps identify weight categories that may lead to health problems:</p>
+        <ul>
+            <li><strong>Heart disease</strong> - Higher BMI is linked to increased cardiovascular risk</li>
+            <li><strong>Type 2 diabetes</strong> - Obesity is a major risk factor for insulin resistance</li>
+            <li><strong>High blood pressure</strong> - Excess weight strains the cardiovascular system</li>
+            <li><strong>Certain cancers</strong> - Higher body fat is associated with several cancer types</li>
+            <li><strong>Joint problems</strong> - Extra weight stresses knees, hips, and ankles</li>
+        </ul>
+        
+        <p>However, BMI has limitations. It doesn't distinguish between muscle and fat. Athletes with high muscle mass may have a high BMI but be perfectly healthy. This is why we include waist-to-height ratio for a more complete picture.</p>
+
+        <h2>Understanding Your Results</h2>
+        
+        <table class="comparison-table">
+            <tr><th>BMI</th><th>Category</th><th>Health Risk</th></tr>
+            <tr><td>Below 18.5</td><td>Underweight</td><td>Malnutrition, osteoporosis</td></tr>
+            <tr><td>18.5 - 24.9</td><td>Normal weight</td><td>Low risk</td></tr>
+            <tr><td>25 - 29.9</td><td>Overweight</td><td>Moderate risk</td></tr>
+            <tr><td>30 - 34.9</td><td>Obesity Class I</td><td>High risk</td></tr>
+            <tr><td>35 - 39.9</td><td>Obesity Class II</td><td>Very high risk</td></tr>
+            <tr><td>40+</td><td>Obesity Class III</td><td>Extremely high risk</td></tr>
         </table>
+        
+        <p><strong>Waist-to-Height Ratio:</strong></p>
+        <ul>
+            <li><strong>Below 0.4</strong> - Underweight</li>
+            <li><strong>0.4 - 0.5</strong> - Healthy</li>
+            <li><strong>0.5 - 0.6</strong> - Overweight</li>
+            <li><strong>Above 0.6</strong> - Obese</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+        <h3>How do I calculate BMI manually?</h3>
+        <p>The formula is: BMI = (weight in pounds ÷ height in inches²) × 703. For example, a 170-pound person who is 70 inches tall: (170 ÷ 4900) × 703 = 24.5. Remember to square the height first!</p>
+
+        <h3>What is a healthy BMI range?</h3>
+        <p>A BMI between 18.5 and 24.9 is considered normal or healthy for most adults. However, individual health should be assessed by a healthcare provider, not BMI alone. Other factors like blood pressure, cholesterol, and blood sugar matter too.</p>
+
+        <h3>Is BMI accurate for athletes?</h3>
+        <p>No—BMI is a general screening tool that doesn't account for muscle mass, bone density, or body composition. Athletes, especially those who lift weights, may have a high BMI due to muscle but be in excellent health. Use waist-to-height ratio for a better assessment.</p>
+
+        <h3>Why is waist measurement important?</h3>
+        <p>Waist circumference measures abdominal fat, which is more dangerous than fat stored in hips and thighs. visceral fat around organs increases risk for heart disease and diabetes. Men with waists over 40 inches and women over 35 inches have higher health risks.</p>
+
+        <h3>Should I worry if my BMI is "overweight"?</h3>
+        <p>BMI is just one screening tool, not a diagnosis. If your BMI is overweight but you have no other risk factors (normal blood pressure, cholesterol, blood sugar, active lifestyle), you may be healthy. Consult your doctor for a complete assessment. Focus on overall health, not just a number.</p>
     </div>
-</div>
 
-<!-- SEO CONTENT -->
-<div class="content-section">
-    <h2>How to Use This Calculator</h2>
-    <p>Using our free BMI calculator is simple. Enter your weight in pounds and height in inches. For more accurate results, add your waist measurement, which helps assess abdominal fat distribution—a better predictor of health risks than BMI alone.</p>
-    <p>Select your gender and age, then click "Calculate BMI" to get your results instantly.</p>
+    <div class="related">
+        <h3>Related Calculators</h3>
+        <a href="calorie-calculator.html">🍔 Calorie Calculator</a>
+        <a href="bmr-calculator.html">🔥 BMR Calculator</a>
+        <a href="tdee-calculator.html">📊 TDEE Calculator</a>
+        <a href="mortgage-calculator.html">🏠 Mortgage Calculator</a>
+        <a href="percentage-calculator.html">➗ Percentage Calculator</a>
+        <a href="index.html">← All Calculators</a>
+    </div>
 
-    <h2>Example Calculation</h2>
-    <p>Let's say you weigh <strong>170 pounds</strong> and are <strong>70 inches</strong> tall (5'10"):</p>
-    <ul>
-        <li>BMI Formula: (170 ÷ 70²) × 703 = <strong>24.5</strong></li>
-        <li>Result: <strong>Normal weight</strong> (BMI 18.5-24.9)</li>
-        <li>If your waist is 32 inches, your waist-to-height ratio is 0.46 (healthy range)</li>
-    </ul>
-
-    <h2>Why BMI Matters</h2>
-    <p>BMI is a widely-used screening tool that helps identify weight categories that may lead to health problems. While it doesn't directly measure body fat, a high BMI can indicate increased risks for:</p>
-    <ul>
-        <li>Heart disease and stroke</li>
-        <li>Type 2 diabetes</li>
-        <li>High blood pressure</li>
-        <li>Certain cancers</li>
-    </ul>
-    <p>However, BMI has limitations—it doesn't distinguish between muscle and fat. Athletes with high muscle mass may have a high BMI but be perfectly healthy.</p>
-
-    <h2>FAQ</h2>
-    <h3>How do I calculate BMI manually?</h3>
-    <p>The formula is: BMI = (weight in pounds ÷ height in inches²) × 703. For example, a 170-pound person who is 70 inches tall would calculate: (170 ÷ 4900) × 703 = 24.5.</p>
-
-    <h3>What is a healthy BMI range?</h3>
-    <p>A BMI between 18.5 and 24.9 is considered normal or healthy. Below 18.5 indicates underweight, 25-29.9 is overweight, and 30+ indicates obesity.</p>
-
-    <h3>Is BMI accurate for everyone?</h3>
-    <p>BMI is a general screening tool and doesn't account for muscle mass, bone density, age, or sex differences. Athletes, elderly individuals, and muscular builds may have inaccurate BMI readings.</p>
-
-    <h3>Does waist size affect BMI accuracy?</h3>
-    <p>Yes. Waist circumference is an important supplementary indicator. Men with waists over 40 inches and women over 35 inches have higher health risks, regardless of BMI.</p>
-</div>
-
-<!-- RELATED CALCULATORS -->
-<div class="related">
-    <h3>Related Calculators</h3>
-    <a href="calorie-calculator.html">🍔 Calorie Calculator</a>
-    <a href="mortgage-calculator.html">🏠 Mortgage Calculator</a>
-    <a href="percentage-calculator.html">➗ Percentage Calculator</a>
-    <a href="../index.html">← All Calculators</a>
-</div>
-
-<footer>
-    <p>© 2026 Free Online Calculators | <a href="../index.html">All Calculators</a></p>
-</footer>
+    <footer>
+        <p>© 2026 FreeCalculatorMax.com | <a href="index.html">All Calculators</a></p>
+    </footer>
 </div>
 
 <script>
