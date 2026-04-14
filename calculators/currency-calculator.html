@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Currency Converter</title>
+    <meta name="description" content="Convert between currencies instantly. Free online currency converter with 10+ currencies.">
+    <link rel="canonical" href="https://rwalters23-del.github.io/calculators/currency-calculator.html">
+    <meta name="theme-color" content="#0f172a">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:Arial,sans-serif;background:#0f172a;color:#e2e8f0;padding:20px}
+        .container{max-width:800px;margin:0 auto;padding:20px}
+        h1{color:#38bdf8;margin-bottom:10px}
+        .breadcrumb{color:#94a3b8;margin-bottom:20px}
+        .breadcrumb a{color:#38bdf8;text-decoration:none}
+        .calculator{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:25px}
+        .input-group{margin-bottom:15px}
+        .input-group label{display:block;margin-bottom:6px;color:#94a3b8}
+        .input-group input,.input-group select{width:100%;padding:12px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#fff;font-size:1rem}
+        .input-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+        .calc-btn{width:100%;padding:14px;background:linear-gradient(90deg,#38bdf8,#8b5cf6);border:none;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:10px}
+        .results{background:linear-gradient(90deg,#8b5cf6,#38bdf8);padding:25px;border-radius:12px;text-align:center;margin-top:20px;display:none}
+        .results.show{display:block}
+        .results .total{font-size:2.5rem;font-weight:bold}
+        .content-section{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:20px}
+        .content-section h2{color:#38bdf8;margin:20px 0 15px}
+        .content-section p{color:#94a3b8;line-height:1.7}
+        .related{background:#1e293b;padding:20px;border-radius:12px;margin-top:30px}
+        .related a{color:#38bdf8;text-decoration:none;margin-right:20px}
+        footer{text-align:center;margin-top:40px;color:#64748b}
+        @media(max-width:600px){.input-row{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+<div class="container">
+    <p class="breadcrumb"><a href="../index.html">← All Calculators</a></p>
+    <h1>💱 Free Currency Converter</h1>
+    <p style="color:#94a3b8;margin-bottom:25px;">Convert between currencies instantly</p>
+
+    <div class="calculator">
+        <div class="input-group">
+            <label>Amount</label>
+            <input type="number" id="cur-amount" value="100">
+        </div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>From</label>
+                <select id="cur-from">
+                    <option value="USD">USD - US Dollar</option>
+                    <option value="EUR">EUR - Euro</option>
+                    <option value="GBP">GBP - British Pound</option>
+                    <option value="JPY">JPY - Japanese Yen</option>
+                    <option value="CAD">CAD - Canadian Dollar</option>
+                    <option value="AUD">AUD - Australian Dollar</option>
+                    <option value="INR">INR - Indian Rupee</option>
+                    <option value="CNY">CNY - Chinese Yuan</option>
+                    <option value="MXN">MXN - Mexican Peso</option>
+                    <option value="BRL">BRL - Brazilian Real</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>To</label>
+                <select id="cur-to">
+                    <option value="EUR">EUR - Euro</option>
+                    <option value="USD">USD - US Dollar</option>
+                    <option value="GBP">GBP - British Pound</option>
+                    <option value="JPY">JPY - Japanese Yen</option>
+                    <option value="CAD">CAD - Canadian Dollar</option>
+                </select>
+            </div>
+        </div>
+        <button class="calc-btn" onclick="calcCurrency()">💱 Convert</button>
+        <div class="results" id="resultsCurrency">
+            <div class="total" id="totalCurrency">$0</div>
+            <p id="breakdownCurrency" style="margin-top:10px;color:rgba(255,255,255,0.9)">*Approximate rates</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Currency Converter Notes</h2>
+        <p>These are approximate rates for estimation purposes. Actual rates vary by a few percent and change daily. For precise conversions, check your bank or currency exchange service.</p>
+    </div>
+
+    <div class="related">
+        <h3 style="color:#fff;margin-bottom:15px">Related Calculators</h3>
+        <a href="percentage-calculator.html">➗ Percentage Calculator</a>
+        <a href="age-calculator.html">🎂 Age Calculator</a>
+        <a href="../index.html">← All Calculators</a>
+    </div>
+    <footer><p>© 2026 Free Online Calculators</p></footer>
+</div>
+<script>
+const rates={USD:1,EUR:0.92,GBP:0.79,JPY:149,CAD:1.36,AUD:1.53,INR:83,CNY:7.2,MXN:17,BRL:5};
+function calcCurrency(){
+    const amt=parseFloat(document.getElementById('cur-amount').value)||0;
+    const from=document.getElementById('cur-from').value;
+    const to=document.getElementById('cur-to').value;
+    const result=amt/rates[from]*rates[to];
+    document.getElementById('totalCurrency').textContent=to+' '+result.toFixed(2);
+    document.getElementById('resultsCurrency').classList.add('show');
+}
+</script>
+</body>
+</html>

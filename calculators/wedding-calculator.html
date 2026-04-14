@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Wedding Cost Calculator</title>
+    <meta name="description" content="Plan your wedding budget. Calculate costs for venue, catering, flowers, photography and find ways to save.">
+    <link rel="canonical" href="https://rwalters23-del.github.io/calculators/wedding-calculator.html">
+    <meta name="theme-color" content="#0f172a">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:Arial,sans-serif;background:#0f172a;color:#e2e8f0;padding:20px}
+        .container{max-width:800px;margin:0 auto;padding:20px}
+        h1{color:#38bdf8;margin-bottom:10px}
+        .breadcrumb{color:#94a3b8;margin-bottom:20px}
+        .breadcrumb a{color:#38bdf8;text-decoration:none}
+        .calculator{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:25px}
+        .input-group{margin-bottom:15px}
+        .input-group label{display:block;margin-bottom:6px;color:#94a3b8}
+        .input-group input,.input-group select{width:100%;padding:12px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#fff;font-size:1rem}
+        .input-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+        .calc-btn{width:100%;padding:14px;background:linear-gradient(90deg,#38bdf8,#8b5cf6);border:none;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:10px}
+        .results{background:linear-gradient(90deg,#8b5cf6,#38bdf8);padding:25px;border-radius:12px;text-align:center;margin-top:20px;display:none}
+        .results.show{display:block}
+        .results .total{font-size:2.5rem;font-weight:bold}
+        .content-section{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:20px}
+        .content-section h2{color:#38bdf8;margin:20px 0 15px}
+        .content-section p{color:#94a3b8;line-height:1.7}
+        .content-section ul{color:#94a3b8;margin-left:20px}
+        .content-section li{margin-bottom:8px}
+        .related{background:#1e293b;padding:20px;border-radius:12px;margin-top:30px}
+        .related a{color:#38bdf8;text-decoration:none;margin-right:20px}
+        footer{text-align:center;margin-top:40px;color:#64748b}
+        @media(max-width:600px){.input-row{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+<div class="container">
+    <p class="breadcrumb"><a href="../index.html">← All Calculators</a></p>
+    <h1>💒 Free Wedding Cost Calculator</h1>
+    <p style="color:#94a3b8;margin-bottom:25px;">Plan your dream wedding within budget</p>
+
+    <div class="calculator">
+        <div class="input-row">
+            <div class="input-group">
+                <label>Guest Count</label>
+                <input type="number" id="wedding-guests" value="100">
+            </div>
+            <div class="input-group">
+                <label> Venue ($)</label>
+                <input type="number" id="wedding-venue" value="5000">
+            </div>
+        </div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>Catering ($/person)</label>
+                <input type="number" id="wedding-catering" value="75">
+            </div>
+            <div class="input-group">
+                <label>Photography ($)</label>
+                <input type="number" id="wedding-photo" value="2500">
+            </div>
+        </div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>Flowers ($)</label>
+                <input type="number" id="wedding-flowers" value="1500">
+            </div>
+            <div class="input-group">
+                <label>Dress/Suit ($)</label>
+                <input type="number" id="wedding-dress" value="2000">
+            </div>
+        </div>
+        <button class="calc-btn" onclick="calcWedding()">💒 Calculate Total</button>
+        <div class="results" id="resultsWedding">
+            <div class="total" id="totalWedding">$0</div>
+            <p id="breakdownWedding" style="margin-top:10px;color:rgba(255,255,255,0.9)"></p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Wedding Budget Breakdown</h2>
+        <p>Here's the typical breakdown of wedding costs:</p>
+        <ul>
+            <li><strong>Reception/Venue</strong> - 35-40%</li>
+            <li><strong>Catering</strong> - 25-30%</li>
+            <li><strong>Photography/Video</strong> - 10-12%</li>
+            <li><strong>Flowers & Decor</strong> - 8-10%</li>
+            <li><strong>Attire</strong> - 5-8%</li>
+        </ul>
+    </div>
+
+    <div class="related">
+        <h3 style="color:#fff;margin-bottom:15px">Related Calculators</h3>
+        <a href="loan-calculator.html">💳 Loan Calculator</a>
+        <a href="mortgage-calculator.html">🏠 Mortgage Calculator</a>
+        <a href="../index.html">← All Calculators</a>
+    </div>
+    <footer><p>© 2026 Free Online Calculators</p></footer>
+</div>
+<script>
+function calcWedding(){
+    const guests=parseInt(document.getElementById('wedding-guests').value)||0;
+    const venue=parseFloat(document.getElementById('wedding-venue').value)||0;
+    const catering=parseFloat(document.getElementById('wedding-catering').value)||0;
+    const photo=parseFloat(document.getElementById('wedding-photo').value)||0;
+    const flowers=parseFloat(document.getElementById('wedding-flowers').value)||0;
+    const dress=parseFloat(document.getElementById('wedding-dress').value)||0;
+    
+    const total=venue+(catering*guests)+photo+flowers+dress;
+    const perPerson=total/guests;
+    
+    document.getElementById('totalWedding').textContent='$'+Math.round(total).toLocaleString();
+    document.getElementById('breakdownWedding').textContent='$'+Math.round(perPerson)+' per guest';
+    document.getElementById('resultsWedding').classList.add('show');
+}
+</script>
+</body>
+</html>

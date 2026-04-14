@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Unit Converter</title>
+    <meta name="description" content="Convert between units instantly. Length, weight, temperature, and more.">
+    <link rel="canonical" href="https://rwalters23-del.github.io/calculators/unit-calculator.html">
+    <meta name="theme-color" content="#0f172a">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:Arial,sans-serif;background:#0f172a;color:#e2e8f0;padding:20px}
+        .container{max-width:800px;margin:0 auto;padding:20px}
+        h1{color:#38bdf8;margin-bottom:10px}
+        .breadcrumb{color:#94a3b8;margin-bottom:20px}
+        .breadcrumb a{color:#38bdf8;text-decoration:none}
+        .calculator{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:25px}
+        .input-group{margin-bottom:15px}
+        .input-group label{display:block;margin-bottom:6px;color:#94a3b8}
+        .input-group input,.input-group select{width:100%;padding:12px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#fff;font-size:1rem}
+        .input-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+        .calc-btn{width:100%;padding:14px;background:linear-gradient(90deg,#38bdf8,#8b5cf6);border:none;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:10px}
+        .results{background:linear-gradient(90deg,#8b5cf6,#38bdf8);padding:25px;border-radius:12px;text-align:center;margin-top:20px;display:none}
+        .results.show{display:block}
+        .results .total{font-size:2.5rem;font-weight:bold}
+        .content-section{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:20px}
+        .content-section h2{color:#38bdf8;margin:20px 0 15px}
+        .content-section p{color:#94a3b8;line-height:1.7}
+        .related{background:#1e293b;padding:20px;border-radius:12px;margin-top:30px}
+        .related a{color:#38bdf8;text-decoration:none;margin-right:20px}
+        footer{text-align:center;margin-top:40px;color:#64748b}
+        @media(max-width:600px){.input-row{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+<div class="container">
+    <p class="breadcrumb"><a href="../index.html">← All Calculators</a></p>
+    <h1>📐 Free Unit Converter</h1>
+    <p style="color:#94a3b8;margin-bottom:25px;">Convert between units instantly</p>
+
+    <div class="calculator">
+        <div class="input-group">
+            <label>Value</label>
+            <input type="number" id="unit-val" value="1">
+        </div>
+        <div class="input-group">
+            <label>Conversion Type</label>
+            <select id="unit-from">
+                <option value="mi_km">Miles to Kilometers</option>
+                <option value="ft_m">Feet to Meters</option>
+                <option value="lb_kg">Pounds to Kilograms</option>
+                <option value="oz_g">Ounces to Grams</option>
+                <option value="f_c">Fahrenheit to Celsius</option>
+                <option value="c_f">Celsius to Fahrenheit</option>
+                <option value="gal_l">Gallons to Liters</option>
+                <option value="in_cm">Inches to Centimeters</option>
+            </select>
+        </div>
+        <button class="calc-btn" onclick="calcUnit()">📐 Convert</button>
+        <div class="results" id="resultsUnit">
+            <div class="total" id="totalUnit">0</div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Unit Converter</h2>
+        <p>Convert between common units for length, weight, temperature, and volume.</p>
+    </div>
+
+    <div class="related">
+        <h3 style="color:#fff;margin-bottom:15px">Related Calculators</h3>
+        <a href="percentage-calculator.html">➗ Percentage Calculator</a>
+        <a href="currency-calculator.html">💱 Currency Converter</a>
+        <a href="../index.html">← All Calculators</a>
+    </div>
+    <footer><p>© 2026 Free Online Calculators</p></footer>
+</div>
+<script>
+function calcUnit(){
+    const val=parseFloat(document.getElementById('unit-val').value)||0;
+    const type=document.getElementById('unit-from').value;
+    let result=val,label='';
+    switch(type){
+        case'mi_km':result=val*1.60934;label='km';break;
+        case'ft_m':result=val*0.3048;label='m';break;
+        case'lb_kg':result=val*0.453592;label='kg';break;
+        case'oz_g':result=val*28.3495;label='g';break;
+        case'f_c':result=(val-32)*5/9;label='°C';break;
+        case'c_f':result=(val*9/5)+32;label='°F';break;
+        case'gal_l':result=val*3.78541;label='L';break;
+        case'in_cm':result=val*2.54;label='cm';break;
+    }
+    document.getElementById('totalUnit').textContent=result.toFixed(2)+' '+label;
+    document.getElementById('resultsUnit').classList.add('show');
+}
+</script>
+</body>
+</html>

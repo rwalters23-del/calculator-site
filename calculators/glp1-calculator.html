@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free GLP-1 Calculator - Weight Loss Cost</title>
+    <meta name="description" content="Calculate GLP-1 medication costs including Ozempic, Wegovy, Mounjaro. Compare insurance, discounts, and find the best price.">
+    <link rel="canonical" href="https://rwalters23-del.github.io/calculators/glp1-calculator.html">
+    <meta name="theme-color" content="#0f172a">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:Arial,sans-serif;background:#0f172a;color:#e2e8f0;padding:20px}
+        .container{max-width:800px;margin:0 auto;padding:20px}
+        h1{color:#38bdf8;margin-bottom:10px}
+        .breadcrumb{color:#94a3b8;margin-bottom:20px}
+        .breadcrumb a{color:#38bdf8;text-decoration:none}
+        .calculator{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:25px}
+        .input-group{margin-bottom:15px}
+        .input-group label{display:block;margin-bottom:6px;color:#94a3b8}
+        .input-group input,.input-group select{width:100%;padding:12px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#fff;font-size:1rem}
+        .input-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+        .calc-btn{width:100%;padding:14px;background:linear-gradient(90deg,#38bdf8,#8b5cf6);border:none;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:10px}
+        .results{background:linear-gradient(90deg,#8b5cf6,#38bdf8);padding:25px;border-radius:12px;text-align:center;margin-top:20px;display:none}
+        .results.show{display:block}
+        .results .total{font-size:2.5rem;font-weight:bold}
+        .content-section{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:20px}
+        .content-section h2{color:#38bdf8;margin:20px 0 15px}
+        .content-section p{color:#94a3b8;line-height:1.7}
+        .content-section ul{color:#94a3b8;margin-left:20px}
+        .content-section li{margin-bottom:8px}
+        .related{background:#1e293b;padding:20px;border-radius:12px;margin-top:30px}
+        .related a{color:#38bdf8;text-decoration:none;margin-right:20px}
+        footer{text-align:center;margin-top:40px;color:#64748b}
+        @media(max-width:600px){.input-row{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+<div class="container">
+    <p class="breadcrumb"><a href="../index.html">← All Calculators</a></p>
+    <h1>💊 Free GLP-1 Calculator</h1>
+    <p style="color:#94a3b8;margin-bottom:25px;">Calculate weight loss medication costs</p>
+
+    <div class="calculator">
+        <div class="input-group">
+            <label>Medication</label>
+            <select id="glp1-med">
+                <option value="ozempic">Ozempic ($968/mo)</option>
+                <option value="wegovy">Wegovy ($1,349/mo)</option>
+                <option value="mounjaro">Mounjaro ($1,023/mo)</option>
+                <option value="zepbound">Zepbound ($1,059/mo)</option>
+            </select>
+        </div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>Insurance Coverage (%)</label>
+                <input type="number" id="glp1-insurance" value="0">
+            </div>
+            <div class="input-group">
+                <label>Manufacturer Discount (%)</label>
+                <input type="number" id="glp1-discount" value="0">
+            </div>
+        </div>
+        <div class="input-group">
+            <label>Treatment Duration (months)</label>
+            <input type="number" id="glp1-months" value="12">
+        </div>
+        <button class="calc-btn" onclick="calcGLP1()">💊 Calculate Cost</button>
+        <div class="results" id="resultsGLP1">
+            <div class="total" id="totalGLP1">$0</div>
+            <p id="breakdownGLP1" style="margin-top:10px;color:rgba(255,255,255,0.9)"></p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>How GLP-1 Medications Work</h2>
+        <p>GLP-1 medications like Ozempic, Wegovy, Mounjaro, and Zepbound help with weight loss by reducing appetite and slowing digestion.</p>
+        <h2>Cost Factors</h2>
+        <ul>
+            <li><strong>List price</strong> - Without insurance: $1,000-$1,350/month</li>
+            <li><strong>Insurance</strong> - Coverage varies widely</li>
+            <li><strong>Manufacturer discounts</strong> - Up to 50% available</li>
+            <li><strong>Compounding</strong> - May reduce costs</li>
+        </ul>
+    </div>
+
+    <div class="related">
+        <h3 style="color:#fff;margin-bottom:15px">Related Calculators</h3>
+        <a href="calorie-calculator.html">🍔 Calorie Calculator</a>
+        <a href="bmi-calculator.html">⚖️ BMI Calculator</a>
+        <a href="../index.html">← All Calculators</a>
+    </div>
+    <footer><p>© 2026 Free Online Calculators</p></footer>
+</div>
+<script>
+function calcGLP1(){
+    const med=document.getElementById('glp1-med').value;
+    const prices={ozempic:968,wegovy:1349,mounjaro:1023,zepbound:1059};
+    const monthly=prices[med];
+    const insurance=parseFloat(document.getElementById('glp1-insurance').value)||0;
+    const discount=parseFloat(document.getElementById('glp1-discount').value)||0;
+    const months=parseInt(document.getElementById('glp1-months').value)||12;
+    
+    let afterDiscount=monthly*(1-discount/100);
+    let afterInsurance=afterDiscount*(1-insurance/100);
+    let total=afterInsurance*months;
+    
+    document.getElementById('totalGLP1').textContent='$'+Math.round(total).toLocaleString();
+    document.getElementById('breakdownGLP1').textContent='$'+Math.round(afterInsurance).toLocaleString()+'/mo x '+months+' months';
+    document.getElementById('resultsGLP1').classList.add('show');
+}
+</script>
+</body>
+</html>
