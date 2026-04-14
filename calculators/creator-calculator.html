@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Content Creator Income Calculator</title>
+    <meta name="description" content="Calculate your content creator income potential. Estimate earnings from ads, sponsorships, and affiliates.">
+    <link rel="canonical" href="https://rwalters23-del.github.io/calculators/creator-calculator.html">
+    <meta name="theme-color" content="#0f172a">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:Arial,sans-serif;background:#0f172a;color:#e2e8f0;padding:20px}
+        .container{max-width:800px;margin:0 auto;padding:20px}
+        h1{color:#38bdf8;margin-bottom:10px}
+        .breadcrumb{color:#94a3b8;margin-bottom:20px}
+        .breadcrumb a{color:#38bdf8;text-decoration:none}
+        .calculator{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:25px}
+        .input-group{margin-bottom:15px}
+        .input-group label{display:block;margin-bottom:6px;color:#94a3b8}
+        .input-group input,.input-group select{width:100%;padding:12px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#fff;font-size:1rem}
+        .input-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+        .calc-btn{width:100%;padding:14px;background:linear-gradient(90deg,#38bdf8,#8b5cf6);border:none;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:10px}
+        .results{background:linear-gradient(90deg,#8b5cf6,#38bdf8);padding:25px;border-radius:12px;text-align:center;margin-top:20px;display:none}
+        .results.show{display:block}
+        .results .total{font-size:2.5rem;font-weight:bold}
+        .content-section{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:20px}
+        .content-section h2{color:#38bdf8;margin:20px 0 15px}
+        .content-section p{color:#94a3b8;line-height:1.7}
+        .related{background:#1e293b;padding:20px;border-radius:12px;margin-top:30px}
+        .related a{color:#38bdf8;text-decoration:none;margin-right:20px}
+        footer{text-align:center;margin-top:40px;color:#64748b}
+        @media(max-width:600px){.input-row{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+<div class="container">
+    <p class="breadcrumb"><a href="../index.html">← All Calculators</a></p>
+    <h1>🎬 Free Content Creator Income Calculator</h1>
+    <p style="color:#94a3b8;margin-bottom:25px;">Calculate your creator income potential</p>
+
+    <div class="calculator">
+        <div class="input-row">
+            <div class="input-group">
+                <label>Monthly Views</label>
+                <input type="number" id="creator-views" value="100000">
+            </div>
+            <div class="input-group">
+                <label>Subscribers</label>
+                <input type="number" id="creator-subs" value="10000">
+            </div>
+        </div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>Ad Revenue ($/1000 views)</label>
+                <input type="number" id="creator-ad" value="4">
+            </div>
+            <div class="input-group">
+                <label>Sponsorships/Month</label>
+                <input type="number" id="creator-sponsors" value="2">
+            </div>
+        </div>
+        <div class="input-group">
+            <label>Avg Sponsorship ($)</label>
+            <input type="number" id="creator-sponsor-value" value="500">
+        </div>
+        <button class="calc-btn" onclick="calcCreator()">🎬 Calculate Income</button>
+        <div class="results" id="resultsCreator">
+            <div class="total" id="totalCreator">$0/mo</div>
+            <p id="breakdownCreator" style="margin-top:10px;color:rgba(255,255,255,0.9)"></p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Creator Income Streams</h2>
+        <p><strong>Ad Revenue</strong> - YouTube, Twitch ads (~$2-10 per 1K views)</p>
+        <p><strong>Sponsorships</strong> - Brand deals and partnerships</p>
+        <p><strong>Affiliates</strong> - Commission from product links</p>
+        <p><strong>Merch</strong> - Your own products</p>
+    </div>
+
+    <div class="related">
+        <h3 style="color:#fff;margin-bottom:15px">Related Calculators</h3>
+        <a href="freelance-calculator.html">✍️ Freelance Calculator</a>
+        <a href="saas-calculator.html">📊 SaaS MRR Calculator</a>
+        <a href="../index.html">← All Calculators</a>
+    </div>
+    <footer><p>© 2026 Free Online Calculators</p></footer>
+</div>
+<script>
+function calcCreator(){
+    const views=parseInt(document.getElementById('creator-views').value)||0;
+    const adRate=parseFloat(document.getElementById('creator-ad').value)||0;
+    const sponsors=parseInt(document.getElementById('creator-sponsors').value)||0;
+    const sponsorValue=parseFloat(document.getElementById('creator-sponsor-value').value)||0;
+    
+    const adRevenue=(views/1000)*adRate;
+    const sponsorIncome=sponsors*sponsorValue;
+    const total=adRevenue+sponsorIncome;
+    
+    document.getElementById('totalCreator').textContent='$'+Math.round(total).toLocaleString()+'/mo';
+    document.getElementById('breakdownCreator').textContent='Ads: $'+Math.round(adRevenue)+' + Sponsors: $'+sponsorIncome;
+    document.getElementById('resultsCreator').classList.add('show');
+}
+</script>
+</body>
+</html>
