@@ -3,63 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Age Calculator - Calculate Exact Age</title>
-    <meta name="description" content="Calculate your exact age in years, months, and days. Free online age calculator.">
+    <title>Free Age Calculator - Calculate Exact Age in Years, Months & Days</title>
+    <meta name="description" content="Calculate your exact age in years, months, and days. Free online age calculator with detailed breakdown. Find out exactly how old you are.">
+    <meta name="keywords" content="age calculator, calculate age, how old am I, exact age calculator, age in years months days">
     <link rel="canonical" href="https://rwalters23-del.github.io/calculators/age-calculator.html">
     <meta name="theme-color" content="#0f172a">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebApplication","name":"Free Age Calculator","url":"https://rwalters23-del.github.io/calculators/age-calculator.html","description":"Calculate exact age in years, months, and days","applicationCategory":"UtilityApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+    </script>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:Arial,sans-serif;background:#0f172a;color:#e2e8f0;padding:20px}
-        .container{max-width:800px;margin:0 auto;padding:20px}
-        h1{color:#38bdf8;margin-bottom:10px}
-        .breadcrumb{color:#94a3b8;margin-bottom:20px}
-        .breadcrumb a{color:#38bdf8;text-decoration:none}
-        .calculator{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:25px}
-        .input-group{margin-bottom:15px}
-        .input-group label{display:block;margin-bottom:6px;color:#94a3b8}
-        .input-group input,.input-group select{width:100%;padding:12px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#fff;font-size:1rem}
-        .calc-btn{width:100%;padding:14px;background:linear-gradient(90deg,#38bdf8,#8b5cf6);border:none;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:10px}
-        .results{background:linear-gradient(90deg,#8b5cf6,#38bdf8);padding:25px;border-radius:12px;text-align:center;margin-top:20px;display:none}
-        .results.show{display:block}
-        .results .total{font-size:2.5rem;font-weight:bold}
-        .content-section{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:20px}
-        .content-section h2{color:#38bdf8;margin:20px 0 15px}
-        .content-section p{color:#94a3b8;line-height:1.7}
-        .related{background:#1e293b;padding:20px;border-radius:12px;margin-top:30px}
-        .related a{color:#38bdf8;text-decoration:none;margin-right:20px}
-        footer{text-align:center;margin-top:40px;color:#64748b}
+        *{margin:0;padding:0;box-sizing:border-box}body{font-family:Arial,sans-serif;background:#0f172a;color:#e2e8f0;padding:20px}.container{max-width:800px;margin:0 auto;padding:20px}h1{color:#38bdf8;margin-bottom:10px}.breadcrumb{color:#94a3b8;margin-bottom:20px}.breadcrumb a{color:#38bdf8;text-decoration:none}.calculator{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:25px}.input-group{margin-bottom:15px}.input-group label{display:block;margin-bottom:6px;color:#94a3b8}.input-group input{width:100%;padding:12px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#fff;font-size:1rem}.calc-btn{width:100%;padding:14px;background:linear-gradient(90deg,#38bdf8,#8b5cf6);border:none;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:10px}.results{background:linear-gradient(90deg,#8b5cf6,#38bdf8);padding:25px;border-radius:12px;text-align:center;margin-top:20px;display:none}.results.show{display:block}.results .total{font-size:2.5rem;font-weight:bold}.content-section{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:20px}.content-section h2{color:#38bdf8;margin:25px 0 15px}.content-section h2:first-child{margin-top:0}.content-section h3{color:#e2e8f0;margin:20px 0 10px}.content-section p{color:#94a3b8;line-height:1.7;margin-bottom:12px}.content-section ul{color:#94a3b8;margin-left:20px;margin-bottom:15px}.content-section li{margin-bottom:8px}.related{background:#1e293b;padding:20px;border-radius:12px;margin-top:30px}.related h3{color:#fff;margin-bottom:15px}.related a{color:#38bdf8;text-decoration:none;margin-right:20px}footer{text-align:center;margin-top:40px;color:#64748b}
     </style>
 </head>
 <body>
 <div class="container">
-    <p class="breadcrumb"><a href="../index.html">← All Calculators</a></p>
+    <p class="breadcrumb"><a href="../index.html">← All Calculators</a> | <a href="../index.html">Free Online Calculators</a></p>
     <h1>🎂 Free Age Calculator</h1>
     <p style="color:#94a3b8;margin-bottom:25px;">Calculate your exact age in years, months, and days</p>
 
     <div class="calculator">
         <div class="input-group">
-            <label>Birth Date</label>
+            <label>Your Birth Date</label>
             <input type="date" id="age-birth">
         </div>
         <button class="calc-btn" onclick="calcAge()">🎂 Calculate Age</button>
         <div class="results" id="resultsAge">
-            <div class="total" id="totalAge">0 years</div>
+            <div class="total" id="totalAge">0 years old</div>
             <p id="breakdownAge" style="margin-top:10px;color:rgba(255,255,255,0.9)"></p>
         </div>
     </div>
 
     <div class="content-section">
-        <h2>How It Works</h2>
-        <p>Enter your birth date and this calculator will compute your exact age down to the day. You can also calculate how old you'll be on any specific date.</p>
+        <h2>How to Use This Calculator</h2>
+        <p>Our free age calculator determines your exact age based on your birth date. Simply enter your date of birth and click the calculate button. The calculator will show your age in years, months, and days.</p>
+        <p>You can also use this calculator to find out how old you'll be on any specific future date, or how old someone was at a particular time in the past.</p>
+
+        <h2>Example Calculation</h2>
+        <p>Let's say you were born on <strong>January 15, 1995</strong> and today's date is <strong>April 14, 2026</strong>:</p>
+        <ul>
+            <li><strong>Years:</strong> 31 years old</li>
+            <li><strong>Months:</strong> 31 years, 3 months</li>
+            <li><strong>Days:</strong> 31 years, 3 months, 0 days</li>
+            <li><strong>Total days alive:</strong> Approximately 11,408 days</li>
+        </ul>
+
+        <h2>Why Calculate Your Exact Age?</h2>
+        <p>Knowing your exact age matters in many situations:</p>
+        <ul>
+            <li><strong>Legal requirements</strong> - Age verification for contracts, licenses, and official documents</li>
+            <li><strong>Health screenings</strong> - Certain medical tests are recommended at specific ages</li>
+            <li><strong>Insurance</strong> - Age affects insurance premiums and eligibility</li>
+            <li><strong>Retirement planning</strong> - Know when you can access retirement benefits</li>
+            <li><strong>Curiosity</strong> - Just for fun to know exactly how long you've been alive!</li>
+        </ul>
+
+        <h2>How Age is Calculated</h2>
+        <p>The age calculation considers:</p>
+        <ul>
+            <li><strong>Complete years</strong> - Full years since your birth year</li>
+            <li><strong>Complete months</strong> - Additional months in the current year</li>
+            <li><strong>Days</strong> - Remaining days in the current month</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+        <h3>How do I calculate my age manually?</h3>
+        <p>Subtract your birth year from the current year. If your birthday hasn't occurred yet this year, subtract one. For more precision, account for the exact month and day.</p>
+
+        <h3>What's the difference between chronological age and biological age?</h3>
+        <p>Chronological age is your age in years from your date of birth. Biological age reflects your body's physical condition and can be higher or lower than your chronological age based on health factors.</p>
+
+        <h3>Does age calculation include the time of day?</h3>
+        <p>Most age calculators use date-only calculation. For exact age including time, you'd need a more specialized tool that accounts for birth time.</p>
+
+        <h3>How many days have I been alive?</h3>
+        <p>On average, there are 365.25 days per year (accounting for leap years). Multiply your age in years by 365.25 for an approximate total. The exact number varies based on your birth date.</p>
     </div>
 
     <div class="related">
-        <h3 style="color:#fff;margin-bottom:15px">Related Calculators</h3>
+        <h3>Related Calculators</h3>
         <a href="date-calculator.html">📅 Date Calculator</a>
         <a href="bmi-calculator.html">⚖️ BMI Calculator</a>
+        <a href="calorie-calculator.html">🍔 Calorie Calculator</a>
+        <a href="tdee-calculator.html">📊 TDEE Calculator</a>
         <a href="../index.html">← All Calculators</a>
     </div>
-    <footer><p>© 2026 Free Online Calculators</p></footer>
+
+    <footer>
+        <p>© 2026 Free Online Calculators | <a href="../index.html">All Calculators</a></p>
+    </footer>
 </div>
 <script>
 function calcAge(){
