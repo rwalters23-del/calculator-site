@@ -25,32 +25,32 @@
 </div>
 <header><h1>🧮 Free Online Calculators</h1><p class="subtitle">AI Costs • Wellness • Finance • Utilities • More</p></header>
 <div class="tabs">
-<button class="tab active" onclick="showTab('ai-cost')">🤖 AI Cost</button>
-<button class="tab" onclick="showTab('vibe')">💡 Vibe ROI</button>
-<button class="tab" onclick="showTab('sidehustle')">💰 Side Hustle</button>
-<button class="tab" onclick="showTab('glp1')">💊 GLP-1</button>
-<button class="tab" onclick="showTab('wedding')">💒 Wedding</button>
-<button class="tab" onclick="showTab('job')">💼 Job Offer</button>
-<button class="tab" onclick="showTab('breakeven')">📈 Breakeven</button>
-<button class="tab" onclick="showTab('carbon')">🌱 Carbon</button>
-<button class="tab" onclick="showTab('solar')">☀️ Solar</button>
-<button class="tab" onclick="showTab('pod')">👕 POD</button>
-<button class="tab" onclick="showTab('freelance')">✍️ Freelance</button>
-<button class="tab" onclick="showTab('saas')">📊 SaaS MRR</button>
-<button class="tab" onclick="showTab('creator')">🎬 Creator</button>
-<button class="tab" onclick="showTab('move')">🚛 Move</button>
-<button class="tab" onclick="showTab('screen')">📱 Screen Time</button>
-<button class="tab" onclick="showTab('bmi')">⚖️ BMI</button>
-<button class="tab" onclick="showTab('calorie')">🍔 Calorie</button>
-<button class="tab" onclick="showTab('mortgage')">🏠 Mortgage</button>
-<button class="tab" onclick="showTab('loan')">💳 Loan</button>
-<button class="tab" onclick="showTab('tip')">💵 Tip</button>
-<button class="tab" onclick="showTab('age')">🎂 Age</button>
-<button class="tab" onclick="showTab('date')">📅 Date</button>
-<button class="tab" onclick="showTab('percent')">➗ %</button>
-<button class="tab" onclick="showTab('currency')">💱 Currency</button>
-<button class="tab" onclick="showTab('unit')">📐 Unit</button>
-<button class="tab" onclick="showTab('blog')">📝 Blog</button>
+<button class="tab active" onclick="showTab(event, 'ai-cost')">🤖 AI Cost</button>
+<button class="tab" onclick="showTab(event, 'vibe')">💡 Vibe ROI</button>
+<button class="tab" onclick="showTab(event, 'sidehustle')">💰 Side Hustle</button>
+<button class="tab" onclick="showTab(event, 'glp1')">💊 GLP-1</button>
+<button class="tab" onclick="showTab(event, 'wedding')">💒 Wedding</button>
+<button class="tab" onclick="showTab(event, 'job')">💼 Job Offer</button>
+<button class="tab" onclick="showTab(event, 'breakeven')">📈 Breakeven</button>
+<button class="tab" onclick="showTab(event, 'carbon')">🌱 Carbon</button>
+<button class="tab" onclick="showTab(event, 'solar')">☀️ Solar</button>
+<button class="tab" onclick="showTab(event, 'pod')">👕 POD</button>
+<button class="tab" onclick="showTab(event, 'freelance')">✍️ Freelance</button>
+<button class="tab" onclick="showTab(event, 'saas')">📊 SaaS MRR</button>
+<button class="tab" onclick="showTab(event, 'creator')">🎬 Creator</button>
+<button class="tab" onclick="showTab(event, 'move')">🚛 Move</button>
+<button class="tab" onclick="showTab(event, 'screen')">📱 Screen Time</button>
+<button class="tab" onclick="showTab(event, 'bmi')">⚖️ BMI</button>
+<button class="tab" onclick="showTab(event, 'calorie')">🍔 Calorie</button>
+<button class="tab" onclick="showTab(event, 'mortgage')">🏠 Mortgage</button>
+<button class="tab" onclick="showTab(event, 'loan')">💳 Loan</button>
+<button class="tab" onclick="showTab(event, 'tip')">💵 Tip</button>
+<button class="tab" onclick="showTab(event, 'age')">🎂 Age</button>
+<button class="tab" onclick="showTab(event, 'date')">📅 Date</button>
+<button class="tab" onclick="showTab(event, 'percent')">➗ %</button>
+<button class="tab" onclick="showTab(event, 'currency')">💱 Currency</button>
+<button class="tab" onclick="showTab(event, 'unit')">📐 Unit</button>
+<button class="tab" onclick="showTab(event, 'blog')">📝 Blog</button>
 </div>
 <!-- AI COST CALCULATOR -->
 <div class="calculator active" id="ai-cost">
@@ -1277,11 +1277,12 @@
 <!-- JAVASCRIPT - Updated April 13 2026 -->
 <script>
 // Tab navigation
-function showTab(id) {
+function showTab(evt, id) {
+    if (!id) { id = evt; evt = window.event; }
     document.querySelectorAll('.calculator').forEach(c => c.classList.remove('active'));
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     document.getElementById(id).classList.add('active');
-    event.target.classList.add('active');
+    if (evt && evt.target) evt.target.classList.add('active');
 }
 
 // Search functionality
@@ -1291,7 +1292,7 @@ function searchCalc(q) {
     if(!q) { results.style.display = 'none'; return; }
     const matches = Object.keys(calcNames).filter(k => calcNames[k].toLowerCase().includes(q.toLowerCase()));
     if(matches.length) {
-        results.innerHTML = matches.map(k => `<div class="search-result-item" onclick="showTab('${k}')"><strong>${calcNames[k]}</strong></div>`).join('');
+        results.innerHTML = matches.map(k => `<div class="search-result-item" onclick="showTab(event, '${k}')"><strong>${calcNames[k]}</strong></div>`).join('');
         results.style.display = 'block';
     } else { results.style.display = 'none'; }
 }
