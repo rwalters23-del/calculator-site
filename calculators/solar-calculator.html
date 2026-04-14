@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Solar Calculator - Solar Panel Savings</title>
+    <meta name="description" content="Calculate your 25-year savings from solar panels. Include federal tax credits, state incentives, and electricity rate increases.">
+    <link rel="canonical" href="https://rwalters23-del.github.io/calculators/solar-calculator.html">
+    <meta name="theme-color" content="#0f172a">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:Arial,sans-serif;background:#0f172a;color:#e2e8f0;padding:20px}
+        .container{max-width:800px;margin:0 auto;padding:20px}
+        h1{color:#38bdf8;margin-bottom:10px}
+        .breadcrumb{color:#94a3b8;margin-bottom:20px}
+        .breadcrumb a{color:#38bdf8;text-decoration:none}
+        .calculator{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:25px}
+        .input-group{margin-bottom:15px}
+        .input-group label{display:block;margin-bottom:6px;color:#94a3b8}
+        .input-group input,.input-group select{width:100%;padding:12px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#fff;font-size:1rem}
+        .input-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+        .calc-btn{width:100%;padding:14px;background:linear-gradient(90deg,#38bdf8,#8b5cf6);border:none;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:10px}
+        .results{background:linear-gradient(90deg,#8b5cf6,#38bdf8);padding:25px;border-radius:12px;text-align:center;margin-top:20px;display:none}
+        .results.show{display:block}
+        .results .total{font-size:2.5rem;font-weight:bold}
+        .content-section{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:20px}
+        .content-section h2{color:#38bdf8;margin:20px 0 15px}
+        .content-section p{color:#94a3b8;line-height:1.7}
+        .content-section ul{color:#94a3b8;margin-left:20px}
+        .content-section li{margin-bottom:8px}
+        .related{background:#1e293b;padding:20px;border-radius:12px;margin-top:30px}
+        .related a{color:#38bdf8;text-decoration:none;margin-right:20px}
+        footer{text-align:center;margin-top:40px;color:#64748b}
+        @media(max-width:600px){.input-row{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+<div class="container">
+    <p class="breadcrumb"><a href="../index.html">← All Calculators</a></p>
+    <h1>☀️ Free Solar Calculator</h1>
+    <p style="color:#94a3b8;margin-bottom:25px;">Calculate 25-year savings from solar panels</p>
+
+    <div class="calculator">
+        <div class="input-row">
+            <div class="input-group">
+                <label>Monthly Electric Bill ($)</label>
+                <input type="number" id="solar-bill" value="150">
+            </div>
+            <div class="input-group">
+                <label>Electricity Rate Increase (%)</label>
+                <input type="number" id="solar-rate" value="3" step="0.5">
+            </div>
+        </div>
+        <div class="input-row">
+            <div class="input-group">
+                <label>Solar System Cost ($)</label>
+                <input type="number" id="solar-cost" value="20000">
+            </div>
+            <div class="input-group">
+                <label>Federal Tax Credit (%)</label>
+                <input type="number" id="solar-credit" value="30">
+            </div>
+        </div>
+        <div class="input-group">
+            <label>System Size (years)</label>
+            <select id="solar-years">
+                <option value="25">25 years</option>
+                <option value="20">20 years</option>
+                <option value="15">15 years</option>
+                <option value="10">10 years</option>
+            </select>
+        </div>
+        <button class="calc-btn" onclick="calcSolar()">☀️ Calculate Savings</button>
+        <div class="results" id="resultsSolar">
+            <div class="total" id="totalSolar">$0</div>
+            <p id="breakdownSolar" style="margin-top:10px;color:rgba(255,255,255,0.9)"></p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>How Solar Savings Work</h2>
+        <p>This calculator estimates your savings from installing solar panels. It factors in the federal tax credit, rising electricity rates, and system degradation over time.</p>
+        <h2>Key Factors</h2>
+        <ul>
+            <li><strong>Federal Tax Credit</strong> - Currently 30% through 2032</li>
+            <li><strong>Electricity rates</strong> - Typically rise 2-5% per year</li>
+            <li><strong>Panel degradation</strong> - About 0.5% per year</li>
+        </ul>
+    </div>
+
+    <div class="related">
+        <h3 style="color:#fff;margin-bottom:15px">Related Calculators</h3>
+        <a href="mortgage-calculator.html">🏠 Mortgage Calculator</a>
+        <a href="calorie-calculator.html">🍔 Calorie Calculator</a>
+        <a href="../index.html">← All Calculators</a>
+    </div>
+    <footer><p>© 2026 Free Online Calculators</p></footer>
+</div>
+<script>
+function calcSolar(){
+    const bill=parseFloat(document.getElementById('solar-bill').value)||0;
+    const rateInc=parseFloat(document.getElementById('solar-rate').value)||0;
+    const cost=parseFloat(document.getElementById('solar-cost').value)||0;
+    const credit=parseFloat(document.getElementById('solar-credit').value)||0;
+    const years=parseInt(document.getElementById('solar-years').value)||25;
+    
+    const afterCredit=cost*(1-credit/100);
+    let totalBills=0;
+    let annualBill=bill*12;
+    for(let i=0;i<years;i++){
+        totalBills+=annualBill;
+        annualBill*=1+rateInc/100;
+    }
+    const savings=totalBills-afterCredit;
+    document.getElementById('totalSolar').textContent='$'+Math.round(savings).toLocaleString()+' savings';
+    document.getElementById('breakdownSolar').textContent='After credit cost: $'+Math.round(afterCredit).toLocaleString()+' | '+years+' year electricity: $'+Math.round(totalBills).toLocaleString();
+    document.getElementById('resultsSolar').classList.add('show');
+}
+</script>
+</body>
+</html>
