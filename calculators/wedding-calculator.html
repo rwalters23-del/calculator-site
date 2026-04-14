@@ -3,73 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Wedding Cost Calculator</title>
-    <meta name="description" content="Plan your wedding budget. Calculate costs for venue, catering, flowers, photography and find ways to save.">
+    <title>Free Wedding Cost Calculator - Plan Your Wedding Budget</title>
+    <meta name="description" content="Plan your wedding budget. Calculate costs for venue, catering, flowers, photography and find ways to save money on your special day.">
+    <meta name="keywords" content="wedding cost calculator, wedding budget, wedding planning, average wedding cost, how much does a wedding cost">
     <link rel="canonical" href="https://rwalters23-del.github.io/calculators/wedding-calculator.html">
     <meta name="theme-color" content="#0f172a">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebApplication","name":"Free Wedding Cost Calculator","url":"https://rwalters23-del.github.io/calculators/wedding-calculator.html","description":"Plan wedding budget","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+    </script>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:Arial,sans-serif;background:#0f172a;color:#e2e8f0;padding:20px}
-        .container{max-width:800px;margin:0 auto;padding:20px}
-        h1{color:#38bdf8;margin-bottom:10px}
-        .breadcrumb{color:#94a3b8;margin-bottom:20px}
-        .breadcrumb a{color:#38bdf8;text-decoration:none}
-        .calculator{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:25px}
-        .input-group{margin-bottom:15px}
-        .input-group label{display:block;margin-bottom:6px;color:#94a3b8}
-        .input-group input,.input-group select{width:100%;padding:12px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#fff;font-size:1rem}
-        .input-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-        .calc-btn{width:100%;padding:14px;background:linear-gradient(90deg,#38bdf8,#8b5cf6);border:none;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:10px}
-        .results{background:linear-gradient(90deg,#8b5cf6,#38bdf8);padding:25px;border-radius:12px;text-align:center;margin-top:20px;display:none}
-        .results.show{display:block}
-        .results .total{font-size:2.5rem;font-weight:bold}
-        .content-section{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:20px}
-        .content-section h2{color:#38bdf8;margin:20px 0 15px}
-        .content-section p{color:#94a3b8;line-height:1.7}
-        .content-section ul{color:#94a3b8;margin-left:20px}
-        .content-section li{margin-bottom:8px}
-        .related{background:#1e293b;padding:20px;border-radius:12px;margin-top:30px}
-        .related a{color:#38bdf8;text-decoration:none;margin-right:20px}
-        footer{text-align:center;margin-top:40px;color:#64748b}
-        @media(max-width:600px){.input-row{grid-template-columns:1fr}}
+        *{margin:0;padding:0;box-sizing:border-box}body{font-family:Arial,sans-serif;background:#0f172a;color:#e2e8f0;padding:20px}.container{max-width:800px;margin:0 auto;padding:20px}h1{color:#38bdf8;margin-bottom:10px}.breadcrumb{color:#94a3b8;margin-bottom:20px}.breadcrumb a{color:#38bdf8;text-decoration:none}.calculator{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:25px}.input-group{margin-bottom:15px}.input-group label{display:block;margin-bottom:6px;color:#94a3b8}.input-group input,.input-group select{width:100%;padding:12px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#fff;font-size:1rem}.input-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}.calc-btn{width:100%;padding:14px;background:linear-gradient(90deg,#38bdf8,#8b5cf6);border:none;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:10px}.results{background:linear-gradient(90deg,#8b5cf6,#38bdf8);padding:25px;border-radius:12px;text-align:center;margin-top:20px;display:none}.results.show{display:block}.results .total{font-size:2.5rem;font-weight:bold}.content-section{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:20px}.content-section h2{color:#38bdf8;margin:25px 0 15px}.content-section h2:first-child{margin-top:0}.content-section h3{color:#e2e8f0;margin:20px 0 10px}.content-section p{color:#94a3b8;line-height:1.7;margin-bottom:12px}.content-section ul{color:#94a3b8;margin-left:20px;margin-bottom:15px}.content-section li{margin-bottom:8px}.related{background:#1e293b;padding:20px;border-radius:12px;margin-top:30px}.related h3{color:#fff;margin-bottom:15px}.related a{color:#38bdf8;text-decoration:none;margin-right:20px}footer{text-align:center;margin-top:40px;color:#64748b}@media(max-width:600px){.input-row{grid-template-columns:1fr}}
     </style>
 </head>
 <body>
 <div class="container">
-    <p class="breadcrumb"><a href="../index.html">← All Calculators</a></p>
+    <p class="breadcrumb"><a href="../index.html">← All Calculators</a> | <a href="../index.html">Free Online Calculators</a></p>
     <h1>💒 Free Wedding Cost Calculator</h1>
     <p style="color:#94a3b8;margin-bottom:25px;">Plan your dream wedding within budget</p>
 
     <div class="calculator">
         <div class="input-row">
             <div class="input-group">
-                <label>Guest Count</label>
+                <label>Number of Guests</label>
                 <input type="number" id="wedding-guests" value="100">
             </div>
             <div class="input-group">
-                <label> Venue ($)</label>
+                <label>Venue Cost ($)</label>
                 <input type="number" id="wedding-venue" value="5000">
             </div>
         </div>
         <div class="input-row">
             <div class="input-group">
-                <label>Catering ($/person)</label>
+                <label>Catering Cost per Person ($)</label>
                 <input type="number" id="wedding-catering" value="75">
             </div>
             <div class="input-group">
-                <label>Photography ($)</label>
+                <label>Photography/Videography ($)</label>
                 <input type="number" id="wedding-photo" value="2500">
             </div>
         </div>
         <div class="input-row">
             <div class="input-group">
-                <label>Flowers ($)</label>
+                <label>Flowers & Decor ($)</label>
                 <input type="number" id="wedding-flowers" value="1500">
             </div>
             <div class="input-group">
-                <label>Dress/Suit ($)</label>
+                <label>Dress & Suit ($)</label>
                 <input type="number" id="wedding-dress" value="2000">
             </div>
+        </div>
+        <div class="input-group">
+            <label>Additional Items ($)</label>
+            <input type="number" id="wedding-other" value="2000">
         </div>
         <button class="calc-btn" onclick="calcWedding()">💒 Calculate Total</button>
         <div class="results" id="resultsWedding">
@@ -79,24 +64,78 @@
     </div>
 
     <div class="content-section">
-        <h2>Wedding Budget Breakdown</h2>
-        <p>Here's the typical breakdown of wedding costs:</p>
+        <h2>How to Use This Calculator</h2>
+        <p>Enter your expected number of guests and estimate costs for each category. The calculator will show your total wedding cost and cost per guest.</p>
+        <p>Adjust the numbers to see how different guest counts or vendor choices affect your budget.</p>
+
+        <h2>Example Calculation</h2>
+        <p>Let's plan a wedding with 100 guests:</p>
         <ul>
-            <li><strong>Reception/Venue</strong> - 35-40%</li>
+            <li><strong>Venue:</strong> $5,000</li>
+            <li><strong>Catering:</strong> $75 × 100 = $7,500</li>
+            <li><strong>Photography:</strong> $2,500</li>
+            <li><strong>Flowers:</strong> $1,500</li>
+            <li><strong>Dress & Suit:</strong> $2,000</li>
+            <li><strong>Additional:</strong> $2,000</li>
+            <li><strong>Total:</strong> <strong>$20,500</strong></li>
+            <li><strong>Cost per guest:</strong> $205</li>
+        </ul>
+
+        <h2>Wedding Budget Breakdown</h2>
+        <p>Here's the typical percentage breakdown of wedding costs:</p>
+        <ul>
+            <li><strong>Reception/Venue</strong> - 35-40% (largest expense)</li>
             <li><strong>Catering</strong> - 25-30%</li>
             <li><strong>Photography/Video</strong> - 10-12%</li>
             <li><strong>Flowers & Decor</strong> - 8-10%</li>
             <li><strong>Attire</strong> - 5-8%</li>
+            <li><strong>Music/Entertainment</strong> - 5-8%</li>
+            <li><strong>Planner/Coordinator</strong> - 3-5%</li>
         </ul>
+
+        <h2>Ways to Save on Your Wedding</h2>
+        <ul>
+            <li><strong>Limit guest count</strong> - Biggest money saver</li>
+            <li><strong>Choose weekday or off-season</strong> - 20-30% cheaper</li>
+            <li><strong>Consider venue packages</strong> - Often includes basics</li>
+            <li><strong>DIY flowers</strong> - Significant savings</li>
+            <li><strong>Digital invitations</strong> - Eco-friendly and free</li>
+            <li><strong>Borrow or rent attire</strong> - Instead of buying</li>
+            <li><strong>Prioritize what matters</strong> - Spend more on priorities, less on rest</li>
+        </ul>
+
+        <h2>Average Wedding Costs (2026)</h2>
+        <p>Average wedding costs vary widely by location:</p>
+        <ul>
+            <li><strong>National Average:</strong> $25,000-30,000</li>
+            <li><strong>Small/Destination:</strong> $10,000-15,000</li>
+            <li><strong>Luxury:</strong> $50,000+</li>
+            <li><strong>DIY/Backyard:</strong> $5,000-10,000</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+        <h3>How much should I budget per guest?</h3>
+        <p>A common guideline is $150-250 per guest for a full-service wedding. This includes venue, food, drinks, and basic services. Higher budgets can run $500+ per guest for luxury weddings.</p>
+
+        <h3>When should I start budgeting?</h3>
+        <p>Start 12-18 months before your wedding. The first 6 months should focus on setting a budget, booking major vendors (venue, photographer), and establishing priorities.</p>
+
+        <h3>Is $20,000 enough for a wedding?</h3>
+        <p>Absolutely! With creative planning, $20,000 can buy a beautiful wedding. Focus on what matters most to you as a couple, and find areas to cut costs without sacrificing your vision.</p>
     </div>
 
     <div class="related">
-        <h3 style="color:#fff;margin-bottom:15px">Related Calculators</h3>
+        <h3>Related Calculators</h3>
         <a href="loan-calculator.html">💳 Loan Calculator</a>
         <a href="mortgage-calculator.html">🏠 Mortgage Calculator</a>
+        <a href="calorie-calculator.html">🍔 Calorie Calculator</a>
+        <a href="date-calculator.html">📅 Date Calculator</a>
         <a href="../index.html">← All Calculators</a>
     </div>
-    <footer><p>© 2026 Free Online Calculators</p></footer>
+
+    <footer>
+        <p>© 2026 Free Online Calculators | <a href="../index.html">All Calculators</a></p>
+    </footer>
 </div>
 <script>
 function calcWedding(){
@@ -106,12 +145,13 @@ function calcWedding(){
     const photo=parseFloat(document.getElementById('wedding-photo').value)||0;
     const flowers=parseFloat(document.getElementById('wedding-flowers').value)||0;
     const dress=parseFloat(document.getElementById('wedding-dress').value)||0;
+    const other=parseFloat(document.getElementById('wedding-other').value)||0;
     
-    const total=venue+(catering*guests)+photo+flowers+dress;
+    const total=venue+(catering*guests)+photo+flowers+dress+other;
     const perPerson=total/guests;
     
     document.getElementById('totalWedding').textContent='$'+Math.round(total).toLocaleString();
-    document.getElementById('breakdownWedding').textContent='$'+Math.round(perPerson)+' per guest';
+    document.getElementById('breakdownWedding').textContent='$'+Math.round(perPerson)+' per guest ('+guests+' guests)';
     document.getElementById('resultsWedding').classList.add('show');
 }
 </script>

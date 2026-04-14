@@ -3,45 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Breakeven Calculator</title>
-    <meta name="description" content="Calculate your breakeven point. Find out how many units you need to sell to profit.">
+    <title>Free Breakeven Calculator - Calculate Your Profit Point</title>
+    <meta name="description" content="Calculate your breakeven point. Find out how many units you need to sell to cover costs and start making profit. Free online calculator.">
+    <meta name="keywords" content="breakeven calculator, breakeven point, profit calculator, how many to sell, business profit calculator">
     <link rel="canonical" href="https://rwalters23-del.github.io/calculators/breakeven-calculator.html">
     <meta name="theme-color" content="#0f172a">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebApplication","name":"Free Breakeven Calculator","url":"https://rwalters23-del.github.io/calculators/breakeven-calculator.html","description":"Calculate breakeven point for your business","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+    </script>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:Arial,sans-serif;background:#0f172a;color:#e2e8f0;padding:20px}
-        .container{max-width:800px;margin:0 auto;padding:20px}
-        h1{color:#38bdf8;margin-bottom:10px}
-        .breadcrumb{color:#94a3b8;margin-bottom:20px}
-        .breadcrumb a{color:#38bdf8;text-decoration:none}
-        .calculator{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:25px}
-        .input-group{margin-bottom:15px}
-        .input-group label{display:block;margin-bottom:6px;color:#94a3b8}
-        .input-group input,.input-group select{width:100%;padding:12px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#fff;font-size:1rem}
-        .input-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-        .calc-btn{width:100%;padding:14px;background:linear-gradient(90deg,#38bdf8,#8b5cf6);border:none;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:10px}
-        .results{background:linear-gradient(90deg,#8b5cf6,#38bdf8);padding:25px;border-radius:12px;text-align:center;margin-top:20px;display:none}
-        .results.show{display:block}
-        .results .total{font-size:2.5rem;font-weight:bold}
-        .content-section{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:20px}
-        .content-section h2{color:#38bdf8;margin:20px 0 15px}
-        .content-section p{color:#94a3b8;line-height:1.7}
-        .related{background:#1e293b;padding:20px;border-radius:12px;margin-top:30px}
-        .related a{color:#38bdf8;text-decoration:none;margin-right:20px}
-        footer{text-align:center;margin-top:40px;color:#64748b}
-        @media(max-width:600px){.input-row{grid-template-columns:1fr}}
+        *{margin:0;padding:0;box-sizing:border-box}body{font-family:Arial,sans-serif;background:#0f172a;color:#e2e8f0;padding:20px}.container{max-width:800px;margin:0 auto;padding:20px}h1{color:#38bdf8;margin-bottom:10px}.breadcrumb{color:#94a3b8;margin-bottom:20px}.breadcrumb a{color:#38bdf8;text-decoration:none}.calculator{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:25px}.input-group{margin-bottom:15px}.input-group label{display:block;margin-bottom:6px;color:#94a3b8}.input-group input,.input-group select{width:100%;padding:12px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#fff;font-size:1rem}.input-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}.calc-btn{width:100%;padding:14px;background:linear-gradient(90deg,#38bdf8,#8b5cf6);border:none;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:10px}.results{background:linear-gradient(90deg,#8b5cf6,#38bdf8);padding:25px;border-radius:12px;text-align:center;margin-top:20px;display:none}.results.show{display:block}.results .total{font-size:2.5rem;font-weight:bold}.content-section{background:#1e293b;padding:25px;border-radius:12px;margin-bottom:20px}.content-section h2{color:#38bdf8;margin:25px 0 15px}.content-section h2:first-child{margin-top:0}.content-section h3{color:#e2e8f0;margin:20px 0 10px}.content-section p{color:#94a3b8;line-height:1.7;margin-bottom:12px}.content-section ul{color:#94a3b8;margin-left:20px;margin-bottom:15px}.content-section li{margin-bottom:8px}.related{background:#1e293b;padding:20px;border-radius:12px;margin-top:30px}.related h3{color:#fff;margin-bottom:15px}.related a{color:#38bdf8;text-decoration:none;margin-right:20px}footer{text-align:center;margin-top:40px;color:#64748b}@media(max-width:600px){.input-row{grid-template-columns:1fr}}
     </style>
 </head>
 <body>
 <div class="container">
-    <p class="breadcrumb"><a href="../index.html">← All Calculators</a></p>
+    <p class="breadcrumb"><a href="../index.html">← All Calculators</a> | <a href="../index.html">Free Online Calculators</a></p>
     <h1>📈 Free Breakeven Calculator</h1>
-    <p style="color:#94a3b8;margin-bottom:25px;">Calculate your breakeven point</p>
+    <p style="color:#94a3b8;margin-bottom:25px;">Calculate your breakeven point - how many units to sell for profit</p>
 
     <div class="calculator">
         <div class="input-row">
             <div class="input-group">
-                <label>Price per Unit ($)</label>
+                <label>Selling Price per Unit ($)</label>
                 <input type="number" id="be-price" value="50">
             </div>
             <div class="input-group">
@@ -50,10 +33,10 @@
             </div>
         </div>
         <div class="input-group">
-            <label>Fixed Costs ($)</label>
+            <label>Fixed Costs per Month ($)</label>
             <input type="number" id="be-fixed" value="5000">
         </div>
-        <button class="calc-btn" onclick="calcBreakeven()">📈 Calculate</button>
+        <button class="calc-btn" onclick="calcBreakeven()">📈 Calculate Breakeven</button>
         <div class="results" id="resultsBreakeven">
             <div class="total" id="totalBreakeven">0 units</div>
             <p id="breakdownBreakeven" style="margin-top:10px;color:rgba(255,255,255,0.9)"></p>
@@ -61,17 +44,62 @@
     </div>
 
     <div class="content-section">
-        <h2>What is Breakeven?</h2>
-        <p>Your breakeven point is when total revenue equals total costs. Before this point, you lose money. After, you profit.</p>
+        <h2>How to Use This Calculator</h2>
+        <p>Enter your selling price per unit, the cost to produce or acquire each unit, and your fixed monthly costs. The calculator will show how many units you need to sell to cover all costs (breakeven point).</p>
+        <p>Above this number, you make profit. Below it, you lose money.</p>
+
+        <h2>Example Calculation</h2>
+        <p>Let's say you sell a product for $50, it costs $25 to make, and you have $5,000 in fixed costs monthly:</p>
+        <ul>
+            <li><strong>Selling Price:</strong> $50</li>
+            <li><strong>Cost per Unit:</strong> $25</li>
+            <li><strong>Contribution Margin:</strong> $50 - $25 = $25</li>
+            <li><strong>Fixed Costs:</strong> $5,000</li>
+            <li><strong>Breakeven:</strong> $5,000 ÷ $25 = <strong>200 units</strong></li>
+        </ul>
+        <p>This means you need to sell 200 units per month just to break even. Every unit after that is pure profit!</p>
+
+        <h2>Understanding Breakeven Analysis</h2>
+        <p>Breakeven analysis is essential for any business. It tells you:</p>
+        <ul>
+            <li><strong>Minimum sales needed</strong> - The floor for survival</li>
+            <li><strong>Profit potential</strong> - How much you can earn above breakeven</li>
+            <li><strong>Pricing strategy</strong> - If price changes, how many more to sell</li>
+            <li><strong>Cost reduction impact</strong> - How lowering costs helps</li>
+        </ul>
+
+        <h2>Key Terms</h2>
+        <ul>
+            <li><strong>Fixed Costs</strong> - Rent, salaries, subscriptions (don't change with sales)</li>
+            <li><strong>Variable Costs</strong> - Materials, shipping (change with each sale)</li>
+            <li><strong>Contribution Margin</strong> - Price minus variable cost per unit</li>
+            <li><strong>Breakeven Point</strong> - Units needed to cover all costs</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+        <h3>How do I calculate breakeven point?</h3>
+        <p>Formula: Fixed Costs ÷ (Selling Price - Variable Cost per Unit) = Breakeven Units</p>
+        <p>This gives you the number of units to sell to cover all costs.</p>
+
+        <h3>What if my price changes?</h3>
+        <p>Higher price = lower breakeven (fewer units needed). Lower price = higher breakeven (more units needed). Use this calculator to see the impact of pricing changes.</p>
+
+        <h3>Should I aim for a low breakeven?</h3>
+        <p>Yes! A lower breakeven means less risk. It's easier to reach and faster to become profitable. You can lower breakeven by raising prices, reducing costs, or cutting fixed expenses.</p>
     </div>
 
     <div class="related">
-        <h3 style="color:#fff;margin-bottom:15px">Related Calculators</h3>
-        <a href="loan-calculator.html">💳 Loan Calculator</a>
+        <h3>Related Calculators</h3>
+        <a href="pod-calculator.html">👕 POD Calculator</a>
+        <a href="sidehustle-calculator.html">💰 Side Hustle Calculator</a>
+        <a href="saas-calculator.html">📊 SaaS MRR Calculator</a>
         <a href="freelance-calculator.html">✍️ Freelance Calculator</a>
         <a href="../index.html">← All Calculators</a>
     </div>
-    <footer><p>© 2026 Free Online Calculators</p></footer>
+
+    <footer>
+        <p>© 2026 Free Online Calculators | <a href="../index.html">All Calculators</a></p>
+    </footer>
 </div>
 <script>
 function calcBreakeven(){
@@ -83,7 +111,7 @@ function calcBreakeven(){
     const breakeven=fixed/margin;
     
     document.getElementById('totalBreakeven').textContent=Math.ceil(breakeven)+' units';
-    document.getElementById('breakdownBreakeven').textContent='$'+margin.toFixed(2)+' profit per unit';
+    document.getElementById('breakdownBreakeven').textContent='$'+margin.toFixed(2)+' profit per unit | $'+fixed.toLocaleString()+' fixed costs';
     document.getElementById('resultsBreakeven').classList.add('show');
 }
 </script>
