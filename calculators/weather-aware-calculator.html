@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Weather-Aware AC Cost Calculator | Real-Time Energy Estimates</title>
+    <meta name="description" content="Estimate your AC costs based on real-time weather in your city. Get accurate energy cost predictions using current temperature and humidity.">
+    <meta name="keywords" content="AC cost calculator, air conditioning cost, energy calculator, weather based AC, HVAC cost estimator, cooling cost calculator">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" content="https://rwalters23-del.github.io/calculators/weather-aware-calculator.html">
+    <meta name="theme-color" content="#1a1a2e">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rwalters23-del.github.io/calculators/weather-aware-calculator.html">
+    <meta property="og:title" content="Weather-Aware AC Cost Calculator">
+    <meta property="og:description" content="Estimate AC costs based on real weather conditions in your area.">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Weather-Aware AC Cost Calculator">
+    <meta name="twitter:description" content="Real-time AC cost estimates based on weather.">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Weather-Aware AC Cost Calculator",
+        "url": "https://rwalters23-del.github.io/calculators/weather-aware-calculator.html",
+        "description": "Estimate air conditioning costs based on real-time temperature and humidity in your location.",
+        "applicationCategory": "FinanceApplication",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }
+    </script>
+    
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(135deg,#1a1a2e,#16213e);min-height:100vh;padding:20px;color:#fff}
+        .container{max-width:800px;margin:0 auto}
+        header{text-align:center;margin-bottom:30px;padding:20px}
+        h1{font-size:2.2rem;margin-bottom:10px;background:linear-gradient(90deg,#00d4ff,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .subtitle{color:#888;font-size:1.1rem}
+        .breadcrumb{color:#666;font-size:0.9rem;margin-bottom:20px}
+        .breadcrumb a{color:#00d4ff;text-decoration:none}
+        .weather-badge{background:rgba(0,212,255,0.2);border:1px solid rgba(0,212,255,0.3);border-radius:20px;padding:8px 16px;display:inline-block;margin-top:10px;color:#00d4ff;font-size:0.9rem}
+        .weather-badge.loading{color:#888}
+        .calculator{background:rgba(255,255,255,0.05);border-radius:15px;padding:25px;border:1px solid rgba(255,255,255,0.1);margin-bottom:25px}
+        .calculator-title{font-size:1.5rem;margin-bottom:15px;color:#00d4ff}
+        .input-group{margin-bottom:15px}
+        .input-group label{display:block;margin-bottom:6px;color:#ccc;font-size:0.95rem}
+        .input-group input,.input-group select{width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.1);color:#fff;font-size:1rem}
+        .input-group input:focus,.input-group select:focus{outline:none;border-color:#00d4ff}
+        .input-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+        .calc-btn{width:100%;padding:14px;background:linear-gradient(90deg,#00d4ff,#7c3aed);border:none;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:10px}
+        .calc-btn:hover{transform:scale(1.02)}
+        .results{background:linear-gradient(135deg,#7c3aed,#00d4ff);border-radius:12px;padding:25px;text-align:center;display:none;margin-top:20px}
+        .results.show{display:block}
+        .results .total{font-size:3rem;font-weight:bold}
+        .results .breakdown{color:rgba(255,255,255,0.9);margin-top:10px}
+        .viral-message{background:rgba(255,200,0,0.15);border-radius:8px;padding:12px;border:1px solid rgba(255,200,0,0.3);font-size:1rem}
+        .comparison-box{background:rgba(0,212,255,0.1);border-radius:8px;padding:15px;border:1px solid rgba(0,212,255,0.3)}
+        .share-section button{margin:5px}
+        .content-section{background:rgba(255,255,255,0.05);border-radius:12px;padding:25px;margin-bottom:20px}
+        .content-section h2{color:#00d4ff;margin:25px 0 15px;font-size:1.3rem}
+        .content-section h2:first-child{margin-top:0}
+        .content-section h3{color:#ccc;margin:20px 0 10px;font-size:1.1rem}
+        .content-section p{color:#aaa;line-height:1.7;margin-bottom:12px}
+        .content-section ul{color:#aaa;margin-left:20px;margin-bottom:15px}
+        .content-section li{margin-bottom:8px}
+        .related{background:rgba(255,255,255,0.08);border-radius:12px;padding:20px;margin-top:30px}
+        .related h3{color:#fff;margin-bottom:15px}
+        .related a{color:#00d4ff;text-decoration:none;margin-right:20px}
+        .related a:hover{text-decoration:underline}
+        footer{text-align:center;margin-top:40px;color:#666;padding:20px}
+        footer a{color:#00d4ff}
+        @media(max-width:600px){.input-row{grid-template-columns:1fr}h1{font-size:1.8rem}.calculator,.content-section{padding:15px}}
+    </style>
+</head>
+<body>
+<div class="container">
+<header>
+    <p class="breadcrumb"><a href="../index.html">← All Calculators</a></p>
+    <h1>🌡️ Weather-Aware AC Cost Calculator</h1>
+    <p class="subtitle">Estimate cooling costs based on real weather in your area</p>
+    <div class="weather-badge loading" id="weatherBadge">Detecting your location...</div>
+</header>
+
+<div class="calculator">
+    <h2 class="calculator-title">Your AC Cost Today (Based on Live Weather)</h2>
+    
+    <div class="input-row">
+        <div class="input-group">
+            <label for="acSize">AC Unit Size (tons)</label>
+            <select id="acSize">
+                <option value="1">1 Ton</option>
+                <option value="1.5">1.5 Tons</option>
+                <option value="2" selected>2 Tons</option>
+                <option value="2.5">2.5 Tons</option>
+                <option value="3">3 Tons</option>
+                <option value="3.5">3.5 Tons</option>
+                <option value="4">4 Tons</option>
+                <option value="5">5 Tons</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="electricityRate">Electricity Rate ($/kWh)</label>
+            <input type="number" id="electricityRate" value="0.15" step="0.01" min="0.01">
+        </div>
+    </div>
+    
+    <div class="input-row">
+        <div class="input-group">
+            <label for="hours">Hours per Day</label>
+            <input type="number" id="hours" value="8" min="1" max="24">
+        </div>
+        <div class="input-group">
+            <label for="days">Days per Month</label>
+            <input type="number" id="days" value="30" min="1" max="31">
+        </div>
+    </div>
+    
+    <div class="input-row">
+        <div class="input-group">
+            <label for="location">City or Zip Code</label>
+            <input type="text" id="location" placeholder="e.g., New York, NY or 10001">
+        </div>
+    </div>
+    
+    <p style="color:#666;font-size:0.85rem;margin-bottom:15px;">Or <a href="#" onclick="useMyLocation();return false;" style="color:#00d4ff;">use my current location</a></p>
+    
+    <button class="calc-btn" onclick="calculate()">Calculate My AC Cost</button>
+</div>
+
+<div class="results" id="results">
+    <div class="total" id="monthlyCost">$0.00</div>
+    <p style="font-size:1.1rem;">per month</p>
+    <div class="breakdown" id="breakdown"></div>
+    <div class="viral-message" id="viralMessage" style="margin-top:15px;font-size:1rem;padding:12px;background:rgba(255,200,0,0.15);border-radius:8px;border:1px solid rgba(255,200,0,0.3);"></div>
+    <div class="feels-like-box" id="feelsLikeBox" style="margin-top:10px;padding:10px;background:rgba(255,100,100,0.15);border-radius:8px;border:1px solid rgba(255,100,100,0.3);display:none;">
+        <p id="feelsLikeText" style="font-size:0.95rem;"></p>
+    </div>
+    <div class="comparison-box" id="comparisonBox" style="margin-top:15px;padding:15px;background:rgba(0,212,255,0.1);border-radius:8px;border:1px solid rgba(0,212,255,0.3);display:none;">
+        <p style="font-size:1rem;margin-bottom:8px;"><strong>📊 Today vs Normal Day (72°F, 40% humidity)</strong></p>
+        <p id="comparisonText" style="font-size:1.1rem;color:#00d4ff;"></p>
+        <p id="comparisonPercent" style="font-size:0.9rem;color:#aaa;margin-top:5px;"></p>
+    </div>
+    <div class="projections-box" id="projectionsBox" style="display:none;margin-top:15px;padding:15px;background:rgba(0,255,136,0.1);border-radius:8px;border:1px solid rgba(0,255,136,0.3);">
+        <p style="font-size:1rem;margin-bottom:8px;"><strong>📅 Projections</strong></p>
+        <p id="monthlyProjection" style="font-size:1.1rem;"></p>
+        <p id="summerProjection" style="font-size:1.1rem;"></p>
+    </div>
+    
+    <div class="recommendation-box" id="recommendationBox" style="display:none;margin-top:15px;padding:15px;background:rgba(100,200,255,0.15);border-radius:8px;border:1px solid rgba(100,200,255,0.3);">
+        <p id="recommendationText" style="font-size:1rem;"></p>
+    </div>
+    
+    <div class="wasted-alert" id="wastedAlert" style="display:none;margin-top:15px;padding:15px;background:rgba(255,50,50,0.2);border-radius:8px;border:2px solid #ff3232;">
+        <p style="font-size:1.1rem;font-weight:bold;">🚨 You're wasting money!</p>
+        <p id="wastedText" style="font-size:1rem;margin-top:5px;"></p>
+    </div>
+    
+    <div class="share-section" id="shareSection" style="display:none;margin-top:15px;text-align:center;">
+        <button onclick="shareResult()" style="background:linear-gradient(90deg,#1DA1F2,#0d8ecf);border:none;border-radius:8px;padding:12px 24px;color:#fff;font-size:1rem;font-weight:bold;cursor:pointer;margin-right:10px;">
+            🐦 Share on Twitter
+        </button>
+        <button onclick="copyResult()" style="background:linear-gradient(90deg,#333,#111);border:none;border-radius:8px;padding:12px 24px;color:#fff;font-size:1rem;font-weight:bold;cursor:pointer;">
+            📋 Copy Result
+        </button>
+    </div>
+</div>
+
+<div class="content-section">
+    <h2>How This Works</h2>
+    <p>This calculator uses <strong>real-time weather data</strong> from Open-Meteo to estimate your air conditioning costs. Instead of using rough averages, it pulls the current temperature and humidity for your location to give you a more accurate estimate.</p>
+    
+    <h3>The Science Behind Cooling Costs</h3>
+    <p>Your AC doesn't just cool your home — it removes humidity too. Higher humidity means your AC works harder because it's removing moisture from the air, not just lowering temperature.</p>
+    <ul>
+        <li><strong>Temperature difference:</strong> The bigger the gap between outside and inside temps, the more energy your AC uses.</li>
+        <li><strong>Humidity matters:</strong> Each pound of water removed from the air takes about 1,000 BTUs of energy.</li>
+        <li><strong>SEER ratings:</strong> Modern AC units are rated by Seasonal Energy Efficiency Ratio (SEER). Higher SEER = lower costs.</li>
+    </ul>
+    
+    <h3>How We Calculate</h3>
+    <p>We estimate your AC's hourly energy usage based on:</p>
+    <ul>
+        <li><strong>BTU output:</strong> 1 ton of cooling = 12,000 BTUs</li>
+        <li><strong>Efficiency factor:</strong> Assumes a SEER 14 rating (typical for modern systems)</li>
+        <li><strong>Load factor:</strong> Adjusts for current weather conditions</li>
+        <li><strong>Real weather data:</strong> Uses your location's actual temperature and humidity</li>
+    </ul>
+    
+    <h2>Tips to Lower Your AC Bill</h2>
+    <ul>
+        <li><strong>Use a smart thermostat:</strong> Program it to raise temp when you're away</li>
+        <li><strong>Keep filters clean:</strong> A clogged filter can increase energy use by 5-15%</li>
+        <li><strong>Seal air leaks:</strong> Prevent cool air from escaping</li>
+        <li><strong>Use ceiling fans:</strong> They make rooms feel 4°F cooler</li>
+        <li><strong>Schedule maintenance:</strong> A well-maintained AC runs more efficiently</li>
+    </ul>
+    
+    <h2>Common Questions</h2>
+    <h3>How accurate is this calculator?</h3>
+    <p>This uses real weather data, so it's more accurate than calculators that use average values. However, actual costs vary based on your home's insulation, AC efficiency, and local electricity rates.</p>
+    
+    <h3>What size AC do I need?</h3>
+    <p>Generally, you need about 1 ton of cooling per 500-600 square feet. But factors like ceiling height, climate, and sun exposure matter too. <a href="mortgage-calculator.html" style="color:#00d4ff;">Our HVAC sizing guide</a> can help.</p>
+    
+    <h3>Why does humidity affect cost so much?</h3>
+    <p>When humidity is high, your AC spends energy removing moisture from the air. On a humid 90°F day, your AC might use 30% more energy than on a dry 90°F day.</p>
+</div>
+
+<div class="related">
+    <h3>Related Calculators</h3>
+    <a href="mortgage-calculator.html">Mortgage Calculator</a>
+    <a href="solar-calculator.html">Solar Savings</a>
+    <a href="percentage-calculator.html">Percentage Calculator</a>
+</div>
+
+<footer>
+    <p>© 2026 FreeCalculatorMax.com | <a href="privacy-policy.html">Privacy</a> | <a href="terms.html">Terms</a> | <a href="contact.html">Contact</a></p>
+</footer>
+</div>
+
+<script>
+let currentTemp = null;
+let currentHumidity = null;
+let currentLocationName = '';
+
+async function useMyLocation() {
+    if (!navigator.geolocation) {
+        alert('Geolocation is not supported by your browser');
+        return;
+    }
+    
+    navigator.geolocation.getCurrentPosition(
+        async (position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            await fetchWeather(lat, lon);
+        },
+        (error) => {
+            alert('Unable to get your location. Please enter a city or zip code.');
+        }
+    );
+}
+
+async function geocodeLocation(location) {
+    try {
+        const response = await fetch(
+            `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(location)}&count=1&language=en&format=json`
+        );
+        const data = await response.json();
+        
+        if (data.results && data.results.length > 0) {
+            return {
+                lat: data.results[0].latitude,
+                lon: data.results[0].longitude,
+                name: data.results[0].name + (data.results[0].country ? ', ' + data.results[0].country : '')
+            };
+        }
+        return null;
+    } catch (error) {
+        console.error('Geocoding error:', error);
+        return null;
+    }
+}
+
+async function fetchWeather(lat, lon) {
+    try {
+        const response = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m&temperature_unit=fahrenheit`
+        );
+        const data = await response.json();
+        
+        currentTemp = data.current.temperature_2m;
+        currentHumidity = data.current.relative_humidity_2m;
+        
+        const badge = document.getElementById('weatherBadge');
+        badge.className = 'weather-badge';
+        badge.textContent = `📍 ${currentTemp.toFixed(1)}°F • ${currentHumidity}% humidity`;
+        
+        return { temp: currentTemp, humidity: currentHumidity };
+    } catch (error) {
+        console.error('Weather fetch error:', error);
+        document.getElementById('weatherBadge').textContent = 'Weather unavailable';
+        return null;
+    }
+}
+
+async function calculate() {
+    const acSize = parseFloat(document.getElementById('acSize').value);
+    const electricityRate = parseFloat(document.getElementById('electricityRate').value);
+    const hours = parseInt(document.getElementById('hours').value);
+    const days = parseInt(document.getElementById('days').value);
+    const location = document.getElementById('location').value.trim();
+    
+    let temp = currentTemp;
+    let humidity = currentHumidity;
+    
+    // Try to geocode if location entered and no weather yet
+    if ((!temp || !humidity) && location) {
+        const geo = await geocodeLocation(location);
+        if (geo) {
+            const weather = await fetchWeather(geo.lat, geo.lon);
+            if (weather) {
+                temp = weather.temp;
+                humidity = weather.humidity;
+                currentLocationName = geo.name;
+            }
+        } else {
+            alert('Location not found. Try a city name or zip code.');
+            return;
+        }
+    }
+    
+    // Use default if no weather data
+    if (!temp) temp = 85;
+    if (!humidity) humidity = 50;
+    
+    // Calculate BTU needed (base + humidity adjustment)
+    const baseBTU = acSize * 12000;
+    const tempFactor = Math.max(0, (temp - 72) / 18); // 0 to 1 scale for temp above 72
+    const humidityFactor = humidity / 100; // 0 to 1 scale
+    
+    // Higher temp + humidity = more load
+    const loadFactor = 0.7 + (tempFactor * 0.4) + (humidityFactor * 0.2);
+    const adjustedBTU = baseBTU * loadFactor;
+    
+    // Convert to kWh (1 BTU = 0.000293 kWh, divided by SEER efficiency)
+    const seer = 14; // Typical modern AC
+    const hourlyKWh = (adjustedBTU / seer) * 0.000293;
+    
+    const dailyCost = hourlyKWh * hours * electricityRate;
+    const monthlyCost = dailyCost * days;
+    const hourlyCost = hourlyKWh * electricityRate;
+    
+    // Calculate baseline (normal day: 72°F, 40% humidity)
+    const baselineTemp = 72;
+    const baselineHumidity = 40;
+    const baselineTempFactor = Math.max(0, (baselineTemp - 72) / 18);
+    const baselineHumidityFactor = baselineHumidity / 100;
+    const baselineLoadFactor = 0.7 + (baselineTempFactor * 0.4) + (baselineHumidityFactor * 0.2);
+    const baselineBTU = baseBTU * baselineLoadFactor;
+    const baselineHourlyKWh = (baselineBTU / seer) * 0.000293;
+    const baselineDailyCost = baselineHourlyKWh * hours * electricityRate;
+    const baselineMonthlyCost = baselineDailyCost * days;
+    
+    const costDiff = monthlyCost - baselineMonthlyCost;
+    const percentDiff = ((costDiff / baselineMonthlyCost) * 100).toFixed(0);
+    
+    // Heat index (feels like) calculation
+    const heatIndex = calculateHeatIndex(temp, humidity);
+    const feelsLikeDiff = heatIndex - temp;
+    
+    // Projections
+    const summerDays = 90;
+    const dailyCostAvg = monthlyCost / days;
+    const summerProjection = dailyCostAvg * summerDays;
+    
+    // Wasted money (compared to optimal efficiency)
+    const optimalSeer = 20; // Best available
+    const optimalKWh = (adjustedBTU / optimalSeer) * 0.000293;
+    const optimalDailyCost = optimalKWh * hours * electricityRate;
+    const wastedDaily = (dailyCost - optimalDailyCost);
+    const wastedMonthly = wastedDaily * days;
+    
+    document.getElementById('monthlyCost').textContent = '$' + monthlyCost.toFixed(2);
+    document.getElementById('breakdown').innerHTML = 
+        `<strong>${hours} hrs/day × ${days} days</strong> • ${acSize} ton AC • SEER ${seer}`;
+    
+    // Generate viral message
+    let viralMsg = '';
+    if (temp > 85) {
+        viralMsg = '🔥 It\'s hotter than usual right now — your AC is working harder.';
+    } else if (humidity > 60) {
+        viralMsg = '💸 Your AC is costing ' + Math.round((humidity - 40) * 0.5) + '% more today due to humidity.';
+    } else if (temp > 80) {
+        viralMsg = '🌡 Compared to a mild day, you\'re paying +$' + costDiff.toFixed(2) + ' more this month.';
+    } else {
+        viralMsg = '✅ Relatively mild today — your AC is running efficiently.';
+    }
+    document.getElementById('viralMessage').innerHTML = viralMsg;
+    
+    // Heat index message
+    const feelsLikeBox = document.getElementById('feelsLikeBox');
+    if (feelsLikeDiff > 3) {
+        document.getElementById('feelsLikeText').innerHTML = `🌡 Feels like <strong>${heatIndex}°F</strong> — your AC is working harder than you think! This increases your cost by ~${Math.round(feelsLikeDiff * 0.5)}%`;
+        feelsLikeBox.style.display = 'block';
+    } else {
+        feelsLikeBox.style.display = 'none';
+    }
+    
+    // Projections
+    const projectionsBox = document.getElementById('projectionsBox');
+    document.getElementById('monthlyProjection').innerHTML = `📅 <strong>$${monthlyCost.toFixed(0)}</strong> estimated monthly cost`;
+    document.getElementById('summerProjection').innerHTML = `🔥 Summer projection (90 days): <strong>$${summerProjection.toFixed(0)}</strong>`;
+    projectionsBox.style.display = 'block';
+    
+    // Window recommendation
+    const recBox = document.getElementById('recommendationBox');
+    if (temp < 78 && humidity < 60) {
+        document.getElementById('recommendationText').innerHTML = `🪟 <strong>Open your windows!</strong> — It\'s cheaper to air out than run AC right now.`;
+        recBox.style.background = 'rgba(0,255,136,0.15)';
+    } else if (humidity > 70) {
+        document.getElementById('recommendationText').innerHTML = `❌ <strong>Keep windows closed</strong> — Humidity at ${humidity}% will make it worse inside.`;
+        recBox.style.background = 'rgba(255,100,100,0.15)';
+    } else {
+        document.getElementById('recommendationText').innerHTML = `❄️ <strong>Run your AC</strong> — It\'s too warm to cool naturally.`;
+        recBox.style.background = 'rgba(100,200,255,0.15)';
+    }
+    recBox.style.display = 'block';
+    
+    // Wasted money alert
+    const wastedBox = document.getElementById('wastedAlert');
+    if (seer < 16 && wastedMonthly > 10) {
+        document.getElementById('wastedText').innerHTML = `You're wasting <strong style="color:#ff6b6b;">$${wastedMonthly.toFixed(0)}/month</strong> due to outdated AC (SEER ${seer}). Upgrading to SEER 20 could save you that!`;
+        wastedBox.style.display = 'block';
+    } else {
+        wastedBox.style.display = 'none';
+    }
+    
+    // Show comparison
+    const comparisonBox = document.getElementById('comparisonBox');
+    const comparisonText = document.getElementById('comparisonText');
+    const comparisonPercent = document.getElementById('comparisonPercent');
+    
+    comparisonBox.style.display = 'block';
+    if (costDiff > 0) {
+        comparisonText.innerHTML = 'Today: <strong>$' + monthlyCost.toFixed(2) + '</strong> vs Normal: <strong>$' + baselineMonthlyCost.toFixed(2) + '</strong>';
+        comparisonPercent.innerHTML = '💸 You\'re paying <strong style="color:#ff6b6b;">+$' + costDiff.toFixed(2) + ' (' + percentDiff + '% more)</strong> because of today\'s weather';
+    } else {
+        comparisonText.innerHTML = 'Today: <strong>$' + monthlyCost.toFixed(2) + '</strong> vs Normal: <strong>$' + baselineMonthlyCost.toFixed(2) + '</strong>';
+        comparisonPercent.innerHTML = '✅ You\'re paying <strong style="color:#00d4ff;">$' + Math.abs(costDiff).toFixed(2) + ' less</strong> than a normal day!';
+    }
+    
+    // Show share button
+    document.getElementById('shareSection').style.display = 'block';
+    
+    document.getElementById('results').classList.add('show');
+}
+
+function calculateHeatIndex(temp, humidity) {
+    // Simplified heat index formula (Rothfusz regression)
+    const T = temp;
+    const RH = humidity;
+    
+    if (T < 80) return T;
+    
+    let hi = -42.379 + 2.04901523 * T + 10.14333127 * RH - 0.22475541 * T * RH - 0.00683783 * T * T - 0.05481717 * RH * RH + 0.00122874 * T * T * RH + 0.00085282 * T * RH * RH - 0.00000199 * T * T * RH * RH;
+    
+    // Adjustment for low humidity
+    if (RH < 40 && T >= 80 && T <= 112) {
+        hi -= ((40 - RH) / 4) * (T - 80) / 10;
+    }
+    // Adjustment for high humidity
+    if (RH > 85 && T >= 80 && T <= 87) {
+        hi += ((RH - 85) / 10) * (87 - T) / 10;
+    }
+    
+    return Math.round(hi);
+}
+
+function shareResult() {
+    const monthlyCost = document.getElementById('monthlyCost').textContent;
+    const viralMsg = document.getElementById('viralMessage').textContent;
+    const comparison = document.getElementById('comparisonPercent').textContent;
+    const summerProj = document.getElementById('summerProjection').textContent;
+    const wasted = document.getElementById('wastedText');
+    const wastedMsg = wasted && wasted.textContent ? '\n' + wasted.textContent : '';
+    const location = currentLocationName || 'my area';
+    
+    const text = `🌡 My AC cost today in ${location}: ${monthlyCost}/month\n${viralMsg}\n${comparison}\n${summerProj}${wastedMsg}\n\nCalculate yours:`;
+    const url = 'https://freecalculatormax.com/weather-aware-calculator.html';
+    
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+}
+
+function copyResult() {
+    const monthlyCost = document.getElementById('monthlyCost').textContent;
+    const viralMsg = document.getElementById('viralMessage').textContent;
+    const comparison = document.getElementById('comparisonPercent').textContent;
+    const summerProj = document.getElementById('summerProjection').textContent;
+    const wasted = document.getElementById('wastedText');
+    const wastedMsg = wasted && wasted.textContent ? '\n' + wasted.textContent : '';
+    const location = currentLocationName || 'my area';
+    
+    const text = `🌡 My AC cost today in ${location}: ${monthlyCost}/month\n${viralMsg}\n${comparison}\n${summerProj}${wastedMsg}`;
+    
+    navigator.clipboard.writeText(text).then(() => {
+        alert('Copied! Ready to paste.');
+    });
+}
+
+// Try to guess location from timezone on page load
+async function init() {
+    try {
+        // Try using the browser's timezone to get a rough location
+        const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        // Common US timezones to cities
+        const tzMap = {
+            'America/New_York': 'New York',
+            'America/Chicago': 'Chicago',
+            'America/Denver': 'Denver',
+            'America/Los_Angeles': 'Los Angeles',
+            'America/Phoenix': 'Phoenix',
+            'America/Honolulu': 'Honolulu',
+            'America/Anchorage': 'Anchorage'
+        };
+        
+        const city = tzMap[timezone] || 'New York';
+        const geo = await geocodeLocation(city);
+        if (geo) {
+            document.getElementById('location').value = city;
+            await fetchWeather(geo.lat, geo.lon);
+        }
+    } catch (e) {
+        document.getElementById('weatherBadge').textContent = 'Enter location below';
+    }
+}
+
+init();
+</script>
+
+</body>
+</html>
