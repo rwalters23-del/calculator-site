@@ -122,8 +122,8 @@
             </select>
         </div>
         <div class="input-group">
-            <label for="electricityRate">Electricity Rate ($/kWh)</label>
-            <input type="number" id="electricityRate" value="0.15" step="0.01" min="0.01">
+            <label for="thermostat">Thermostat (°F)</label>
+            <input type="number" id="thermostat" value="72" min="60" max="85">
         </div>
     </div>
     
@@ -135,6 +135,13 @@
         <div class="input-group">
             <label for="days">Days per Month</label>
             <input type="number" id="days" value="30" min="1" max="31">
+        </div>
+    </div>
+    
+    <div class="input-row">
+        <div class="input-group">
+            <label for="electricityRate">Electricity Rate ($/kWh)</label>
+            <input type="number" id="electricityRate" value="0.15" step="0.01" min="0.01">
         </div>
     </div>
     
@@ -178,6 +185,11 @@
     <p id="projectedCost" style="font-size:1rem;color:#aaa;margin-top:5px;"></p>
     <div class="breakdown" id="breakdown"></div>
     
+    <div id="tempDiffBox" style="margin-top:15px;padding:12px;background:rgba(255,150,0,0.15);border-radius:8px;border:1px solid rgba(255,150,0,0.3);display:none;">
+        <p style="font-size:1rem;"><strong>🌡️ Inside vs Outside</strong></p>
+        <p id="tempDiffText" style="font-size:1.1rem;color:#ffa500;"></p>
+    </div>
+    
     <div class="wasted-alert" id="wastedAlert" style="margin-top:20px;display:none;">
         <p style="font-size:1.2rem;font-weight:bold;color:#ff3232;">🚨 You're overpaying!</p>
         <p id="wastedText" style="font-size:1.1rem;margin-top:8px;"></p>
@@ -192,7 +204,7 @@
     <div class="viral-message" id="viralMessage" style="margin-top:15px;"></div>
     
     <div class="comparison-box" id="comparisonBox" style="margin-top:15px;display:none;">
-        <p style="font-size:1rem;margin-bottom:8px;"><strong>📊 Today vs Normal Day (72°F, 40% humidity)</strong></p>
+        <p style="font-size:1rem;margin-bottom:8px;"><strong>📊 Today vs Your Setting (<span id="vsThermostat">72</span>°F)</strong></p>
         <p id="comparisonText" style="font-size:1.1rem;color:#00d4ff;"></p>
         <p id="comparisonPercent" style="font-size:0.9rem;color:#aaa;margin-top:5px;"></p>
     </div>
@@ -430,8 +442,9 @@ async function calculate() {
     if (!temp) temp = 85;
     if (!humidity) humidity = 50;
     
+    const thermostat = parseInt(document.getElementById('thermostat').value) || 72;
     const baseBTU = acSize * 12000;
-    const tempFactor = Math.max(0, (temp - 72) / 18);
+    const tempFactor = Math.max(0, (temp - thermostat) / 18);
     const humidityFactor = humidity / 100;
     const loadFactor = 0.7 + (tempFactor * 0.4) + (humidityFactor * 0.2);
     const adjustedBTU = baseBTU * loadFactor;
@@ -501,6 +514,8 @@ async function calculate() {
         ? `AC Cost Today in ${cityName.split(',')[0]}, ${stateAbbr}`
         : `AC Cost Today in ${cityName}`;
     
+    document.getElementById('vsThermostat').textContent = thermostat;
+    
     // Show shock stat, toggle, and how we calculate
     document.getElementById('shockStat').style.display = 'block';
     document.getElementById('periodToggle').style.display = 'flex';
@@ -527,6 +542,18 @@ async function calculate() {
         feelsLikeBox.style.display = 'block';
     } else {
         feelsLikeBox.style.display = 'none';
+    
+    // Temperature differential display
+    const tempDiff = temp - thermostat;
+    const tempDiffBox = document.getElementById('tempDiffBox');
+    const tempDiffText = document.getElementById('tempDiffText');
+    if (tempDiff > 0) {
+        tempDiffText.innerHTML = `Your AC is cooling <strong style="color:#ff6b6b;">${tempDiff}°F</strong> (${thermostat}°F inside → ${temp.toFixed(1)}°F outside)`;
+        tempDiffBox.style.display = 'block';
+    } else {
+        tempDiffText.innerHTML = `It's cooler outside (${temp.toFixed(1)}°F) than your thermostat (${thermostat}°F) — turn off AC and open windows!`;
+        tempDiffBox.style.display = 'block';
+    }
     }
     
     const projectionsBox = document.getElementById('projectionsBox');
