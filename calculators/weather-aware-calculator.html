@@ -50,6 +50,7 @@
         .input-group{margin-bottom:15px}
         .input-group label{display:block;margin-bottom:6px;color:#ccc;font-size:0.95rem}
         .input-group input,.input-group select{width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.1);color:#fff;font-size:1rem}
+        .input-group select option{background:#1a1a2e;color:#fff;padding:10px}
         .input-group input:focus,.input-group select:focus{outline:none;border-color:#00d4ff}
         .input-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
         .calc-btn{width:100%;padding:14px;background:linear-gradient(90deg,#00d4ff,#7c3aed);border:none;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:10px}
@@ -142,7 +143,19 @@
         <input type="text" id="location" placeholder="e.g., New York, NY or 10001">
     </div>
     
-    <p style="color:#666;font-size:0.85rem;margin-bottom:15px;">Or <a href="#" onclick="useMyLocation();return false;" style="color:#00d4ff;">use my current location</a> • <span id="lastUpdatedMobile" style="display:none;"></span></p>
+    <div style="margin-bottom:15px;">
+        <p style="color:#888;font-size:0.8rem;margin-bottom:8px;">Quick cities:</p>
+        <button onclick="setLocation('New York')" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#ccc;padding:6px 12px;border-radius:6px;cursor:pointer;margin-right:5px;margin-bottom:5px;">New York</button>
+        <button onclick="setLocation('Los Angeles')" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#ccc;padding:6px 12px;border-radius:6px;cursor:pointer;margin-right:5px;margin-bottom:5px;">Los Angeles</button>
+        <button onclick="setLocation('Chicago')" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#ccc;padding:6px 12px;border-radius:6px;cursor:pointer;margin-right:5px;margin-bottom:5px;">Chicago</button>
+        <button onclick="setLocation('Houston')" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#ccc;padding:6px 12px;border-radius:6px;cursor:pointer;margin-right:5px;margin-bottom:5px;">Houston</button>
+        <button onclick="setLocation('Miami')" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#ccc;padding:6px 12px;border-radius:6px;cursor:pointer;margin-right:5px;margin-bottom:5px;">Miami</button>
+        <button onclick="setLocation('Phoenix')" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#ccc;padding:6px 12px;border-radius:6px;cursor:pointer;margin-right:5px;margin-bottom:5px;">Phoenix</button>
+        <button onclick="setLocation('90210')" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#ccc;padding:6px 12px;border-radius:6px;cursor:pointer;margin-right:5px;margin-bottom:5px;">90210</button>
+        <button onclick="useMyLocation()" style="background:rgba(0,212,255,0.2);border:1px solid rgba(0,212,255,0.3);color:#00d4ff;padding:6px 12px;border-radius:6px;cursor:pointer;margin-bottom:5px;">📍 My Location</button>
+    </div>
+    
+    <p style="color:#666;font-size:0.85rem;margin-bottom:15px;"><span id="lastUpdatedMobile" style="display:none;"></span></p>
     
     <button class="calc-btn" onclick="calculate()">Calculate My AC Cost</button>
 </div>
@@ -295,6 +308,11 @@ let weeklyCost = 0;
 let monthlyCost = 0;
 let yesterdayCost = 0;
 
+function setLocation(city) {
+    document.getElementById('location').value = city;
+    calculate();
+}
+
 async function useMyLocation() {
     if (!navigator.geolocation) {
         alert('Geolocation is not supported by your browser');
@@ -395,7 +413,7 @@ async function calculate() {
                 currentLocationName = geo.name;
             }
         } else {
-            alert('Location not found. Try a city name or zip code.');
+            alert('Location not found. Try selecting a quick city button or check your spelling.');
             return;
         }
     }
