@@ -319,14 +319,23 @@ async function useMyLocation() {
         return;
     }
     
+    const btn = event.target;
+    const originalText = btn.textContent;
+    btn.textContent = '📍 Finding...';
+    btn.disabled = true;
+    
     navigator.geolocation.getCurrentPosition(
         async (position) => {
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
             await fetchWeather(lat, lon);
+            btn.textContent = '📍 Found!';
+            setTimeout(() => { btn.textContent = originalText; btn.disabled = false; }, 2000);
         },
         (error) => {
-            alert('Unable to get your location. Please enter a city or zip code.');
+            alert('Unable to get your location. Please allow location access or enter a city manually.');
+            btn.textContent = originalText;
+            btn.disabled = false;
         }
     );
 }
