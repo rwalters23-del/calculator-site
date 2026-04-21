@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Scenario Calculator - Free Calculator Max</title>
+    <meta name="description" content="Calculate the future value of your investments with our advanced scenario planner. Explore growth, inflation, tax, and diversification impacts.">
+    <!-- Add other necessary meta tags, links to CSS, etc. -->
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; max-width: 960px; margin: 0 auto; }
+        .calculator-container { border: 1px solid #ccc; padding: 20px; border-radius: 8px; background-color: #f9f9f9; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .input-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #333; }
+        input[type="number"], input[type="text"], select { width: calc(100% - 12px); padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; box-sizing: border-box; }
+        button { background-color: #007bff; color: white; padding: 12px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 17px; transition: background-color 0.3s ease; }
+        button:hover { background-color: #0056b3; }
+        .results-container { margin-top: 25px; border-top: 1px solid #e0e0e0; padding-top: 25px; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .results-container h3 { margin-top: 0; color: #333; }
+        .result-item { margin-bottom: 12px; display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #eee; }
+        .result-item:last-child { border-bottom: none;}
+        .result-item span { font-weight: bold; color: #007bff; }
+        .info-icon { cursor: help; margin-left: 5px; color: #555; font-weight: normal; }
+
+        /* Chart Styles */
+        #chart-container { margin-top: 25px; height: 350px; width: 100%; }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            .calculator-container { padding: 15px; }
+            button { font-size: 15px; padding: 10px 18px; }
+            input[type="number"], input[type="text"], select { padding: 8px; font-size: 15px; }
+            .results-container { margin-top: 20px; padding-top: 20px; }
+            #chart-container { height: 300px; }
+        }
+    </style>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>Investment Scenario Calculator</h1>
+        <p>Use this advanced calculator to project the future value of your investments under various scenarios, including inflation, taxes, and diversification.</p>
+
+        <div id="input-section">
+            <div class="input-group">
+                <label for="initial-investment">Initial Investment ($)</label>
+                <input type="number" id="initial-investment" value="10000" min="0" step="100">
+            </div>
+
+            <div class="input-group">
+                <label for="annual-contribution">Annual Contribution ($)</label>
+                <input type="number" id="annual-contribution" value="5000" min="0" step="100">
+            </div>
+
+            <div class="input-group">
+                <label for="rate-of-return">Average Annual Rate of Return (%)</label>
+                <input type="number" id="rate-of-return" value="7.5" step="0.1" min="0" max="100">
+            </div>
+
+            <div class="input-group">
+                <label for="investment-period">Investment Period (Years)</label>
+                <input type="number" id="investment-period" value="20" min="1" step="1">
+            </div>
+
+            <div class="input-group">
+                <label for="annual-inflation-rate">Average Annual Inflation Rate (%)</label>
+                <input type="number" id="annual-inflation-rate" value="2.5" step="0.1" min="0" max="50">
+            </div>
+
+            <hr>
+            <h3>Tax Scenarios</h3>
+            <div class="input-group">
+                <label for="account-type">Account Type</label>
+                <select id="account-type">
+                    <option value="taxable">Standard (Taxed Annually)</option>
+                    <option value="tax-advantaged">Tax-Advantaged (Tax-Free Growth)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="capital-gains-tax-rate">Federal Capital Gains Tax Rate (%) <span class="info-icon" title="Applies to profits from selling investments in taxable accounts. 'Standard (Taxed Annually)' will use this rate on yearly growth. For simplicity, this assumes all gains are taxed annually at this rate.">ⓘ</span></label>
+                <input type="number" id="capital-gains-tax-rate" value="15" step="0.1" min="0" max="100">
+            </div>
+            <div class="input-group">
+                <label for="state-income-tax-rate">State Income Tax Rate (%) <span class="info-icon" title="Applies to the net growth after federal taxes, in taxable accounts. This is an estimate for your state.">ⓘ</span></label>
+                <input type="number" id="state-income-tax-rate" value="5" step="0.1" min="0" max="50">
+            </div>
+
+            <hr>
+            <h3>Portfolio Diversification</h3>
+            <p>Enter percentage allocation and expected annual return for each asset class. Totals should ideally sum to 100%.</p>
+            <div class="input-group">
+                <label for="stocks-allocation">Stocks Allocation (%)</label>
+                <input type="number" id="stocks-allocation" value="50" step="1" min="0" max="100">
+                <label for="stocks-return">Stocks Avg. Annual Return (%)</label>
+                <input type="number" id="stocks-return" value="9" step="0.1" min="0" max="100">
+            </div>
+            <div class="input-group">
+                <label for="bonds-allocation">Bonds Allocation (%)</label>
+                <input type="number" id="bonds-allocation" value="30" step="1" min="0" max="100">
+                <label for="bonds-return">Bonds Avg. Annual Return (%)</label>
+                <input type="number" id="bonds-return" value="4" step="0.1" min="0" max="100">
+            </div>
+            <div class="input-group">
+                <label for="real-estate-allocation">Real Estate Allocation (%)</label>
+                <input type="number" id="real-estate-allocation" value="10" step="1" min="0" max="100">
+                <label for="real-estate-return">Real Estate Avg. Annual Return (%)</label>
+                <input type="number" id="real-estate-return" value="6" step="0.1" min="0" max="100">
+            </div>
+             <div class="input-group">
+                <label for="crypto-allocation">Cryptocurrency Allocation (%)</label>
+                <input type="number" id="crypto-allocation" value="5" step="1" min="0" max="100">
+                <label for="crypto-return">Cryptocurrency Avg. Annual Return (%)</label>
+                <input type="number" id="crypto-return" value="15" step="0.1" min="0" max="100">
+            </div>
+            <div class="input-group">
+                <label for="long-term-bonds-allocation">Long-Term Bonds Allocation (%)</label>
+                <input type="number" id="long-term-bonds-allocation" value="5" step="1" min="0" max="100">
+                <label for="long-term-bonds-return">Long-Term Bonds Avg. Annual Return (%)</label>
+                <input type="number" id="long-term-bonds-return" value="5" step="0.1" min="0" max="100">
+            </div>
+
+            <hr>
+            <h3>Goal-Based Planning</h3>
+            <div class="input-group">
+                <label for="target-amount">Target Investment Amount ($)</label>
+                <input type="number" id="target-amount" value="100000" min="0" step="1000">
+            </div>
+             <div class="input-group">
+                <label for="solve-for">Solve For</label>
+                <select id="solve-for">
+                    <option value="contribution">Annual Contribution / Period</option>
+                    <option value="period">Investment Period</option>
+                </select>
+            </div>
+
+            <button id="calculate-btn">Calculate Scenario</button>
+        </div>
+
+        <div id="results-container" class="results-container">
+            <h3>Investment Projection Summary</h3>
+            <div class="result-item">Initial Investment: <span id="initial-investment-display"></span></div>
+            <div class="result-item">Total Contributions: <span id="total-contributions-display"></span></div>
+            <div class="result-item" title="The total amount of money you have put into the investment.">Total Invested: <span id="total-invested"></span></div>
+            <div class="result-item">Total Growth (Nominal): <span id="total-growth-nominal"></span></div>
+            <div class="result-item">Estimated Taxes Paid: <span id="estimated-taxes-paid"></span></div>
+            <div class="result-item">Future Value (Nominal): <span id="future-value-nominal"></span></div>
+            <div class="result-item" title="Future value adjusted for inflation, showing purchasing power in today's dollars.">Future Value (Inflation-Adjusted): <span id="future-value-inflation-adjusted"></span></div>
+            <div class="result-item">Projected for Goal (Target: <span id="target-amount-display"></span>): <span id="goal-projection"></span></div>
+            <div class="result-item">Years to Reach Goal: <span id="years-to-reach-goal"></span></div>
+
+            <div id="chart-container">
+                <canvas id="investmentChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const initialInvestmentInput = document.getElementById('initial-investment');
+        const annualContributionInput = document.getElementById('annual-contribution');
+        const nominalRateOfReturnInput = document.getElementById('rate-of-return');
+        const investmentPeriodInput = document.getElementById('investment-period');
+        const inflationRateInput = document.getElementById('annual-inflation-rate');
+        const accountTypeSelect = document.getElementById('account-type');
+        const capitalGainsTaxRateInput = document.getElementById('capital-gains-tax-rate');
+        const stateIncomeTaxRateInput = document.getElementById('state-income-tax-rate');
+
+        // Diversification inputs
+        const stocksAllocationInput = document.getElementById('stocks-allocation');
+        const stocksReturnInput = document.getElementById('stocks-return');
+        const bondsAllocationInput = document.getElementById('bonds-allocation');
+        const bondsReturnInput = document.getElementById('bonds-return');
+        const realEstateAllocationInput = document.getElementById('real-estate-allocation');
+        const realEstateReturnInput = document.getElementById('real-estate-return');
+        const cryptoAllocationInput = document.getElementById('crypto-allocation');
+        const cryptoReturnInput = document.getElementById('crypto-return');
+        const longTermBondsAllocationInput = document.getElementById('long-term-bonds-allocation');
+        const longTermBondsReturnInput = document.getElementById('long-term-bonds-return');
+
+        // Goal-based planning inputs
+        const targetAmountInput = document.getElementById('target-amount');
+        const solveForSelect = document.getElementById('solve-for');
+
+       
+...(truncated)...
